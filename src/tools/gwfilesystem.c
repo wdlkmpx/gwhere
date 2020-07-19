@@ -63,7 +63,7 @@ gint gw_fs_get_type ( const gchar *fs, gchar **fs_type)
 		if ( GetVolumeInformation ( fs_port, NULL, 0, NULL, &max_file_len, &system_flags, type_buf, sizeof ( type_buf)) )
 		{
 			*fs_type = g_strdup ( type_buf);
-			g_strdown ( *fs_type);
+			g_utf8_strdown ( *fs_type, -1);
 			result = 0;
 		}
 		else

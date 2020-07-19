@@ -109,7 +109,7 @@ char *current = NULL, *bad = NULL;
 #endif
 
 				strcpy ( buff, buff_original);
-				g_strdown ( buff);
+				g_utf8_strdown ( buff, -1);
 
 				start = 0;
 				end = strlen ( buff);

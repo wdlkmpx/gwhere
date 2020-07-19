@@ -448,7 +448,7 @@ gint gw_pm_init ( ) {
 														gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "plugin %s added", allowed_ext[i]);
 #endif
 
-														g_strdown ( allowed_ext[i]);
+														g_utf8_strdown ( allowed_ext[i], -1);
 														g_hash_table_insert ( my_plugins_manager.file_descr_funcs, g_strdup ( allowed_ext[i]), func_get_file_descr);
 													}
 
@@ -470,7 +470,7 @@ gint gw_pm_init ( ) {
 													for ( i = 0; allowed_name[i] != NULL; i++) {
 														g_hash_table_insert ( my_plugins_manager.descr_plugins, g_strdup ( func_get_allowed_name ( )), module);
 
-														g_strdown ( allowed_name[i]);
+														g_utf8_strdown ( allowed_name[i], -1);
 
 														if ( func_get_files_descr != NULL ) {
 															g_hash_table_insert ( my_plugins_manager.files_descr_funcs, g_strdup ( allowed_name[i]), func_get_files_descr);
@@ -580,7 +580,7 @@ gint gw_pm_get_file_descr_func ( const gchar *ext, func_get_file_descr_t *f) {
 #endif
 
 	if ( (my_plugins_manager.file_descr_funcs != NULL) && (ext != NULL) ) {
-		g_strdown ( ext_lower = g_strdup ( ext));
+		g_utf8_strdown ( ext_lower = g_strdup ( ext), -1);
 		*f = g_hash_table_lookup ( my_plugins_manager.file_descr_funcs, ext_lower);
 		g_free ( ext_lower);
 	}
@@ -599,7 +599,7 @@ gint gw_pm_get_files_descr_func ( const gchar *name, func_get_files_descr_t *f) 
 #endif
 
 	if ( (my_plugins_manager.files_descr_funcs != NULL) && ( name != NULL) ) {
-		g_strdown ( name_lower = g_strdup ( name));
+		g_utf8_strdown ( name_lower = g_strdup ( name), -1);
 		*f = g_hash_table_lookup ( my_plugins_manager.files_descr_funcs, name_lower);
 		g_free ( name_lower);
 	}
@@ -618,7 +618,7 @@ gint gw_pm_get_parent_descr_func ( const gchar *name, func_get_parent_descr_t *f
 #endif
 
 	if ( (my_plugins_manager.parent_descr_funcs != NULL) && (name != NULL) ) {
-		g_strdown ( name_lower = g_strdup ( name));
+		g_utf8_strdown ( name_lower = g_strdup ( name), -1);
 		*f = g_hash_table_lookup ( my_plugins_manager.parent_descr_funcs, name_lower);
 		g_free ( name_lower);
 	}

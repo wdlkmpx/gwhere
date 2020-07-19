@@ -634,8 +634,8 @@ gint gw_strcmp_strblob ( gchar *str, gchar *blob, gboolean case_sensitive)
 
 		if ( case_sensitive )
 		{
-			g_strdown ( tmp_str);
-                		g_strdown ( tmp_blob);
+			g_utf8_strdown ( tmp_str, -1);
+                		g_utf8_strdown ( tmp_blob, -1);
 		}
 
 		words = g_strsplit ( tmp_blob, "*", 0);

@@ -334,8 +334,8 @@ char * plugin_get_file_descr ( const char *filepath, const char *mode)
 					codec_tag1[4] = '\0';
 					strncpy ( codec_tag2, a.avi_video_ext.divx_tag, 4);
 					codec_tag2[4] = '\0';
-					g_strdown ( codec_tag1);
-					g_strdown ( codec_tag2);
+					g_utf8_strdown ( codec_tag1, -1);
+					g_utf8_strdown ( codec_tag2, -1);
 
 					if ( a.video.header.streams >= 2 ) {
 						while ( ((a.audio.list_2[0] != 'L') || (a.audio.list_2[1] != 'I') || (a.audio.list_2[2] != 'S') || (a.audio.list_2[3] != 'T')) && (!feof ( file)) ) {
