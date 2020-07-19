@@ -1,0 +1,2 @@
+Specific code should be put between #ifdef OS_MACOSX end #endif
+GWhere compile under MAC OS X, but there is no disk in the media list (cannot find mounted disk).

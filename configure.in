@@ -1,0 +1,449 @@
+dnl Process this file with  autoconf to produce a configure script.
+dnl ================================================
+AC_INIT(configure.in)
+AM_INIT_AUTOMAKE(gwhere, 0.2.3)
+AC_DEFINE(PROJECT_NAME, "GWhere")
+AM_CONFIG_HEADER(config.h)
+
+
+dnl It is used for the NSIS file autogeneration
+dnl ===========================================
+PROJECT_NAME="GWhere"
+AC_SUBST(PROJECT_NAME)
+
+
+AC_ISC_POSIX
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_MAKE_SET
+AC_PROG_GCC_TRADITIONAL
+AC_PROG_LN_S
+AC_PROG_AWK
+AM_PROG_CC_STDC
+AC_HEADER_STDC
+
+
+dnl For future use with libgwcatalog
+dnl ================================
+dnl AC_PROG_RANLIB
+AC_PROG_LIBTOOL
+AC_ENABLE_SHARED(yes)
+
+CFLAGS="$CFLAGS -fno-strict-aliasing"
+
+dnl Checks GTK+ version
+dnl ===================
+AC_ARG_ENABLE(gtk20,
+	[  --enable-gtk20          compile for GTK+ 2.0 instead of GTK+ 1.2. [default=auto]],
+	USE_GTK=20,
+	USE_GTK=auto)
+
+if test "x$USE_GTK" = "x20" ; then
+  AM_PATH_GTK_2_0(1.3.0, GTK_VERSION="1.3.0 or 2.0.0",AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
+  CFLAGS="$CFLAGS -DGTK_ENABLE_BROKEN"
+  AC_DEFINE(HAVE_GTK20)
+else
+  AC_ARG_ENABLE(gtk12,
+  	[  --enable-gtk12          compile for GTK+ 1.2. [default=auto]],
+  	USE_GTK=12,
+  	USE_GTK=auto)
+
+  case $USE_GTK in
+    12)
+      AM_PATH_GTK(1.2.0, GTK_VERSION="1.2.0",AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
+      AC_DEFINE(HAVE_GTK12)
+    ;;
+
+    auto)
+      AM_PATH_GTK(1.2.0, GTK_VERSION="1.2.0",AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
+      AC_DEFINE(HAVE_GTK12)
+  esac
+fi
+
+
+dnl Checks for libraries.
+dnl =====================
+dnl AC_CHECK_LIB([z], [zlibVersion], CFLAGS="$CFLAGS -lz", AC_MSG_ERROR(Cannot find zlib))
+AC_CHECK_LIB([z], [zlibVersion], , AC_MSG_ERROR(Cannot find zlib))
+
+
+dnl Checks functions
+dnl ==============
+AC_FUNC_FNMATCH
+AC_PROG_GCC_TRADITIONAL
+AC_TYPE_SIGNAL
+AC_CHECK_FUNCS(dup2 getmntent getwd hasmntopt memset regcomp strerror strstr mempcpy mkdir getfsent strftime strptime)
+
+
+dnl Checks headers
+dnl =============
+AC_CHECK_HEADERS(fcntl.h libintl.h mntent.h sys/ioctl.h sys/mount.h sys/vfs.h stddef.h string.h unistd.h)
+AC_HEADER_DIRENT
+AC_HEADER_SYS_WAIT
+AC_HEADER_STDC
+
+
+dnl Checks for typedefs, structures, and compiler characteristics
+dnl =============================================================
+AC_C_CONST
+AC_STRUCT_TM
+AC_TYPE_UID_T
+
+
+dnl Add the languages which your application supports here
+dnl ======================================================
+ALL_LINGUAS="ar cs cs-windows-1250 de fr el es hu it nl pl pt ru sr"
+AM_GNU_GETTEXT
+
+
+dnl Check for host OS
+dnl =================
+HOST_OS=""
+HOST_OS_FULLNAME=""
+case "$host" in
+  *-*-windows*)
+    HOST_OS="OS_WINDOWS"
+    HOST_OS_FULLNAME="MS Windows"
+  ;;
+  *-*-cygwin*)
+    HOST_OS="OS_CYGWIN"
+    HOST_OS_FULLNAME="GNU/Cygwin"
+  ;;
+  *-*-linux*)
+    HOST_OS="OS_LINUX"
+    HOST_OS_FULLNAME="GNU/Linux"
+  ;;
+  *-*-freebsd*)
+    HOST_OS="OS_FREEBSD"
+    HOST_OS_FULLNAME="FreeBSD"
+  ;;
+  *-*-openbsd*)
+    HOST_OS="OS_OPENBSD"
+    HOST_OS_FULLNAME="OpenBSD"
+  ;;
+  *-*-netbsd*)
+    HOST_OS="OS_NETBSD"
+    HOST_OS_FULLNAME="NetBSD"
+  ;;
+  *-*-macosx*)
+    HOST_OS="OS_MACOSX"
+    HOST_OS_FULLNAME="MacOS X"
+  ;;
+  *-*-macos*)
+    HOST_OS="OS_MACOS"
+    HOST_OS_FULLNAME="MacOS"
+  ;;
+  *-*-darwin*)
+    HOST_OS="OS_DARWIN"
+    HOST_OS_FULLNAME="Darwin"
+  ;;
+  *)
+    HOST_OS="OS_UNKNOWN"
+    HOST_OS_FULLNAME="Unknown"
+esac
+AC_SUBST(HOST_OS)
+echo "checking for host... $HOST_OS_FULLNAME"
+
+
+dnl Set PACKAGE_LOCALE_DIR in config.h
+dnl ==================================
+if test "x${prefix}" = "xNONE"; then
+  AC_DEFINE_UNQUOTED(PACKAGE_LOCALE_DIR, "${ac_default_prefix}/${DATADIRNAME}/locale")
+else
+  AC_DEFINE_UNQUOTED(PACKAGE_LOCALE_DIR, "${prefix}/${DATADIRNAME}/locale")
+fi
+
+
+dnl Set PACKAGE_DATA_DIR in config.h
+dnl ================================
+if test "x${datadir}" = 'x${prefix}/share'; then
+  if test "x${prefix}" = "xNONE"; then
+    AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${ac_default_prefix}/share/${PACKAGE}")
+  else
+    AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${prefix}/share/${PACKAGE}")
+  fi
+else
+  AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${datadir}/${PACKAGE}")
+fi
+
+
+dnl Set PACKAGE_PLUGINS_DIR in config.h
+dnl ================================
+if test "x${prefix}" = "xNONE"; then
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_DIR, "${ac_default_prefix}/share/${PACKAGE}/plugins")
+else
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_DIR, "${prefix}/share/${PACKAGE}/plugins")
+fi
+
+
+dnl Set PACKAGE_PLUGINS_CATALOG_DIR in config.h
+dnl ================================
+if test "x${prefix}" = "xNONE"; then
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_CATALOG_DIR, "${ac_default_prefix}/share/${PACKAGE}/plugins/catalog")
+else
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_CATALOG_DIR, "${prefix}/share/${PACKAGE}/plugins/catalog")
+fi
+
+
+dnl Set PACKAGE_PLUGINS_DESCRIPTION_DIR in config.h
+dnl ================================
+if test "x${prefix}" = "xNONE"; then
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_DESCRIPTION_DIR, "${ac_default_prefix}/share/${PACKAGE}/plugins/descr")
+else
+  AC_DEFINE_UNQUOTED(PACKAGE_PLUGINS_DESCRIPTION_DIR, "${prefix}/share/${PACKAGE}/plugins/descr")
+fi
+
+
+dnl Set PACKAGE_SOURCE_DIR in config.h
+dnl ==================================
+packagesrcdir=`cd $srcdir && pwd`
+AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}")
+
+
+dnl Use -Wall if we have gcc
+dnl ========================
+changequote(,)dnl
+if test "x$GCC" = "xyes"; then
+  case " $CFLAGS " in
+  *[\ \	]-Wall[\ \	]*) ;;
+  *) CFLAGS="$CFLAGS -Wall" ;;
+  esac
+fi
+changequote([,])dnl
+
+
+dnl Use -pedantic if we have gcc (not use this option due GTK+ is not C ANSI)
+dnl =========================================================================
+dnl changequote(,)dnl
+dnl if test "x$GCC" = "xyes"; then
+dnl   case " $CFLAGS " in
+dnl     *[\ \	]-pedantic[\ \	]*) ;;
+dnl     *) CFLAGS="$CFLAGS -pedantic" ;;
+dnl   esac
+dnl fi
+dnl changequote([,])dnl
+
+
+dnl Use --enable-debug for debug mode
+dnl =================================
+AC_ARG_ENABLE(debug,
+	[  --enable-debug          use GWhere in debugging mode. [default=no]],
+	GW_DEBUG_MODE=yes,
+	GW_DEBUG_MODE=no)
+	GMLLIB=
+if test "x$GW_DEBUG_MODE" = "xyes" ; then
+	AC_DEFINE(GW_DEBUG_MODE)
+	echo checking for debug mode... yes
+else
+	echo checking for debug mode... no
+fi
+
+
+dnl Use --enable-debug-time for debug time
+dnl ======================================
+AC_ARG_ENABLE(debug-time,
+	[  --enable-debug-time          use GWhere in debugging time. [default=no]],
+	GW_DEBUG_TIME=yes,
+	GW_DEBUG_TIME=no)
+	GMLLIB=
+if test "x$GW_DEBUG_TIME" = "xyes" ; then
+	if test "x$GW_DEBUG_MODE" = "xyes" ; then
+		AC_DEFINE(GW_DEBUG_TIME)
+		echo checking for debug time... yes
+	else
+		echo checking for debug time... no
+	fi
+fi
+
+
+dnl Use --enable-debug-data-component for debug data component
+dnl ==========================================================
+AC_ARG_ENABLE(debug-data-component,
+	[  --enable-debug-data-component          use GWhere in debugging data component. [default=no]],
+	GW_DEBUG_DATA_COMPONENT=yes,
+	GW_DEBUG_DATA_COMPONENT=no)
+	GMLLIB=
+if test "x$GW_DEBUG_DATA_COMPONENT" = "xyes" ; then
+	if test "x$GW_DEBUG_MODE" = "xyes" ; then
+		AC_DEFINE(GW_DEBUG_DATA_COMPONENT)
+		echo checking for debug data component... yes
+	else
+		echo checking for debug data component... no
+	fi
+fi
+
+
+dnl Use --enable-debug-tools-component for debug data component
+dnl ==========================================================
+AC_ARG_ENABLE(debug-tools-component,
+	[  --enable-debug-tools-component          use GWhere in debugging tools component. [default=no]],
+	GW_DEBUG_TOOLS_COMPONENT=yes,
+	GW_DEBUG_TOOLS_COMPONENT=no)
+	GMLLIB=
+if test "x$GW_DEBUG_TOOLS_COMPONENT" = "xyes" ; then
+	if test "x$GW_DEBUG_MODE" = "xyes" ; then
+		AC_DEFINE(GW_DEBUG_TOOLS_COMPONENT)
+		echo checking for debug tools component... yes
+	else
+		echo checking for debug tools component... no
+	fi
+fi
+
+
+dnl Use --enable-debug-gui-component for debug GUI component
+dnl ========================================================
+AC_ARG_ENABLE(debug-gui-component,
+	[  --enable-debug-gui-component          use GWhere in debugging GUI component. [default=no]],
+	GW_DEBUG_GUI_COMPONENT=yes,
+	GW_DEBUG_GUI_COMPONENT=no)
+	GMLLIB=
+if test "x$GW_DEBUG_GUI_COMPONENT" = "xyes" ; then
+	if test "x$GW_DEBUG_MODE" = "xyes" ; then
+		AC_DEFINE(GW_DEBUG_GUI_COMPONENT)
+		echo checking for debug gui component... yes
+	else
+		echo checking for debug gui component... no
+	fi
+fi
+
+
+dnl Use --enable-debug-gui-callback-component for debug GUI callback component
+dnl ==========================================================================
+AC_ARG_ENABLE(debug-gui-callback-component,
+	[  --enable-debug-gui-callback-component          use GWhere in debugging GUI callback component. [default=no]],
+	GW_DEBUG_GUI_CALLBACK_COMPONENT=yes,
+	GW_DEBUG_GUI_CALLBACK_COMPONENT=no)
+	GMLLIB=
+if test "x$GW_DEBUG_GUI_CALLBACK_COMPONENT" = "xyes" ; then
+	if test "x$GW_DEBUG_MODE" = "xyes" ; then
+		AC_DEFINE(GW_DEBUG_GUI_CALLBACK_COMPONENT)
+		echo checking for debug gui callback component... yes
+	else
+		echo checking for debug gui callback component... no
+	fi
+fi
+
+
+dnl Use --enable-debug-all for debug mode
+dnl =================================
+AC_ARG_ENABLE(debug-all,
+	[  --enable-debug-all          use GWhere in debugging mode with debug. [default=no]],
+	GW_DEBUG_ALL=yes,
+	GW_DEBUG_ALL=no)
+	GMLLIB=
+if test "x$GW_DEBUG_ALL" = "xyes" ; then
+	echo checking for debug all... yes
+	AC_DEFINE(GW_DEBUG_MODE)
+	AC_DEFINE(GW_DEBUG_TIME)
+	AC_DEFINE(GW_DEBUG_DATA_COMPONENT)
+	AC_DEFINE(GW_DEBUG_TOOLS_COMPONENT)
+	AC_DEFINE(GW_DEBUG_GUI_COMPONENT)
+	AC_DEFINE(GW_DEBUG_GUI_CALLBACK_COMPONENT)
+	GW_DEBUG_MODE=yes
+	GW_DEBUG_TIME=yes
+	GW_DEBUG_DATA_COMPONENT=yes
+	GW_DEBUG_TOOLS_COMPONENT=yes
+	GW_DEBUG_GUI_COMPONENT=yes
+	GW_DEBUG_GUI_CALLBACK_COMPONENT=yes
+
+dnl	if test "x$USE_GTK" = "x12" ; then
+dnl		echo checking for mem profile... yes
+dnl		GTK_CFLAGS="$GTK_CFLAGS --enable-mem-profile=yes"
+dnl	else if test "x$USE_GTK" = "xauto" ; then
+dnl		echo checking for mem profile... yes
+dnl		GTK_CFLAGS="$GTK_CFLAGS --enable-mem-profile=yes"
+dnl	fi fi
+else
+	echo checking for debug all... no
+fi
+
+
+dnl Set GW_PROG_PATH_MOUNT (mount program path) in config.h
+dnl =======================================================
+AC_PATH_PROG(GW_PROG_PATH_MOUNT, mount)
+AC_SUBST(GW_PROG_PATH_MOUNT)
+if test "x$GW_PROG_PATH_MOUNT" != "x" ;
+then
+  AC_DEFINE_UNQUOTED(GW_PROG_PATH_MOUNT, "$GW_PROG_PATH_MOUNT")
+fi
+
+
+dnl Set GW_PROG_PATH_UMOUNT (umount program path) in config.h
+dnl =======================================================
+AC_PATH_PROG(GW_PROG_PATH_UMOUNT, umount)
+AC_SUBST(GW_PROG_PATH_UMOUNT)
+if test "x$GW_PROG_PATH_UMOUNT" != "x" ;
+then
+  AC_DEFINE_UNQUOTED(GW_PROG_PATH_UMOUNT, "$GW_PROG_PATH_UMOUNT")
+fi
+
+
+AC_OUTPUT([
+Makefile
+gwhere.spec
+src/db/Makefile
+src/data/Makefile
+src/tools/Makefile
+src/gui/Makefile
+src/res/Makefile
+src/plugins/Makefile
+src/plugins/descr/Makefile
+src/plugins/catalog/Makefile
+src/plugins/catalog/gwcatalog/Makefile
+src/plugins/catalog/csv/Makefile
+src/Makefile
+debian/Makefile
+slackware/Makefile
+doc/Doxyfile
+doc/Makefile
+doc/license/Makefile
+doc/man/Makefile
+intl/Makefile
+po/Makefile.in
+win32/Makefile
+win32/config.h
+win32/gwhere.nsi
+])
+
+
+echo ""
+echo ""
+echo "***************************************************"
+echo "*          Configuring GWhere-$VERSION              *"
+echo "***************************************************"
+echo "*"
+echo "*   Host OS : $HOST_OS_FULLNAME"
+echo "*"
+echo "*   GTK+ : $GTK_VERSION"
+echo "*"
+echo "*   Options :"
+
+if test "x$GW_DEBUG_MODE" = "xyes" ; then
+   echo "*        - Debug mode enabled"
+fi
+
+if test "x$GW_DEBUG_TIME" = "xyes" ; then
+   echo "*        - Debug time enabled"
+fi
+
+if test "x$GW_DEBUG_DATA_COMPONENT" = "xyes" ; then
+   echo "*        - Debug data components enabled"
+fi
+
+if test "x$GW_DEBUG_TOOLS_COMPONENT" = "xyes" ; then
+   echo "*        - Debug tools components enabled"
+fi
+
+if test "x$GW_DEBUG_GUI_COMPONENT" = "xyes" ; then
+   echo "*        - Debug GUI components enabled"
+fi
+
+if test "x$GW_DEBUG_GUI_CALLBACK_COMPONENT" = "xyes" ; then
+   echo "*        - Debug GUI callback components enabled"
+fi
+
+echo "*"
+echo "***************************************************"
+echo ""
+echo configure complete, type \'make\' to compile GWhere
+echo ""

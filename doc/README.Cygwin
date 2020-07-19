@@ -1,0 +1,6 @@
+Specific code should be put between #ifdef OS_CYGWIN and #endif
+
+BUGS :
+- Error when close /cygdrive/. file.
+- Segmentation fault with base64encode.
+- Title icon is bad (it is the close catalog icon).

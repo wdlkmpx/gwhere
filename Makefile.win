@@ -1,0 +1,18 @@
+# Project: GWhere
+# Makefile created for GWhere
+
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = $(RES)
+LIBS = 
+INCS = 
+BIN  = 
+CFLAGS = 
+
+.PHONY: clean
+
+all: 
+
+clean:
+	rm -f $(OBJ) $(BIN)

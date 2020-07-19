@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment=
+Comment[en_US]=
+Encoding=UTF-8
+Exec='/usr/bin/gwhere'
+GenericName=CD Catalog
+GenericName[en_US]=CD Catalog
+Icon=/usr/share/pixmaps/gwhere.xpm
+MimeType=
+Name=GWhere
+Name[en_US]=GWhere
+Path=$HOME
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,81 @@
+# Project: pluginsdescr
+# Makefile created for GWhere
+
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  =
+AVI_OBJ  = avi.o
+DESCRIPT_ION_OBJ  = descript_ion.o
+FILE_ID_DIZ_OBJ  = file_id_diz.o
+HTML_OBJ  = html.o
+MP3_OBJ  = mp3.o
+MPC_OBJ  = mpc.o
+OBJ  = $(AVI_OBJ) $(DESCRIPT_ION_OBJ) $(FILE_ID_DIZ_OBJ) $(HTML_OBJ) $(MP3_OBJ) $(MPC_OBJ) $(RES)
+AVI_BIN = libgwplugindescriptionavi.dll
+DESCRIPT_ION_BIN = libgwplugindescriptiondescript_ion.dll
+FILE_ID_DIZ_BIN = libgwplugindescriptionfile_id_diz.dll
+HTML_BIN = libgwplugindescriptionhtml.dll
+MP3_BIN = libgwplugindescriptionmp3.dll
+MPC_BIN = libgwplugindescriptionmpc.dll
+BIN  = $(AVI_BIN) $(DESCRIPT_ION_BIN) $(FILE_ID_DIZ_BIN) $(HTML_BIN) $(MP3_BIN) $(MPC_BIN)
+LIBS = $(GTKLIBS) -LC:/MINGW/lib -LC:/MINGW/mingw_extra/lib -LC:/GTK/lib $(GWLIBS) -mno-cygwin -fnative-struct -lintl -mno-cygwin -fnative-struct -lzdll -lwsock32 -static -lregex -lmingwex -lglib-2.0 -lgmodule-2.0
+GTKLIBS = -lgtk-win32-2.0 -lgdk-win32-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangowin32-1.0 -lgdi32 -lpango-1.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0 -lintl -liconv
+GWLIBS = ../../tools/libgwtools.a
+INCS = $(GWINCS) $(GTKINCS) -IC:/MINGW/include -IC:/MINGW/mingw_extra/include -IC:/GTK/include
+GTKINCS = -IC:/GTK/include/gtk-2.0 -IC:/GTK/lib/gtk-2.0/include -IC:/GTK/include/atk-1.0 -IC:/GTK/include/pango-1.0 -IC:/GTK/include/glib-2.0 -IC:/GTK/lib/glib-2.0/include
+GWINCS = -I../..
+CFLAGS = $(INCS) -O2 -Wall -fnative-struct -DHAVE_CONFIG_H -DOS_WIN32 -DGTK_ENABLE_BROKEN -s -mwindows
+
+
+.PHONY: clean
+
+all: $(BIN)
+
+clean:
+	rm -f $(OBJ) $(BIN)
+
+DLLWRAP=dllwrap.exe
+AVI_EXPFILE=liblibgwplugindescriptionavi.exp
+AVI_DEFFILE=liblibgwplugindescriptionavi.def
+AVI_STATICLIB=liblibgwplugindescriptionavi.a
+DESCRIPT_ION_EXPFILE=liblibgwplugindescriptiondescript_ion.exp
+DESCRIPT_ION_DEFFILE=liblibgwplugindescriptiondescript_ion.def
+DESCRIPT_ION_STATICLIB=liblibgwplugindescriptiondescript_ion.a
+FILE_ID_DIZ_EXPFILE=liblibgwplugindescriptionfile_id_diz.exp
+FILE_ID_DIZ_DEFFILE=liblibgwplugindescriptionfile_id_diz.def
+FILE_ID_DIZ_STATICLIB=liblibgwplugindescriptionfile_id_diz.a
+HTML_EXPFILE=liblibgwplugindescriptionhtml.exp
+HTML_DEFFILE=liblibgwplugindescriptionhtml.def
+HTML_STATICLIB=liblibgwplugindescriptionhtml.a
+MP3_EXPFILE=liblibgwplugindescriptionmp3.exp
+MP3_DEFFILE=liblibgwplugindescriptionmp3.def
+MP3_STATICLIB=liblibgwplugindescriptionmp3.a
+MPC_EXPFILE=liblibgwplugindescriptionmpc.exp
+MPC_DEFFILE=liblibgwplugindescriptionmpc.def
+MPC_STATICLIB=liblibgwplugindescriptionmpc.a
+
+$(BIN): $(OBJ)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(AVI_EXPFILE) --output-def $(AVI_DEFFILE) --implib $(AVI_STATICLIB) -o $(AVI_BIN) $(AVI_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(DESCRIPT_ION_EXPFILE) --output-def $(DESCRIPT_ION_DEFFILE) --implib $(DESCRIPT_ION_STATICLIB) -o $(DESCRIPT_ION_BIN) $(DESCRIPT_ION_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(FILE_ID_DIZ_EXPFILE) --output-def $(FILE_ID_DIZ_DEFFILE) --implib $(FILE_ID_DIZ_STATICLIB) -o $(FILE_ID_DIZ_BIN) $(FILE_ID_DIZ_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(HTML_EXPFILE) --output-def $(HTML_DEFFILE) --implib $(HTML_STATICLIB) -o $(HTML_BIN) $(HTML_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(MP3_EXPFILE) --output-def $(MP3_DEFFILE) --implib $(MP3_STATICLIB) -o $(MP3_BIN) $(MP3_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+	$(DLLWRAP) --driver-name $(CC) --output-exp $(MPC_EXPFILE) --output-def $(MPC_DEFFILE) --implib $(MPC_STATICLIB) -o $(MPC_BIN) $(MPC_OBJ) ..\..\tools\libgwtools.a ..\..\data\libgwdata.a ..\..\res\libgwres.a $(LIBS) $(CFLAGS)
+
+avi.o: avi.c
+	$(CC) -c avi.c -o avi.o $(CFLAGS)
+
+descript_ion.o: descript_ion.c
+	$(CC) -c descript_ion.c -o descript_ion.o $(CFLAGS)
+
+file_id_diz.o: file_id_diz.c
+	$(CC) -c file_id_diz.c -o file_id_diz.o $(CFLAGS)
+
+html.o: html.c
+	$(CC) -c html.c -o html.o $(CFLAGS)
+
+mp3.o: mp3.c
+	$(CC) -c mp3.c -o mp3.o $(CFLAGS)
+
+mpc.o: mpc.c mppdec.h
+	$(CC) -c mpc.c -o mpc.o $(CFLAGS)

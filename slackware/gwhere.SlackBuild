@@ -1,0 +1,115 @@
+#!/bin/sh
+#
+# Date Last Modified: 2005-05-26 (YYYY-MM-DD)
+# Author: Venelin Georgiev xyzt2@yahoo.com
+# 
+
+NAME=gwhere
+VERSION=0.2.0
+DEVELOPMENT=
+ARCH=i486
+BUILD=1
+CWD=`pwd`
+TMP=/tmp
+SRC=$TMP
+
+
+### must be absolute PATH
+PKGDIR=$TMP/package-$NAME
+### must be only file name without the extention
+if [ "x$DEVELOPMENT" = "x" ]; then
+  PKGNAME=$NAME-$VERSION-$ARCH-$BUILD
+  TARNAME=$NAME-$VERSION
+else
+  PKGNAME=$NAME-$VERSION.$DEVELOPMENT-$ARCH-$BUILD
+  TARNAME=$NAME-$VERSION-$DEVELOPMENT
+fi
+
+# Prepare the framework and extract the package:
+cd $TMP
+if [ $? -ne 0 ]; then
+  mkdir $TMP
+  if [ $? -ne 0 ]; then
+    echo -e "\n\n\nERROR: Cannot cd to dir \"$TMP\" or CANNOT create it\n"
+    exit 1
+  fi
+fi
+
+cd $SRC
+if [ $? -ne 0 ]; then
+  mkdir $SRC
+  if [ $? -ne 0 ]; then
+    echo -e "\n\n\nERROR: Cannot cd to dir \"$SRC\" or CANNOT create it\n"
+    exit 1
+  fi
+fi
+
+echo -ne "INFO:\tCleaning..." 
+cd $TMP
+rm -rf $PKGDIR $PKGNAME.tgz
+cd $SRC
+rm -rf $NAME-$VERSION
+echo done
+
+tar -jxvpf $CWD/$TARNAME.tar.bz2
+mkdir -p $PKGDIR
+
+cd $SRC/$NAME-$VERSION
+TEST=/TESTER
+unset TEST 
+./configure \
+ --sysconfdir=$TEST/etc \
+ --prefix=$TEST/usr \
+--without-catgets \
+--without-included-gettext \
+--disable-nls
+
+make
+make install DESTDIR=$PKGDIR
+
+#
+# Docs
+#
+mkdir -p $PKGDIR/usr/doc/$NAME-$VERSION
+cp README NEWS TODO INSTALL ChangeLog COPYING BUGS AUTHORS ABOUT-NLS \
+   $PKGDIR/usr/doc/$NAME-$VERSION
+mkdir -p $PKGDIR/opt/kde/share/applnk/Utilities
+cp $CWD/GWhere.desktop $PKGDIR/opt/kde/share/applnk/Utilities
+
+( 
+  cd $PKGDIR/usr/doc/$NAME-$VERSION; 
+  chown -R 0.0 *;
+  find . -type f -exec chmod 0644 {} \; ;
+  find . -type d -exec chmod 0755 {} \; ;
+)
+
+#
+# Man Pages
+#
+(
+  cd $PKGDIR/usr/man/man1;
+  gzip -f *
+)
+
+#
+# Chown to root.bin for Binaries
+#
+(
+  cd $PKGDIR/usr/bin
+  chown -R 0.bin *
+)
+
+#
+# Finalizing package
+#
+mkdir -p $PKGDIR/install
+cat $CWD/slack-desc > $PKGDIR/install/slack-desc
+
+cd $PKGDIR
+makepkg -l y -c n /tmp/$PKGNAME.tgz
+
+# Clean up the extra stuff:
+if [ "$1" = "--cleanup" ]; then
+ rm -rf $SRC/$NAME-$VERSION
+ rm -rf $PKGDIR
+fi

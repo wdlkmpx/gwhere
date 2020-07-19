@@ -1,0 +1,24 @@
+# Project: libgwdata
+# Makefile created for GWhere
+
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = gwenginequicksearch.o gwsearchiteminfo.o gwscandiskinfo.o gwsettings.o gwuserquicksearch.o gwvirtualfilesystemstats.o gwstringbuffer.o $(RES)
+INCS = $(GWINCS) $(GTKINCS) -IC:/MINGW/include -IC:/MINGW/mingw_extra/include -IC:/GTK/include
+GTKINCS = -IC:/GTK/include/gtk-2.0 -IC:/GTK/lib/gtk-2.0/include -IC:/GTK/include/atk-1.0 -IC:/GTK/include/pango-1.0 -IC:/GTK/include/glib-2.0 -IC:/GTK/lib/glib-2.0/include
+GWINCS = -I..
+BIN  = libgwdata.a
+CFLAGS = $(INCS) -O2 -Wall -fnative-struct -DHAVE_CONFIG_H -DOS_WIN32 -DGTK_ENABLE_BROKEN
+
+
+.PHONY: clean
+
+all: $(BIN)
+
+clean:
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	ar r $(BIN) $(OBJ)
+	ranlib $(BIN)

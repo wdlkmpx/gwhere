@@ -1,0 +1,11 @@
+TODO for Debian
+----------------
+
+  * Resize xpm icon according to the policy.
+
+-- Luis Parravicini <luis@ktulu.com.ar>  Mon, 21 Oct 2002 15:28:18 -0300
+
+  * Use an icon for the X11 menu entry.
+  * Fix the warnings reported by lintian.
+
+ -- Luis Parravicini <luis@ktulu.com.ar>, Tue,  14 Oct 2002 16:15:12 -0300

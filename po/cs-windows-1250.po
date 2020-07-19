@@ -1,0 +1,2276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-08-22 01:05+0200\n"
+"PO-Revision-Date: 2003-08-20 17:56+0200\n"
+"Last-Translator: Thomas Navara <navara@shalmirane.net>\n"
+"Language-Team: Czech <cs@li.org (author is not part of this group)>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=windows-1250\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/tools/gwmail.c:74
+msgid "Cannot receive data"
+msgstr "Nemohu obdret data"
+
+#: src/tools/gwmail.c:80
+msgid "Connexion closed by client\n"
+msgstr "Spojení ukonèeno klientem\n"
+
+#: src/tools/gwmail.c:109
+msgid "Cannot send data"
+msgstr "Nemohu odeslat data"
+
+#: src/tools/gwstring.c:148
+#, c-format
+msgid "%.0f bytes"
+msgstr "%.0f bytù"
+
+#: src/tools/gwstring.c:152
+#, c-format
+msgid "%.2f Kb"
+msgstr "%.2f Kb"
+
+#: src/tools/gwstring.c:156
+#, c-format
+msgid "%.2f Mb"
+msgstr "%.2f MB"
+
+#: src/tools/gwstring.c:160
+#, c-format
+msgid "%.2f Gb"
+msgstr "%.2f GB"
+
+#: src/tools/gwstring.c:165
+#, c-format
+msgid "%.2f Tb"
+msgstr "%.2f TB"
+
+#: src/tools/gwstring.c:170
+#, c-format
+msgid "%.2f Pb"
+msgstr "%.2f PB"
+
+#: src/tools/gwstring.c:175
+#, c-format
+msgid "%.2f Hb"
+msgstr "%.2f HB"
+
+#: src/tools/gwstring.c:181 src/tools/gwstring.c:187
+#, c-format
+msgid "%.2f Ib"
+msgstr "%.2f IB"
+
+#: src/gui/gwcapturebox.c:100 src/gui/gwdialogbox.c:80 src/gui/gwmsgbox.c:76
+#: src/gui/gwpropertiesbox.c:202 src/gui/gwsettingswindowbox.c:163
+#: src/gui/gwtextbox.c:110
+msgid "_OK"
+msgstr "_OK"
+
+#: src/gui/gwcapturebox.c:125 src/gui/gwdialogbox.c:115
+#: src/gui/gwprogressbarbox.c:139 src/gui/gwprogressbarbox.c:562
+#: src/gui/gwpropertiesbox.c:234 src/gui/gwsettingswindowbox.c:178
+#: src/gui/gwtextbox.c:127 src/gui/gwwindowboxmail.c:219
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: src/gui/gwcategorieseditbox.c:85 src/gui/gwmenuactioncallback.c:151
+#: src/gui/gwmenupopup.c:137
+msgid "Edit categories"
+msgstr "Editovat kategorie"
+
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:99
+msgid "Categories list : "
+msgstr "Seznam kategorií : "
+
+#. 1st column label
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_NAME_TITLE	The title column of the column Name
+#: src/gui/gwcategorieseditbox.c:126 src/gwapplicationmanager.h:248
+#: src/gwapplicationmanager.h:382 src/gwapplicationmanager.h:546
+msgid "Name"
+msgstr "Jméno"
+
+#. 2nd column label
+#. Match description check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#: src/gui/gwcategorieseditbox.c:132 src/gui/gwnotebooksearch.c:295
+#: src/gwapplicationmanager.h:368 src/gwapplicationmanager.h:514
+#: src/gwapplicationmanager.h:618
+msgid "Description"
+msgstr "Popis"
+
+#: src/gui/gwcategorieseditbox.c:143
+msgid "_Update"
+msgstr "_Aktualizovat"
+
+#: src/gui/gwcategorieseditbox.c:151
+msgid ""
+"Allows to update category properties of the selected category. Clicks on "
+"Add / Update button to save updates."
+msgstr "Umonuje aktualizovat vlastnosti oznaèené kategorie. Kliknìte na Pøidat/Aktualizovat pro uloení zmìn."
+
+#: src/gui/gwcategorieseditbox.c:158
+msgid "_Remove"
+msgstr "_Odstranit"
+
+#: src/gui/gwcategorieseditbox.c:166
+msgid ""
+"Remove the selected category from categories list. This categories may "
+"removed only if there's not any item which uses this category."
+msgstr "Odstraní zvolenou kategorii ze seznamu. Kategorie mùe bıt odstranìna pouze kdy není pouívána."
+
+#. Label for category name
+#: src/gui/gwcategorieseditbox.c:180
+msgid "Category name : "
+msgstr "Jméno kategorie : "
+
+#: src/gui/gwcategorieseditbox.c:191
+msgid "Enter the name of the category."
+msgstr "Jméno kategorie."
+
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:196
+msgid "Description : "
+msgstr "Popis : "
+
+#: src/gui/gwcategorieseditbox.c:221
+msgid "Enter the description of the category."
+msgstr "Vlote popis kategorie."
+
+#. Is it not mandatory?
+#. g_strdup_to_gtk_text ( _( "Add"), text_utf8);
+#. gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
+#. g_free ( text_utf8);
+#.
+#. gtk_widget_ref ( bt);
+#. (GtkDestroyNotify)gtk_widget_unref
+#: src/gui/gwcategorieseditbox.c:240
+msgid "Add / Update"
+msgstr "Pøidat / Aktualizovat"
+
+#: src/gui/gwcategorieseditbox.c:247
+msgid "Save properties changes of category."
+msgstr "Uloit vlastnosti kategorie."
+
+#: src/gui/gwcategorieseditbox.c:257 src/gui/gwmenupopup.c:67
+#: src/gui/gwmenupopup.c:170
+msgid "Close"
+msgstr "Zavøít"
+
+#: src/gui/gwcategorieseditbox.c:264
+msgid "Close the categories properties edit window."
+msgstr "Zavøít okno s nastavením kategorií."
+
+#: src/gui/gwcategorieseditbox.c:308 src/gui/gwnotebookmanagmentcallback.c:265
+#: src/gui/gwpropertiesbox.c:1046
+msgid "none"
+msgstr "ádnı"
+
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Remove category"
+msgstr "Odstranit kategorii"
+
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Can't remove this category. It's used by an item."
+msgstr "Kategorie je pouívána, nemohu ji odstranit"
+
+#: src/gui/gwcategorieseditbox.c:532 src/gui/gwcategorieseditbox.c:843
+msgid "Add"
+msgstr "Pøidat"
+
+#: src/gui/gwcategorieseditbox.c:556 src/gui/gwcategorieseditbox.c:873
+msgid "Update"
+msgstr "Aktualizovat"
+
+#: src/gui/gwdialogbox.c:98
+msgid "_No"
+msgstr "_Ne"
+
+#: src/gui/gwfileselectionbox.c:80
+msgid "Hide file operations"
+msgstr "Skrıt operace se soubory"
+
+#: src/gui/gwfileselectionbox.c:86
+msgid "Show file operation"
+msgstr "Ukázat akce se soubory"
+
+#: src/gui/gwmenuaction.c:64
+msgid "_Action"
+msgstr "_Akce"
+
+#: src/gui/gwmenuaction.c:85
+msgid "_Expand all"
+msgstr "_Rozvinout vše"
+
+#: src/gui/gwmenuaction.c:101
+msgid "Expand only _disks"
+msgstr "Rozvinout _disky"
+
+#: src/gui/gwmenuaction.c:115
+msgid "C_ollapse all"
+msgstr "Svinout vše"
+
+#: src/gui/gwmenuaction.c:138
+msgid "Edit _categories"
+msgstr "Editovat _kategorie"
+
+#: src/gui/gwmenuactioncallback.c:151
+msgid "No catalog is opened : cannot edit categories"
+msgstr "ádnı katalog není otevøenı : nemohu editovat kategorie"
+
+#: src/gui/gwmenufile.c:85
+msgid "_File"
+msgstr "Soubor"
+
+#: src/gui/gwmenufile.c:106
+msgid "_New"
+msgstr "_Novı"
+
+#: src/gui/gwmenufile.c:120
+msgid "_Open"
+msgstr "_Otevøít"
+
+#: src/gui/gwmenufile.c:134
+msgid "_Save"
+msgstr "_Uloit"
+
+#: src/gui/gwmenufile.c:148
+msgid "Sav_e as"
+msgstr "Uloit _jako"
+
+#: src/gui/gwmenufile.c:162
+msgid "C_lose"
+msgstr "_Zavøít"
+
+#: src/gui/gwmenufile.c:183
+msgid "Import"
+msgstr ""
+
+#: src/gui/gwmenufile.c:199
+msgid "Export"
+msgstr "Exportovat"
+
+#: src/gui/gwmenufile.c:222
+msgid "_Properties"
+msgstr "_Vlastnosti"
+
+#: src/gui/gwmenufile.c:243
+msgid "_Recents files"
+msgstr "N_aposledy otevøené"
+
+#: src/gui/gwmenufile.c:266
+msgid "E_xit"
+msgstr "_Konec"
+
+#. Else ask the new catalog name
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:75
+#: src/gui/gwmenufilecallback.c:607 src/gui/gwmenufilecallback.c:625
+#: src/gui/gwmenufilecallback.c:671 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gui/gwnotebookmanagmentcallback.c:256 src/gui/gwtoolbar.c:77
+msgid "New catalog"
+msgstr "Novı katalog"
+
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:95
+#: src/gui/gwmenufilecallback.c:1357 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gwapplicationmanager.c:130
+msgid "There is no available catalog plugin"
+msgstr ""
+
+#. if ( gw_db_catalog_get_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_db_name ( catalog))>0 ) {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_db_name ( catalog), "\n", NULL);
+#. } else {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_name ( catalog), "\n", NULL);
+#. }
+#. If has been modified, ask to save it before open another catalog
+#: src/gui/gwmenufilecallback.c:69 src/gui/gwmenufilecallback.c:102
+#: src/gui/gwmenufilecallback.c:138 src/gui/gwmenufilecallback.c:180
+#: src/gui/gwmenufilecallback.c:461 src/gui/gwmenufilecallback.c:1367
+msgid ""
+"Would you want save catalog :\n"
+"\n"
+msgstr ""
+"Chcete uloit katalog :\n"
+"\n"
+
+#: src/gui/gwmenufilecallback.c:70
+msgid "New file"
+msgstr "Novı soubor"
+
+#: src/gui/gwmenufilecallback.c:75 src/gui/gwmenufilecallback.c:607
+#: src/gui/gwmenufilecallback.c:625 src/gui/gwmenufilecallback.c:671
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Enter catalog name"
+msgstr "Vlote jméno katalogu"
+
+#. Else opens file selection box
+#: src/gui/gwmenufilecallback.c:95 src/gui/gwmenufilecallback.c:108
+#: src/gui/gwmenufilecallback.c:702 src/gui/gwmenufilecallback.c:719
+#: src/gui/gwmenufilecallback.c:829 src/gui/gwtoolbar.c:81
+msgid "Open catalog"
+msgstr "Otevøít katalog"
+
+#: src/gui/gwmenufilecallback.c:103 src/gui/gwmenufilecallback.c:1357
+#: src/gui/gwmenufilecallback.c:1369
+msgid "Open file"
+msgstr "Otevøít soubor"
+
+#: src/gui/gwmenufilecallback.c:139 src/gui/gwmenufilecallback.c:148
+msgid "Close file"
+msgstr "Zavøít soubor"
+
+#: src/gui/gwmenufilecallback.c:148 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:365 src/gui/gwmenufilecallback.c:406
+#: src/gui/gwmenufilecallback.c:428 src/gui/gwmenufilecallback.c:1336
+msgid "No catalog is opened"
+msgstr "Není otevøen katalog"
+
+#: src/gui/gwmenufilecallback.c:181 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:196 src/gui/gwmenufilecallback.c:270
+msgid "Send file by mail"
+msgstr "Poslat soubor e-mailem"
+
+#: src/gui/gwmenufilecallback.c:196
+msgid "Please configure mail options in the settings in order to send mails."
+msgstr "Prosím nastavte v nastavení parametry pro odesílání e-mailù."
+
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_new_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_open_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks un file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_saveas_file_selection_ok, NULL);
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_exit_saveas_file_selection_ok, NULL);
+#: src/gui/gwmenufilecallback.c:228 src/gui/gwmenufilecallback.c:394
+#: src/gui/gwmenufilecallback.c:425 src/gui/gwmenufilecallback.c:428
+#: src/gui/gwmenufilecallback.c:603 src/gui/gwmenufilecallback.c:697
+#: src/gui/gwmenufilecallback.c:749 src/gui/gwmenufilecallback.c:921
+#: src/gui/gwmenufilecallback.c:977 src/gui/gwmenufilecallback.c:1020
+#: src/gui/gwmenufilecallback.c:1122
+msgid "Save as catalog"
+msgstr "Uloit jako katalog"
+
+#: src/gui/gwmenufilecallback.c:270
+msgid "The current catalog is never be saved, cannot send it"
+msgstr ""
+
+#: src/gui/gwmenufilecallback.c:365
+msgid "Catalog properties"
+msgstr "Vlastnosti katalogu"
+
+#: src/gui/gwmenufilecallback.c:406 src/gui/gwtoolbar.c:85
+msgid "Save catalog"
+msgstr "Uloit katalog"
+
+#. If has been modified, ask to save it before exit program
+#: src/gui/gwmenufilecallback.c:455
+msgid "Quit "
+msgstr "Konec "
+
+#: src/gui/gwmenufilecallback.c:1231 src/gui/gwmenufilecallback.c:1233
+#: src/gui/gwmenufilecallback.c:1263 src/gui/gwmenufilecallback.c:1267
+msgid "Import catalog from"
+msgstr ""
+
+#: src/gui/gwmenufilecallback.c:1231
+msgid "Catalog imported"
+msgstr "Katalog importován"
+
+#: src/gui/gwmenufilecallback.c:1233
+msgid "Catalog is not imported"
+msgstr "Katalog nebyl importován"
+
+#: src/gui/gwmenufilecallback.c:1267
+msgid "A catalog is already opened"
+msgstr "Katalog je ji otevøen"
+
+#: src/gui/gwmenufilecallback.c:1291 src/gui/gwmenufilecallback.c:1293
+#: src/gui/gwmenufilecallback.c:1329 src/gui/gwmenufilecallback.c:1336
+msgid "Export catalog to"
+msgstr "Exportovat katalog do"
+
+#: src/gui/gwmenufilecallback.c:1291
+msgid "Catalog exported"
+msgstr "Katalog exportován"
+
+#: src/gui/gwmenufilecallback.c:1293
+msgid "Catalog is not exported"
+msgstr "Katalog nebyl exportován"
+
+#: src/gui/gwmenuhelp.c:53
+msgid "_Help"
+msgstr "_Pomoc"
+
+#: src/gui/gwmenuhelp.c:75
+msgid "A_bout"
+msgstr "_O programu"
+
+#: src/gui/gwmenuoptions.c:54
+msgid "_Options"
+msgstr "_Monosti"
+
+#: src/gui/gwmenuoptions.c:75
+msgid "Se_ttings"
+msgstr "_Nastavení"
+
+#: src/gui/gwmenupopup.c:43 src/gui/gwmenupopup.c:146
+msgid "New"
+msgstr "Novı"
+
+#: src/gui/gwmenupopup.c:49 src/gui/gwmenupopup.c:152
+msgid "Open"
+msgstr "Otevøít"
+
+#: src/gui/gwmenupopup.c:55 src/gui/gwmenupopup.c:158
+msgid "Save"
+msgstr "Uloit"
+
+#: src/gui/gwmenupopup.c:61 src/gui/gwmenupopup.c:164
+msgid "Save as"
+msgstr "Uloit jako"
+
+#: src/gui/gwmenupopup.c:76
+msgid "Exit"
+msgstr "Konec"
+
+#: src/gui/gwmenupopup.c:119 src/gui/gwmenupopup.c:228
+#: src/gui/gwmenupopup.c:304 src/gui/gwmenupopup.c:373
+msgid "Rename"
+msgstr "Pøejmenovat"
+
+#. g_strdup_to_gtk_text ( _( "Add new disk"), text_utf8);
+#. menuitem = gtk_menu_item_new_with_label ( text_utf8);
+#. g_free ( text_utf8);
+#. gtk_menu_append ( GTK_MENU ( menu), menuitem);
+#. gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_add_new_disk, node);
+#.
+#: src/gui/gwmenupopup.c:131 src/gui/gwmenupopup.c:246
+#: src/gui/gwmenupopup.c:310 src/gui/gwmenupopup.c:379
+#: src/gui/gwmenupopupcallback.c:171 src/gui/gwmenupopupcallback.c:528
+#: src/gui/gwmenupopupcallback.c:747 src/gui/gwmenupopupcallback.c:1024
+msgid "Edit description"
+msgstr "Zmìnit popis"
+
+#: src/gui/gwmenupopup.c:179 src/gui/gwmenupopup.c:255
+#: src/gui/gwmenupopup.c:325 src/gui/gwmenupopup.c:394
+#: src/gui/gwpropertiesbox.c:110
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: src/gui/gwmenupopup.c:222 src/gui/gwmenupopup.c:298
+msgid "Move To..."
+msgstr "Vejít..."
+
+#: src/gui/gwmenupopup.c:234
+msgid "Delete disk"
+msgstr "Smazat disk"
+
+#: src/gui/gwmenupopup.c:240 src/gui/gwmenupopupcallback.c:453
+msgid "Change volume label"
+msgstr "Zmìnit jméno svazku"
+
+#: src/gui/gwmenupopup.c:316 src/gui/gwmenupopup.c:385
+msgid "Remove from catalog"
+msgstr "Odstranit z katalogu"
+
+#: src/gui/gwmenupopup.c:402
+msgid "Edit file"
+msgstr "Editovat soubor"
+
+#: src/gui/gwmenupopup.c:402
+msgid "Can't edit this file!!\n"
+msgstr "Nemohu editovat tento soubor!!\n"
+
+#: src/gui/gwmenupopupcallback.c:64 src/gui/gwmenupopupcallback.c:121
+msgid "Rename catalog"
+msgstr "Pøejmenovat katalog"
+
+#: src/gui/gwmenupopupcallback.c:64
+msgid "Enter new catalog name"
+msgstr "Vlote nové jméno pro katalog"
+
+#: src/gui/gwmenupopupcallback.c:121
+msgid "Invalid filled catalog name"
+msgstr "Vyplnìno špatné jméno katalogu"
+
+#: src/gui/gwmenupopupcallback.c:171
+msgid "Catalog description"
+msgstr "Popis katalogu"
+
+#: src/gui/gwmenupopupcallback.c:320 src/gui/gwmenupopupcallback.c:360
+#: src/gui/gwmenupopupcallback.c:374
+msgid "Rename disk"
+msgstr "Pøejmenovat disk"
+
+#: src/gui/gwmenupopupcallback.c:320
+msgid "Enter new disk name"
+msgstr "Vlote nové jméno disku"
+
+#: src/gui/gwmenupopupcallback.c:360
+msgid "The filled disk name already exist in the current catalog"
+msgstr "V aktuálním katalog ji je disk tohoto jména"
+
+#: src/gui/gwmenupopupcallback.c:374
+msgid "No new disk name was filled"
+msgstr "Nebylo vyplnìno jméno nového disku"
+
+#: src/gui/gwmenupopupcallback.c:453
+msgid "Enter new disk volume label"
+msgstr "Vlote nové jméno svazku"
+
+#: src/gui/gwmenupopupcallback.c:528
+msgid "Disk description"
+msgstr "Popis disku"
+
+#: src/gui/gwmenupopupcallback.c:652 src/gui/gwmenupopupcallback.c:693
+#: src/gui/gwmenupopupcallback.c:707
+msgid "Rename folder"
+msgstr "Pøejmenovat sloku"
+
+#: src/gui/gwmenupopupcallback.c:652
+msgid "Enter new folder name"
+msgstr "Vlote nové jméno sloky"
+
+#: src/gui/gwmenupopupcallback.c:693
+msgid "The filled folder name already exist in the current folder"
+msgstr "Zadabá sloka ji existuje"
+
+#: src/gui/gwmenupopupcallback.c:707
+msgid "No new folder name was filled"
+msgstr "Nevyplnìno jméno sloky"
+
+#: src/gui/gwmenupopupcallback.c:747
+msgid "Folder description"
+msgstr "Popis adresáøe"
+
+#: src/gui/gwmenupopupcallback.c:921 src/gui/gwmenupopupcallback.c:956
+#: src/gui/gwmenupopupcallback.c:965
+msgid "Rename file"
+msgstr "Pøejmenovat soubor"
+
+#: src/gui/gwmenupopupcallback.c:921
+msgid "Enter new file name"
+msgstr "Vlote nové jméno souboru"
+
+#: src/gui/gwmenupopupcallback.c:956
+msgid "The filled file name already exist in the current folder"
+msgstr "Tento soubor v adresáøi ji existuje"
+
+#: src/gui/gwmenupopupcallback.c:965
+msgid "No new file name was filled"
+msgstr "Nevyplnìno jméno souboru"
+
+#: src/gui/gwmenupopupcallback.c:1024
+msgid "File description"
+msgstr "Popis souboru"
+
+#: src/gui/gwnotebookcatalog.c:96
+msgid "Archive"
+msgstr "Archív"
+
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebookcatalog.c:202
+msgid "Catalog"
+msgstr "Katalog"
+
+#: src/gui/gwnotebookcatalog.c:764
+msgid "Closing catalog"
+msgstr "Zavøít katalog"
+
+#: src/gui/gwnotebookcatalog.c:764 src/gui/gwnotebooksearchcallback.c:324
+#: src/gwapplicationmanager.c:603
+msgid "Please wait..."
+msgstr "Prosím poèkejte..."
+
+#: src/gui/gwnotebookcatalog.c:782
+msgid "Catalog closed"
+msgstr "Katalog zavøen."
+
+#: src/gui/gwnotebookcatalogcallback.c:1275 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1647
+msgid "unknown owner"
+msgstr "neznámı vlastník"
+
+#: src/gui/gwnotebookcatalogcallback.c:1280 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1667
+msgid "unknown group"
+msgstr "neznámá skupina"
+
+#. Frame of new disk control
+#: src/gui/gwnotebookmanagment.c:159 src/gui/gwnotebookmanagmentcallback.c:275
+msgid "New disk"
+msgstr "Novı disk"
+
+#: src/gui/gwnotebookmanagment.c:173
+msgid "Select the media that will be added as disk to your catalog."
+msgstr "Zvolte médium pro vloení do katalogu jako disk."
+
+#. Label for media selection
+#: src/gui/gwnotebookmanagment.c:178
+msgid "Select media : "
+msgstr "Vyberte médium : "
+
+#: src/gui/gwnotebookmanagment.c:212
+msgid ""
+"Enter the number of the new disk. This number can help you with the history "
+"of your catalog."
+msgstr "Vlote èíslo nového disku. Pomáhá udret pøehled o katalogu."
+
+#. Label for number archive
+#. Number archive label
+#: src/gui/gwnotebookmanagment.c:217 src/gui/gwpropertiesbox.c:842
+msgid "Archive N# : "
+msgstr "Archív è. : "
+
+#: src/gui/gwnotebookmanagment.c:232
+msgid ""
+"Enter the name of the new disk. This name will be appear in your catalog."
+msgstr "Vlote jméno nového disku - tak se bude zobrazovat v katalogu"
+
+#. Label for disk name
+#: src/gui/gwnotebookmanagment.c:237
+msgid "Name : "
+msgstr "Jméno : "
+
+#. ComboBox for category selection
+#. It's not mandatory to encode to UTF-8 because gw_combo_box_categories_create() encodes itself.
+#. Combo box for categories list
+#: src/gui/gwnotebookmanagment.c:255 src/gui/gwpropertiesbox.c:1077
+#: src/gui/gwpropertiesbox.c:1403 src/gui/gwpropertiesbox.c:1737
+msgid "Category : "
+msgstr "Kategorie : "
+
+#: src/gui/gwnotebookmanagment.c:261
+msgid ""
+"Select the category to apply to the disk which will be added (even if the "
+"option is checked)."
+msgstr "Vyberte kategorii, do které bude disk pøidán (i kdy je volba zaškrtnuta)."
+
+#: src/gui/gwnotebookmanagment.c:273
+msgid "Give the device file of the selected media."
+msgstr "Vlote jméno zaøízení zvoleného média."
+
+#. Device file information label
+#: src/gui/gwnotebookmanagment.c:278 src/gui/gwnotebookmanagmentcallback.c:420
+#: src/gui/gwnotebookmanagmentcallback.c:479
+msgid "Info : "
+msgstr "Info : "
+
+#: src/gui/gwnotebookmanagment.c:290
+msgid "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."
+msgstr "Vlote typ zvoleného média (napø. ext2, ext3, vfat, ntfs,...)."
+
+#. Device type information label
+#: src/gui/gwnotebookmanagment.c:295 src/gui/gwnotebookmanagmentcallback.c:425
+#: src/gui/gwnotebookmanagmentcallback.c:497 src/gui/gwpropertiesbox.c:883
+msgid "Type : "
+msgstr "Typ : "
+
+#: src/gui/gwnotebookmanagment.c:307
+msgid "Display if the selected media is mounted or no."
+msgstr "Zobrazuje jestli je médium pøipojeno nebo ne."
+
+#. Media mount state information label
+#: src/gui/gwnotebookmanagment.c:312 src/gui/gwnotebookmanagmentcallback.c:431
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Mounted : "
+msgstr "Pøipojen : "
+
+#: src/gui/gwnotebookmanagment.c:324
+msgid "Give the volume name of the selected media (only if is mounted)."
+msgstr "Jméno svazku zvoleného média (je-li pøipojen)."
+
+#. Media volume information label
+#: src/gui/gwnotebookmanagment.c:329 src/gui/gwnotebookmanagmentcallback.c:437
+msgid "Volume : "
+msgstr "Svazek : "
+
+#: src/gui/gwnotebookmanagment.c:340
+msgid ""
+"Give the serial number of the selected media (only if is mounted). This "
+"number is a manufacture number."
+msgstr "Sériové èíslo média (je-li pøipojen). Je to vırobní èíslo."
+
+#. Media serial number information label
+#: src/gui/gwnotebookmanagment.c:345
+msgid "Serial N# : "
+msgstr "Sériové èíslo : "
+
+#: src/gui/gwnotebookmanagment.c:356
+msgid "Give the full space of the selected media (only if is mounted)."
+msgstr "Kapacita média (je-li pøipojen)."
+
+#. Media capacity information label
+#: src/gui/gwnotebookmanagment.c:361 src/gui/gwnotebookmanagmentcallback.c:447
+#: src/gui/gwnotebookmanagmentcallback.c:539
+msgid "Capacity : "
+msgstr "Kapacita : "
+
+#: src/gui/gwnotebookmanagment.c:372
+msgid "Give the free space of the selected media (only if is mounted)."
+msgstr "Volné místo na médiu (je-li pøipojen)."
+
+#. Media free space information label
+#: src/gui/gwnotebookmanagment.c:377 src/gui/gwnotebookmanagmentcallback.c:452
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "Free space : "
+msgstr "Volné : "
+
+#. Frame for scan options
+#: src/gui/gwnotebookmanagment.c:385
+msgid "Options"
+msgstr "Volby"
+
+#. Check button for the displaying of media information
+#: src/gui/gwnotebookmanagment.c:396
+msgid "Display info"
+msgstr "Zobrazit informace"
+
+#: src/gui/gwnotebookmanagment.c:404
+msgid ""
+"Displays selected media informations as path, capacity, free space, label,..."
+msgstr "Zobrazí informace o zvoleném zaøízení - bod pøipojení, kapacitu, volné místo, popis,..."
+
+#. Check button for the automount
+#: src/gui/gwnotebookmanagment.c:410
+msgid "Automount"
+msgstr "Automatické pøipojování"
+
+#: src/gui/gwnotebookmanagment.c:418
+msgid ""
+"Mount the media if it wasn't mounted. And unmount after the media even if it "
+"was mounted before the scan."
+msgstr "Pøipojí médium pokud nebyl, odpojí ho po skenování (i pokud byl pøedtím pøipojen)."
+
+#. Check button for the exploring of tree structure
+#: src/gui/gwnotebookmanagment.c:424
+msgid "Explore tree structure of the media."
+msgstr "Prozkoumá strukturu disku."
+
+#: src/gui/gwnotebookmanagment.c:432
+msgid "Keep this option checked to scan all folders and files informations."
+msgstr "Pøi zakšrtnutí prohlíí všechny adresáøe a informace o souborech."
+
+#. Check button for the exploring of archive files
+#: src/gui/gwnotebookmanagment.c:437
+msgid "Explore archive files (.tar, .gz, .zip, ...)"
+msgstr "Prohledávat archivy (.tar, .gz, .zip,...)"
+
+#: src/gui/gwnotebookmanagment.c:445
+msgid ""
+"Not yet implemented!!\n"
+"Explore all archives, as it was a directory. Archives are tarred or gzipped "
+"files."
+msgstr ""
+"Funkce není implementována!!\n"
+"Prochází archivy jako by to byly adresáøe."
+
+#. Check button for the auto eject
+#: src/gui/gwnotebookmanagment.c:450
+msgid "Eject media if possible"
+msgstr "Vysune médium, je-li to moné."
+
+#: src/gui/gwnotebookmanagment.c:458
+msgid ""
+"Eject the media if possible (CD-ROM...), even if the tray was closed. This "
+"is enable only if automount is enable!!"
+msgstr "Vysune médium (CD-ROM, zip,...) i pokud jsou zavøena dvíøka. Je to moné pouzeje-li zapnut automount !"
+
+#. Check button for setting category recursively
+#: src/gui/gwnotebookmanagment.c:463
+msgid "Sets category recursive"
+msgstr "Nastavit kategorii rekuzivnì"
+
+#: src/gui/gwnotebookmanagment.c:471
+msgid ""
+"Apply selected category to all items in the disk to add (disk, folders and "
+"files)."
+msgstr "Nastaví zvolenou kategorii všem polokám disku (adresáøe)."
+
+#. Check button for the auto make description
+#: src/gui/gwnotebookmanagment.c:476
+msgid "Auto make description"
+msgstr "Automatickı popis"
+
+#: src/gui/gwnotebookmanagment.c:484
+msgid ""
+"Make auto description of file (file format description, image size for xmp "
+"or jpg, etc...)."
+msgstr "Automatické vytvoøení popisu (formát souboru, velikost obrázku,...)"
+
+#. Check button for the using a pattern to generate disk name
+#: src/gui/gwnotebookmanagment.c:489
+msgid "Use an advanced pattern to generate disk name"
+msgstr "Pouít pokroèilé vzorky pro generování jména disku"
+
+#: src/gui/gwnotebookmanagment.c:497
+msgid ""
+"You can fill extra tags to generate a disk name with disk information :\n"
+"- %% : %\n"
+"- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, "
+"0002, 0003, ..., 0091, ...\n"
+"- %l : media volume label\n"
+"- %t : media type\n"
+"- %s : serial number"
+msgstr ""
+"Mùete pøidat další tagy pro vygenerování jména disku z informací o disku: \n"
+"- %% : %\n"
+"- %n : èíslo archivu (mùete pouít poèet èíslic pro doplnìní 0 : %.4n give 0001, 0002, 0003, ..., 0091, ...\n"
+"- %l : jméno média\n"
+"- %t : typ média\n"
+"- %s : sériové èíslo"
+
+#. Check button for the using media label
+#: src/gui/gwnotebookmanagment.c:502
+msgid "Use media volume name as disk name (only when disk name is empty)"
+msgstr "Pouít jméno média jako jméno disku"
+
+#: src/gui/gwnotebookmanagment.c:510
+msgid ""
+"If you didn't enter disk name and if your selected media has a volume name, "
+"the media volume name will be applied as disk name."
+msgstr "Pokud nezadáte jméno disku a médium bude obsahovat jméno svazku,pouije se to jako jméno disku."
+
+#. The add disk button to start the media scanning
+#. If no disk name is filled
+#. The device cannot be mounted
+#: src/gui/gwnotebookmanagment.c:515 src/gui/gwnotebookmanagmentcallback.c:152
+#: src/gui/gwnotebookmanagmentcallback.c:160
+#: src/gui/gwnotebookmanagmentcallback.c:275
+#: src/gui/gwnotebookmanagmentcallback.c:354
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Add disk"
+msgstr "Pøidat disk"
+
+#. Text label of the managment tabbed pane.
+#: src/gui/gwnotebookmanagment.c:561
+msgid "Management"
+msgstr "Správa"
+
+#: src/gui/gwnotebookmanagmentcallback.c:152
+msgid "The disk hasn't been added : there are not mounted media"
+msgstr "Disk nebyl pøidán : nejsou pøipojená média"
+
+#: src/gui/gwnotebookmanagmentcallback.c:160
+msgid "The disk hasn't been added : cannot mount media"
+msgstr "Disk nebyl pøidán : není moné pøipojit zaøízení"
+
+#. If no catalog is opened
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Add new disk"
+msgstr "Pøidat novı disk"
+
+#: src/gui/gwnotebookmanagmentcallback.c:275
+msgid "Enter disk name"
+msgstr "Vlote jméno disku"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Scanning"
+msgstr "Naèítám"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Adding disk is working"
+msgstr "Naèítá se disk"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Please wait"
+msgstr "Prosím poèkejte"
+
+#: src/gui/gwnotebookmanagmentcallback.c:308 src/gwcatalogmanager.c:369
+msgid "The disk has been added"
+msgstr "Disk byl pøidán"
+
+#: src/gui/gwnotebookmanagmentcallback.c:354
+msgid "Mount failed\n"
+msgstr "Pøipojení selhalo\n"
+
+#: src/gui/gwnotebookmanagmentcallback.c:442
+#: src/gui/gwnotebookmanagmentcallback.c:531
+msgid "Serial number : "
+msgstr "Sériové èíslo : "
+
+#: src/gui/gwnotebookmanagmentcallback.c:479
+#: src/gui/gwnotebookmanagmentcallback.c:494
+#: src/gui/gwnotebookmanagmentcallback.c:519
+#: src/gui/gwnotebookmanagmentcallback.c:523
+#: src/gui/gwnotebookmanagmentcallback.c:531
+#: src/gui/gwnotebookmanagmentcallback.c:539
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "no drive"
+msgstr "ádnı disk"
+
+#: src/gui/gwnotebookmanagmentcallback.c:491 src/gwsupport.c:356
+msgid "unknown"
+msgstr "neznámá"
+
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Yes"
+msgstr "Ano"
+
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "No"
+msgstr "Ne"
+
+#: src/gui/gwnotebookmanagmentcallback.c:516
+msgid "No label"
+msgstr "ádné jméno"
+
+#: src/gui/gwnotebookmanagmentcallback.c:523
+msgid "Volume name : "
+msgstr "Jméno svazku : "
+
+#: src/gui/gwnotebookmanagmentcallback.c:643
+msgid "the disk adding is canceled"
+msgstr "pøidávání disku zrušeno"
+
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Please select a catalog name\n"
+msgstr "Prosím zvolte jméno katalogu\n"
+
+#: src/gui/gwnotebooksearch.c:132
+msgid "Search : "
+msgstr "Hledat : "
+
+#. Start search button.
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebooksearch.c:153 src/gui/gwnotebooksearch.c:385
+#: src/gui/gwsettingssearch.c:57
+msgid "Search"
+msgstr "Hledat"
+
+#
+#: src/gui/gwnotebooksearch.c:160
+msgid ""
+"The search can be case sensitive. The wildcards search supports character \"*"
+"\".\n"
+"Example : img*.bmp or *.htm\n"
+"The key words search accepts a list of obligatory words."
+msgstr ""
+"Vyhledávání mùe bıt citlivé na velikost znakù. Hledaná slova podporují znaky\"*\".\n"
+"Napøíklad: img*.bmp lub *.htm\n"
+"Hledání klíèovıch slov pøijímá seznam povinnıch slov."
+
+#
+#. Clear results button.
+#: src/gui/gwnotebooksearch.c:168
+msgid "Clear"
+msgstr "Smazat"
+
+#
+#: src/gui/gwnotebooksearch.c:175
+msgid "Clears all search results"
+msgstr "Smazat vısledky hledání"
+
+#. Case/uncase sensitive check buton.
+#: src/gui/gwnotebooksearch.c:183
+msgid "Case sensitive"
+msgstr "Rozlišovat velikost písmen"
+
+#: src/gui/gwnotebooksearch.c:193
+msgid ""
+"The search can be be or not case sensitive.\n"
+"In case sensitive \"File.txt\" doesn't match with \"file.txt\". But in "
+"uncase sensitive it matches."
+msgstr ""
+"Vyhledávání mùe/nemusí rozlišovat malá/velká písmena.\n"
+"V pøípadì zapnuté citlivosti \"Soubor.txt\" není \"soubor.txt\", pøi vypnutém rozlišování je nalezen."
+
+#
+#. Create the radio button group for search type.
+#: src/gui/gwnotebooksearch.c:198
+msgid "Search type"
+msgstr "Typ hledání"
+
+#: src/gui/gwnotebooksearch.c:206
+msgid "Key words"
+msgstr "Klíèová slova"
+
+#: src/gui/gwnotebooksearch.c:214
+msgid ""
+"Enter a list of key words which all must be containted is the matched files."
+msgstr "Vlote klíèová slova, která musí bıt obsaena v souborech."
+
+#: src/gui/gwnotebooksearch.c:218
+msgid "Wildcards"
+msgstr "Zástupné znaky"
+
+#: src/gui/gwnotebooksearch.c:226
+msgid ""
+"Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" "
+"caracters."
+msgstr "Vlote celé jméno souboru vèetnì zástupnıch znakù.Vzorek mùe obsahovat znaky \"?\" and \"*\" "
+
+#
+#: src/gui/gwnotebooksearch.c:230
+msgid "Regular expression"
+msgstr "Regulární vırazy"
+
+#: src/gui/gwnotebooksearch.c:238
+msgid "Can use regular expression. See documentation for more information."
+msgstr "Umonuje pouívat regulární vırazu. Více najdete v dokumentaci."
+
+#. Match file check buton.
+#: src/gui/gwnotebooksearch.c:243
+msgid "File"
+msgstr "Soubor"
+
+#: src/gui/gwnotebooksearch.c:251
+msgid "The search matches with files name."
+msgstr "Hledat v jménech souborù."
+
+#. Match folder check buton.
+#: src/gui/gwnotebooksearch.c:256
+msgid "Folder"
+msgstr "Adresáø"
+
+#: src/gui/gwnotebooksearch.c:264
+msgid "The search matches with folders name."
+msgstr "Hledat v jménech adresáøù."
+
+#. Match disk check buton.
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gui/gwnotebooksearch.c:269 src/gwapplicationmanager.h:558
+msgid "Disk"
+msgstr "Disk"
+
+#: src/gui/gwnotebooksearch.c:277
+msgid "The search matches with disks name."
+msgstr "Hledat v jmenéch diskù."
+
+#. Match category check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_TITLE	The title column of the column Serial Number
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#: src/gui/gwnotebooksearch.c:282 src/gwapplicationmanager.h:356
+#: src/gwapplicationmanager.h:502 src/gwapplicationmanager.h:606
+msgid "Category"
+msgstr "Kategorie"
+
+#: src/gui/gwnotebooksearch.c:290
+msgid "The search matches with categories name."
+msgstr "Hledat v kategorie."
+
+#: src/gui/gwnotebooksearch.c:303
+msgid "The search matches with descriptions."
+msgstr "Hledat v popisech."
+
+#: src/gui/gwnotebooksearchcallback.c:324
+msgid "Search in catalog"
+msgstr "Hledat v katalogu"
+
+#: src/gui/gwnotebooksearchcallback.c:328
+#, c-format
+msgid "%lu item(s) founded."
+msgstr "nalezeno %lu poloek."
+
+#: src/gui/gwnotebooksearchcallback.c:329
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "Search result"
+msgstr "Vısledky hledání"
+
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "No item matched."
+msgstr "ádné poloky nenalezeny."
+
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Searching..."
+msgstr "Hledám..."
+
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Cannot start searching : no catalog loaded"
+msgstr "Nemohu zaèít hledat : není otevøen ádnı katalog"
+
+#: src/gui/gwprogressbarbox.c:514
+msgid "_Ok"
+msgstr "_Ok"
+
+#: src/gui/gwpropertiesbox.c:360
+msgid "Enter the name of the catalog."
+msgstr "Vlote jméno katalogu."
+
+#. Catalog file version label
+#: src/gui/gwpropertiesbox.c:387
+msgid "Version : "
+msgstr "Verze : "
+
+#: src/gui/gwpropertiesbox.c:390
+msgid "Version "
+msgstr "Verze : "
+
+#: src/gui/gwpropertiesbox.c:390
+msgid " built with "
+msgstr " sestaveno s "
+
+#. Number of disks label
+#: src/gui/gwpropertiesbox.c:403
+msgid "Disks in catalog : "
+msgstr "Diskù v katalogu : "
+
+#: src/gui/gwpropertiesbox.c:406
+#, c-format
+msgid "Disks in catalog : %d"
+msgstr "Diskù v katalogu : %d"
+
+#. Total number of files label
+#. Total number of files of disk label
+#: src/gui/gwpropertiesbox.c:419 src/gui/gwpropertiesbox.c:928
+msgid "Total Files : "
+msgstr "Souborù : "
+
+#: src/gui/gwpropertiesbox.c:422 src/gui/gwpropertiesbox.c:931
+#, c-format
+msgid "Total Files : %ld"
+msgstr "Souborù : %d"
+
+#. Total number of files label
+#. Total number of folders of disk label
+#: src/gui/gwpropertiesbox.c:435 src/gui/gwpropertiesbox.c:944
+msgid "Total Folders : "
+msgstr "Adresáøù : "
+
+#: src/gui/gwpropertiesbox.c:438 src/gui/gwpropertiesbox.c:947
+#, c-format
+msgid "Total Folders : %ld"
+msgstr "Adresáøù : %d"
+
+#. Catalog size label
+#. The file size label
+#: src/gui/gwpropertiesbox.c:455 src/gui/gwpropertiesbox.c:459
+#: src/gui/gwpropertiesbox.c:1544
+msgid "File Size : "
+msgstr "Soubory : "
+
+#. Total capacity of catalog label
+#: src/gui/gwpropertiesbox.c:475 src/gui/gwpropertiesbox.c:479
+msgid "Total Storage Space : "
+msgstr "Kapacita : "
+
+#. Used space of catalog label
+#: src/gui/gwpropertiesbox.c:495 src/gui/gwpropertiesbox.c:499
+msgid "Total Used Space : "
+msgstr "Obsazeno : "
+
+#. Free space of catalog label
+#: src/gui/gwpropertiesbox.c:515 src/gui/gwpropertiesbox.c:519
+msgid "Total Free Space : "
+msgstr "Volné : "
+
+#. Statistics label
+#: src/gui/gwpropertiesbox.c:539
+msgid "Disk Statistics : "
+msgstr "Statistika : "
+
+#. CD-Roms statistics label
+#: src/gui/gwpropertiesbox.c:556
+msgid "CD-Rom : "
+msgstr "CD-ROM : "
+
+#: src/gui/gwpropertiesbox.c:560
+#, c-format
+msgid "CD-Rom : %d"
+msgstr "CD-ROM : %d"
+
+#. Audio CD statistics label
+#: src/gui/gwpropertiesbox.c:573
+msgid "Audio CD : "
+msgstr ""
+
+#: src/gui/gwpropertiesbox.c:577
+#, c-format
+msgid "Audio CD : %d"
+msgstr "Audio CD : %d"
+
+#. HDs statistics label
+#: src/gui/gwpropertiesbox.c:590
+msgid "HD : "
+msgstr "HDD : "
+
+#: src/gui/gwpropertiesbox.c:594
+#, c-format
+msgid "HD : %d"
+msgstr "HDD : %d"
+
+#. Floppies statistics label
+#: src/gui/gwpropertiesbox.c:607
+msgid "Floppy : "
+msgstr "Disketa : "
+
+#: src/gui/gwpropertiesbox.c:611
+#, c-format
+msgid "Floppy : %d"
+msgstr "Disket : %d"
+
+#. Zips statistics label
+#: src/gui/gwpropertiesbox.c:624
+msgid "Zip : "
+msgstr "Zip : "
+
+#: src/gui/gwpropertiesbox.c:628
+#, c-format
+msgid "Zip : %d"
+msgstr "Zip : %d"
+
+#. Tape drive statistics label
+#: src/gui/gwpropertiesbox.c:645
+msgid "Tape : "
+msgstr "Páska : "
+
+#: src/gui/gwpropertiesbox.c:649
+#, c-format
+msgid "Tape : %d"
+msgstr "Páska : "
+
+#. Network drive statistics label
+#: src/gui/gwpropertiesbox.c:662
+msgid "Network : "
+msgstr ""
+
+#: src/gui/gwpropertiesbox.c:666
+#, c-format
+msgid "Network : %d"
+msgstr "Sí : %d"
+
+#. Jaz statistics label
+#: src/gui/gwpropertiesbox.c:679
+msgid "Jaz : "
+msgstr "Jaz : "
+
+#: src/gui/gwpropertiesbox.c:683
+#, c-format
+msgid "Jaz : %d"
+msgstr "Jaz : %d"
+
+#. Others media statistics label
+#: src/gui/gwpropertiesbox.c:696
+msgid "Other : "
+msgstr "Jiné : "
+
+#: src/gui/gwpropertiesbox.c:700
+#, c-format
+msgid "Other : %d"
+msgstr "Jiné : %d"
+
+#. Combo box for categories list
+#: src/gui/gwpropertiesbox.c:717
+msgid "Catalog categories : "
+msgstr "Kategorie katalogu : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:733
+msgid "Catalog Description : "
+msgstr "Popis katalogu : "
+
+#: src/gui/gwpropertiesbox.c:760
+msgid "Catalog Info"
+msgstr "Informace o katalogu"
+
+#: src/gui/gwpropertiesbox.c:827
+msgid "Enter the name of the disk."
+msgstr "Vlote jméno disku."
+
+#: src/gui/gwpropertiesbox.c:858
+msgid "Enter the archive number of the disk."
+msgstr "Vlote èíslo disku."
+
+#. Disk type label
+#: src/gui/gwpropertiesbox.c:880
+msgid " Type : "
+msgstr " Typ : "
+
+#. Disk serial number label
+#: src/gui/gwpropertiesbox.c:896 src/gui/gwpropertiesbox.c:899
+msgid "Serial : "
+msgstr "Sériové èíslo : "
+
+#. Disk volume name label
+#: src/gui/gwpropertiesbox.c:912 src/gui/gwpropertiesbox.c:915
+msgid "Volume Label : "
+msgstr "Jméno svazku : "
+
+#. Total capacity of disk label
+#: src/gui/gwpropertiesbox.c:964 src/gui/gwpropertiesbox.c:968
+msgid "Total Capacity : "
+msgstr "Kapacita : "
+
+#. Used space of disk label
+#: src/gui/gwpropertiesbox.c:984 src/gui/gwpropertiesbox.c:988
+msgid "Used Space : "
+msgstr "Obsazeno : "
+
+#. Free space of disk label
+#: src/gui/gwpropertiesbox.c:1004 src/gui/gwpropertiesbox.c:1008
+msgid "Free Space : "
+msgstr "Volné : "
+
+#. Catalog name label
+#: src/gui/gwpropertiesbox.c:1038 src/gui/gwpropertiesbox.c:1042
+#: src/gui/gwpropertiesbox.c:1044 src/gui/gwpropertiesbox.c:1046
+msgid "Catalog Name : "
+msgstr "Jméno katalogu : "
+
+#. Adding date label of disk
+#: src/gui/gwpropertiesbox.c:1060 src/gui/gwpropertiesbox.c:1064
+msgid "Update in catalog : "
+msgstr "Aktualizace : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1094
+msgid "Disk Description : "
+msgstr "Popis disku : "
+
+#: src/gui/gwpropertiesbox.c:1121
+msgid "Disk Info"
+msgstr "Informace o disku"
+
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1175
+msgid "Folder Name"
+msgstr "Jméno adresáøe"
+
+#. The folder type label
+#: src/gui/gwpropertiesbox.c:1206
+msgid "Type : (folder)"
+msgstr "Typ : (adresáø)"
+
+#. The folder size label
+#: src/gui/gwpropertiesbox.c:1217 src/gui/gwpropertiesbox.c:1221
+msgid "Folder Size : "
+msgstr "Velikost : "
+
+#. The folder creation date label
+#. The file creation date label
+#: src/gui/gwpropertiesbox.c:1237 src/gui/gwpropertiesbox.c:1241
+#: src/gui/gwpropertiesbox.c:1567 src/gui/gwpropertiesbox.c:1571
+msgid "Created on : "
+msgstr "Vytvoøen : "
+
+#. the folder last update date label
+#. The file last modification date lalbel
+#: src/gui/gwpropertiesbox.c:1255 src/gui/gwpropertiesbox.c:1259
+#: src/gui/gwpropertiesbox.c:1585 src/gui/gwpropertiesbox.c:1589
+msgid "Last modified on : "
+msgstr "Zmìnìn : "
+
+#. The folder last access date label
+#. The file last access date label
+#: src/gui/gwpropertiesbox.c:1273 src/gui/gwpropertiesbox.c:1277
+#: src/gui/gwpropertiesbox.c:1603 src/gui/gwpropertiesbox.c:1607
+msgid "Last accessed on : "
+msgstr "Poslední pøístup : "
+
+#. Folder rights label
+#. the file rights label
+#: src/gui/gwpropertiesbox.c:1295 src/gui/gwpropertiesbox.c:1299
+#: src/gui/gwpropertiesbox.c:1625 src/gui/gwpropertiesbox.c:1629
+msgid "Rights : "
+msgstr "Práva : "
+
+#. The folder owner name label
+#. The file owner name label
+#: src/gui/gwpropertiesbox.c:1313 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1319 src/gui/gwpropertiesbox.c:1643
+#: src/gui/gwpropertiesbox.c:1647 src/gui/gwpropertiesbox.c:1649
+msgid "Owner : "
+msgstr "Vlastník : "
+
+#. The folder group name label
+#. File group name label
+#: src/gui/gwpropertiesbox.c:1333 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1339 src/gui/gwpropertiesbox.c:1663
+#: src/gui/gwpropertiesbox.c:1667 src/gui/gwpropertiesbox.c:1669
+msgid "Group : "
+msgstr "Skupina : "
+
+#. Disk name label
+#. The disk name label
+#: src/gui/gwpropertiesbox.c:1367 src/gui/gwpropertiesbox.c:1370
+#: src/gui/gwpropertiesbox.c:1697 src/gui/gwpropertiesbox.c:1702
+msgid "Disk Name : "
+msgstr "Jméno disku : "
+
+#. The folder location label
+#. The file location label
+#: src/gui/gwpropertiesbox.c:1383 src/gui/gwpropertiesbox.c:1388
+#: src/gui/gwpropertiesbox.c:1717 src/gui/gwpropertiesbox.c:1721
+msgid "Location on Disk : "
+msgstr "Cesta : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1420
+msgid "Folder Description : "
+msgstr "Popis adresáøe : "
+
+#: src/gui/gwpropertiesbox.c:1447
+msgid "Folder Info"
+msgstr "Informace o sloce"
+
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1502
+msgid "File name : "
+msgstr "Jméno souboru : "
+
+#. The file type label
+#: src/gui/gwpropertiesbox.c:1533
+msgid "File type : not yet implemented!!"
+msgstr "Typ souboru : funkce není implementována!!"
+
+#: src/gui/gwpropertiesbox.c:1548
+#, c-format
+msgid "File Size : %s (%s bytes)"
+msgstr "Velikost : %s (%ld bajtù)"
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1754
+msgid "File Description : "
+msgstr "Popis souboru : "
+
+#: src/gui/gwpropertiesbox.c:1781
+msgid "File Info"
+msgstr "Informace o souboru"
+
+#: src/gui/gwsettingscatalogfile.c:68
+msgid "Catalog file"
+msgstr "Soubor katalogu"
+
+#. Adds the compression level.
+#: src/gui/gwsettingscatalogfile.c:119
+msgid "Catalog compression level :"
+msgstr "Úroveò komprese katalogu :"
+
+#: src/gui/gwsettingscatalogfile.c:134
+msgid ""
+"Select the catalog compression level. The default value is 3, it's a good "
+"value between high performance and small size."
+msgstr "Zvolte úroveò komprese souboru. Bìnì je 3, co je kompromis rychlosti a velikosti."
+
+#. Adds the history size.
+#: src/gui/gwsettingscatalogfile.c:142
+msgid "Recents opened catalogs :"
+msgstr "Naposled otevøené soubory :"
+
+#: src/gui/gwsettingscatalogfile.c:157
+msgid ""
+"Select the size of recents opened catalogs history. The default value is 5."
+msgstr "Zvolte velikost historie otevøenıch souborù. Bìnì je 5."
+
+#. Adds the clear history.
+#: src/gui/gwsettingscatalogfile.c:164
+msgid "Clear history"
+msgstr "Vyèistit historii"
+
+#: src/gui/gwsettingscatalogfile.c:168
+msgid "Click here to clear the recents opened files history."
+msgstr "Kliknìte pro otevøení historie naposled otevøenıch souborù."
+
+#. Adds the autload catalog option.
+#: src/gui/gwsettingscatalogfile.c:174
+msgid "Autoload catalog"
+msgstr "Automaticky nahrát katalog"
+
+#: src/gui/gwsettingscatalogfile.c:179
+msgid "Autoloads a default catalog when at starting."
+msgstr "Automaticky nahraje katalog pøi spuštìní."
+
+#. Create the radio button group for autoload options.
+#: src/gui/gwsettingscatalogfile.c:186
+msgid "Load last opened catalog file."
+msgstr "Nahrát naposled otevøenı soubor."
+
+#: src/gui/gwsettingscatalogfile.c:193
+msgid "Load selected catalog file."
+msgstr "Nahrát zvolenı katalog."
+
+#: src/gui/gwsettingscatalogfile.c:204
+msgid "Enter the full catalog file path to load."
+msgstr "Vlote celou sestu k souboru."
+
+#. Adds the select catalog file.
+#: src/gui/gwsettingscatalogfile.c:211
+msgid "Select catalog"
+msgstr "Zvolit katalog"
+
+#: src/gui/gwsettingscatalogfile.c:217
+msgid "Click here to browse and select the catalog file."
+msgstr "Kliknìte pro zvolení souboru katalogu."
+
+#: src/gui/gwsettingscatalogfile.c:607
+msgid "Select autoloaded catalog"
+msgstr "Zvolit automaticky nahrávanı katalog"
+
+#: src/gui/gwsettingsexplorer.c:56
+msgid "Explorer"
+msgstr "Prùzkumník"
+
+#
+#. Adds the case sensitive sort option.
+#: src/gui/gwsettingsexplorer.c:107 src/gui/gwsettingssearch.c:109
+msgid "Case sensitive sort."
+msgstr "Rozlišovat velikost písmen"
+
+#: src/gui/gwsettingsexplorer.c:112
+msgid "The result sort in explorer is case sensitive."
+msgstr "Vısledek seøazenı v prohlíeèi je citlivı na velikost znakù."
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingsexplorer.c:118
+msgid "Result sort group by folder/file."
+msgstr "Vısledek seøazenı podle adresáøe/souboru."
+
+#: src/gui/gwsettingsexplorer.c:123
+msgid ""
+"The result sort in explorer can be grouped by item type. If this option is "
+"checked all item will be grouped by folders or files."
+msgstr "Vısledek seøazenı v prohlíeèi mùe bıt ve skupinách podle typu objektu.Pokud je tato volba zaškrtnuta, všechny objekty budou seskupeny podle adresáøù nebo souborù."
+
+#. Adds the autoload catalog option.
+#. Adds the autoresize column option.
+#: src/gui/gwsettingsexplorer.c:129 src/gui/gwsettingssearch.c:131
+msgid "Autoresize columns"
+msgstr "Mìnit velikost sloupcù automaticky"
+
+#: src/gui/gwsettingsexplorer.c:134 src/gui/gwsettingssearch.c:136
+msgid "Autoresize all explorer column."
+msgstr "Automaticky mìní velikost sloupcù."
+
+#: src/gui/gwsettingsexplorerdisk.c:54
+msgid "Disks"
+msgstr "Disky"
+
+#: src/gui/gwsettingsexplorerdisk.c:112 src/gui/gwsettingsexplorerfile.c:111
+#: src/gui/gwsettingsquicksearch.c:118
+msgid "Visible"
+msgstr "Viditelnı"
+
+#: src/gui/gwsettingsexplorerdisk.c:120 src/gui/gwsettingsexplorerfile.c:119
+#: src/gui/gwsettingsquicksearch.c:126
+msgid "Hide"
+msgstr "Schovat"
+
+#: src/gui/gwsettingsexplorerdisk.c:125 src/gui/gwsettingsexplorerfile.c:124
+#: src/gui/gwsettingsquicksearch.c:131
+msgid "Show"
+msgstr "Ukázat"
+
+#: src/gui/gwsettingsexplorerdisk.c:141 src/gui/gwsettingsexplorerfile.c:140
+#: src/gui/gwsettingsquicksearch.c:147
+msgid "Hidden"
+msgstr "Schovanı"
+
+#: src/gui/gwsettingsexplorerfile.c:53
+msgid "Files"
+msgstr "Soubory"
+
+#: src/gui/gwsettingssearch.c:114
+msgid "The result sort in search is case sensitive."
+msgstr "Vısledek øazení pøi hledání je citlivı na velikost znakù."
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingssearch.c:120
+msgid "Result sort group by type."
+msgstr "Vısledky seøazené podle typu."
+
+#: src/gui/gwsettingssearch.c:125
+msgid ""
+"The result sort in search can be grouped by item type. If this option is "
+"checked all item will be grouped by catalogs, disks, folders and files."
+msgstr "Vısledek mùe bıt seøazen podle typu objektu. Pokud je tato volba zaškrtnuta všechny objekty budou seøazeny podle kategorií, diskù, adresáøù a souborù."
+
+#. Adds the key words mode option.
+#: src/gui/gwsettingssearch.c:142
+msgid "All key words must match"
+msgstr "Všechna klíèová slova musí souhlasit"
+
+#: src/gui/gwsettingssearch.c:147
+msgid ""
+"Choose if all key words or only one of all key words must match with item in "
+"order to be in the search result."
+msgstr "Zvolte, jestli musí souhlasit všechna klíèová slova nebo staèí pouze jedno aby byl vısledek nalezen."
+
+#
+#: src/gui/gwsettingsquicksearch.c:60
+msgid "Quick"
+msgstr "Rychle"
+
+#: src/gui/gwsettingsgeneral.c:44
+msgid "Generals options"
+msgstr "Všeobecné nastavení"
+
+#: src/gui/gwsettingsgui.c:54
+msgid "GUI"
+msgstr "GUI"
+
+#. Adds the autosave GUI properties option.
+#: src/gui/gwsettingsgui.c:93
+msgid "Save GUI properties on exit"
+msgstr "Uloit vlastnosti GUI pøi odchodu."
+
+#: src/gui/gwsettingsgui.c:98
+msgid "Save GUI properties as window position and size."
+msgstr "Uloí prostøedí (velikosti a pozice oken)."
+
+#. Adds the allowing beep option.
+#: src/gui/gwsettingsgui.c:104
+msgid "Allow beep"
+msgstr "Povolit zvuk"
+
+#: src/gui/gwsettingsgui.c:109
+msgid "Allows to emits a short beep on some event."
+msgstr "Povolit krátké pípnutí pøi nìkterıch událostech."
+
+#: src/gui/gwsettingsmail.c:83
+msgid "Mail"
+msgstr "Pošta"
+
+#. Email address.
+#: src/gui/gwsettingsmail.c:126
+msgid "Email address :"
+msgstr "E-mailová adresa :"
+
+#: src/gui/gwsettingsmail.c:136
+msgid "Enter your email address."
+msgstr "Vlote svoji e-mail adresu."
+
+#. Server address.
+#: src/gui/gwsettingsmail.c:141
+msgid "Out going mail server :"
+msgstr "Server pro odchozí poštu :"
+
+#: src/gui/gwsettingsmail.c:151
+msgid ""
+"Enter your out going mail server. Usualy this address is mail.yourdomain.com"
+msgstr "Vlote adresu Vašeho SMTP serveru pro odchozí poštu. Napø. smtp.example.com"
+
+#. Server port.
+#: src/gui/gwsettingsmail.c:156
+msgid "Server port :"
+msgstr "Port serveru :"
+
+#: src/gui/gwsettingsmail.c:166
+msgid "Enter the out going mail server port (the most common value is 25)."
+msgstr "Vlote èíslo portu SMTP serveru (typicky 25)."
+
+#: src/gui/gwsettingswindowbox.c:82
+msgid ""
+"This Settings box allows to configure some functionnalities and properties "
+"of the program."
+msgstr "Toto okno umonuje nastavit nìkteré funkce a vlastnosti programu."
+
+#: src/gui/gwsettingswindowbox.c:85 src/gui/gwsettingswindowbox.c:124
+msgid "Settings"
+msgstr "Nastavení"
+
+#: src/gui/gwsettingswindowbox.c:120
+msgid "Select the section to configure."
+msgstr "Zvolte sekci nastavení."
+
+#: src/gui/gwsettingswindowbox.c:134
+msgid ""
+"Change in this pane all availables properties in order to configure the "
+"program as you want."
+msgstr "Pouijte panely k nastavení programu podle vašich pøedstav."
+
+#: src/gui/gwsettingswindowbox.c:145
+msgid ""
+"This settings windows box allows to configure the program. Some properties "
+"may be modified here."
+msgstr "Toto okno umonuje nastavit nìkteré vlastnosti programu."
+
+#: src/gui/gwsettingswindowbox.c:170
+msgid "Click on OK button to apply changes and close the Settings box."
+msgstr "Kliknìte na OK pro uloení zmìn a zavøení okna."
+
+#: src/gui/gwsettingswindowbox.c:185
+msgid "Click on Cancel button to cancel changes and close the Settings box."
+msgstr "Kliknìte na Zrušit pro zavøení okna (bez ukládání zmìn)."
+
+#: src/gui/gwsettingswindowbox.c:191
+msgid "_Apply"
+msgstr "_Pouij"
+
+#: src/gui/gwsettingswindowbox.c:198
+msgid ""
+"Click on Apply button to apply changes (without close the Settings box)."
+msgstr "Kliknìte na Pouij pro pouití zmìn (bez zavøení okna)."
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid "Settings changed"
+msgstr "Nastavení zmìnìno"
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid ""
+"If you don't apply changes you will lose all changes. Do you want apply "
+"changes?"
+msgstr "Pokud neuloíte zmìny, pøijdete o nì. Chcete uloit zmìny ?"
+
+#: src/gui/gwstatusbarcallback.c:49
+#, c-format
+msgid " %s [ %s ], total disks : %d"
+msgstr " %s [ %s ], celkem diskù: %d"
+
+#: src/gui/gwstatusbarcallback.c:50 src/gui/gwstatusbarcallback.c:100
+#: src/gui/gwstatusbarcallback.c:151
+#, c-format
+msgid " Listed Items : %d (total size : %s)"
+msgstr " Vybrané objekty: %d (velikost : %s)"
+
+#: src/gui/gwstatusbarcallback.c:81
+#, c-format
+msgid " %s [ %s ], capacity : %s, free : %s"
+msgstr " %s [ %s ], kapacita : %s, volné : %s"
+
+#: src/gui/gwstatusbarcallback.c:91
+msgid " Empty disk"
+msgstr ""
+
+#: src/gui/gwstatusbarcallback.c:94 src/gui/gwstatusbarcallback.c:145
+#: src/gui/gwstatusbarcallback.c:185
+#, c-format
+msgid " Selected Item : %d (total size : %s)"
+msgstr " Zvolenı objekt: %d (celkem : %s)"
+
+#: src/gui/gwstatusbarcallback.c:138
+#, c-format
+msgid " Folder \"%s\", %s (files %d, subfolders %d)"
+msgstr " Adresáø \"%s\", %s (souborù %d, sloek %d)"
+
+#: src/gui/gwstatusbarcallback.c:179
+#, c-format
+msgid " %s, %s, %s"
+msgstr " %s, %s, %s"
+
+#: src/gui/gwstatusbarcallback.c:209 src/gui/gwstatusbarcallback.c:228
+#, c-format
+msgid " Selected Item : %d"
+msgstr " Zvolenı objekt : %d"
+
+#: src/gui/gwstatusbarcallback.c:210
+msgid " Catalog explorer"
+msgstr " Prùzkum katalogu"
+
+#: src/gui/gwstatusbarcallback.c:229
+msgid " Search engine"
+msgstr " Vyhledávání"
+
+#: src/gui/gwstatusbarcallback.c:246
+msgid " Catalog managment"
+msgstr " Správa katalogu"
+
+#: src/gui/gwtoolbar.c:89
+msgid "Close catalog"
+msgstr "Zavøít katalog"
+
+#: src/gui/gwtoolbar.c:93
+msgid "Send catalog by mail"
+msgstr "Poslat katalog e-mailem"
+
+#: src/gui/gwwindowboxabout.c:121
+msgid "About"
+msgstr "O programu"
+
+#
+#: src/gui/gwwindowboxabout.c:152
+msgid ""
+"\n"
+"Removable media catalog managment\n"
+"By Sebastien LECACHEUR\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+msgstr ""
+"\n"
+"Správa katalogu vımìnnıch médií\n"
+"Od Sébastiena LECACHEURa\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+
+#: src/gui/gwwindowboxabout.c:153
+msgid ""
+"GWhere allows to manage a database of yours CDs and others removable media "
+"(hard disks, floppy drive, Zip drive, CD- ROM, etc...). With GWhere it's "
+"easy to browse yours CDs or to make quick search without need to insert "
+"yours CDs in the drive at each once."
+msgstr "GWhere slouí k uchování obsahu CD a dalších médií(HDD, floppy, zip,...). Potom mùete procházet databázia vyhledávat soubory bez nutnosti vloit CD do mechaniky."
+
+#: src/gui/gwwindowboxabout.c:154
+msgid ""
+"\n"
+"\n"
+"Runs under "
+msgstr ""
+"\n"
+"\n"
+"Bìí na "
+
+#: src/gui/gwwindowboxmail.c:85
+msgid ""
+"This window box allows you to send a catalog by mail to one (or more) of "
+"yours contacts."
+msgstr "Toto okno umonuje poslat katalog e-mailem."
+
+#: src/gui/gwwindowboxmail.c:88 src/gui/gwwindowboxmailcallback.c:57
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid "Send mail"
+msgstr "Poslat e-mail"
+
+#: src/gui/gwwindowboxmail.c:112
+msgid "To :"
+msgstr "Pro :"
+
+#: src/gui/gwwindowboxmail.c:118
+msgid "CC :"
+msgstr "CC :"
+
+#: src/gui/gwwindowboxmail.c:124
+msgid "BCC :"
+msgstr "BCC :"
+
+#: src/gui/gwwindowboxmail.c:130
+msgid "Subject :"
+msgstr "Pøedmìt :"
+
+#: src/gui/gwwindowboxmail.c:140
+msgid "Enter here the email address of your(s) contact(s)."
+msgstr "Adresát(i)."
+
+#: src/gui/gwwindowboxmail.c:148
+msgid "Enter here the email address of the copied mail contacts."
+msgstr "Adresát(i) kopií."
+
+#: src/gui/gwwindowboxmail.c:156
+msgid "Enter here the email address of the hidden copied mail contacts."
+msgstr "Adresát(i) skrytıch kopií."
+
+#: src/gui/gwwindowboxmail.c:164
+msgid "Enter here the object of your mail."
+msgstr "Nadpis e-mailu"
+
+#: src/gui/gwwindowboxmail.c:168
+msgid "Attached file :"
+msgstr "Pøíloha :"
+
+#: src/gui/gwwindowboxmail.c:182
+msgid "Choose to attach or no the catalog file."
+msgstr "Zvolte katalog pro pøipojení k e-mailu."
+
+#: src/gui/gwwindowboxmail.c:197
+msgid "Type here the text for the mail message."
+msgstr "Text zprávy."
+
+#: src/gui/gwwindowboxmail.c:208
+msgid "_Send"
+msgstr "_Poslat"
+
+#: src/gui/gwwindowboxmail.c:213
+msgid "Click here to send a mail (with an attached catalog)."
+msgstr "Kliknìte pro odeslání e-mailu (s pøiloenım katalogem)."
+
+#: src/gui/gwwindowboxmail.c:225
+msgid "Click here to cancel the send of a mail."
+msgstr "Kliknìte pro zrušení e-mailu."
+
+#: src/gui/gwwindowboxmailcallback.c:57
+msgid "Sending mail, please wait..."
+msgstr "Odesílám e-mail, poèkejte..."
+
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid ""
+"An error occured during the sending of mail. Please check your parameters."
+msgstr "Bìhem odesílání došlo k chybì. Prosím, zkotrolujte nastavení."
+
+#: src/gwsupport.c:129
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr "Nemohu najít obrázek: %s"
+
+#: src/gwsupport.c:136
+#, c-format
+msgid "Error loading pixmap file: %s"
+msgstr "Nemohu nahrát obrázek: %s"
+
+#: src/gwcatalogmanager.c:285
+msgid "Error : cannot get current folder."
+msgstr "Chyba : nemohu otevøít aktuální adresáø."
+
+#: src/gwcatalogmanager.c:369
+msgid "Error : cannot go to working folder."
+msgstr "Chyba: nemohu vejít do pracovního adresáøe."
+
+#: src/gwcatalogmanager.c:444
+msgid ""
+"The disk hasn't been added\n"
+"Adding canceled by user"
+msgstr ""
+"Disk nebyl pøidán\n"
+"Operace zrušena uivatelem"
+
+#: src/gwcatalogmanager.c:458 src/gwcatalogmanager.c:463
+#: src/gwcatalogmanager.c:468 src/gwcatalogmanager.c:473
+#: src/gwcatalogmanager.c:478 src/gwcatalogmanager.c:484
+#: src/gwcatalogmanager.c:489 src/gwcatalogmanager.c:494
+#: src/gwcatalogmanager.c:536 src/gwcatalogmanager.c:541
+#: src/gwcatalogmanager.c:546 src/gwcatalogmanager.c:552
+#: src/gwcatalogmanager.c:557 src/gwcatalogmanager.c:563
+msgid "The disk hasn't been added\n"
+msgstr "Disk nebyl pøidán\n"
+
+#: src/gwcatalogmanager.c:458
+#, c-format
+msgid "%s outside the process's allocated address space."
+msgstr "%s mimo alokovanı adresní prostor programu."
+
+#: src/gwcatalogmanager.c:463
+#, c-format
+msgid ""
+"A component of the following pathname exceeded %d characters, or an entire "
+"path name exceeded %d characters : %s."
+msgstr "Komponenta následující cesty pøekroèila %d znakù nebocelá cesta pøekroèila %d znakù : %s."
+
+#: src/gwcatalogmanager.c:468
+#, c-format
+msgid "The following directory does not exist : %s."
+msgstr "Následující adresáø neexistuje: %s."
+
+#: src/gwcatalogmanager.c:473 src/gwcatalogmanager.c:552
+msgid "Insufficient memory to complete the operation."
+msgstr "Nedostatek pamìti pro dokonèení operace."
+
+#: src/gwcatalogmanager.c:478
+#, c-format
+msgid "A component of the path prefix is not a directory : %s."
+msgstr "Komponenta prefixu cesty není adresáø: %s."
+
+#: src/gwcatalogmanager.c:484
+#, c-format
+msgid ""
+"Too many symbolic links were encountered in resolving following path : %s."
+msgstr "Pøíliš mnoho symbolickıch odkazù pøi rozlišování cesty: %s."
+
+#: src/gwcatalogmanager.c:489
+#, c-format
+msgid "An I/O error occurred when change directory to : %s."
+msgstr "Chyba I/O pøi zmìnì adresáøe do : %s."
+
+#: src/gwcatalogmanager.c:494 src/gwcatalogmanager.c:563
+msgid "Unknown error"
+msgstr "Neznámá chyba"
+
+#: src/gwcatalogmanager.c:518 src/gwcatalogmanager.c:843
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot go to parent folder."
+msgstr ""
+"Disk nebyl pøidán\n"
+"Chyba : nemohu pøejít do nadøazeného adresáøe."
+
+#: src/gwcatalogmanager.c:536
+msgid "Too many file descriptors in use by process."
+msgstr "Pøíliš mnoho souborù otevøenıch procesem."
+
+#: src/gwcatalogmanager.c:541
+msgid "Too many files are currently open in the system."
+msgstr "Pøíliš mnoho otevøenıch souborù v systému."
+
+#: src/gwcatalogmanager.c:546
+#, c-format
+msgid ""
+"The following directory does not exist, or name is an empty string : %s."
+msgstr "Adresáø neexistuje nebo jeho jméno je prázdnı øetìzec : %s."
+
+#: src/gwcatalogmanager.c:557
+#, c-format
+msgid "The following directory name is not a directory : %s."
+msgstr "Následující jméno není adresár : %s."
+
+#: src/gwcatalogmanager.c:735
+#, c-format
+msgid ""
+"A critical error occured when extracting file information of %s%s%s.\n"
+"Save your catalog if it is possible, exit GWhere and report this trouble to "
+"the GWhere project team please."
+msgstr ""
+
+#: src/gwcatalogmanager.c:836
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot close current folder."
+msgstr ""
+"Disk nebyl pøidán\n"
+"Chyba : není moné opustit aktuální adresáø."
+
+#: src/gwapplicationmanager.c:65
+#, c-format
+msgid "Is running on %s"
+msgstr "Bìí pod %s"
+
+#: src/gwapplicationmanager.c:493
+msgid "Catalog loaded"
+msgstr "Katalog naèten"
+
+#: src/gwapplicationmanager.c:498
+msgid "Loading catalog failed"
+msgstr "Chyba pøi otvírání katalogu"
+
+#: src/gwapplicationmanager.c:499
+msgid "Loading catalog"
+msgstr "Otevírám katalog"
+
+#: src/gwapplicationmanager.c:499
+msgid ""
+"The catalog is invalid or doesn't exists. Check your catalog path please."
+msgstr "Soubor katalogu neexistuje, zkontrolujte prosím cestu k souboru."
+
+#: src/gwapplicationmanager.c:603
+msgid "Saving catalog"
+msgstr "Ukládám katalog"
+
+#: src/gwapplicationmanager.c:615
+msgid "Catalog saved"
+msgstr "Katalog uloen"
+
+#: src/gwapplicationmanager.c:621
+msgid "Saving catalog failed"
+msgstr "Chyba pøi ukládání katalogu"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gwapplicationmanager.h:260
+msgid "Rights"
+msgstr "Práva"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_TITLE	The title column of the column Owner
+#: src/gwapplicationmanager.h:272
+msgid "Owner"
+msgstr "Vlastník"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_TITLE	The title column of the column Group
+#: src/gwapplicationmanager.h:284
+msgid "Group"
+msgstr "Skupina"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_TITLE	The title column of the column Size
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_SIZE_TITLE	The title column of the column Size
+#: src/gwapplicationmanager.h:296 src/gwapplicationmanager.h:582
+msgid "Size"
+msgstr "Velikost"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_TITLE	The title column of the column INode
+#: src/gwapplicationmanager.h:308
+msgid "INode"
+msgstr "INode"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_TITLE	The title column of the column Access Date
+#: src/gwapplicationmanager.h:320
+msgid "Access date"
+msgstr "Poslední pøístup"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_TITLE	The title column of the column Modification Date
+#: src/gwapplicationmanager.h:332
+msgid "Modification date"
+msgstr "Zmìna"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_TITLE	The title column of the column Creation Date
+#: src/gwapplicationmanager.h:344
+msgid "Creation date"
+msgstr "Vytvoøen"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_TITLE	The title column of the column File System Name
+#: src/gwapplicationmanager.h:394
+msgid "File system name"
+msgstr "Jméno systému souboru"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_TITLE	The title column of the column Access Path
+#: src/gwapplicationmanager.h:406
+msgid "Access path"
+msgstr "Cesta"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_TITLE	The title column of the column Archive Number
+#: src/gwapplicationmanager.h:418
+msgid "Archive N#"
+msgstr "Archív è."
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_TITLE	The title column of the column Type
+#: src/gwapplicationmanager.h:430
+msgid "Type"
+msgstr "Typ"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_TITLE	The title column of the column Volume Name
+#: src/gwapplicationmanager.h:442
+msgid "Volume name"
+msgstr "Jméno svazku"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_TITLE	The title column of the column Full Capacity
+#: src/gwapplicationmanager.h:454
+msgid "Full capacity"
+msgstr "Kapacita"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_TITLE	The title column of the column Free Space
+#: src/gwapplicationmanager.h:466
+msgid "Free space"
+msgstr "Volné"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_TITLE	The title column of the column Date
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DATE_TITLE	The title column of the column Date
+#: src/gwapplicationmanager.h:478 src/gwapplicationmanager.h:594
+msgid "Date"
+msgstr "Datum"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_TITLE	The title column of the column Serial Number
+#: src/gwapplicationmanager.h:490
+msgid "Serial number"
+msgstr "Sériové èíslo"
+
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_PATH_TITLE	The title column of the column Path
+#: src/gwapplicationmanager.h:570
+msgid "Path"
+msgstr "Cesta"
+
+#. Define all used string in the win32 installer
+#: win32/config.h:287
+msgid "Full"
+msgstr "Plnı"
+
+#: win32/config.h:288
+msgid "Compact"
+msgstr "Kompaktní"
+
+#: win32/config.h:289
+msgid "GWhere (requiered)"
+msgstr "GWhere (vyadován)"
+
+#: win32/config.h:290
+msgid "Main engine application."
+msgstr "Aplikace."
+
+#: win32/config.h:291
+#, fuzzy
+msgid "GTK+ 2.6 RunTime (required)"
+msgstr "GTK+ 2.0 knihovny (vyadovány)"
+
+#: win32/config.h:292
+msgid "RunTime for GUI environment."
+msgstr "Knihovny pro GUI prostøedí."
+
+#: win32/config.h:293
+msgid "Plugins"
+msgstr "Pluginy"
+
+#: win32/config.h:294
+#, fuzzy
+msgid ""
+"Plugins for auto extraction of file descriptions and plugins for importation/"
+"exportation of catalogs."
+msgstr "Pluginy pro extrakci informací ze souborù."
+
+#: win32/config.h:295
+msgid "Languages Files"
+msgstr "Jazyky prostøedí"
+
+#: win32/config.h:296
+msgid "All languages files for the program translation."
+msgstr "Všecny jazykové soubory pro pøeklad."
+
+#: win32/config.h:297
+msgid "You must uninstall your last version of GWhere"
+msgstr ""
+
+#: win32/config.h:298
+msgid "Installer already running"
+msgstr ""
+
+#: win32/config.h:299
+#, fuzzy
+msgid "Install options"
+msgstr "Všeobecné nastavení"
+
+#: win32/config.h:300
+msgid "Which users can run GWhere ?"
+msgstr ""
+
+#: win32/config.h:301
+msgid "GWhere install rights access"
+msgstr ""
+
+#: win32/config.h:302
+msgid ""
+"GWhere can be installed for all users or only for current user. Select for "
+"which you want install GWhere please."
+msgstr ""
+
+#: win32/config.h:303
+msgid "All users|Current user"
+msgstr ""
+
+#: win32/config.h:304
+msgid "All users"
+msgstr ""
+
+#~ msgid ""
+#~ "The catalog file doesn't exists. Check your catalog file path please."
+#~ msgstr "Soubor katalogu neexistuje, zkontrolujte prosím cestu k souboru."
+
+#~ msgid ""
+#~ "The catalog file to load doesn't have a good file extension. Only .ctg "
+#~ "files are allowed to be loaded."
+#~ msgstr "Soubor katalogu má špatnou pøíponu,mohu naèíst jen .ctg soubory."
+
+#~ msgid "Load file"
+#~ msgstr "Nahrát soubor"
+
+#~ msgid "Error : cannot open this file."
+#~ msgstr "Chyba : nemohu otevøít soubor"
+
+#~ msgid "Error : cannot read the file version."
+#~ msgstr "Chyba : nemohu pøeèíst verzi souboru"
+
+#~ msgid "Load catalog"
+#~ msgstr "Nahrát katalog"
+
+#~ msgid "Error : cannot close file."
+#~ msgstr "Chyba : nemohu zavøít soubor."
+
+#~ msgid "Error : it's not a GWhere file."
+#~ msgstr "Chyba: soubor není ve formátu GWhere."
+
+#~ msgid "Error : this GWhere version file is unknown."
+#~ msgstr "Chyba : neznámá verze souboru GWhere."
+
+#~ msgid "Error : cannot close this file after loading."
+#~ msgstr "Chyba: nemohu zavøít soubor po otevøení."
+
+#~ msgid "Error : during the loading of disk."
+#~ msgstr "Chyba : bìhem nahrávání disku."
+
+#~ msgid "Error : cannot create file."
+#~ msgstr "Chyba : není moné vytvoøit soubor."
+
+#~ msgid "Error : cannot write file version."
+#~ msgstr "Chyba : není moné zapsat verzi souboru."
+
+#~ msgid "Error : cannot close catalog file."
+#~ msgstr "Chyba : není moné zavøít katalog."
+
+#~ msgid "Elapsed time to save the catalog : %d secs"
+#~ msgstr "Vypršel èas pro uloení katalogu : %d sec"
+
+#~ msgid ""
+#~ "Give the device file of the selected disk. The device file is the one of "
+#~ "the /etc/fstab file."
+#~ msgstr "Jméno zaøízení disku (jeden ze /etc/fstab)."
+
+#~ msgid "Scan disk"
+#~ msgstr "Naèíst disk"
+
+#~ msgid "unkown"
+#~ msgstr "neznámá"

@@ -1,0 +1,187 @@
+[ ] - Known bug
+[X] - Fixed bug
+
+
+GWhere 0.2.3
+[X] - Freezes on pipe files when add disk with "auto description" option is activated.
+[X] - Crashes with "seg fault" when close dialog box after search with empty result.
+[ ] - Crashes with "seg fault" when import CSV catalog under Slackware.
+
+GWhere 0.2.2
+[] - Debug mode crash.
+
+GWhere 0.2.1
+[X] - Missing intl.dll under win32.
+[ ] - GWhere doesn't find import/export plugins when it is started from win32 installer.
+
+GWhere 0.2.0
+[X] - GWhere shorcut and icon are not valid for the windows manager.
+[ ] - When "Name" column is hidden, displaying trouble may occures.
+[ ] - CD labels burnt under win32 system are displayed as "METAL_20" instead of "Metal 20" under Linux.
+
+GWhere 0.1.6
+[X] - Plugin description are not loaded under win32.
+[X] - Selected files are not well displayed (with bleu background) with GTK+ 2.x under Linux.
+[X] - Cannot delete description with the feature "Edit description".
+
+GWhere 0.1.5
+[X] - Bag status bar when do "new catalog->add disk->cancel->add disk".
+[X] - Scans internal mount points when scan a mount point (for exemple all /mnt/* when scan /).
+[X] - The recents opened catalogs list is not always refreshed.
+[X] - Locked folders are not displayed with the good icon.
+[X] - Crashes when launch GWhere with catalog file parameter which is the current directory.
+[X] - Crashes if the disk name and disk label are empty and the "use disk label as disk name" option is checked.
+[X] - When rename a catalog and save it, the displayed name is the catalog file name.
+
+GWhere 0.1.4
+[X] - Normal users may not have translated GWhere when it was installed by administrator under Win32.
+[X] - Selected items are not well displayed (with bleu background) with GTK+ 2.x under Linux.
+
+GWhere 0.1.3
+[X] - Bug with the reading of /etc/fstab and /etc/mtab files.
+[X] - Segmentation fault when try to automount some devices.
+[X] - The GWhere configuration folder is not accessible.
+[X] - Empty lines in descript.ion files cause a segmentation fault.
+[X] - Files and folders bigger than 2,1 Go are not supported.
+
+GWhere 0.1.2
+[X] - Category in properties box is not selected.
+[X] - Autoload catalog file option are not correctly loaded.
+[ ] - Can't scan folders or files with specials characters if the OS hasn't the good locale.
+[ ] - In case of multi-session disk, the size is the one of the last session disk under win32.
+[X] - Don't save a unmodified catalog when choose "Save as" functionality.
+[X] - Temporaries files aren't removed under win32.
+[X] - If scan is canceled because there is no opened catalog or disk name all fields are cleaned.
+[X] - There is no catalog statistics with catalogs built under win32.
+[ ] - Scan the first label of a multi-session disk instead of the last under Linux.
+[X] - Opening a catalog with space caracters in path name from the explorer under win32 fails.
+[X] - Opening a catalog from the recents list when an unsaved catalog is opened causes a "seg fault".
+[X] - Default properties aren't used at the fisrt start og GWhere in the "disk managment" tabbed pane.
+[X] - GWhere loading is too long under Win 95/98/ME.
+[X] - UTF-8 string aren't always displayed well.
+[X] - Don't load all FS informations.
+[X] - ISO 9660 FS aren't always detected.
+
+GWhere 0.1.1
+[X] - More than one item matching at root disk in search causes a "seg fault".
+[X] - Double encoding to UTF-8 when asks catalog saving.
+[X] - GWhere's home folder are not always created.
+[X] - Some disk has "Not yet implemented" for file system type.
+[X] - Plugins are unavailable with RPM version.
+[X] - Unable to display popup menu for fisrt listed file (at disk root).
+
+GWhere 0.1.0
+[X] - Doesn't load plugins when open a catalog from an explorer under win32.
+[X] - Localisation fails when open a catalog from an explorer under win32.
+[X] - Reading of compressed files fails under win32 (must use a temporary file).
+[X] - StatusBar message is bad when create a new catalog in the Managment pane.
+[ ] - Don't check if the catalog file already exists when save a catalog (the file is erazed).
+[ ] - Since using LIBTOOL generated src/Makefile.in is bad. Must remove manually "../libtool --mode=link".
+[X] - Bug when progress bar box max value is bigger than 4 294 967 296 bytes.
+[X] - There is no home dir on Win9x.
+[X] - All dates aren't translated.
+[X] - Reopen the last opened catalog add two references in the list of recents opened catalogs.
+[X] - Click on cross node doesn't expand/collapse node.
+[ ] - When click on button of combo, the first item of list is selected.
+[ ] - Start the program with full-screen window but not maximized.
+[X] - Change disk volume name function changes the disk name in the exploring tree.
+[ ] - Bug with disks bigger than 18 446 744 073 709 551 616 bytes!!
+[X] - Bug with disk bigger than 4 294 967 296 bytes.
+[X] - Rename catalog function changes file name instead of catalog name.
+[X] - Remove first file in a folder cause a segm fault.
+[X] - Disk file system name and path aren't encoded when save catalog.
+[X] - The GWhere folder is created with no execution right.
+[X] - Bugs with configuration file parser.
+[X] - Circular scanning with circular symbolic links.
+
+GWhere 0.0.26
+[X] - Number archive of disks are not succesfully loaded.
+[ ] - Devices list is not updated after modification of fstab or mtab.
+[ ] - Base 64 encoding crash on Cygwin.
+[X] - The gw_file_mkdirs() failes if the pathname end with "/".
+[X] - Unabble to save properties file when .GWhere folder doesn't exist in user home.
+[X] - The "Add disk" function in popup menu doesn't do nothing.
+[X] - Bug on the catalog renaming with the menu popup.
+[X] - the shifts characters doesn't go to the end of string in shifts characters.
+
+GWhere 0.0.25
+[X] - Memory leak in SearchEngine.
+[X] - All ".." files are counted in the status bar.
+[X] - The About Box title is in french and couldn't be translated.
+
+GWhere 0.0.24
+[X] - Description modification don't run.
+[X] - Search result isn't clear when regular expression is activated.
+[X] - Search crash program when no catalog loaded.
+[X] - Free function don't free all memory.
+
+GWhere 0.0.23
+[ ] - Used space disk is upper than the sum of all files size.
+[X] - Don't return to the current folder when add disk failed.
+[ ] - Unable to put shortcut on OK button in the progress bar box.
+[ ] - When open a second dialog window, the first close himself.
+
+GWhere 0.0.22
+[X] - Don't add new category.
+[X] - Bug with directories beginning by "." or ".."
+[X] - Bug with unkowned owner or group files.
+[X] - Bug with detection of disque presence.
+
+GWhere 0.0.21
+[X] - Display bug on disks capacity/free space.
+[X] - Loading between folders/files size and inode is inverted.
+[X] - The application crash when a disk is added and there is no open catalog.
+
+GWhere 0.0.20
+[X] - Bug when category disk/folder/file is changed.
+[ ] - Select first item when quit edit category window.
+[ ] - Bug with combo_box_categories_set_selected_category_name.
+[X] - Right buton click don't select item.
+[X] - Problem with saving of categories disk/folder/file.
+[X] - Search category by name doesn't match.
+[X] - File is corrupt if user put ":" in names of catalogs/disks/folders/files.
+[X] - Displaying date is in french.
+[ ] - Displaying device information is troncated.
+[X] - Cannot edit/delete the default category.
+
+GWhere 0.0.19
+[X] - Don't load all mount point.
+[X] - When delete category must change all indexes.
+
+GWhere 0.0.18
+[X] - When user's doing "Save As" and after "Close" => CoreDumped
+[X] - Had to do interface for data (because lot of problems with (null) when "" expected).
+
+GWhere 0.0.17
+[X] - Type disk statistics for catalog are false.
+[X] - The info window for scan disk doesn't refresh.
+[X] - Problem when read label on FAT16.
+[ ] - Put a dialog box when load catalog, add disk, search.
+[X] - Status must updated switch case of notebook.
+[ ] - Auto type wasn't supported.
+[X] - Try to make image even if disk doesn't mounted.
+[X] - CD-Rom drive close himself when application laoded or when his device was clicked.
+[X] - When disk hasn't mounted, don't display information.
+[X] - When disk has no label, return (null) instead of "No label".
+[X] - Many problems with GNU supermount.
+[ ] - Partition type isn't good. CD-Rom isn't always "/dev/cdrom" or "/dev/scd" as file (ex: "/dev/hdd").
+
+GWhere 0.0.16
+[X] - Catalog name is (null) in the statusbar when new catalog was created.
+[X] - Statusbar wasn't update when catalog was closed.
+[X] - When user's clicking in the file info zone and there's no opened catalog => CoreDumped.
+[X] - When user's quitting (or closing) without to save a new catalog => CoreDumped
+[X] - CoreDumped with "RemoveFolder from Disk"!!
+[X] - The "Move To", when user's in the explorer doesn't match.
+[ ] - When user's clicking in the empty in file info zone, it's the first item of list that is printed in statusbar??
+[X] - Pb with the saving, (maybe the "Save As" with catalog_file_info).
+[X] - It's may have a pb when description's containing '\n'.
+[X] - CoreDumped with rename_disk().
+[X] - When disk added, the program doesn't control if disk name existes!!
+[X] - Pb with sizes when item was deleted!!
+
+GWhere 0.0.0
+[X] - Translation doesn't match (NLS I18N).
+
+
+It's going my guy!!

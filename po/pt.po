@@ -1,0 +1,3287 @@
+# GWhere Portuguese (pt_PT) translation file
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Paulo André <prla@netcabo.pt>, 2002, 2003, 2004, 2005.
+#
+# src/SearchEngine.c:320
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-08-22 01:05+0200\n"
+"PO-Revision-Date: 2002-07-02 00:00GMT\n"
+"Last-Translator: Paulo ANDRE'<prla@netcabo.pt>\n"
+"Language-Team: portuguese <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/tools/gwmail.c:74
+msgid "Cannot receive data"
+msgstr "Impossível receber dados"
+
+#: src/tools/gwmail.c:80
+msgid "Connexion closed by client\n"
+msgstr "Ligação encerrada pelo cliente\n"
+
+#: src/tools/gwmail.c:109
+msgid "Cannot send data"
+msgstr "Impossível enviar dados"
+
+# src/tools/Calcul.c:43
+# src/tools/Calcul.c:46
+#: src/tools/gwstring.c:148
+#, c-format
+msgid "%.0f bytes"
+msgstr "%.0f bytes"
+
+# src/tools/Calcul.c:46
+# src/tools/Calcul.c:49
+#: src/tools/gwstring.c:152
+#, c-format
+msgid "%.2f Kb"
+msgstr "%.2f Kb"
+
+# src/tools/Calcul.c:49
+# src/tools/Calcul.c:52
+#: src/tools/gwstring.c:156
+#, c-format
+msgid "%.2f Mb"
+msgstr "%.2f Mb"
+
+# src/tools/Calcul.c:52
+# src/tools/Calcul.c:55
+#: src/tools/gwstring.c:160
+#, c-format
+msgid "%.2f Gb"
+msgstr "%.2f Gb"
+
+# src/tools/Calcul.c:56
+# src/tools/Calcul.c:59
+#: src/tools/gwstring.c:165
+#, c-format
+msgid "%.2f Tb"
+msgstr "%.2f Tb"
+
+# src/tools/Calcul.c:60
+# src/tools/Calcul.c:63
+#: src/tools/gwstring.c:170
+#, c-format
+msgid "%.2f Pb"
+msgstr "%.2f Pb"
+
+# src/tools/Calcul.c:64
+# src/tools/Calcul.c:67
+#: src/tools/gwstring.c:175
+#, c-format
+msgid "%.2f Hb"
+msgstr "%.2f Hb"
+
+# src/tools/Calcul.c:69 src/tools/Calcul.c:74
+# src/tools/Calcul.c:72 src/tools/Calcul.c:77
+#: src/tools/gwstring.c:181 src/tools/gwstring.c:187
+#, c-format
+msgid "%.2f Ib"
+msgstr "%.2f Ib"
+
+# src/gui/CaptureBox.c:84 src/gui/DialogBox.c:59 src/gui/MsgBox.c:75
+# src/gui/Properties.c:164 src/gui/TextBox.c:100
+# src/gui/CaptureBox.c:96 src/gui/DialogBox.c:59 src/gui/MsgBox.c:75
+# src/gui/PropertiesBox.c:189 src/gui/TextBox.c:107
+#: src/gui/gwcapturebox.c:100 src/gui/gwdialogbox.c:80 src/gui/gwmsgbox.c:76
+#: src/gui/gwpropertiesbox.c:202 src/gui/gwsettingswindowbox.c:163
+#: src/gui/gwtextbox.c:110
+msgid "_OK"
+msgstr "_OK"
+
+# src/gui/CaptureBox.c:92 src/gui/DialogBox.c:94 src/gui/ProgressBarBox.c:115
+# src/gui/ProgressBarBox.c:187 src/gui/ProgressBarBox.c:274
+# src/gui/Properties.c:189 src/gui/TextBox.c:108
+# src/gui/CaptureBox.c:116 src/gui/DialogBox.c:94
+# src/gui/ProgressBarBox.c:127 src/gui/ProgressBarBox.c:246
+# src/gui/ProgressBarBox.c:504 src/gui/PropertiesBox.c:216
+# src/gui/TextBox.c:122
+#: src/gui/gwcapturebox.c:125 src/gui/gwdialogbox.c:115
+#: src/gui/gwprogressbarbox.c:139 src/gui/gwprogressbarbox.c:562
+#: src/gui/gwpropertiesbox.c:234 src/gui/gwsettingswindowbox.c:178
+#: src/gui/gwtextbox.c:127 src/gui/gwwindowboxmail.c:219
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+# src/gui/Categories.c:58 src/gui/MenuPopup.c:98
+# src/gui/CategoriesEditBox.c:88 src/gui/MenuPopup.c:99
+#: src/gui/gwcategorieseditbox.c:85 src/gui/gwmenuactioncallback.c:151
+#: src/gui/gwmenupopup.c:137
+msgid "Edit categories"
+msgstr "Editar categorias"
+
+# src/gui/Categories.c:68
+# src/gui/CategoriesEditBox.c:104
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:99
+msgid "Categories list : "
+msgstr "Lista de Categorias : "
+
+# src/gui/Categories.c:99 src/gui/NoteBookCatalog.c:107
+# src/gui/NoteBookCatalog.c:205 src/gui/NoteBookCatalog.c:252
+# src/gui/NoteBookSearch.c:207
+# src/gui/CategoriesEditBox.c:135 src/gui/NoteBookCatalog.c:108
+# src/gui/NoteBookCatalog.c:206 src/gui/NoteBookCatalog.c:253
+# src/gui/NoteBookSearch.c:229
+#. 1st column label
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_NAME_TITLE	The title column of the column Name
+#: src/gui/gwcategorieseditbox.c:126 src/gwapplicationmanager.h:248
+#: src/gwapplicationmanager.h:382 src/gwapplicationmanager.h:546
+msgid "Name"
+msgstr "Nome"
+
+# src/gui/Categories.c:105 src/gui/NoteBookCatalog.c:147
+# src/gui/NoteBookCatalog.c:213 src/gui/NoteBookCatalog.c:260
+# src/gui/NoteBookSearch.c:163 src/gui/NoteBookSearch.c:237
+# src/gui/CategoriesEditBox.c:141 src/gui/NoteBookCatalog.c:148
+# src/gui/NoteBookCatalog.c:214 src/gui/NoteBookCatalog.c:261
+# src/gui/NoteBookSearch.c:185 src/gui/NoteBookSearch.c:247
+#. 2nd column label
+#. Match description check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#: src/gui/gwcategorieseditbox.c:132 src/gui/gwnotebooksearch.c:295
+#: src/gwapplicationmanager.h:368 src/gwapplicationmanager.h:514
+#: src/gwapplicationmanager.h:618
+msgid "Description"
+msgstr "Descrição"
+
+# src/gui/Categories.c:118
+# src/gui/CategoriesEditBox.c:154
+#: src/gui/gwcategorieseditbox.c:143
+msgid "_Update"
+msgstr "_Actualizar"
+
+# src/gui/Categories.c:123
+# src/gui/CategoriesEditBox.c:159
+#: src/gui/gwcategorieseditbox.c:151
+msgid ""
+"Allows to update category properties of the selected category. Clicks on "
+"Add / Update button to save updates."
+msgstr ""
+"Permite actualizar as propriedades da categoria seleccionada. Clique no "
+"botão Adicionar / Actualizar para memorizar a actualização."
+
+# src/gui/Categories.c:127
+# src/gui/CategoriesEditBox.c:163
+#: src/gui/gwcategorieseditbox.c:158
+msgid "_Remove"
+msgstr "_Remover"
+
+# src/gui/Categories.c:132
+# src/gui/CategoriesEditBox.c:168
+#: src/gui/gwcategorieseditbox.c:166
+msgid ""
+"Remove the selected category from categories list. This categories may "
+"removed only if there's not any item which uses this category."
+msgstr ""
+"Remover a categoria seleccionada a partir da lista de categorias. Estas "
+"categorias poderão apenas ser removidas caso nenhum item esteja a usar a "
+"categoria seleccionada."
+
+# src/gui/Categories.c:147
+# src/gui/CategoriesEditBox.c:183
+#. Label for category name
+#: src/gui/gwcategorieseditbox.c:180
+msgid "Category name : "
+msgstr "Nome da Categoria : "
+
+# src/gui/Categories.c:157
+# src/gui/CategoriesEditBox.c:193
+#: src/gui/gwcategorieseditbox.c:191
+msgid "Enter the name of the category."
+msgstr "Introduza o nome da categoria."
+
+# src/gui/Categories.c:160
+# src/gui/CategoriesEditBox.c:196
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:196
+msgid "Description : "
+msgstr "Descrição : "
+
+# src/gui/Categories.c:183
+# src/gui/CategoriesEditBox.c:219
+#: src/gui/gwcategorieseditbox.c:221
+msgid "Enter the description of the category."
+msgstr "Introduza a descrição da categoria."
+
+# src/gui/Categories.c:196
+# src/gui/CategoriesEditBox.c:232
+#. Is it not mandatory?
+#. g_strdup_to_gtk_text ( _( "Add"), text_utf8);
+#. gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
+#. g_free ( text_utf8);
+#.
+#. gtk_widget_ref ( bt);
+#. (GtkDestroyNotify)gtk_widget_unref
+#: src/gui/gwcategorieseditbox.c:240
+msgid "Add / Update"
+msgstr "Adicionar / Actualizar"
+
+# src/gui/Categories.c:201
+# src/gui/CategoriesEditBox.c:237
+#: src/gui/gwcategorieseditbox.c:247
+msgid "Save properties changes of category."
+msgstr "Memorizar alterações nas propriedades da categoria."
+
+# src/gui/Categories.c:207 src/gui/MenuPopup.c:57 src/gui/MenuPopup.c:127
+# src/gui/CategoriesEditBox.c:243 src/gui/MenuPopup.c:58
+# src/gui/MenuPopup.c:128
+#: src/gui/gwcategorieseditbox.c:257 src/gui/gwmenupopup.c:67
+#: src/gui/gwmenupopup.c:170
+msgid "Close"
+msgstr "Fechar"
+
+# src/gui/Categories.c:212
+# src/gui/CategoriesEditBox.c:248
+#: src/gui/gwcategorieseditbox.c:264
+msgid "Close the categories properties edit window."
+msgstr "Fechar a janela de edição das propriedades da categoria."
+
+# src/gui/ComboBoxCategories.c:105 src/gui/NoteBookManagmentCallBack.c:159
+# src/gui/ComboBoxCategories.c:105 src/gui/NoteBookManagmentCallBack.c:203
+#: src/gui/gwcategorieseditbox.c:308 src/gui/gwnotebookmanagmentcallback.c:265
+#: src/gui/gwpropertiesbox.c:1046
+msgid "none"
+msgstr "nenhum"
+
+# src/gui/Categories.c:297
+# src/gui/CategoriesEditBox.c:368
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Remove category"
+msgstr "Remover categoria"
+
+# src/gui/Categories.c:297
+# src/gui/CategoriesEditBox.c:368
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Can't remove this category. It's used by an item."
+msgstr ""
+"Não é possível remover a categoria. Está de momento em uso por um item."
+
+# src/gui/Categories.c:193 src/gui/Categories.c:395 src/gui/Categories.c:603
+# src/gui/CategoriesEditBox.c:229 src/gui/CategoriesEditBox.c:526
+# src/gui/CategoriesEditBox.c:849
+#: src/gui/gwcategorieseditbox.c:532 src/gui/gwcategorieseditbox.c:843
+msgid "Add"
+msgstr "Adicionar"
+
+# src/gui/Categories.c:410 src/gui/Categories.c:623
+# src/gui/CategoriesEditBox.c:553 src/gui/CategoriesEditBox.c:882
+#: src/gui/gwcategorieseditbox.c:556 src/gui/gwcategorieseditbox.c:873
+msgid "Update"
+msgstr "Actualizar"
+
+# src/gui/DialogBox.c:77
+# src/gui/DialogBox.c:77
+#: src/gui/gwdialogbox.c:98
+msgid "_No"
+msgstr "_Não"
+
+# src/gui/FileSelectionBox.c:64
+# src/gui/FileSelectionBox.c:64
+#: src/gui/gwfileselectionbox.c:80
+msgid "Hide file operations"
+msgstr "Esconder operações em ficheiro"
+
+# src/gui/FileSelectionBox.c:64
+# src/gui/FileSelectionBox.c:64
+#: src/gui/gwfileselectionbox.c:86
+msgid "Show file operation"
+msgstr "Mostrar operação do ficheiro"
+
+# src/gui/MenuAction.c:41
+# src/gui/MenuAction.c:41
+#: src/gui/gwmenuaction.c:64
+msgid "_Action"
+msgstr "_Acção"
+
+#: src/gui/gwmenuaction.c:85
+msgid "_Expand all"
+msgstr "_Expandir todos"
+
+#: src/gui/gwmenuaction.c:101
+msgid "Expand only _disks"
+msgstr "Expandir apenas _discos"
+
+#: src/gui/gwmenuaction.c:115
+msgid "C_ollapse all"
+msgstr "C_olapsar todos"
+
+# src/gui/MenuAction.c:54
+# src/gui/MenuAction.c:54
+#: src/gui/gwmenuaction.c:138
+msgid "Edit _categories"
+msgstr "Editar _categorias"
+
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenuactioncallback.c:151
+msgid "No catalog is opened : cannot edit categories"
+msgstr "Nenhum catálogo está aberto : impossível editar categorias"
+
+# src/gui/MenuFile.c:48
+# src/gui/MenuFile.c:48
+#: src/gui/gwmenufile.c:85
+msgid "_File"
+msgstr "_Ficheiro"
+
+# src/gui/MenuFile.c:61
+# src/gui/MenuFile.c:61
+#: src/gui/gwmenufile.c:106
+msgid "_New"
+msgstr "_Novo"
+
+# src/gui/MenuFile.c:71
+# src/gui/MenuFile.c:71
+#: src/gui/gwmenufile.c:120
+msgid "_Open"
+msgstr "_Abrir"
+
+# src/gui/MenuFile.c:81
+# src/gui/MenuFile.c:81
+#: src/gui/gwmenufile.c:134
+msgid "_Save"
+msgstr "_Guardar"
+
+# src/gui/MenuFile.c:91
+# src/gui/MenuFile.c:91
+#: src/gui/gwmenufile.c:148
+msgid "Sav_e as"
+msgstr "_Guardar Como"
+
+# src/gui/MenuFile.c:101
+# src/gui/MenuFile.c:101
+#: src/gui/gwmenufile.c:162
+msgid "C_lose"
+msgstr "_Fechar"
+
+#: src/gui/gwmenufile.c:183
+msgid "Import"
+msgstr "Importar"
+
+#: src/gui/gwmenufile.c:199
+msgid "Export"
+msgstr "Exportar"
+
+# src/gui/MenuFile.c:118
+# src/gui/MenuFile.c:118
+#: src/gui/gwmenufile.c:222
+msgid "_Properties"
+msgstr "_Propriedades"
+
+# src/gui/MenuFileCallBack.c:73
+# src/gui/MenuFileCallBack.c:82
+#: src/gui/gwmenufile.c:243
+msgid "_Recents files"
+msgstr "_Ficheiros recentes"
+
+# src/gui/MenuFile.c:135
+# src/gui/MenuFile.c:135
+#: src/gui/gwmenufile.c:266
+msgid "E_xit"
+msgstr "_Sair"
+
+# src/gui/MenuFileCallBack.c:56 src/gui/MenuFileCallBack.c:329
+# src/gui/MenuFileCallBack.c:343 src/gui/MenuFileCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:148 src/gui/ToolBar.c:53
+# src/gui/MenuFileCallBack.c:61 src/gui/MenuFileCallBack.c:412
+# src/gui/MenuFileCallBack.c:433 src/gui/MenuFileCallBack.c:476
+# src/gui/NoteBookManagmentCallBack.c:190 src/gui/ToolBar.c:70
+#. Else ask the new catalog name
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:75
+#: src/gui/gwmenufilecallback.c:607 src/gui/gwmenufilecallback.c:625
+#: src/gui/gwmenufilecallback.c:671 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gui/gwnotebookmanagmentcallback.c:256 src/gui/gwtoolbar.c:77
+msgid "New catalog"
+msgstr "Novo catálogo"
+
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:95
+#: src/gui/gwmenufilecallback.c:1357 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gwapplicationmanager.c:130
+msgid "There is no available catalog plugin"
+msgstr "Não existem plugins de catálogo disponíveis"
+
+# src/gui/MenuFileCallBack.c:51 src/gui/MenuFileCallBack.c:73
+# src/gui/MenuFileCallBack.c:95 src/gui/MenuFileCallBack.c:186
+# src/gui/MenuFileCallBack.c:56 src/gui/MenuFileCallBack.c:82
+# src/gui/MenuFileCallBack.c:108 src/gui/MenuFileCallBack.c:223
+#. if ( gw_db_catalog_get_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_db_name ( catalog))>0 ) {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_db_name ( catalog), "\n", NULL);
+#. } else {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_name ( catalog), "\n", NULL);
+#. }
+#. If has been modified, ask to save it before open another catalog
+#: src/gui/gwmenufilecallback.c:69 src/gui/gwmenufilecallback.c:102
+#: src/gui/gwmenufilecallback.c:138 src/gui/gwmenufilecallback.c:180
+#: src/gui/gwmenufilecallback.c:461 src/gui/gwmenufilecallback.c:1367
+msgid ""
+"Would you want save catalog :\n"
+"\n"
+msgstr ""
+"Deseja guardar o catálogo :\n"
+"\n"
+
+# src/gui/MenuFileCallBack.c:51
+# src/gui/MenuFileCallBack.c:56
+#: src/gui/gwmenufilecallback.c:70
+msgid "New file"
+msgstr "Novo ficheiro"
+
+# src/gui/MenuFileCallBack.c:56 src/gui/MenuFileCallBack.c:329
+# src/gui/MenuFileCallBack.c:343 src/gui/MenuFileCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:148
+# src/gui/MenuFileCallBack.c:61 src/gui/MenuFileCallBack.c:412
+# src/gui/MenuFileCallBack.c:433 src/gui/MenuFileCallBack.c:476
+# src/gui/NoteBookManagmentCallBack.c:190
+#: src/gui/gwmenufilecallback.c:75 src/gui/gwmenufilecallback.c:607
+#: src/gui/gwmenufilecallback.c:625 src/gui/gwmenufilecallback.c:671
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Enter catalog name"
+msgstr "Introduza o nome do catálogo"
+
+# src/gui/MenuFileCallBack.c:78 src/gui/MenuFileCallBack.c:411
+# src/gui/MenuFileCallBack.c:425 src/gui/MenuFileCallBack.c:463
+# src/gui/ToolBar.c:55
+# src/gui/MenuFileCallBack.c:87 src/gui/MenuFileCallBack.c:509
+# src/gui/MenuFileCallBack.c:527 src/gui/MenuFileCallBack.c:569
+# src/gui/ToolBar.c:72
+#. Else opens file selection box
+#: src/gui/gwmenufilecallback.c:95 src/gui/gwmenufilecallback.c:108
+#: src/gui/gwmenufilecallback.c:702 src/gui/gwmenufilecallback.c:719
+#: src/gui/gwmenufilecallback.c:829 src/gui/gwtoolbar.c:81
+msgid "Open catalog"
+msgstr "Abrir catálogo"
+
+# src/gui/MenuFileCallBack.c:73
+# src/gui/MenuFileCallBack.c:82
+#: src/gui/gwmenufilecallback.c:103 src/gui/gwmenufilecallback.c:1357
+#: src/gui/gwmenufilecallback.c:1369
+msgid "Open file"
+msgstr "Abrir ficheiro"
+
+# src/gui/MenuFileCallBack.c:95
+# src/gui/MenuFileCallBack.c:108
+#: src/gui/gwmenufilecallback.c:139 src/gui/gwmenufilecallback.c:148
+msgid "Close file"
+msgstr "Fechar ficheiro"
+
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenufilecallback.c:148 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:365 src/gui/gwmenufilecallback.c:406
+#: src/gui/gwmenufilecallback.c:428 src/gui/gwmenufilecallback.c:1336
+msgid "No catalog is opened"
+msgstr "Nenhum catálogo está aberto"
+
+#: src/gui/gwmenufilecallback.c:181 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:196 src/gui/gwmenufilecallback.c:270
+msgid "Send file by mail"
+msgstr "Enviar ficheiro por email"
+
+#: src/gui/gwmenufilecallback.c:196
+msgid "Please configure mail options in the settings in order to send mails."
+msgstr ""
+"Por favor configure as opções de email por forma a poder enviar emails."
+
+# src/gui/MenuFileCallBack.c:146 src/gui/MenuFileCallBack.c:169
+# src/gui/MenuFileCallBack.c:323 src/gui/MenuFileCallBack.c:405
+# src/gui/MenuFileCallBack.c:486 src/gui/MenuFileCallBack.c:564
+# src/gui/MenuFileCallBack.c:629
+# src/gui/MenuFileCallBack.c:175 src/gui/MenuFileCallBack.c:202
+# src/gui/MenuFileCallBack.c:406 src/gui/MenuFileCallBack.c:503
+# src/gui/MenuFileCallBack.c:596 src/gui/MenuFileCallBack.c:686
+# src/gui/MenuFileCallBack.c:763
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_new_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_open_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks un file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_saveas_file_selection_ok, NULL);
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_exit_saveas_file_selection_ok, NULL);
+#: src/gui/gwmenufilecallback.c:228 src/gui/gwmenufilecallback.c:394
+#: src/gui/gwmenufilecallback.c:425 src/gui/gwmenufilecallback.c:428
+#: src/gui/gwmenufilecallback.c:603 src/gui/gwmenufilecallback.c:697
+#: src/gui/gwmenufilecallback.c:749 src/gui/gwmenufilecallback.c:921
+#: src/gui/gwmenufilecallback.c:977 src/gui/gwmenufilecallback.c:1020
+#: src/gui/gwmenufilecallback.c:1122
+msgid "Save as catalog"
+msgstr "Gravar como catálogo"
+
+#: src/gui/gwmenufilecallback.c:270
+msgid "The current catalog is never be saved, cannot send it"
+msgstr "O catálogo actual nunca foi guardado, impossível enviar"
+
+# src/gui/StatusBar.c:220
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenufilecallback.c:365
+msgid "Catalog properties"
+msgstr " Propriedades do catálogo"
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:1140 src/Catalog.c:1149 src/Catalog.c:1221 src/Catalog.c:1231
+# src/Catalog.c:1235 src/Catalog.c:1251 src/Catalog.c:1276 src/Catalog.c:1292
+# src/Catalog.c:1315 src/Catalog.c:1330 src/gui/ToolBar.c:74
+#: src/gui/gwmenufilecallback.c:406 src/gui/gwtoolbar.c:85
+msgid "Save catalog"
+msgstr "Guardar catálogo"
+
+# src/gui/MenuFileCallBack.c:186
+# src/gui/MenuFileCallBack.c:223
+#. If has been modified, ask to save it before exit program
+#: src/gui/gwmenufilecallback.c:455
+msgid "Quit "
+msgstr "Sair "
+
+#: src/gui/gwmenufilecallback.c:1231 src/gui/gwmenufilecallback.c:1233
+#: src/gui/gwmenufilecallback.c:1263 src/gui/gwmenufilecallback.c:1267
+msgid "Import catalog from"
+msgstr "Importar catálogo de"
+
+# src/gui/StatusBar.c:220
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenufilecallback.c:1231
+msgid "Catalog imported"
+msgstr "Catálogo importado"
+
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenufilecallback.c:1233
+msgid "Catalog is not imported"
+msgstr "O Catálogo não foi importado"
+
+# src/gui/MenuFileCallBack.c:142
+#: src/gui/gwmenufilecallback.c:1267
+msgid "A catalog is already opened"
+msgstr "Já existe um catálogo aberto"
+
+# src/gui/MenuFileCallBack.c:56 src/gui/MenuFileCallBack.c:329
+# src/gui/MenuFileCallBack.c:343 src/gui/MenuFileCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:148
+# src/gui/MenuFileCallBack.c:61 src/gui/MenuFileCallBack.c:412
+# src/gui/MenuFileCallBack.c:433 src/gui/MenuFileCallBack.c:476
+# src/gui/NoteBookManagmentCallBack.c:190
+#: src/gui/gwmenufilecallback.c:1291 src/gui/gwmenufilecallback.c:1293
+#: src/gui/gwmenufilecallback.c:1329 src/gui/gwmenufilecallback.c:1336
+msgid "Export catalog to"
+msgstr "Exportar catálogo para"
+
+# src/gui/StatusBar.c:220
+# src/gui/StatusBarCallBack.c:168
+#: src/gui/gwmenufilecallback.c:1291
+msgid "Catalog exported"
+msgstr "Catálogo exportado"
+
+# src/gui/StatusBar.c:220
+# src/gui/StatusBarCallBack.c:168
+#: src/gui/gwmenufilecallback.c:1293
+msgid "Catalog is not exported"
+msgstr "O Catálogo não foi exportado"
+
+# src/gui/MenuHelp.c:41
+# src/gui/MenuHelp.c:41
+#: src/gui/gwmenuhelp.c:53
+msgid "_Help"
+msgstr "_Ajuda"
+
+# src/gui/MenuHelp.c:54
+# src/gui/MenuHelp.c:54
+#: src/gui/gwmenuhelp.c:75
+msgid "A_bout"
+msgstr "_Sobre"
+
+# src/gui/NoteBookManagment.c:277
+# src/gui/NoteBookManagment.c:298
+#: src/gui/gwmenuoptions.c:54
+msgid "_Options"
+msgstr "_Opções"
+
+#: src/gui/gwmenuoptions.c:75
+msgid "Se_ttings"
+msgstr "Configuração"
+
+# src/gui/MenuPopup.c:37 src/gui/MenuPopup.c:107
+# src/gui/MenuPopup.c:38 src/gui/MenuPopup.c:108
+#: src/gui/gwmenupopup.c:43 src/gui/gwmenupopup.c:146
+msgid "New"
+msgstr "Novo"
+
+# src/gui/MenuPopup.c:42 src/gui/MenuPopup.c:112
+# src/gui/MenuPopup.c:43 src/gui/MenuPopup.c:113
+#: src/gui/gwmenupopup.c:49 src/gui/gwmenupopup.c:152
+msgid "Open"
+msgstr "Abrir"
+
+# src/gui/MenuPopup.c:47 src/gui/MenuPopup.c:117
+# src/gui/MenuPopup.c:48 src/gui/MenuPopup.c:118
+#: src/gui/gwmenupopup.c:55 src/gui/gwmenupopup.c:158
+msgid "Save"
+msgstr "Guardar"
+
+# src/gui/MenuPopup.c:52 src/gui/MenuPopup.c:122
+# src/gui/MenuPopup.c:53 src/gui/MenuPopup.c:123
+#: src/gui/gwmenupopup.c:61 src/gui/gwmenupopup.c:164
+msgid "Save as"
+msgstr "Guardar como"
+
+# src/gui/MenuPopup.c:66
+# src/gui/MenuPopup.c:67
+#: src/gui/gwmenupopup.c:76
+msgid "Exit"
+msgstr "Sair"
+
+# src/gui/MenuPopup.c:83 src/gui/MenuPopup.c:158
+# src/gui/MenuPopup.c:84 src/gui/MenuPopup.c:159
+#: src/gui/gwmenupopup.c:119 src/gui/gwmenupopup.c:228
+#: src/gui/gwmenupopup.c:304 src/gui/gwmenupopup.c:373
+msgid "Rename"
+msgstr "Renomear"
+
+# src/MenuPopupCallBack.c:124 src/MenuPopupCallBack.c:350
+# src/MenuPopupCallBack.c:435 src/MenuPopupCallBack.c:564
+# src/gui/MenuPopup.c:93 src/gui/MenuPopup.c:173 src/gui/MenuPopup.c:204
+# src/gui/MenuPopup.c:238
+# src/gui/MenuPopup.c:94 src/gui/MenuPopup.c:174 src/gui/MenuPopup.c:205
+# src/gui/MenuPopup.c:240 src/gui/MenuPopupCallBack.c:129
+# src/gui/MenuPopupCallBack.c:358 src/gui/MenuPopupCallBack.c:444
+# src/gui/MenuPopupCallBack.c:574
+#. g_strdup_to_gtk_text ( _( "Add new disk"), text_utf8);
+#. menuitem = gtk_menu_item_new_with_label ( text_utf8);
+#. g_free ( text_utf8);
+#. gtk_menu_append ( GTK_MENU ( menu), menuitem);
+#. gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_add_new_disk, node);
+#.
+#: src/gui/gwmenupopup.c:131 src/gui/gwmenupopup.c:246
+#: src/gui/gwmenupopup.c:310 src/gui/gwmenupopup.c:379
+#: src/gui/gwmenupopupcallback.c:171 src/gui/gwmenupopupcallback.c:528
+#: src/gui/gwmenupopupcallback.c:747 src/gui/gwmenupopupcallback.c:1024
+msgid "Edit description"
+msgstr "Editar descrição"
+
+# src/gui/MenuPopup.c:136 src/gui/MenuPopup.c:182 src/gui/MenuPopup.c:218
+# src/gui/MenuPopup.c:252 src/gui/Properties.c:85
+# src/gui/MenuPopup.c:137 src/gui/MenuPopup.c:183 src/gui/MenuPopup.c:219
+# src/gui/MenuPopup.c:254 src/gui/PropertiesBox.c:110
+#: src/gui/gwmenupopup.c:179 src/gui/gwmenupopup.c:255
+#: src/gui/gwmenupopup.c:325 src/gui/gwmenupopup.c:394
+#: src/gui/gwpropertiesbox.c:110
+msgid "Properties"
+msgstr "Propriedades"
+
+# src/gui/MenuPopup.c:153 src/gui/MenuPopup.c:199
+# src/gui/MenuPopup.c:154 src/gui/MenuPopup.c:200
+#: src/gui/gwmenupopup.c:222 src/gui/gwmenupopup.c:298
+msgid "Move To..."
+msgstr "Mover para..."
+
+# src/gui/MenuPopup.c:163
+# src/gui/MenuPopup.c:164
+#: src/gui/gwmenupopup.c:234
+msgid "Delete disk"
+msgstr "Apagar disco"
+
+# src/MenuPopupCallBack.c:299 src/gui/MenuPopup.c:168
+# src/gui/MenuPopup.c:169 src/gui/MenuPopupCallBack.c:306
+#: src/gui/gwmenupopup.c:240 src/gui/gwmenupopupcallback.c:453
+msgid "Change volume label"
+msgstr "Alterar a etiqueta do volume"
+
+# src/gui/MenuPopup.c:209 src/gui/MenuPopup.c:243
+# src/gui/MenuPopup.c:210 src/gui/MenuPopup.c:245
+#: src/gui/gwmenupopup.c:316 src/gui/gwmenupopup.c:385
+msgid "Remove from catalog"
+msgstr "Remover do catálogo"
+
+# src/gui/MenuPopup.c:259
+# src/gui/MenuPopup.c:261
+#: src/gui/gwmenupopup.c:402
+msgid "Edit file"
+msgstr "Editar ficheiro"
+
+# src/gui/MenuPopup.c:259
+# src/gui/MenuPopup.c:261
+#: src/gui/gwmenupopup.c:402
+msgid "Can't edit this file!!\n"
+msgstr "Não é possível editar este ficheiro!!\n"
+
+# src/MenuPopupCallBack.c:56
+# src/gui/MenuPopupCallBack.c:57
+#: src/gui/gwmenupopupcallback.c:64 src/gui/gwmenupopupcallback.c:121
+msgid "Rename catalog"
+msgstr "Renomear catálogo"
+
+# src/MenuPopupCallBack.c:56
+# src/gui/MenuPopupCallBack.c:57
+#: src/gui/gwmenupopupcallback.c:64
+msgid "Enter new catalog name"
+msgstr "Introduza um nome para o novo catálogo"
+
+# src/gui/NoteBookManagmentCallBack.c:165
+# src/gui/NoteBookManagmentCallBack.c:213
+#: src/gui/gwmenupopupcallback.c:121
+msgid "Invalid filled catalog name"
+msgstr "Nome do catálogo incorrectamente preenchido"
+
+# src/MenuPopupCallBack.c:124
+# src/gui/MenuPopupCallBack.c:129
+#: src/gui/gwmenupopupcallback.c:171
+msgid "Catalog description"
+msgstr "Descrição do catálogo"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:320 src/gui/gwmenupopupcallback.c:360
+#: src/gui/gwmenupopupcallback.c:374
+msgid "Rename disk"
+msgstr "Renomear disco"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:320
+msgid "Enter new disk name"
+msgstr "Introduza um nome para o novo disco"
+
+#: src/gui/gwmenupopupcallback.c:360
+msgid "The filled disk name already exist in the current catalog"
+msgstr "O nome especificado para o disco já existe no catálogo"
+
+#: src/gui/gwmenupopupcallback.c:374
+msgid "No new disk name was filled"
+msgstr "Não especificou um novo nome para o disco"
+
+# src/MenuPopupCallBack.c:299
+# src/gui/MenuPopupCallBack.c:306
+#: src/gui/gwmenupopupcallback.c:453
+msgid "Enter new disk volume label"
+msgstr "Introduza a etiqueta de volume do novo disco"
+
+# src/MenuPopupCallBack.c:350
+# src/gui/MenuPopupCallBack.c:358
+#: src/gui/gwmenupopupcallback.c:528
+msgid "Disk description"
+msgstr "Descrição do disco"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:652 src/gui/gwmenupopupcallback.c:693
+#: src/gui/gwmenupopupcallback.c:707
+msgid "Rename folder"
+msgstr "Renomear directoria"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:652
+msgid "Enter new folder name"
+msgstr "Introduza o novo nome para a directoria"
+
+#: src/gui/gwmenupopupcallback.c:693
+msgid "The filled folder name already exist in the current folder"
+msgstr "O nome especificado para a directoria já existe"
+
+#: src/gui/gwmenupopupcallback.c:707
+msgid "No new folder name was filled"
+msgstr "Não inseriu um nome para a directoria"
+
+# src/MenuPopupCallBack.c:435
+# src/gui/MenuPopupCallBack.c:444
+#: src/gui/gwmenupopupcallback.c:747
+msgid "Folder description"
+msgstr "Descrição da directoria"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:921 src/gui/gwmenupopupcallback.c:956
+#: src/gui/gwmenupopupcallback.c:965
+msgid "Rename file"
+msgstr "Renomear ficheiro"
+
+# src/MenuPopupCallBack.c:219
+# src/gui/MenuPopupCallBack.c:225
+#: src/gui/gwmenupopupcallback.c:921
+msgid "Enter new file name"
+msgstr "Introduza o novo nome para o ficheiro"
+
+#: src/gui/gwmenupopupcallback.c:956
+msgid "The filled file name already exist in the current folder"
+msgstr "O nome especificado para o ficheiro já existe"
+
+#: src/gui/gwmenupopupcallback.c:965
+msgid "No new file name was filled"
+msgstr "Não especificou um nome para o ficheiro"
+
+# src/MenuPopupCallBack.c:564
+# src/gui/MenuPopupCallBack.c:574
+#: src/gui/gwmenupopupcallback.c:1024
+msgid "File description"
+msgstr "Descrição do ficheiro"
+
+# src/gui/NoteBookCatalog.c:66
+# src/gui/NoteBookCatalog.c:67
+#: src/gui/gwnotebookcatalog.c:96
+msgid "Archive"
+msgstr "Arquivo"
+
+# src/gui/NoteBookCatalog.c:152
+# src/gui/NoteBookCatalog.c:153
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebookcatalog.c:202
+msgid "Catalog"
+msgstr "Catálogo"
+
+# src/gui/ToolBar.c:59
+# src/gui/ToolBar.c:76
+#: src/gui/gwnotebookcatalog.c:764
+msgid "Closing catalog"
+msgstr "A fechar catálogo"
+
+# src/gui/NoteBookManagmentCallBack.c:181
+# src/gui/NoteBookManagmentCallBack.c:217
+# src/gui/NoteBookManagmentCallBack.c:234
+#: src/gui/gwnotebookcatalog.c:764 src/gui/gwnotebooksearchcallback.c:324
+#: src/gwapplicationmanager.c:603
+msgid "Please wait..."
+msgstr "Por favor aguarde..."
+
+# src/gui/Properties.c:641
+# src/gui/PropertiesBox.c:583
+#: src/gui/gwnotebookcatalog.c:782
+msgid "Catalog closed"
+msgstr "Catálogo encerrado"
+
+# src/Exploration.c:599 src/Exploration.c:655 src/Exploration.c:733
+# src/Exploration.c:789
+# src/Exploration.c:620 src/Exploration.c:676 src/Exploration.c:757
+# src/Exploration.c:813
+#: src/gui/gwnotebookcatalogcallback.c:1275 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1647
+msgid "unknown owner"
+msgstr "proprietário desconhecido"
+
+# src/Exploration.c:607 src/Exploration.c:663 src/Exploration.c:741
+# src/Exploration.c:797
+# src/Exploration.c:628 src/Exploration.c:684 src/Exploration.c:765
+# src/Exploration.c:821
+#: src/gui/gwnotebookcatalogcallback.c:1280 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1667
+msgid "unknown group"
+msgstr "grupo desconhecido"
+
+# src/gui/NoteBookManagment.c:99 src/gui/NoteBookManagmentCallBack.c:165
+# src/gui/NoteBookManagment.c:127 src/gui/NoteBookManagmentCallBack.c:213
+#. Frame of new disk control
+#: src/gui/gwnotebookmanagment.c:159 src/gui/gwnotebookmanagmentcallback.c:275
+msgid "New disk"
+msgstr "Novo disco"
+
+# src/gui/NoteBookManagment.c:115
+# src/gui/NoteBookManagment.c:139
+#: src/gui/gwnotebookmanagment.c:173
+msgid "Select the media that will be added as disk to your catalog."
+msgstr "Seleccione o suporte que será adicionado como disco ao seu catálogo."
+
+# src/gui/NoteBookManagment.c:117
+# src/gui/NoteBookManagment.c:142
+#. Label for media selection
+#: src/gui/gwnotebookmanagment.c:178
+msgid "Select media : "
+msgstr "Seleccione o suporte : "
+
+# src/gui/NoteBookManagment.c:144
+# src/gui/NoteBookManagment.c:167
+#: src/gui/gwnotebookmanagment.c:212
+msgid ""
+"Enter the number of the new disk. This number can help you with the history "
+"of your catalog."
+msgstr ""
+"Introduza o número do novo disco. Este número poderá ajudá-lo na história do "
+"seu catálogo."
+
+# src/gui/NoteBookManagment.c:146 src/gui/Properties.c:717
+# src/gui/NoteBookManagment.c:170 src/gui/PropertiesBox.c:653
+#. Label for number archive
+#. Number archive label
+#: src/gui/gwnotebookmanagment.c:217 src/gui/gwpropertiesbox.c:842
+msgid "Archive N# : "
+msgstr "Arquivo N# : "
+
+# src/gui/NoteBookManagment.c:161
+# src/gui/NoteBookManagment.c:183
+#: src/gui/gwnotebookmanagment.c:232
+msgid ""
+"Enter the name of the new disk. This name will be appear in your catalog."
+msgstr "Introduza o nome do novo disco. Esse nome aparecerá no seu catálogo."
+
+# src/gui/NoteBookManagment.c:163
+# src/gui/NoteBookManagment.c:186
+#. Label for disk name
+#: src/gui/gwnotebookmanagment.c:237
+msgid "Name : "
+msgstr "Nome : "
+
+# src/gui/NoteBookManagment.c:179 src/gui/Properties.c:945
+# src/gui/Properties.c:1288 src/gui/Properties.c:1646
+# src/gui/NoteBookManagment.c:200 src/gui/PropertiesBox.c:811
+# src/gui/PropertiesBox.c:1065 src/gui/PropertiesBox.c:1334
+#. ComboBox for category selection
+#. It's not mandatory to encode to UTF-8 because gw_combo_box_categories_create() encodes itself.
+#. Combo box for categories list
+#: src/gui/gwnotebookmanagment.c:255 src/gui/gwpropertiesbox.c:1077
+#: src/gui/gwpropertiesbox.c:1403 src/gui/gwpropertiesbox.c:1737
+msgid "Category : "
+msgstr "Categoria : "
+
+# src/gui/NoteBookManagment.c:185
+# src/gui/NoteBookManagment.c:206
+#: src/gui/gwnotebookmanagment.c:261
+msgid ""
+"Select the category to apply to the disk which will be added (even if the "
+"option is checked)."
+msgstr ""
+"Seleccione a categoria a que pertence o disco a adicionar (mesmo se a opção "
+"estiver marcada)."
+
+# src/gui/NoteBookManagment.c:270
+# src/gui/NoteBookManagment.c:289
+#: src/gui/gwnotebookmanagment.c:273
+msgid "Give the device file of the selected media."
+msgstr "Indique o ficheiro de dispositivo do suporte seleccionado."
+
+# src/gui/NoteBookManagment.c:199 src/gui/NoteBookManagmentCallBack.c:300
+# src/gui/NoteBookManagmentCallBack.c:341
+# src/gui/NoteBookManagment.c:219 src/gui/NoteBookManagmentCallBack.c:332
+# src/gui/NoteBookManagmentCallBack.c:376
+#. Device file information label
+#: src/gui/gwnotebookmanagment.c:278 src/gui/gwnotebookmanagmentcallback.c:420
+#: src/gui/gwnotebookmanagmentcallback.c:479
+msgid "Info : "
+msgstr "Informação : "
+
+# src/gui/NoteBookManagment.c:210
+# src/gui/NoteBookManagment.c:229
+#: src/gui/gwnotebookmanagment.c:290
+msgid "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."
+msgstr ""
+"Indique o tipo do suporte seleccionado. (ex: ext2, ext3, vfat, ntfs, ...)"
+
+# src/gui/NoteBookManagment.c:212 src/gui/NoteBookManagmentCallBack.c:302
+# src/gui/NoteBookManagmentCallBack.c:356 src/gui/Properties.c:759
+# src/gui/Properties.c:760
+# src/gui/NoteBookManagment.c:232 src/gui/NoteBookManagmentCallBack.c:335
+# src/gui/NoteBookManagmentCallBack.c:390 src/gui/PropertiesBox.c:684
+#. Device type information label
+#: src/gui/gwnotebookmanagment.c:295 src/gui/gwnotebookmanagmentcallback.c:425
+#: src/gui/gwnotebookmanagmentcallback.c:497 src/gui/gwpropertiesbox.c:883
+msgid "Type : "
+msgstr "Tipo : "
+
+# src/gui/NoteBookManagment.c:222
+# src/gui/NoteBookManagment.c:241
+#: src/gui/gwnotebookmanagment.c:307
+msgid "Display if the selected media is mounted or no."
+msgstr "Mostrar se o suporte seleccionado está ou não montado."
+
+# src/gui/NoteBookManagment.c:224 src/gui/NoteBookManagmentCallBack.c:304
+# src/gui/NoteBookManagmentCallBack.c:361
+# src/gui/NoteBookManagment.c:244 src/gui/NoteBookManagmentCallBack.c:338
+# src/gui/NoteBookManagmentCallBack.c:395
+#. Media mount state information label
+#: src/gui/gwnotebookmanagment.c:312 src/gui/gwnotebookmanagmentcallback.c:431
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Mounted : "
+msgstr "Montado : "
+
+# src/gui/NoteBookManagment.c:234
+# src/gui/NoteBookManagment.c:253
+#: src/gui/gwnotebookmanagment.c:324
+msgid "Give the volume name of the selected media (only if is mounted)."
+msgstr ""
+"Indique o nome de volume do suporte seleccionado (apenas se estiver montado)."
+
+# src/gui/NoteBookManagment.c:236 src/gui/NoteBookManagmentCallBack.c:306
+# src/gui/NoteBookManagment.c:256 src/gui/NoteBookManagmentCallBack.c:341
+#. Media volume information label
+#: src/gui/gwnotebookmanagment.c:329 src/gui/gwnotebookmanagmentcallback.c:437
+msgid "Volume : "
+msgstr "Volume : "
+
+# src/gui/NoteBookManagment.c:246
+# src/gui/NoteBookManagment.c:265
+#: src/gui/gwnotebookmanagment.c:340
+msgid ""
+"Give the serial number of the selected media (only if is mounted). This "
+"number is a manufacture number."
+msgstr ""
+"Indique o número de série do suporte seleccionado (caso esteja montado). "
+"Este é um número de fábrica."
+
+# src/gui/NoteBookManagment.c:248
+# src/gui/NoteBookManagment.c:268
+#. Media serial number information label
+#: src/gui/gwnotebookmanagment.c:345
+msgid "Serial N# : "
+msgstr "Número de série N#"
+
+# src/gui/NoteBookManagment.c:258
+# src/gui/NoteBookManagment.c:277
+#: src/gui/gwnotebookmanagment.c:356
+msgid "Give the full space of the selected media (only if is mounted)."
+msgstr "Indique o espaço total do suporte seleccionado (caso esteja montado)."
+
+# src/gui/NoteBookManagment.c:260 src/gui/NoteBookManagmentCallBack.c:310
+# src/gui/NoteBookManagmentCallBack.c:386
+# src/gui/NoteBookManagment.c:280 src/gui/NoteBookManagmentCallBack.c:347
+# src/gui/NoteBookManagmentCallBack.c:420
+#. Media capacity information label
+#: src/gui/gwnotebookmanagment.c:361 src/gui/gwnotebookmanagmentcallback.c:447
+#: src/gui/gwnotebookmanagmentcallback.c:539
+msgid "Capacity : "
+msgstr "Capacidade : "
+
+# src/gui/NoteBookManagment.c:270
+# src/gui/NoteBookManagment.c:289
+#: src/gui/gwnotebookmanagment.c:372
+msgid "Give the free space of the selected media (only if is mounted)."
+msgstr "Indique o espaço livre no suporte seleccionado (caso esteja montado)."
+
+# src/gui/NoteBookManagment.c:272 src/gui/NoteBookManagmentCallBack.c:312
+# src/gui/NoteBookManagmentCallBack.c:390
+# src/gui/NoteBookManagment.c:292 src/gui/NoteBookManagmentCallBack.c:350
+# src/gui/NoteBookManagmentCallBack.c:424
+#. Media free space information label
+#: src/gui/gwnotebookmanagment.c:377 src/gui/gwnotebookmanagmentcallback.c:452
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "Free space : "
+msgstr "Espaço livre : "
+
+# src/gui/NoteBookManagment.c:277
+# src/gui/NoteBookManagment.c:298
+#. Frame for scan options
+#: src/gui/gwnotebookmanagment.c:385
+msgid "Options"
+msgstr "Opções"
+
+# src/gui/NoteBookManagment.c:288
+# src/gui/NoteBookManagment.c:307
+#. Check button for the displaying of media information
+#: src/gui/gwnotebookmanagment.c:396
+msgid "Display info"
+msgstr "Monstrar informação"
+
+# src/gui/NoteBookManagment.c:295
+# src/gui/NoteBookManagment.c:314
+#: src/gui/gwnotebookmanagment.c:404
+msgid ""
+"Displays selected media informations as path, capacity, free space, label,..."
+msgstr ""
+"Mostra informações acerca do suporte seleccionado tais como caminho, "
+"capacidade, espaço livre, etiqueta,..."
+
+# src/gui/NoteBookManagment.c:297
+# src/gui/NoteBookManagment.c:317
+#. Check button for the automount
+#: src/gui/gwnotebookmanagment.c:410
+msgid "Automount"
+msgstr "Automount"
+
+# src/gui/NoteBookManagment.c:304
+# src/gui/NoteBookManagment.c:324
+#: src/gui/gwnotebookmanagment.c:418
+msgid ""
+"Mount the media if it wasn't mounted. And unmount after the media even if it "
+"was mounted before the scan."
+msgstr ""
+"Monta o suporte caso ainda nao o tenha feito. E desmonta após mesmo se já "
+"montado antes da procura."
+
+# src/gui/Properties.c:706
+# src/gui/PropertiesBox.c:645
+#. Check button for the exploring of tree structure
+#: src/gui/gwnotebookmanagment.c:424
+msgid "Explore tree structure of the media."
+msgstr "Explorar a estrutura de árvore do suporte."
+
+#: src/gui/gwnotebookmanagment.c:432
+msgid "Keep this option checked to scan all folders and files informations."
+msgstr ""
+"Mantenha esta opção seleccionada para percorrer toda a informação de pastas "
+"e ficheiros."
+
+# src/gui/NoteBookManagment.c:306
+# src/gui/NoteBookManagment.c:327
+#. Check button for the exploring of archive files
+#: src/gui/gwnotebookmanagment.c:437
+msgid "Explore archive files (.tar, .gz, .zip, ...)"
+msgstr "Explorar arquivos (.tar, .gz, .zip, ...)"
+
+# src/gui/NoteBookManagment.c:313
+# src/gui/NoteBookManagment.c:334
+#: src/gui/gwnotebookmanagment.c:445
+msgid ""
+"Not yet implemented!!\n"
+"Explore all archives, as it was a directory. Archives are tarred or gzipped "
+"files."
+msgstr ""
+"Ainda não implementado!!\n"
+"Explore todos os arquivos como se de directorias se tratassem. Arquivos "
+"estão como tar ou gzip."
+
+# src/gui/NoteBookManagment.c:315
+# src/gui/NoteBookManagment.c:337
+#. Check button for the auto eject
+#: src/gui/gwnotebookmanagment.c:450
+msgid "Eject media if possible"
+msgstr "Ejectar suporte se possível"
+
+# src/gui/NoteBookManagment.c:322
+# src/gui/NoteBookManagment.c:344
+#: src/gui/gwnotebookmanagment.c:458
+msgid ""
+"Eject the media if possible (CD-ROM...), even if the tray was closed. This "
+"is enable only if automount is enable!!"
+msgstr ""
+"Ejectar o suporte se possível (CD-ROM...), mesmo se a drive estiver fechada. "
+"Isto apenas é possível caso o automount estiver activado!!"
+
+# src/gui/NoteBookManagment.c:324
+# src/gui/NoteBookManagment.c:347
+#. Check button for setting category recursively
+#: src/gui/gwnotebookmanagment.c:463
+msgid "Sets category recursive"
+msgstr "Definir categoria como recursiva"
+
+# src/gui/NoteBookManagment.c:330
+# src/gui/NoteBookManagment.c:353
+#: src/gui/gwnotebookmanagment.c:471
+msgid ""
+"Apply selected category to all items in the disk to add (disk, folders and "
+"files)."
+msgstr ""
+"Aplicar a categoria seleccionada a todos os items no disco a adicionar  "
+"(disco, directórios e ficheiros)."
+
+# src/gui/NoteBookManagment.c:332
+# src/gui/NoteBookManagment.c:356
+#. Check button for the auto make description
+#: src/gui/gwnotebookmanagment.c:476
+msgid "Auto make description"
+msgstr "Colocar descrição automaticamente"
+
+# src/gui/NoteBookManagment.c:337
+# src/gui/NoteBookManagment.c:361
+#: src/gui/gwnotebookmanagment.c:484
+msgid ""
+"Make auto description of file (file format description, image size for xmp "
+"or jpg, etc...)."
+msgstr ""
+"Efectuar auto descrição do ficheiro (formato do ficheiro, tamanho da imagem "
+"para xmp ou jpg, etc...)."
+
+#. Check button for the using a pattern to generate disk name
+#: src/gui/gwnotebookmanagment.c:489
+msgid "Use an advanced pattern to generate disk name"
+msgstr "Utilizar um padrão avançado para gerar o nome do disco"
+
+#: src/gui/gwnotebookmanagment.c:497
+msgid ""
+"You can fill extra tags to generate a disk name with disk information :\n"
+"- %% : %\n"
+"- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, "
+"0002, 0003, ..., 0091, ...\n"
+"- %l : media volume label\n"
+"- %t : media type\n"
+"- %s : serial number"
+msgstr ""
+"Poderá preencher com tags extra para gerar um nome de disco com informação "
+"sobre o disco :\n"
+"- %% : %\n"
+"- %n : número do arquivo (poderá usar prefixo 0 : %.4n será 0001, 0002, "
+"0003, ..., 0091, ...\n"
+"- %l : etiqueta de volume de suporte\n"
+"- %t : tipo de suporte\n"
+"- %s : número de série"
+
+#. Check button for the using media label
+#: src/gui/gwnotebookmanagment.c:502
+msgid "Use media volume name as disk name (only when disk name is empty)"
+msgstr ""
+"Usar nome de volume do suporte como nome do disco (apenas quando o nome do "
+"disco está vazio)"
+
+#: src/gui/gwnotebookmanagment.c:510
+msgid ""
+"If you didn't enter disk name and if your selected media has a volume name, "
+"the media volume name will be applied as disk name."
+msgstr ""
+"Caso não tenha inserido um nome para o disco e caso o suporte seleccionado "
+"tenha um nome de volume, esse nome será usado como nome do disco."
+
+# src/Catalog.c:1009 src/Catalog.c:1122
+# src/gui/NoteBookManagmentCallBack.c:119
+# src/gui/NoteBookManagmentCallBack.c:130
+# src/gui/NoteBookManagmentCallBack.c:165
+# src/gui/NoteBookManagmentCallBack.c:249
+# src/gui/NoteBookManagmentCallBack.c:492
+# src/Catalog.c:1186 src/Catalog.c:1344
+# src/gui/NoteBookManagmentCallBack.c:148
+# src/gui/NoteBookManagmentCallBack.c:162
+# src/gui/NoteBookManagmentCallBack.c:213
+# src/gui/NoteBookManagmentCallBack.c:285
+# src/gui/NoteBookManagmentCallBack.c:620
+#. The add disk button to start the media scanning
+#. If no disk name is filled
+#. The device cannot be mounted
+#: src/gui/gwnotebookmanagment.c:515 src/gui/gwnotebookmanagmentcallback.c:152
+#: src/gui/gwnotebookmanagmentcallback.c:160
+#: src/gui/gwnotebookmanagmentcallback.c:275
+#: src/gui/gwnotebookmanagmentcallback.c:354
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Add disk"
+msgstr "Adicionar disco"
+
+# src/gui/NoteBookManagment.c:348
+# src/gui/NoteBookManagment.c:397
+#. Text label of the managment tabbed pane.
+#: src/gui/gwnotebookmanagment.c:561
+msgid "Management"
+msgstr "Gestão"
+
+# src/gui/NoteBookManagmentCallBack.c:119
+# src/gui/NoteBookManagmentCallBack.c:148
+#: src/gui/gwnotebookmanagmentcallback.c:152
+msgid "The disk hasn't been added : there are not mounted media"
+msgstr "O disco nao foi adicionado : não há suporte montado"
+
+# src/gui/NoteBookManagmentCallBack.c:130
+# src/gui/NoteBookManagmentCallBack.c:162
+#: src/gui/gwnotebookmanagmentcallback.c:160
+msgid "The disk hasn't been added : cannot mount media"
+msgstr "O disco não foi adicionado : não é possível montar o suporte"
+
+# src/gui/MenuPopup.c:88 src/gui/NoteBookManagmentCallBack.c:148
+# src/gui/MenuPopup.c:89 src/gui/NoteBookManagmentCallBack.c:190
+#. If no catalog is opened
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Add new disk"
+msgstr "Adicionar novo disco"
+
+# src/gui/NoteBookManagmentCallBack.c:165
+# src/gui/NoteBookManagmentCallBack.c:213
+#: src/gui/gwnotebookmanagmentcallback.c:275
+msgid "Enter disk name"
+msgstr "Introduza o nome do disco"
+
+# src/gui/NoteBookManagmentCallBack.c:181
+# src/gui/NoteBookManagmentCallBack.c:217
+# src/gui/NoteBookManagmentCallBack.c:234
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Scanning"
+msgstr "A Pesquisar"
+
+# src/gui/NoteBookManagmentCallBack.c:181
+# src/gui/NoteBookManagmentCallBack.c:217
+# src/gui/NoteBookManagmentCallBack.c:234
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Adding disk is working"
+msgstr "Adicionar disco está a funcionar"
+
+# src/gui/NoteBookManagmentCallBack.c:181
+# src/gui/NoteBookManagmentCallBack.c:217
+# src/gui/NoteBookManagmentCallBack.c:234
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Please wait"
+msgstr "Por favor aguarde"
+
+# src/Catalog.c:641 src/gui/NoteBookManagmentCallBack.c:188
+# src/gui/NoteBookManagmentCallBack.c:224
+# src/Catalog.c:731 src/gui/NoteBookManagmentCallBack.c:245
+#: src/gui/gwnotebookmanagmentcallback.c:308 src/gwcatalogmanager.c:369
+msgid "The disk has been added"
+msgstr "O disco foi adicionado"
+
+# src/gui/NoteBookManagmentCallBack.c:249
+# src/gui/NoteBookManagmentCallBack.c:285
+#: src/gui/gwnotebookmanagmentcallback.c:354
+msgid "Mount failed\n"
+msgstr "Mount falhou\n"
+
+# src/gui/NoteBookManagmentCallBack.c:308
+# src/gui/NoteBookManagmentCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:344
+# src/gui/NoteBookManagmentCallBack.c:416
+#: src/gui/gwnotebookmanagmentcallback.c:442
+#: src/gui/gwnotebookmanagmentcallback.c:531
+msgid "Serial number : "
+msgstr "Número de série : "
+
+# src/gui/NoteBookManagmentCallBack.c:341
+# src/gui/NoteBookManagmentCallBack.c:353
+# src/gui/NoteBookManagmentCallBack.c:373
+# src/gui/NoteBookManagmentCallBack.c:377
+# src/gui/NoteBookManagmentCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:386
+# src/gui/NoteBookManagmentCallBack.c:390
+# src/gui/NoteBookManagmentCallBack.c:376
+# src/gui/NoteBookManagmentCallBack.c:387
+# src/gui/NoteBookManagmentCallBack.c:407
+# src/gui/NoteBookManagmentCallBack.c:411
+# src/gui/NoteBookManagmentCallBack.c:416
+# src/gui/NoteBookManagmentCallBack.c:420
+# src/gui/NoteBookManagmentCallBack.c:424
+#: src/gui/gwnotebookmanagmentcallback.c:479
+#: src/gui/gwnotebookmanagmentcallback.c:494
+#: src/gui/gwnotebookmanagmentcallback.c:519
+#: src/gui/gwnotebookmanagmentcallback.c:523
+#: src/gui/gwnotebookmanagmentcallback.c:531
+#: src/gui/gwnotebookmanagmentcallback.c:539
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "no drive"
+msgstr "nenhuma drive"
+
+# src/Exploration.c:607 src/Exploration.c:663 src/Exploration.c:741
+# src/Exploration.c:797
+# src/Exploration.c:628 src/Exploration.c:684 src/Exploration.c:765
+# src/Exploration.c:821
+#: src/gui/gwnotebookmanagmentcallback.c:491 src/gwsupport.c:356
+msgid "unknown"
+msgstr "desconhecido"
+
+# src/gui/NoteBookManagmentCallBack.c:361
+# src/gui/NoteBookManagmentCallBack.c:395
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Yes"
+msgstr "Sim"
+
+# src/gui/NoteBookManagmentCallBack.c:361
+# src/gui/NoteBookManagmentCallBack.c:395
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "No"
+msgstr "Não"
+
+# src/gui/NoteBookManagmentCallBack.c:368
+# src/gui/NoteBookManagmentCallBack.c:402
+#: src/gui/gwnotebookmanagmentcallback.c:516
+msgid "No label"
+msgstr "Nenhuma etiqueta"
+
+# src/gui/NoteBookManagmentCallBack.c:377
+# src/gui/NoteBookManagmentCallBack.c:411
+#: src/gui/gwnotebookmanagmentcallback.c:523
+msgid "Volume name : "
+msgstr "Nome do Volume : "
+
+# src/gui/NoteBookManagmentCallBack.c:536
+# src/gui/NoteBookManagmentCallBack.c:530
+#: src/gui/gwnotebookmanagmentcallback.c:643
+msgid "the disk adding is canceled"
+msgstr "Operação de adição de disco cancelada"
+
+# src/gui/NoteBookManagmentCallBack.c:492
+# src/gui/NoteBookManagmentCallBack.c:620
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Please select a catalog name\n"
+msgstr "Por favor seleccione um nome de catálogo\n"
+
+# src/gui/NoteBookSearch.c:85
+# src/gui/NoteBookSearch.c:104
+#: src/gui/gwnotebooksearch.c:132
+msgid "Search : "
+msgstr "Procurar : "
+
+# src/gui/NoteBookSearch.c:97 src/gui/NoteBookSearch.c:243
+# src/gui/NoteBookSearch.c:116 src/gui/NoteBookSearch.c:273
+#. Start search button.
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebooksearch.c:153 src/gui/gwnotebooksearch.c:385
+#: src/gui/gwsettingssearch.c:57
+msgid "Search"
+msgstr "Procurar"
+
+# src/gui/NoteBookSearch.c:100
+# src/gui/NoteBookSearch.c:121
+#: src/gui/gwnotebooksearch.c:160
+msgid ""
+"The search can be case sensitive. The wildcards search supports character \"*"
+"\".\n"
+"Example : img*.bmp or *.htm\n"
+"The key words search accepts a list of obligatory words."
+msgstr ""
+"A procura é case sensitive e suporta o wildcard \"*\".\n"
+"Exemplo : img*.bmp ou *.htmA procura por palavras chave aceita uma lista de "
+"palavras obrigatórias."
+
+# src/gui/Categories.c:207 src/gui/MenuPopup.c:57 src/gui/MenuPopup.c:127
+# src/gui/CategoriesEditBox.c:243 src/gui/MenuPopup.c:58
+# src/gui/MenuPopup.c:128
+#. Clear results button.
+#: src/gui/gwnotebooksearch.c:168
+msgid "Clear"
+msgstr "Limpar"
+
+# src/gui/NoteBookSearch.c:85
+# src/gui/NoteBookSearch.c:104
+#: src/gui/gwnotebooksearch.c:175
+msgid "Clears all search results"
+msgstr "Remover todos os resultados da procura"
+
+# src/gui/NoteBookSearch.c:107
+# src/gui/NoteBookSearch.c:127
+#. Case/uncase sensitive check buton.
+#: src/gui/gwnotebooksearch.c:183
+msgid "Case sensitive"
+msgstr "Case sensitive"
+
+# src/gui/NoteBookSearch.c:112
+# src/gui/NoteBookSearch.c:134
+#: src/gui/gwnotebooksearch.c:193
+msgid ""
+"The search can be be or not case sensitive.\n"
+"In case sensitive \"File.txt\" doesn't match with \"file.txt\". But in "
+"uncase sensitive it matches."
+msgstr ""
+"A procura poderá ou não ser case sensitive.\n"
+"Sendo case sensitive \"File.txt\" não corresponde a \"file.txt\". Mas sendo "
+"case insensitive corresponde."
+
+# src/gui/NoteBookSearch.c:97 src/gui/NoteBookSearch.c:243
+# src/gui/NoteBookSearch.c:116 src/gui/NoteBookSearch.c:273
+#. Create the radio button group for search type.
+#: src/gui/gwnotebooksearch.c:198
+msgid "Search type"
+msgstr "Tipo de Pesquisa"
+
+#: src/gui/gwnotebooksearch.c:206
+msgid "Key words"
+msgstr "Palavras chave"
+
+#: src/gui/gwnotebooksearch.c:214
+msgid ""
+"Enter a list of key words which all must be containted is the matched files."
+msgstr ""
+"Insira uma lista de palavras chave que deverão existir nos ficheiros para "
+"que estes correspondam."
+
+#: src/gui/gwnotebooksearch.c:218
+msgid "Wildcards"
+msgstr "Wildcards"
+
+#: src/gui/gwnotebooksearch.c:226
+msgid ""
+"Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" "
+"caracters."
+msgstr ""
+"Insira o padrão completo de wildcards. Este padrão poderá conter os "
+"caracteres \"?\" e \"*\"."
+
+# src/gui/NoteBookSearch.c:115
+# src/gui/NoteBookSearch.c:137
+#: src/gui/gwnotebooksearch.c:230
+msgid "Regular expression"
+msgstr "Expressão regular"
+
+# src/gui/NoteBookSearch.c:120
+# src/gui/NoteBookSearch.c:144
+#: src/gui/gwnotebooksearch.c:238
+msgid "Can use regular expression. See documentation for more information."
+msgstr ""
+"Poderá usar uma regular expression. Veja a documentação para mais informação."
+
+# src/gui/NoteBookSearch.c:130
+# src/gui/NoteBookSearch.c:152
+#. Match file check buton.
+#: src/gui/gwnotebooksearch.c:243
+msgid "File"
+msgstr "Ficheiro"
+
+# src/gui/NoteBookSearch.c:136
+# src/gui/NoteBookSearch.c:158
+#: src/gui/gwnotebooksearch.c:251
+msgid "The search matches with files name."
+msgstr "A pesquisa condiz com o nome de ficheiro."
+
+# src/gui/NoteBookSearch.c:139
+# src/gui/NoteBookSearch.c:161
+#. Match folder check buton.
+#: src/gui/gwnotebooksearch.c:256
+msgid "Folder"
+msgstr "Directoria"
+
+# src/gui/NoteBookSearch.c:144
+# src/gui/NoteBookSearch.c:166
+#: src/gui/gwnotebooksearch.c:264
+msgid "The search matches with folders name."
+msgstr "A procura condiz com nome de directoria."
+
+# src/gui/NoteBookSearch.c:147 src/gui/NoteBookSearch.c:212
+# src/gui/NoteBookSearch.c:169 src/gui/NoteBookSearch.c:232
+#. Match disk check buton.
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gui/gwnotebooksearch.c:269 src/gwapplicationmanager.h:558
+msgid "Disk"
+msgstr "Disco"
+
+# src/gui/NoteBookSearch.c:152
+# src/gui/NoteBookSearch.c:174
+#: src/gui/gwnotebooksearch.c:277
+msgid "The search matches with disks name."
+msgstr "A procura condiz com o nome de disco"
+
+# src/gui/NoteBookCatalog.c:142 src/gui/NoteBookCatalog.c:212
+# src/gui/NoteBookCatalog.c:259 src/gui/NoteBookSearch.c:155
+# src/gui/NoteBookSearch.c:232
+# src/gui/NoteBookCatalog.c:143 src/gui/NoteBookCatalog.c:213
+# src/gui/NoteBookCatalog.c:260 src/gui/NoteBookSearch.c:177
+# src/gui/NoteBookSearch.c:244
+#. Match category check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_TITLE	The title column of the column Serial Number
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#: src/gui/gwnotebooksearch.c:282 src/gwapplicationmanager.h:356
+#: src/gwapplicationmanager.h:502 src/gwapplicationmanager.h:606
+msgid "Category"
+msgstr "Categoria"
+
+# src/gui/NoteBookSearch.c:160
+# src/gui/NoteBookSearch.c:182
+#: src/gui/gwnotebooksearch.c:290
+msgid "The search matches with categories name."
+msgstr "A procura condiz com o nome de categoria."
+
+# src/gui/NoteBookSearch.c:168
+# src/gui/NoteBookSearch.c:190
+#: src/gui/gwnotebooksearch.c:303
+msgid "The search matches with descriptions."
+msgstr "A procura condiz com as descrições."
+
+# src/gui/MenuFileCallBack.c:78 src/gui/MenuFileCallBack.c:411
+# src/gui/MenuFileCallBack.c:425 src/gui/MenuFileCallBack.c:463
+# src/gui/ToolBar.c:55
+# src/gui/MenuFileCallBack.c:87 src/gui/MenuFileCallBack.c:509
+# src/gui/MenuFileCallBack.c:527 src/gui/MenuFileCallBack.c:569
+# src/gui/ToolBar.c:72
+#: src/gui/gwnotebooksearchcallback.c:324
+msgid "Search in catalog"
+msgstr "Procurar no catálogo"
+
+#: src/gui/gwnotebooksearchcallback.c:328
+#, c-format
+msgid "%lu item(s) founded."
+msgstr "%lu item(s) encontrados."
+
+# src/gui/NoteBookSearch.c:85
+# src/gui/NoteBookSearch.c:104
+#: src/gui/gwnotebooksearchcallback.c:329
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "Search result"
+msgstr "Resultado da procura : "
+
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "No item matched."
+msgstr "Nenhum item correspondente."
+
+# src/gui/NoteBookSearchCallBack.c:87
+# src/gui/NoteBookSearchCallBack.c:99
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Searching..."
+msgstr "À procura..."
+
+# src/gui/NoteBookSearchCallBack.c:87
+# src/gui/NoteBookSearchCallBack.c:99
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Cannot start searching : no catalog loaded"
+msgstr "Não é possível iniciar pesquisa : nenhum catálogo foi aberto"
+
+# src/gui/ProgressBarBox.c:185 src/gui/ProgressBarBox.c:215
+#: src/gui/gwprogressbarbox.c:514
+msgid "_Ok"
+msgstr "_Ok"
+
+# src/gui/Properties.c:286
+# src/gui/PropertiesBox.c:335
+#: src/gui/gwpropertiesbox.c:360
+msgid "Enter the name of the catalog."
+msgstr "Introduza o nome do catálogo."
+
+# src/gui/Properties.c:332
+# src/gui/PropertiesBox.c:366
+#. Catalog file version label
+#: src/gui/gwpropertiesbox.c:387
+msgid "Version : "
+msgstr "Versão : "
+
+# src/gui/Properties.c:331
+# src/gui/PropertiesBox.c:365
+#: src/gui/gwpropertiesbox.c:390
+msgid "Version "
+msgstr "Versão "
+
+# src/gui/Properties.c:331
+# src/gui/PropertiesBox.c:365
+#: src/gui/gwpropertiesbox.c:390
+msgid " built with "
+msgstr " compilado com "
+
+# src/gui/Properties.c:347 src/gui/Properties.c:348
+# src/gui/PropertiesBox.c:376 src/gui/PropertiesBox.c:377
+#. Number of disks label
+#: src/gui/gwpropertiesbox.c:403
+msgid "Disks in catalog : "
+msgstr "Discos no catálogo : "
+
+# src/gui/Properties.c:347 src/gui/Properties.c:348
+# src/gui/PropertiesBox.c:376 src/gui/PropertiesBox.c:377
+#: src/gui/gwpropertiesbox.c:406
+#, c-format
+msgid "Disks in catalog : %d"
+msgstr "Discos no catálogo : %d"
+
+# src/gui/Properties.c:363 src/gui/Properties.c:364 src/gui/Properties.c:807
+# src/gui/Properties.c:808
+# src/gui/PropertiesBox.c:387 src/gui/PropertiesBox.c:388
+# src/gui/PropertiesBox.c:717 src/gui/PropertiesBox.c:718
+#. Total number of files label
+#. Total number of files of disk label
+#: src/gui/gwpropertiesbox.c:419 src/gui/gwpropertiesbox.c:928
+msgid "Total Files : "
+msgstr "Total de Ficheiros : "
+
+# src/gui/Properties.c:363 src/gui/Properties.c:364 src/gui/Properties.c:807
+# src/gui/Properties.c:808
+# src/gui/PropertiesBox.c:387 src/gui/PropertiesBox.c:388
+# src/gui/PropertiesBox.c:717 src/gui/PropertiesBox.c:718
+#: src/gui/gwpropertiesbox.c:422 src/gui/gwpropertiesbox.c:931
+#, c-format
+msgid "Total Files : %ld"
+msgstr "Total de Ficheiros : %ld"
+
+# src/gui/Properties.c:379 src/gui/Properties.c:380 src/gui/Properties.c:823
+# src/gui/Properties.c:824
+# src/gui/PropertiesBox.c:398 src/gui/PropertiesBox.c:399
+# src/gui/PropertiesBox.c:728 src/gui/PropertiesBox.c:729
+#. Total number of files label
+#. Total number of folders of disk label
+#: src/gui/gwpropertiesbox.c:435 src/gui/gwpropertiesbox.c:944
+msgid "Total Folders : "
+msgstr "Total de Directorias : "
+
+# src/gui/Properties.c:379 src/gui/Properties.c:380 src/gui/Properties.c:823
+# src/gui/Properties.c:824
+# src/gui/PropertiesBox.c:398 src/gui/PropertiesBox.c:399
+# src/gui/PropertiesBox.c:728 src/gui/PropertiesBox.c:729
+#: src/gui/gwpropertiesbox.c:438 src/gui/gwpropertiesbox.c:947
+#, c-format
+msgid "Total Folders : %ld"
+msgstr "Total de Directorias : %ld"
+
+# src/gui/Properties.c:401 src/gui/Properties.c:402 src/gui/Properties.c:1460
+# src/gui/Properties.c:1461
+# src/gui/PropertiesBox.c:413 src/gui/PropertiesBox.c:414
+# src/gui/PropertiesBox.c:1202 src/gui/PropertiesBox.c:1203
+#. Catalog size label
+#. The file size label
+#: src/gui/gwpropertiesbox.c:455 src/gui/gwpropertiesbox.c:459
+#: src/gui/gwpropertiesbox.c:1544
+msgid "File Size : "
+msgstr "Tamanho do Ficheiro : "
+
+# src/gui/Properties.c:417 src/gui/Properties.c:418
+# src/gui/PropertiesBox.c:424 src/gui/PropertiesBox.c:425
+#. Total capacity of catalog label
+#: src/gui/gwpropertiesbox.c:475 src/gui/gwpropertiesbox.c:479
+msgid "Total Storage Space : "
+msgstr "Espaço Total de Armazenamento : "
+
+# src/gui/Properties.c:433 src/gui/Properties.c:434
+# src/gui/PropertiesBox.c:435 src/gui/PropertiesBox.c:436
+#. Used space of catalog label
+#: src/gui/gwpropertiesbox.c:495 src/gui/gwpropertiesbox.c:499
+msgid "Total Used Space : "
+msgstr "Total de Espaço Usado : "
+
+# src/gui/Properties.c:449 src/gui/Properties.c:450
+# src/gui/PropertiesBox.c:446 src/gui/PropertiesBox.c:447
+#. Free space of catalog label
+#: src/gui/gwpropertiesbox.c:515 src/gui/gwpropertiesbox.c:519
+msgid "Total Free Space : "
+msgstr "Total de Espaço Livre : "
+
+# src/gui/Properties.c:471
+# src/gui/PropertiesBox.c:461
+#. Statistics label
+#: src/gui/gwpropertiesbox.c:539
+msgid "Disk Statistics : "
+msgstr "Estatísticas do Disco : "
+
+# src/gui/Properties.c:497 src/gui/Properties.c:498
+# src/gui/PropertiesBox.c:478 src/gui/PropertiesBox.c:479
+#. CD-Roms statistics label
+#: src/gui/gwpropertiesbox.c:556
+msgid "CD-Rom : "
+msgstr "CD-Rom : "
+
+# src/gui/Properties.c:497 src/gui/Properties.c:498
+# src/gui/PropertiesBox.c:478 src/gui/PropertiesBox.c:479
+#: src/gui/gwpropertiesbox.c:560
+#, c-format
+msgid "CD-Rom : %d"
+msgstr "CD-Rom : %d"
+
+#. Audio CD statistics label
+#: src/gui/gwpropertiesbox.c:573
+msgid "Audio CD : "
+msgstr "CD Audio : "
+
+# src/gui/Properties.c:513 src/gui/Properties.c:514
+# src/gui/PropertiesBox.c:489 src/gui/PropertiesBox.c:490
+#: src/gui/gwpropertiesbox.c:577
+#, c-format
+msgid "Audio CD : %d"
+msgstr "CD Audio : %d"
+
+# src/gui/Properties.c:513 src/gui/Properties.c:514
+# src/gui/PropertiesBox.c:489 src/gui/PropertiesBox.c:490
+#. HDs statistics label
+#: src/gui/gwpropertiesbox.c:590
+msgid "HD : "
+msgstr "HD : "
+
+# src/gui/Properties.c:513 src/gui/Properties.c:514
+# src/gui/PropertiesBox.c:489 src/gui/PropertiesBox.c:490
+#: src/gui/gwpropertiesbox.c:594
+#, c-format
+msgid "HD : %d"
+msgstr "HD : %d"
+
+# src/gui/Properties.c:529 src/gui/Properties.c:530
+# src/gui/PropertiesBox.c:500 src/gui/PropertiesBox.c:501
+#. Floppies statistics label
+#: src/gui/gwpropertiesbox.c:607
+msgid "Floppy : "
+msgstr "Disquete : "
+
+# src/gui/Properties.c:529 src/gui/Properties.c:530
+# src/gui/PropertiesBox.c:500 src/gui/PropertiesBox.c:501
+#: src/gui/gwpropertiesbox.c:611
+#, c-format
+msgid "Floppy : %d"
+msgstr "Disquete : %d"
+
+# src/gui/Properties.c:551 src/gui/Properties.c:552
+# src/gui/PropertiesBox.c:515 src/gui/PropertiesBox.c:516
+#. Zips statistics label
+#: src/gui/gwpropertiesbox.c:624
+msgid "Zip : "
+msgstr "Zip : "
+
+# src/gui/Properties.c:551 src/gui/Properties.c:552
+# src/gui/PropertiesBox.c:515 src/gui/PropertiesBox.c:516
+#: src/gui/gwpropertiesbox.c:628
+#, c-format
+msgid "Zip : %d"
+msgstr "Zip : %d"
+
+# src/gui/NoteBookManagment.c:212 src/gui/NoteBookManagmentCallBack.c:302
+# src/gui/NoteBookManagmentCallBack.c:356 src/gui/Properties.c:759
+# src/gui/Properties.c:760
+# src/gui/NoteBookManagment.c:232 src/gui/NoteBookManagmentCallBack.c:335
+# src/gui/NoteBookManagmentCallBack.c:390 src/gui/PropertiesBox.c:684
+#. Tape drive statistics label
+#: src/gui/gwpropertiesbox.c:645
+msgid "Tape : "
+msgstr "Cassette : "
+
+# src/gui/NoteBookManagment.c:212 src/gui/NoteBookManagmentCallBack.c:302
+# src/gui/NoteBookManagmentCallBack.c:356 src/gui/Properties.c:759
+# src/gui/Properties.c:760
+# src/gui/NoteBookManagment.c:232 src/gui/NoteBookManagmentCallBack.c:335
+# src/gui/NoteBookManagmentCallBack.c:390 src/gui/PropertiesBox.c:684
+#: src/gui/gwpropertiesbox.c:649
+#, c-format
+msgid "Tape : %d"
+msgstr "Cassette : %d"
+
+#. Network drive statistics label
+#: src/gui/gwpropertiesbox.c:662
+msgid "Network : "
+msgstr "Rede :"
+
+# src/gui/Properties.c:567 src/gui/Properties.c:568
+# src/gui/PropertiesBox.c:526 src/gui/PropertiesBox.c:527
+#: src/gui/gwpropertiesbox.c:666
+#, c-format
+msgid "Network : %d"
+msgstr "Rede : %d"
+
+# src/gui/NoteBookManagment.c:163
+# src/gui/NoteBookManagment.c:186
+#. Jaz statistics label
+#: src/gui/gwpropertiesbox.c:679
+msgid "Jaz : "
+msgstr "Jaz : "
+
+# src/gui/Properties.c:513 src/gui/Properties.c:514
+# src/gui/PropertiesBox.c:489 src/gui/PropertiesBox.c:490
+#: src/gui/gwpropertiesbox.c:683
+#, c-format
+msgid "Jaz : %d"
+msgstr "Jaz : %d"
+
+# src/gui/Properties.c:567 src/gui/Properties.c:568
+# src/gui/PropertiesBox.c:526 src/gui/PropertiesBox.c:527
+#. Others media statistics label
+#: src/gui/gwpropertiesbox.c:696
+msgid "Other : "
+msgstr "Outro : "
+
+# src/gui/Properties.c:567 src/gui/Properties.c:568
+# src/gui/PropertiesBox.c:526 src/gui/PropertiesBox.c:527
+#: src/gui/gwpropertiesbox.c:700
+#, c-format
+msgid "Other : %d"
+msgstr "Outro : %d"
+
+# src/gui/Properties.c:589
+# src/gui/PropertiesBox.c:541
+#. Combo box for categories list
+#: src/gui/gwpropertiesbox.c:717
+msgid "Catalog categories : "
+msgstr "Categoria do Catálogo : "
+
+# src/gui/Properties.c:610
+# src/gui/PropertiesBox.c:557
+#. Title description label
+#: src/gui/gwpropertiesbox.c:733
+msgid "Catalog Description : "
+msgstr "Descrição do Catálogo : "
+
+# src/gui/Properties.c:641
+# src/gui/PropertiesBox.c:583
+#: src/gui/gwpropertiesbox.c:760
+msgid "Catalog Info"
+msgstr "Informação sobre o Catálogo"
+
+# src/gui/Properties.c:706
+# src/gui/PropertiesBox.c:645
+#: src/gui/gwpropertiesbox.c:827
+msgid "Enter the name of the disk."
+msgstr "Introduza o nome deste disco."
+
+# src/gui/Properties.c:730
+# src/gui/PropertiesBox.c:664
+#: src/gui/gwpropertiesbox.c:858
+msgid "Enter the archive number of the disk."
+msgstr "Introduza o número de arquivo deste disco."
+
+# src/gui/NoteBookManagment.c:212 src/gui/NoteBookManagmentCallBack.c:302
+# src/gui/NoteBookManagmentCallBack.c:356 src/gui/Properties.c:759
+# src/gui/Properties.c:760
+# src/gui/PropertiesBox.c:685
+#. Disk type label
+#: src/gui/gwpropertiesbox.c:880
+msgid " Type : "
+msgstr " Tipo : "
+
+# src/gui/Properties.c:775 src/gui/Properties.c:776
+# src/gui/PropertiesBox.c:695 src/gui/PropertiesBox.c:696
+#. Disk serial number label
+#: src/gui/gwpropertiesbox.c:896 src/gui/gwpropertiesbox.c:899
+msgid "Serial : "
+msgstr "Serial : "
+
+# src/gui/Properties.c:791 src/gui/Properties.c:792
+# src/gui/PropertiesBox.c:706 src/gui/PropertiesBox.c:707
+#. Disk volume name label
+#: src/gui/gwpropertiesbox.c:912 src/gui/gwpropertiesbox.c:915
+msgid "Volume Label : "
+msgstr "Etiqueta de Volume : "
+
+# src/gui/Properties.c:845 src/gui/Properties.c:846
+# src/gui/PropertiesBox.c:743 src/gui/PropertiesBox.c:744
+#. Total capacity of disk label
+#: src/gui/gwpropertiesbox.c:964 src/gui/gwpropertiesbox.c:968
+msgid "Total Capacity : "
+msgstr "Capacidade Total : "
+
+# src/gui/Properties.c:861 src/gui/Properties.c:862
+# src/gui/PropertiesBox.c:754 src/gui/PropertiesBox.c:755
+#. Used space of disk label
+#: src/gui/gwpropertiesbox.c:984 src/gui/gwpropertiesbox.c:988
+msgid "Used Space : "
+msgstr "Espaço Utilizado : "
+
+# src/gui/Properties.c:877 src/gui/Properties.c:878
+# src/gui/PropertiesBox.c:765 src/gui/PropertiesBox.c:766
+#. Free space of disk label
+#: src/gui/gwpropertiesbox.c:1004 src/gui/gwpropertiesbox.c:1008
+msgid "Free Space : "
+msgstr "Espaço Livre : "
+
+# src/gui/Properties.c:915 src/gui/Properties.c:916
+# src/gui/PropertiesBox.c:790 src/gui/PropertiesBox.c:791
+#. Catalog name label
+#: src/gui/gwpropertiesbox.c:1038 src/gui/gwpropertiesbox.c:1042
+#: src/gui/gwpropertiesbox.c:1044 src/gui/gwpropertiesbox.c:1046
+msgid "Catalog Name : "
+msgstr "Nome do Catálogo : "
+
+# src/gui/Properties.c:931 src/gui/Properties.c:932
+# src/gui/PropertiesBox.c:801 src/gui/PropertiesBox.c:802
+#. Adding date label of disk
+#: src/gui/gwpropertiesbox.c:1060 src/gui/gwpropertiesbox.c:1064
+msgid "Update in catalog : "
+msgstr "Actualizar no catálogo : "
+
+# src/gui/Properties.c:967
+# src/gui/PropertiesBox.c:828
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1094
+msgid "Disk Description : "
+msgstr "Descrição do Disco : "
+
+# src/gui/Properties.c:998
+# src/gui/PropertiesBox.c:854
+#: src/gui/gwpropertiesbox.c:1121
+msgid "Disk Info"
+msgstr "Informação do Disco"
+
+# src/gui/NoteBookCatalog.c:255
+# src/gui/PropertiesBox.c:908
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1175
+msgid "Folder Name"
+msgstr "Nome do Directoria"
+
+# src/gui/Properties.c:1104
+# src/gui/PropertiesBox.c:940
+#. The folder type label
+#: src/gui/gwpropertiesbox.c:1206
+msgid "Type : (folder)"
+msgstr "Tipo : (directoria)"
+
+# src/gui/Properties.c:1118 src/gui/Properties.c:1119
+# src/gui/PropertiesBox.c:949 src/gui/PropertiesBox.c:950
+#. The folder size label
+#: src/gui/gwpropertiesbox.c:1217 src/gui/gwpropertiesbox.c:1221
+msgid "Folder Size : "
+msgstr "Tamanho da Directoria : "
+
+# src/gui/Properties.c:1134 src/gui/Properties.c:1135
+# src/gui/Properties.c:1476 src/gui/Properties.c:1477
+# src/gui/PropertiesBox.c:960 src/gui/PropertiesBox.c:961
+# src/gui/PropertiesBox.c:1213 src/gui/PropertiesBox.c:1214
+#. The folder creation date label
+#. The file creation date label
+#: src/gui/gwpropertiesbox.c:1237 src/gui/gwpropertiesbox.c:1241
+#: src/gui/gwpropertiesbox.c:1567 src/gui/gwpropertiesbox.c:1571
+msgid "Created on : "
+msgstr "Criado em : "
+
+# src/gui/Properties.c:1150 src/gui/Properties.c:1151
+# src/gui/Properties.c:1492 src/gui/Properties.c:1493
+# src/gui/PropertiesBox.c:971 src/gui/PropertiesBox.c:972
+# src/gui/PropertiesBox.c:1224 src/gui/PropertiesBox.c:1225
+#. the folder last update date label
+#. The file last modification date lalbel
+#: src/gui/gwpropertiesbox.c:1255 src/gui/gwpropertiesbox.c:1259
+#: src/gui/gwpropertiesbox.c:1585 src/gui/gwpropertiesbox.c:1589
+msgid "Last modified on : "
+msgstr "Ultima modificação em : "
+
+# src/gui/Properties.c:1166 src/gui/Properties.c:1167
+# src/gui/Properties.c:1508 src/gui/Properties.c:1509
+# src/gui/PropertiesBox.c:982 src/gui/PropertiesBox.c:983
+# src/gui/PropertiesBox.c:1235 src/gui/PropertiesBox.c:1236
+#. The folder last access date label
+#. The file last access date label
+#: src/gui/gwpropertiesbox.c:1273 src/gui/gwpropertiesbox.c:1277
+#: src/gui/gwpropertiesbox.c:1603 src/gui/gwpropertiesbox.c:1607
+msgid "Last accessed on : "
+msgstr "Último acesso em : "
+
+# src/gui/Properties.c:1188 src/gui/Properties.c:1189
+# src/gui/Properties.c:1530 src/gui/Properties.c:1531
+# src/gui/PropertiesBox.c:997 src/gui/PropertiesBox.c:998
+# src/gui/PropertiesBox.c:1250 src/gui/PropertiesBox.c:1251
+#. Folder rights label
+#. the file rights label
+#: src/gui/gwpropertiesbox.c:1295 src/gui/gwpropertiesbox.c:1299
+#: src/gui/gwpropertiesbox.c:1625 src/gui/gwpropertiesbox.c:1629
+msgid "Rights : "
+msgstr "Permissões : "
+
+# src/gui/Properties.c:1204 src/gui/Properties.c:1205
+# src/gui/Properties.c:1546 src/gui/Properties.c:1547
+# src/gui/PropertiesBox.c:1008 src/gui/PropertiesBox.c:1009
+# src/gui/PropertiesBox.c:1261 src/gui/PropertiesBox.c:1262
+#. The folder owner name label
+#. The file owner name label
+#: src/gui/gwpropertiesbox.c:1313 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1319 src/gui/gwpropertiesbox.c:1643
+#: src/gui/gwpropertiesbox.c:1647 src/gui/gwpropertiesbox.c:1649
+msgid "Owner : "
+msgstr "Proprietário : "
+
+# src/gui/Properties.c:1220 src/gui/Properties.c:1221
+# src/gui/Properties.c:1562 src/gui/Properties.c:1563
+# src/gui/PropertiesBox.c:1019 src/gui/PropertiesBox.c:1020
+# src/gui/PropertiesBox.c:1272 src/gui/PropertiesBox.c:1273
+#. The folder group name label
+#. File group name label
+#: src/gui/gwpropertiesbox.c:1333 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1339 src/gui/gwpropertiesbox.c:1663
+#: src/gui/gwpropertiesbox.c:1667 src/gui/gwpropertiesbox.c:1669
+msgid "Group : "
+msgstr "Grupo : "
+
+# src/gui/Properties.c:1258 src/gui/Properties.c:1259
+# src/gui/Properties.c:1602 src/gui/Properties.c:1606
+# src/gui/Properties.c:1609
+# src/gui/PropertiesBox.c:1044 src/gui/PropertiesBox.c:1045
+# src/gui/PropertiesBox.c:1299 src/gui/PropertiesBox.c:1303
+# src/gui/PropertiesBox.c:1306
+#. Disk name label
+#. The disk name label
+#: src/gui/gwpropertiesbox.c:1367 src/gui/gwpropertiesbox.c:1370
+#: src/gui/gwpropertiesbox.c:1697 src/gui/gwpropertiesbox.c:1702
+msgid "Disk Name : "
+msgstr "Nome do Disco : "
+
+# src/gui/Properties.c:1274 src/gui/Properties.c:1275
+# src/gui/Properties.c:1626 src/gui/Properties.c:1630
+# src/gui/Properties.c:1633
+# src/gui/PropertiesBox.c:1055 src/gui/PropertiesBox.c:1056
+# src/gui/PropertiesBox.c:1318 src/gui/PropertiesBox.c:1322
+# src/gui/PropertiesBox.c:1325
+#. The folder location label
+#. The file location label
+#: src/gui/gwpropertiesbox.c:1383 src/gui/gwpropertiesbox.c:1388
+#: src/gui/gwpropertiesbox.c:1717 src/gui/gwpropertiesbox.c:1721
+msgid "Location on Disk : "
+msgstr "Localização no Disco : "
+
+# src/gui/Properties.c:1310
+# src/gui/PropertiesBox.c:1082
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1420
+msgid "Folder Description : "
+msgstr "Descrição da Directoria : "
+
+# src/gui/Properties.c:1341
+# src/gui/PropertiesBox.c:1108
+#: src/gui/gwpropertiesbox.c:1447
+msgid "Folder Info"
+msgstr "Informação da Directoria"
+
+# src/gui/NoteBookManagmentCallBack.c:377
+# src/gui/PropertiesBox.c:1161
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1502
+msgid "File name : "
+msgstr "Nome do Ficheiro : "
+
+# src/gui/Properties.c:1446
+# src/gui/PropertiesBox.c:1193
+#. The file type label
+#: src/gui/gwpropertiesbox.c:1533
+msgid "File type : not yet implemented!!"
+msgstr "Tipo de ficheiro : ainda não implementado!!"
+
+# src/gui/Properties.c:401 src/gui/Properties.c:402 src/gui/Properties.c:1460
+# src/gui/Properties.c:1461
+# src/gui/PropertiesBox.c:413 src/gui/PropertiesBox.c:414
+# src/gui/PropertiesBox.c:1202 src/gui/PropertiesBox.c:1203
+#: src/gui/gwpropertiesbox.c:1548
+#, c-format
+msgid "File Size : %s (%s bytes)"
+msgstr "Tamanho do Ficheiro : %s (%s bytes)"
+
+# src/gui/Properties.c:1668
+# src/gui/PropertiesBox.c:1351
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1754
+msgid "File Description : "
+msgstr "Descrição do Ficheiro : "
+
+# src/gui/Properties.c:1699
+# src/gui/PropertiesBox.c:1377
+#: src/gui/gwpropertiesbox.c:1781
+msgid "File Info"
+msgstr "Informação do Ficheiro"
+
+# src/gui/Properties.c:641
+# src/gui/PropertiesBox.c:583
+#: src/gui/gwsettingscatalogfile.c:68
+msgid "Catalog file"
+msgstr "Ficheiro de Catálogo"
+
+# src/gui/Properties.c:589
+# src/gui/PropertiesBox.c:541
+#. Adds the compression level.
+#: src/gui/gwsettingscatalogfile.c:119
+msgid "Catalog compression level :"
+msgstr "Nível de compressão do Catálogo : "
+
+#: src/gui/gwsettingscatalogfile.c:134
+msgid ""
+"Select the catalog compression level. The default value is 3, it's a good "
+"value between high performance and small size."
+msgstr ""
+"Seleccione o nível de compressão do catálogo. O valor por omissão é 3, sendo "
+"um valor razoável entre boa performance e tamanho reduzido."
+
+# src/MenuPopupCallBack.c:56
+# src/gui/MenuPopupCallBack.c:57
+#. Adds the history size.
+#: src/gui/gwsettingscatalogfile.c:142
+msgid "Recents opened catalogs :"
+msgstr "Catálogos recentemente abertos :"
+
+#: src/gui/gwsettingscatalogfile.c:157
+msgid ""
+"Select the size of recents opened catalogs history. The default value is 5."
+msgstr ""
+"Seleccione o tamanho do historial de catálogos recentemente abertos. O valor "
+"por omissão é 5."
+
+#. Adds the clear history.
+#: src/gui/gwsettingscatalogfile.c:164
+msgid "Clear history"
+msgstr "Apagar historial"
+
+#: src/gui/gwsettingscatalogfile.c:168
+msgid "Click here to clear the recents opened files history."
+msgstr ""
+"Click aqui para eliminar o historial de catálogos recentemente abertos."
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:119 src/Catalog.c:139
+#. Adds the autload catalog option.
+#: src/gui/gwsettingscatalogfile.c:174
+msgid "Autoload catalog"
+msgstr "Carregar catálogo automaticamente"
+
+#: src/gui/gwsettingscatalogfile.c:179
+msgid "Autoloads a default catalog when at starting."
+msgstr "Carregar automaticamente ao iniciar um catálogo por omissão"
+
+# src/Catalog.c:1009 src/Catalog.c:1122
+# src/Catalog.c:1186 src/Catalog.c:1344
+#. Create the radio button group for autoload options.
+#: src/gui/gwsettingscatalogfile.c:186
+msgid "Load last opened catalog file."
+msgstr "Carregar último catálogo aberto."
+
+# src/gui/NoteBookManagmentCallBack.c:492
+# src/gui/NoteBookManagmentCallBack.c:620
+#: src/gui/gwsettingscatalogfile.c:193
+msgid "Load selected catalog file."
+msgstr "Carregar ficheiro de catálogo seleccionado."
+
+#: src/gui/gwsettingscatalogfile.c:204
+msgid "Enter the full catalog file path to load."
+msgstr "Insira o caminho completo do ficheiro de catálogo a carregar"
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:1140 src/Catalog.c:1149 src/Catalog.c:1221 src/Catalog.c:1231
+# src/Catalog.c:1235 src/Catalog.c:1251 src/Catalog.c:1276 src/Catalog.c:1292
+# src/Catalog.c:1315 src/Catalog.c:1330 src/gui/ToolBar.c:74
+#. Adds the select catalog file.
+#: src/gui/gwsettingscatalogfile.c:211
+msgid "Select catalog"
+msgstr "Seleccione catálogo"
+
+#: src/gui/gwsettingscatalogfile.c:217
+msgid "Click here to browse and select the catalog file."
+msgstr "Click aqui para procurar e seleccionar um ficheiro de catálogo."
+
+# src/gui/MenuFileCallBack.c:146 src/gui/MenuFileCallBack.c:169
+# src/gui/MenuFileCallBack.c:323 src/gui/MenuFileCallBack.c:405
+# src/gui/MenuFileCallBack.c:486 src/gui/MenuFileCallBack.c:564
+# src/gui/MenuFileCallBack.c:629
+# src/gui/MenuFileCallBack.c:175 src/gui/MenuFileCallBack.c:202
+# src/gui/MenuFileCallBack.c:406 src/gui/MenuFileCallBack.c:503
+# src/gui/MenuFileCallBack.c:596 src/gui/MenuFileCallBack.c:686
+# src/gui/MenuFileCallBack.c:763
+#: src/gui/gwsettingscatalogfile.c:607
+msgid "Select autoloaded catalog"
+msgstr "Seleccionar catálogo automaticamente carregado"
+
+#: src/gui/gwsettingsexplorer.c:56
+msgid "Explorer"
+msgstr "Explorador"
+
+# src/gui/NoteBookSearch.c:107
+# src/gui/NoteBookSearch.c:127
+#. Adds the case sensitive sort option.
+#: src/gui/gwsettingsexplorer.c:107 src/gui/gwsettingssearch.c:109
+msgid "Case sensitive sort."
+msgstr "Ordenação case sensitive"
+
+#: src/gui/gwsettingsexplorer.c:112
+msgid "The result sort in explorer is case sensitive."
+msgstr "O resultado no explorar é case-sensitive"
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingsexplorer.c:118
+msgid "Result sort group by folder/file."
+msgstr "Resultados agrupados por directoria/ficheiro."
+
+#: src/gui/gwsettingsexplorer.c:123
+msgid ""
+"The result sort in explorer can be grouped by item type. If this option is "
+"checked all item will be grouped by folders or files."
+msgstr ""
+"Os resultados no explorador podem ser agrupados por tipo de item. Se esta "
+"opção for seleccionada, os items serão agrupados por directorias e "
+"ficheiros ."
+
+#. Adds the autoload catalog option.
+#. Adds the autoresize column option.
+#: src/gui/gwsettingsexplorer.c:129 src/gui/gwsettingssearch.c:131
+msgid "Autoresize columns"
+msgstr "Auto-redimensionar colunas"
+
+#: src/gui/gwsettingsexplorer.c:134 src/gui/gwsettingssearch.c:136
+msgid "Autoresize all explorer column."
+msgstr "Auto-redimensionar todas as colunas do explorador"
+
+# src/gui/NoteBookSearch.c:147 src/gui/NoteBookSearch.c:212
+# src/gui/NoteBookSearch.c:169 src/gui/NoteBookSearch.c:232
+#: src/gui/gwsettingsexplorerdisk.c:54
+msgid "Disks"
+msgstr "Discos"
+
+#: src/gui/gwsettingsexplorerdisk.c:112 src/gui/gwsettingsexplorerfile.c:111
+#: src/gui/gwsettingsquicksearch.c:118
+msgid "Visible"
+msgstr "Visível"
+
+#: src/gui/gwsettingsexplorerdisk.c:120 src/gui/gwsettingsexplorerfile.c:119
+#: src/gui/gwsettingsquicksearch.c:126
+msgid "Hide"
+msgstr "Ocultar"
+
+#: src/gui/gwsettingsexplorerdisk.c:125 src/gui/gwsettingsexplorerfile.c:124
+#: src/gui/gwsettingsquicksearch.c:131
+msgid "Show"
+msgstr "Mostrar"
+
+#: src/gui/gwsettingsexplorerdisk.c:141 src/gui/gwsettingsexplorerfile.c:140
+#: src/gui/gwsettingsquicksearch.c:147
+msgid "Hidden"
+msgstr "Oculto"
+
+# src/gui/NoteBookSearch.c:130
+# src/gui/NoteBookSearch.c:152
+#: src/gui/gwsettingsexplorerfile.c:53
+msgid "Files"
+msgstr "Ficheiros"
+
+#: src/gui/gwsettingssearch.c:114
+msgid "The result sort in search is case sensitive."
+msgstr "O resultado da procura é case-sensitive"
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingssearch.c:120
+msgid "Result sort group by type."
+msgstr "Resultados agrupados por tipo"
+
+#: src/gui/gwsettingssearch.c:125
+msgid ""
+"The result sort in search can be grouped by item type. If this option is "
+"checked all item will be grouped by catalogs, disks, folders and files."
+msgstr ""
+"O resultado da procura pode ser agrupado por tipo de item. Se esta opção for "
+"seleccionada, todos os items serão agrupados por catálogos, discos, "
+"directorias e ficheiros."
+
+#. Adds the key words mode option.
+#: src/gui/gwsettingssearch.c:142
+msgid "All key words must match"
+msgstr "Todas as palavras chave deverão corresponder"
+
+#: src/gui/gwsettingssearch.c:147
+msgid ""
+"Choose if all key words or only one of all key words must match with item in "
+"order to be in the search result."
+msgstr ""
+"Escolha se todas as palavras chave ou apenas uma delas deve corresponder a "
+"um item para que esteja presente no resultado da procura."
+
+# src/gui/MenuFileCallBack.c:186
+# src/gui/MenuFileCallBack.c:223
+#: src/gui/gwsettingsquicksearch.c:60
+msgid "Quick"
+msgstr "Rápido "
+
+#: src/gui/gwsettingsgeneral.c:44
+msgid "Generals options"
+msgstr "Opções Gerais"
+
+#: src/gui/gwsettingsgui.c:54
+msgid "GUI"
+msgstr "GUI"
+
+# src/gui/Categories.c:201
+# src/gui/CategoriesEditBox.c:237
+#. Adds the autosave GUI properties option.
+#: src/gui/gwsettingsgui.c:93
+msgid "Save GUI properties on exit"
+msgstr "Guardar propriedades do interface ao sair"
+
+#: src/gui/gwsettingsgui.c:98
+msgid "Save GUI properties as window position and size."
+msgstr ""
+"Guardar as propriedades do interface tais como posição e tamanho da janela"
+
+#. Adds the allowing beep option.
+#: src/gui/gwsettingsgui.c:104
+msgid "Allow beep"
+msgstr "Autorizar beep"
+
+#: src/gui/gwsettingsgui.c:109
+msgid "Allows to emits a short beep on some event."
+msgstr "Autoriza a emissão de um pequeno beep em alguns eventos"
+
+#: src/gui/gwsettingsmail.c:83
+msgid "Mail"
+msgstr "Correio"
+
+#. Email address.
+#: src/gui/gwsettingsmail.c:126
+msgid "Email address :"
+msgstr "Morada de email :"
+
+#: src/gui/gwsettingsmail.c:136
+msgid "Enter your email address."
+msgstr "Insira o seu endereço de email."
+
+#. Server address.
+#: src/gui/gwsettingsmail.c:141
+msgid "Out going mail server :"
+msgstr "Servidor de saída de email:"
+
+#: src/gui/gwsettingsmail.c:151
+msgid ""
+"Enter your out going mail server. Usualy this address is mail.yourdomain.com"
+msgstr ""
+"Insira o seu servidor de saída de email. Normalmente este endereço é mail."
+"oseudominio.com"
+
+#. Server port.
+#: src/gui/gwsettingsmail.c:156
+msgid "Server port :"
+msgstr "Porta do servidor :"
+
+#: src/gui/gwsettingsmail.c:166
+msgid "Enter the out going mail server port (the most common value is 25)."
+msgstr "Insira a porta do servidor de saída de email (normalmente 25)."
+
+#: src/gui/gwsettingswindowbox.c:82
+msgid ""
+"This Settings box allows to configure some functionnalities and properties "
+"of the program."
+msgstr ""
+"A caixa de Configuração permite-lhe configurar algumas funcionalidades e "
+"propriedades do programa."
+
+#: src/gui/gwsettingswindowbox.c:85 src/gui/gwsettingswindowbox.c:124
+msgid "Settings"
+msgstr "Configuração"
+
+#: src/gui/gwsettingswindowbox.c:120
+msgid "Select the section to configure."
+msgstr "Seleccione a secção a configurar."
+
+#: src/gui/gwsettingswindowbox.c:134
+msgid ""
+"Change in this pane all availables properties in order to configure the "
+"program as you want."
+msgstr ""
+"Altere aqui todas as propriedades disponíveis por forma a configurar o "
+"programa ao seu gosto."
+
+#: src/gui/gwsettingswindowbox.c:145
+msgid ""
+"This settings windows box allows to configure the program. Some properties "
+"may be modified here."
+msgstr ""
+"Esta janela de configuração permite-lhe configurar o programa. Algumas "
+"propriedades podem ser modificadas aqui."
+
+#: src/gui/gwsettingswindowbox.c:170
+msgid "Click on OK button to apply changes and close the Settings box."
+msgstr ""
+"Click em OK para efectuar as modificações e fechar a janela de Configuração"
+
+#: src/gui/gwsettingswindowbox.c:185
+msgid "Click on Cancel button to cancel changes and close the Settings box."
+msgstr ""
+"Click em Cancelar para cancelar as modificações e fechar a janela "
+"deConfiguração."
+
+#: src/gui/gwsettingswindowbox.c:191
+msgid "_Apply"
+msgstr "_Efectuar"
+
+#: src/gui/gwsettingswindowbox.c:198
+msgid ""
+"Click on Apply button to apply changes (without close the Settings box)."
+msgstr ""
+"Click em Efectuar para efecturar as alterações (sem fechar a janela de "
+"Configuração."
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid "Settings changed"
+msgstr "Configuração modificada"
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid ""
+"If you don't apply changes you will lose all changes. Do you want apply "
+"changes?"
+msgstr ""
+"Se não efectuar as alterações, perde-las-à. Deseja efectuar as alterações?"
+
+# src/gui/StatusBarCallBack.c:56
+#: src/gui/gwstatusbarcallback.c:49
+#, c-format
+msgid " %s [ %s ], total disks : %d"
+msgstr " %s [ %s ], total de discos: %d"
+
+# src/gui/StatusBar.c:203
+# src/gui/StatusBarCallBack.c:57 src/gui/StatusBarCallBack.c:88
+# src/gui/StatusBarCallBack.c:120
+#: src/gui/gwstatusbarcallback.c:50 src/gui/gwstatusbarcallback.c:100
+#: src/gui/gwstatusbarcallback.c:151
+#, c-format
+msgid " Listed Items : %d (total size : %s)"
+msgstr " Items listados : %d (tamanho total : %s)"
+
+# src/gui/StatusBarCallBack.c:80
+#: src/gui/gwstatusbarcallback.c:81
+#, c-format
+msgid " %s [ %s ], capacity : %s, free : %s"
+msgstr " %s [ %s ], capacidade : %s, livres: %s"
+
+#: src/gui/gwstatusbarcallback.c:91
+msgid " Empty disk"
+msgstr " Disco vazio"
+
+# src/gui/StatusBar.c:203
+# src/gui/StatusBarCallBack.c:84 src/gui/StatusBarCallBack.c:116
+# src/gui/StatusBarCallBack.c:145
+#: src/gui/gwstatusbarcallback.c:94 src/gui/gwstatusbarcallback.c:145
+#: src/gui/gwstatusbarcallback.c:185
+#, c-format
+msgid " Selected Item : %d (total size : %s)"
+msgstr " Item seleccionado : %d (tamanho total : %s)"
+
+# src/gui/StatusBarCallBack.c:112
+#: src/gui/gwstatusbarcallback.c:138
+#, c-format
+msgid " Folder \"%s\", %s (files %d, subfolders %d)"
+msgstr " Directoria \"%s\", %s (ficheiros %d, subdirectorias %d)"
+
+# src/gui/StatusBar.c:197
+# src/gui/StatusBarCallBack.c:144
+#: src/gui/gwstatusbarcallback.c:179
+#, c-format
+msgid " %s, %s, %s"
+msgstr " %s, %s, %s"
+
+# src/gui/StatusBar.c:225 src/gui/StatusBar.c:247
+# src/gui/StatusBarCallBack.c:169 src/gui/StatusBarCallBack.c:193
+#: src/gui/gwstatusbarcallback.c:209 src/gui/gwstatusbarcallback.c:228
+#, c-format
+msgid " Selected Item : %d"
+msgstr " Item seleccionado : %d"
+
+# src/gui/StatusBar.c:220
+# src/gui/StatusBarCallBack.c:168
+#: src/gui/gwstatusbarcallback.c:210
+msgid " Catalog explorer"
+msgstr " Explorador do catálogo"
+
+# src/gui/StatusBar.c:242
+# src/gui/StatusBarCallBack.c:192
+#: src/gui/gwstatusbarcallback.c:229
+msgid " Search engine"
+msgstr " Motor de busca"
+
+# src/gui/StatusBar.c:264
+# src/gui/StatusBarCallBack.c:216
+#: src/gui/gwstatusbarcallback.c:246
+msgid " Catalog managment"
+msgstr " Gestão do catálogo"
+
+# src/gui/ToolBar.c:59
+# src/gui/ToolBar.c:76
+#: src/gui/gwtoolbar.c:89
+msgid "Close catalog"
+msgstr "Fechar catálogo"
+
+# src/gui/MenuFileCallBack.c:78 src/gui/MenuFileCallBack.c:411
+# src/gui/MenuFileCallBack.c:425 src/gui/MenuFileCallBack.c:463
+# src/gui/ToolBar.c:55
+# src/gui/MenuFileCallBack.c:87 src/gui/MenuFileCallBack.c:509
+# src/gui/MenuFileCallBack.c:527 src/gui/MenuFileCallBack.c:569
+# src/gui/ToolBar.c:72
+#: src/gui/gwtoolbar.c:93
+msgid "Send catalog by mail"
+msgstr "Enviar catálogo por email"
+
+# src/gui/MenuHelp.c:54
+# src/gui/About.c:108
+#: src/gui/gwwindowboxabout.c:121
+msgid "About"
+msgstr "Sobre"
+
+# src/gui/About.c:128
+# src/gui/About.c:125
+#: src/gui/gwwindowboxabout.c:152
+msgid ""
+"\n"
+"Removable media catalog managment\n"
+"By Sebastien LECACHEUR\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+msgstr ""
+"\n"
+"Gestor de catálogos de media removivel\n"
+"Por Sébastien LECACHEUR\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+
+# src/gui/About.c:129
+# src/gui/About.c:126
+#: src/gui/gwwindowboxabout.c:153
+msgid ""
+"GWhere allows to manage a database of yours CDs and others removable media "
+"(hard disks, floppy drive, Zip drive, CD- ROM, etc...). With GWhere it's "
+"easy to browse yours CDs or to make quick search without need to insert "
+"yours CDs in the drive at each once."
+msgstr ""
+"O GWhere permite gerir uma base de dados dos seus CDs ou outros tipos de "
+"media removível (discos rígidos, disquetes, drives ZIP, CD-ROM, etc...). Com "
+"o GWhere é fácil explorar os seus CDs ou fazer rápidas pesquisas sem a "
+"necessidade de inserir cada um dos seus CDs na drive."
+
+#: src/gui/gwwindowboxabout.c:154
+msgid ""
+"\n"
+"\n"
+"Runs under "
+msgstr ""
+"\n"
+"\n"
+"Está a correr em "
+
+#: src/gui/gwwindowboxmail.c:85
+msgid ""
+"This window box allows you to send a catalog by mail to one (or more) of "
+"yours contacts."
+msgstr ""
+"Esta janela permite-lhe enviar catálogos via email para um (ou mais dos "
+"contactos."
+
+#: src/gui/gwwindowboxmail.c:88 src/gui/gwwindowboxmailcallback.c:57
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid "Send mail"
+msgstr "Enviar email"
+
+#: src/gui/gwwindowboxmail.c:112
+msgid "To :"
+msgstr "Para :"
+
+#: src/gui/gwwindowboxmail.c:118
+msgid "CC :"
+msgstr "CC :"
+
+#: src/gui/gwwindowboxmail.c:124
+msgid "BCC :"
+msgstr "BCC :"
+
+#: src/gui/gwwindowboxmail.c:130
+msgid "Subject :"
+msgstr "Destinatário :"
+
+#: src/gui/gwwindowboxmail.c:140
+msgid "Enter here the email address of your(s) contact(s)."
+msgstr "Introduza aqui o endereço de email do(s) seu(s) contacto(s)."
+
+#: src/gui/gwwindowboxmail.c:148
+msgid "Enter here the email address of the copied mail contacts."
+msgstr "Introduza aqui o endereço de mail dos contactos copiados."
+
+#: src/gui/gwwindowboxmail.c:156
+msgid "Enter here the email address of the hidden copied mail contacts."
+msgstr "Introduza aqui o endereço de email dos contactos copiados ocultos."
+
+#: src/gui/gwwindowboxmail.c:164
+msgid "Enter here the object of your mail."
+msgstr "Introduza aqui o destinatário do seu email."
+
+#: src/gui/gwwindowboxmail.c:168
+msgid "Attached file :"
+msgstr "Ficheiro anexo :"
+
+#: src/gui/gwwindowboxmail.c:182
+msgid "Choose to attach or no the catalog file."
+msgstr "Escolha entre anexar ou não o ficheiro de catálogo."
+
+#: src/gui/gwwindowboxmail.c:197
+msgid "Type here the text for the mail message."
+msgstr "Escreva aqui o texto do seu email"
+
+# src/gui/MenuFile.c:81
+# src/gui/MenuFile.c:81
+#: src/gui/gwwindowboxmail.c:208
+msgid "_Send"
+msgstr "_Enviar"
+
+#: src/gui/gwwindowboxmail.c:213
+msgid "Click here to send a mail (with an attached catalog)."
+msgstr "Click aqui para enviar um email (com um catálogo anexo)."
+
+#: src/gui/gwwindowboxmail.c:225
+msgid "Click here to cancel the send of a mail."
+msgstr "Click aqui para cancelar o envio do email."
+
+# src/gui/NoteBookManagmentCallBack.c:181
+# src/gui/NoteBookManagmentCallBack.c:217
+# src/gui/NoteBookManagmentCallBack.c:234
+#: src/gui/gwwindowboxmailcallback.c:57
+msgid "Sending mail, please wait..."
+msgstr "A enviar mail, Por favor aguarde"
+
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid ""
+"An error occured during the sending of mail. Please check your parameters."
+msgstr ""
+"Ocorreu um erro durante o envio do email. Por favor confira os parâmetros."
+
+# src/support.c:118
+# src/support.c:120
+#: src/gwsupport.c:129
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr "Não foi possível encontrar o ficheiro pixmap: %s"
+
+# src/support.c:125
+# src/support.c:127
+#: src/gwsupport.c:136
+#, c-format
+msgid "Error loading pixmap file: %s"
+msgstr "Erro ao carregar o ficheiro pixmap: %s"
+
+# src/Catalog.c:605
+# src/Catalog.c:695
+#: src/gwcatalogmanager.c:285
+msgid "Error : cannot get current folder."
+msgstr "Erro : não é possível obter a directoria actual."
+
+# src/Catalog.c:641
+# src/Catalog.c:731
+#: src/gwcatalogmanager.c:369
+msgid "Error : cannot go to working folder."
+msgstr "Erro : não é possível obter a directoria."
+
+# src/Catalog.c:692
+# src/Catalog.c:780
+#: src/gwcatalogmanager.c:444
+msgid ""
+"The disk hasn't been added\n"
+"Adding canceled by user"
+msgstr ""
+"O disco não foi adicionado\n"
+"Adição cancelada pelo utilizador"
+
+# src/Catalog.c:641 src/gui/NoteBookManagmentCallBack.c:188
+# src/gui/NoteBookManagmentCallBack.c:224
+# src/Catalog.c:798 src/Catalog.c:803 src/Catalog.c:808 src/Catalog.c:813
+# src/Catalog.c:818 src/Catalog.c:823 src/Catalog.c:828 src/Catalog.c:833
+# src/Catalog.c:850 src/Catalog.c:855 src/Catalog.c:860 src/Catalog.c:865
+# src/Catalog.c:870 src/Catalog.c:875
+#: src/gwcatalogmanager.c:458 src/gwcatalogmanager.c:463
+#: src/gwcatalogmanager.c:468 src/gwcatalogmanager.c:473
+#: src/gwcatalogmanager.c:478 src/gwcatalogmanager.c:484
+#: src/gwcatalogmanager.c:489 src/gwcatalogmanager.c:494
+#: src/gwcatalogmanager.c:536 src/gwcatalogmanager.c:541
+#: src/gwcatalogmanager.c:546 src/gwcatalogmanager.c:552
+#: src/gwcatalogmanager.c:557 src/gwcatalogmanager.c:563
+msgid "The disk hasn't been added\n"
+msgstr "O disco não foi adicionado\n"
+
+# src/Catalog.c:798
+#: src/gwcatalogmanager.c:458
+#, c-format
+msgid "%s outside the process's allocated address space."
+msgstr "%s fora do espaço de memória do processo"
+
+# src/Catalog.c:803
+#: src/gwcatalogmanager.c:463
+#, c-format
+msgid ""
+"A component of the following pathname exceeded %d characters, or an entire "
+"path name exceeded %d characters : %s."
+msgstr ""
+"Um componente do seguinte caminho excedeu %d caracters, ou o caminho inteiro "
+"excedeu %d caracters : %s."
+
+# src/Catalog.c:808
+#: src/gwcatalogmanager.c:468
+#, c-format
+msgid "The following directory does not exist : %s."
+msgstr "A seguinte directoria não existe : %s."
+
+# src/Catalog.c:813 src/Catalog.c:865
+#: src/gwcatalogmanager.c:473 src/gwcatalogmanager.c:552
+msgid "Insufficient memory to complete the operation."
+msgstr "Memória insuficiente para completar a operação"
+
+# src/Catalog.c:818
+#: src/gwcatalogmanager.c:478
+#, c-format
+msgid "A component of the path prefix is not a directory : %s."
+msgstr "Um componente do prefixo não é uma directoria : %s."
+
+# src/Catalog.c:823
+#: src/gwcatalogmanager.c:484
+#, c-format
+msgid ""
+"Too many symbolic links were encountered in resolving following path : %s."
+msgstr ""
+"Demasiados links simbólicos foram encontrados no seguinte caminho : %s ."
+
+# src/Catalog.c:828
+#: src/gwcatalogmanager.c:489
+#, c-format
+msgid "An I/O error occurred when change directory to : %s."
+msgstr "Um erro de I/O ocorreu ao mudar para a directoria : %s."
+
+# src/Exploration.c:599 src/Exploration.c:655 src/Exploration.c:733
+# src/Exploration.c:789
+# src/Catalog.c:833 src/Catalog.c:875
+#: src/gwcatalogmanager.c:494 src/gwcatalogmanager.c:563
+msgid "Unknown error"
+msgstr "Erro desconhecido"
+
+# src/Catalog.c:935
+# src/Catalog.c:1110
+#: src/gwcatalogmanager.c:518 src/gwcatalogmanager.c:843
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot go to parent folder."
+msgstr ""
+"O disco não foi adicionado\n"
+"Erro : não é possível subir para a directoria pai."
+
+# src/Catalog.c:850
+#: src/gwcatalogmanager.c:536
+msgid "Too many file descriptors in use by process."
+msgstr "Demasiados descriptores de ficheiro em uso pelo processo."
+
+# src/Catalog.c:855
+#: src/gwcatalogmanager.c:541
+msgid "Too many files are currently open in the system."
+msgstr "Demasiados ficheiros de momento em uso pelo sistema."
+
+# src/Catalog.c:860
+#: src/gwcatalogmanager.c:546
+#, c-format
+msgid ""
+"The following directory does not exist, or name is an empty string : %s."
+msgstr ""
+"A seguinte directoria não existe ou o seu nome é uma string vazia : %s."
+
+# src/Catalog.c:870
+#: src/gwcatalogmanager.c:557
+#, c-format
+msgid "The following directory name is not a directory : %s."
+msgstr "O nome da seguinte directoria não é uma directoria : %s."
+
+#: src/gwcatalogmanager.c:735
+#, c-format
+msgid ""
+"A critical error occured when extracting file information of %s%s%s.\n"
+"Save your catalog if it is possible, exit GWhere and report this trouble to "
+"the GWhere project team please."
+msgstr ""
+"Ocorreu um erro crítico ao extrair informação de ficheiro de %s%s%s.\n"
+"Grave o seu catálogo se for possível, saia do GWhere e dê, por favor, "
+"conhecimento deste problema à equipa do projecto GWhere."
+
+# src/Catalog.c:926
+# src/Catalog.c:1102
+#: src/gwcatalogmanager.c:836
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot close current folder."
+msgstr ""
+"O disco não foi adicionado\n"
+"Erro : não é possível fechar a directoria actual."
+
+# src/main.c:47
+#: src/gwapplicationmanager.c:65
+#, c-format
+msgid "Is running on %s"
+msgstr "Está a correr em %s"
+
+# src/gui/Properties.c:641
+# src/gui/PropertiesBox.c:583
+#: src/gwapplicationmanager.c:493
+msgid "Catalog loaded"
+msgstr "Ficheiro de Catálogo carregado"
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:119 src/Catalog.c:139
+#: src/gwapplicationmanager.c:498
+msgid "Loading catalog failed"
+msgstr "Erro ao carregar catálogo"
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:119 src/Catalog.c:139
+#: src/gwapplicationmanager.c:499
+msgid "Loading catalog"
+msgstr "A carregar catálogo"
+
+#: src/gwapplicationmanager.c:499
+msgid ""
+"The catalog is invalid or doesn't exists. Check your catalog path please."
+msgstr ""
+"O catálogo é inválido ou não existe. Verifique a localizacão do ficheiro, "
+"por favor."
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:1140 src/Catalog.c:1149 src/Catalog.c:1221 src/Catalog.c:1231
+# src/Catalog.c:1235 src/Catalog.c:1251 src/Catalog.c:1276 src/Catalog.c:1292
+# src/Catalog.c:1315 src/Catalog.c:1330 src/gui/ToolBar.c:74
+#: src/gwapplicationmanager.c:603
+msgid "Saving catalog"
+msgstr "A guardar catálogo"
+
+# src/gui/Properties.c:641
+# src/gui/PropertiesBox.c:583
+#: src/gwapplicationmanager.c:615
+msgid "Catalog saved"
+msgstr "Catálogo guardado"
+
+# src/gui/MenuFileCallBack.c:78 src/gui/MenuFileCallBack.c:411
+# src/gui/MenuFileCallBack.c:425 src/gui/MenuFileCallBack.c:463
+# src/gui/ToolBar.c:55
+# src/gui/MenuFileCallBack.c:87 src/gui/MenuFileCallBack.c:509
+# src/gui/MenuFileCallBack.c:527 src/gui/MenuFileCallBack.c:569
+# src/gui/ToolBar.c:72
+#: src/gwapplicationmanager.c:621
+msgid "Saving catalog failed"
+msgstr "Falha na gravação do catálogo"
+
+# src/gui/NoteBookCatalog.c:112 src/gui/NoteBookCatalog.c:206
+# src/gui/NoteBookCatalog.c:113 src/gui/NoteBookCatalog.c:207
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gwapplicationmanager.h:260
+msgid "Rights"
+msgstr "Direitos"
+
+# src/gui/NoteBookCatalog.c:117 src/gui/NoteBookCatalog.c:207
+# src/gui/NoteBookCatalog.c:118 src/gui/NoteBookCatalog.c:208
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_TITLE	The title column of the column Owner
+#: src/gwapplicationmanager.h:272
+msgid "Owner"
+msgstr "Proprietário"
+
+# src/gui/NoteBookCatalog.c:122 src/gui/NoteBookCatalog.c:208
+# src/gui/NoteBookCatalog.c:123 src/gui/NoteBookCatalog.c:209
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_TITLE	The title column of the column Group
+#: src/gwapplicationmanager.h:284
+msgid "Group"
+msgstr "Grupo"
+
+# src/gui/NoteBookCatalog.c:127 src/gui/NoteBookCatalog.c:209
+# src/gui/NoteBookSearch.c:222
+# src/gui/NoteBookCatalog.c:128 src/gui/NoteBookCatalog.c:210
+# src/gui/NoteBookSearch.c:238
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_TITLE	The title column of the column Size
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_SIZE_TITLE	The title column of the column Size
+#: src/gwapplicationmanager.h:296 src/gwapplicationmanager.h:582
+msgid "Size"
+msgstr "Tamanho"
+
+# src/gui/NoteBookCatalog.c:132 src/gui/NoteBookCatalog.c:210
+# src/gui/NoteBookCatalog.c:133 src/gui/NoteBookCatalog.c:211
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_TITLE	The title column of the column INode
+#: src/gwapplicationmanager.h:308
+msgid "INode"
+msgstr "INode"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_TITLE	The title column of the column Access Date
+#: src/gwapplicationmanager.h:320
+msgid "Access date"
+msgstr "Data de acesso"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_TITLE	The title column of the column Modification Date
+#: src/gwapplicationmanager.h:332
+msgid "Modification date"
+msgstr "Data de modificação"
+
+# src/gui/Properties.c:1134 src/gui/Properties.c:1135
+# src/gui/Properties.c:1476 src/gui/Properties.c:1477
+# src/gui/PropertiesBox.c:960 src/gui/PropertiesBox.c:961
+# src/gui/PropertiesBox.c:1213 src/gui/PropertiesBox.c:1214
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_TITLE	The title column of the column Creation Date
+#: src/gwapplicationmanager.h:344
+msgid "Creation date"
+msgstr "Date de criação"
+
+# src/gui/NoteBookManagmentCallBack.c:377
+# src/gui/PropertiesBox.c:1161
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_TITLE	The title column of the column File System Name
+#: src/gwapplicationmanager.h:394
+msgid "File system name"
+msgstr "Nome do sistema de ficheiros"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_TITLE	The title column of the column Access Path
+#: src/gwapplicationmanager.h:406
+msgid "Access path"
+msgstr "Caminho de acesso"
+
+# src/gui/NoteBookCatalog.c:253
+# src/gui/NoteBookCatalog.c:254
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_TITLE	The title column of the column Archive Number
+#: src/gwapplicationmanager.h:418
+msgid "Archive N#"
+msgstr "Arquivo N#"
+
+# src/gui/NoteBookCatalog.c:254
+# src/gui/NoteBookCatalog.c:255
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_TITLE	The title column of the column Type
+#: src/gwapplicationmanager.h:430
+msgid "Type"
+msgstr "Tipo"
+
+# src/gui/NoteBookCatalog.c:255
+# src/gui/NoteBookCatalog.c:256
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_TITLE	The title column of the column Volume Name
+#: src/gwapplicationmanager.h:442
+msgid "Volume name"
+msgstr "Nome do volume"
+
+# src/gui/Properties.c:845 src/gui/Properties.c:846
+# src/gui/PropertiesBox.c:743 src/gui/PropertiesBox.c:744
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_TITLE	The title column of the column Full Capacity
+#: src/gwapplicationmanager.h:454
+msgid "Full capacity"
+msgstr "Capacidade Total"
+
+# src/gui/NoteBookCatalog.c:257
+# src/gui/NoteBookCatalog.c:258
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_TITLE	The title column of the column Free Space
+#: src/gwapplicationmanager.h:466
+msgid "Free space"
+msgstr "Espaço livre"
+
+# src/gui/NoteBookCatalog.c:137 src/gui/NoteBookCatalog.c:211
+# src/gui/NoteBookCatalog.c:258 src/gui/NoteBookSearch.c:227
+# src/gui/NoteBookCatalog.c:138 src/gui/NoteBookCatalog.c:212
+# src/gui/NoteBookCatalog.c:259 src/gui/NoteBookSearch.c:241
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_TITLE	The title column of the column Date
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DATE_TITLE	The title column of the column Date
+#: src/gwapplicationmanager.h:478 src/gwapplicationmanager.h:594
+msgid "Date"
+msgstr "Data"
+
+# src/gui/NoteBookManagmentCallBack.c:308
+# src/gui/NoteBookManagmentCallBack.c:382
+# src/gui/NoteBookManagmentCallBack.c:344
+# src/gui/NoteBookManagmentCallBack.c:416
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_TITLE	The title column of the column Serial Number
+#: src/gwapplicationmanager.h:490
+msgid "Serial number"
+msgstr "Número de série"
+
+# src/gui/NoteBookSearch.c:217
+# src/gui/NoteBookSearch.c:235
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_PATH_TITLE	The title column of the column Path
+#: src/gwapplicationmanager.h:570
+msgid "Path"
+msgstr "Caminho"
+
+#. Define all used string in the win32 installer
+#: win32/config.h:287
+msgid "Full"
+msgstr "Completo"
+
+#: win32/config.h:288
+msgid "Compact"
+msgstr "Compacto"
+
+#: win32/config.h:289
+msgid "GWhere (requiered)"
+msgstr "GWhere (mandatório)"
+
+#: win32/config.h:290
+msgid "Main engine application."
+msgstr "Motor principal da aplicação."
+
+#: win32/config.h:291
+msgid "GTK+ 2.6 RunTime (required)"
+msgstr "RunTime GTK+ 2.6 (obrigatório)"
+
+#: win32/config.h:292
+msgid "RunTime for GUI environment."
+msgstr "RunTime para o ambiente GUI."
+
+#: win32/config.h:293
+msgid "Plugins"
+msgstr "Plugins"
+
+#: win32/config.h:294
+msgid ""
+"Plugins for auto extraction of file descriptions and plugins for importation/"
+"exportation of catalogs."
+msgstr ""
+"Plugins para extracção automática de descritores e plugins paraimportação/"
+"exportação de catálogos."
+
+#: win32/config.h:295
+msgid "Languages Files"
+msgstr "Ficheiros de Linguagem"
+
+#: win32/config.h:296
+msgid "All languages files for the program translation."
+msgstr "Todos os ficheiros de linguagem para a tradução do programa."
+
+#: win32/config.h:297
+msgid "You must uninstall your last version of GWhere"
+msgstr "Terá de desinstalar a sua anterior versão do GWhere"
+
+#: win32/config.h:298
+msgid "Installer already running"
+msgstr "Instalador já em execução"
+
+#: win32/config.h:299
+msgid "Install options"
+msgstr "Opções de Instalação"
+
+#: win32/config.h:300
+msgid "Which users can run GWhere ?"
+msgstr "Quais os utilizadores que podem executar o GWhere?"
+
+#: win32/config.h:301
+msgid "GWhere install rights access"
+msgstr "Acesso a permissões para instalação do GWhere"
+
+#: win32/config.h:302
+msgid ""
+"GWhere can be installed for all users or only for current user. Select for "
+"which you want install GWhere please."
+msgstr ""
+"O GWhere pode ser instalado para todos os utilizadores ou apenas para o "
+"utilizador actual. Por favor seleccione para qual pretende instalar o GWhere."
+
+#: win32/config.h:303
+msgid "All users|Current user"
+msgstr "Todos os utilizadores|Utilizador actual"
+
+#: win32/config.h:304
+msgid "All users"
+msgstr "Todos os utilizadores"
+
+#~ msgid ""
+#~ "The catalog file doesn't exists. Check your catalog file path please."
+#~ msgstr ""
+#~ "O ficheiro de catálogo não existe. Verifica a localizacão do ficheiro, "
+#~ "por favor."
+
+#~ msgid ""
+#~ "The catalog file to load doesn't have a good file extension. Only .ctg "
+#~ "files are allowed to be loaded."
+#~ msgstr ""
+#~ "O ficheiro do catálogo a carregar não parece ter uma extensão adequada. "
+#~ "Apenas ficheiros .ctg podem ser carregados."
+
+# src/Catalog.c:71 src/Catalog.c:79 src/Catalog.c:88 src/Catalog.c:126
+# src/Catalog.c:135 src/Catalog.c:195 src/Catalog.c:283
+# src/Catalog.c:91 src/Catalog.c:102 src/Catalog.c:115 src/Catalog.c:134
+# src/Catalog.c:183 src/Catalog.c:195 src/Catalog.c:270 src/Catalog.c:363
+#~ msgid "Load file"
+#~ msgstr "Carregar ficheiro"
+
+# src/Catalog.c:71
+# src/Catalog.c:91 src/Catalog.c:102
+#~ msgid "Error : cannot open this file."
+#~ msgstr "Erro : não é possível abrir este ficheiro."
+
+# src/Catalog.c:79
+# src/Catalog.c:115
+#~ msgid "Error : cannot read the file version."
+#~ msgstr "Erro : não é possível ler a versão do ficheiro."
+
+# src/Catalog.c:964 src/Catalog.c:972 src/Catalog.c:1038 src/Catalog.c:1047
+# src/gui/ToolBar.c:57
+# src/Catalog.c:119 src/Catalog.c:139
+#~ msgid "Load catalog"
+#~ msgstr "Carregar catálogo"
+
+# src/Catalog.c:964 src/Catalog.c:1038
+# src/Catalog.c:119 src/Catalog.c:139 src/Catalog.c:1235 src/Catalog.c:1251
+# src/Catalog.c:1276 src/Catalog.c:1292 src/Catalog.c:1315 src/Catalog.c:1330
+#~ msgid "Error : cannot close file."
+#~ msgstr "Erro : não é possível encerrar ficheiro."
+
+# src/Catalog.c:88
+# src/Catalog.c:134
+#~ msgid "Error : it's not a GWhere file."
+#~ msgstr "Erro : não se trata de um ficheiro do GWhere."
+
+# src/Catalog.c:126
+# src/Catalog.c:183
+#~ msgid "Error : this GWhere version file is unknown."
+#~ msgstr "Erro : a versão do ficheiro GWhere é desconhecida."
+
+# src/Catalog.c:135
+# src/Catalog.c:195
+#~ msgid "Error : cannot close this file after loading."
+#~ msgstr "Erro : não é possível fechar este ficheiro após o carregamento."
+
+# src/Catalog.c:195 src/Catalog.c:283
+# src/Catalog.c:270 src/Catalog.c:363
+#~ msgid "Error : during the loading of disk."
+#~ msgstr "Erro : durante o carregamento do disco."
+
+# src/Catalog.c:964 src/Catalog.c:1038
+# src/Catalog.c:1140 src/Catalog.c:1221
+#~ msgid "Error : cannot create file."
+#~ msgstr "Erro : não é possível criar ficheiro."
+
+# src/Catalog.c:972 src/Catalog.c:1047
+# src/Catalog.c:1149 src/Catalog.c:1231
+#~ msgid "Error : cannot write file version."
+#~ msgstr "Erro : não é possível criar versão do ficheiro."
+
+# src/Catalog.c:1009 src/Catalog.c:1122
+# src/Catalog.c:1186 src/Catalog.c:1344
+#~ msgid "Error : cannot close catalog file."
+#~ msgstr "Erro : não é possível criar ficheiro de catálogo."
+
+# src/Catalog.c:1354
+#~ msgid "Elapsed time to save the catalog : %d secs"
+#~ msgstr "Tempo gasto para gravar o catálogo: %d secs"
+
+# src/gui/NoteBookManagment.c:197
+# src/gui/NoteBookManagment.c:216
+#~ msgid ""
+#~ "Give the device file of the selected disk. The device file is the one of "
+#~ "the /etc/fstab file."
+#~ msgstr ""
+#~ "Indique o nome do ficheiro de dispositivo do disco seleccionado. O nome "
+#~ "do device é o que consta do ficheiro /etc/fstab."
+
+# src/gui/NoteBookManagment.c:339
+# src/gui/NoteBookManagment.c:364
+#~ msgid "Scan disk"
+#~ msgstr "Pesquisar disco"
+
+# src/Exploration.c:607 src/Exploration.c:663 src/Exploration.c:741
+# src/Exploration.c:797
+# src/Exploration.c:628 src/Exploration.c:684 src/Exploration.c:765
+# src/Exploration.c:821
+#~ msgid "unkown"
+#~ msgstr "desconhecido"
+
+# src/Supermount.c:824 src/data/VirtualFileSystemStats.c:453
+# src/data/VirtualFileSystemStats.c:470
+# src/Supermount.c:831 src/data/VirtualFileSystemStats.c:418
+#~ msgid "Not yet implemented"
+#~ msgstr "Ainda nao está implementado"
+
+# src/main.c:45
+#~ msgid "Is running on GNU/Linux"
+#~ msgstr "Está a correr em GNU/Linux"
+
+# src/main.c:47
+#~ msgid "Is running on FreeBSD"
+#~ msgstr "Está a correr em FreeBSD"
+
+# src/main.c:47
+#~ msgid "Is running on OpenBSD"
+#~ msgstr "Está a correr em OpenBSD"
+
+# src/main.c:47
+#~ msgid "Is running on NetBSD"
+#~ msgstr "Está a correr em NetBSD"
+
+# src/main.c:49
+#~ msgid "Is running on MS Windows"
+#~ msgstr "Está a correr em MS Windows"
+
+# src/main.c:51
+#~ msgid "Is running on unkown OS"
+#~ msgstr "Está a correr num SO desconhecido"
+
+# src/gui/CaptureBox.c:92 src/gui/DialogBox.c:94 src/gui/ProgressBarBox.c:115
+# src/gui/ProgressBarBox.c:187 src/gui/ProgressBarBox.c:274
+# src/gui/Properties.c:189 src/gui/TextBox.c:108
+# src/gui/CaptureBox.c:116 src/gui/DialogBox.c:94
+# src/gui/ProgressBarBox.c:127 src/gui/ProgressBarBox.c:246
+# src/gui/ProgressBarBox.c:504 src/gui/PropertiesBox.c:216
+# src/gui/TextBox.c:122
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+# src/gui/ProgressBarBox.c:217 src/gui/ProgressBarBox.c:294
+# src/gui/ProgressBarBox.c:276 src/gui/ProgressBarBox.c:460
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+# src/gui/NoteBookCatalog.c:256
+# src/gui/NoteBookCatalog.c:257
+#~ msgid "Total Size"
+#~ msgstr "Tamanho Total"
+
+# src/gui/StatusBar.c:269
+# src/gui/StatusBarCallBack.c:217
+#~ msgid " "
+#~ msgstr " "
+
+# src/main.c:40
+# src/main.c:42
+#~ msgid "%s %s is running in debug mode\n"
+#~ msgstr "%s %s está a correr em debug mode\n"
+
+# src/gui/Interface.c:56
+#~ msgid "GWhere"
+#~ msgstr "GWhere"
+
+# src/Catalog.c:710 src/Catalog.c:730
+#~ msgid ""
+#~ "The disk hasn't been added\n"
+#~ "Unknown error"
+#~ msgstr ""
+#~ "O disco não foi adicionado\n"
+#~ "Erro desconhecido"
+
+# src/Catalog.c:893
+#~ msgid ""
+#~ "The disk hasn't been added\n"
+#~ "Error : cannot add dir to the disk."
+#~ msgstr ""
+#~ "O disco não foi adicionado\n"
+#~ "Erro : não é possível adicionar directoria ao disco."

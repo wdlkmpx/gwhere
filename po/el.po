@@ -1,0 +1,2421 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-08-22 01:05+0200\n"
+"PO-Revision-Date: 2003-09-22 18:54-0200\n"
+"Last-Translator: Dimitris Garanatsios <rs96057@hotmail.com>\n"
+"Language-Team:  <zero@gwhere.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-7\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/tools/gwmail.c:74
+msgid "Cannot receive data"
+msgstr "Αδύνατη η λήψη δεδομένων"
+
+#: src/tools/gwmail.c:80
+msgid "Connexion closed by client\n"
+msgstr "Η σύνδεση έκλεισε από την πλευρά του client\n"
+
+#: src/tools/gwmail.c:109
+msgid "Cannot send data"
+msgstr "Αδύνατη η αποστολή δεδομένων"
+
+#: src/tools/gwstring.c:148
+#, c-format
+msgid "%.0f bytes"
+msgstr "%.0f bytes"
+
+#: src/tools/gwstring.c:152
+#, c-format
+msgid "%.2f Kb"
+msgstr "%.2f Kb"
+
+#: src/tools/gwstring.c:156
+#, c-format
+msgid "%.2f Mb"
+msgstr "%.2f Mb"
+
+#: src/tools/gwstring.c:160
+#, c-format
+msgid "%.2f Gb"
+msgstr "%.2f Gb"
+
+#: src/tools/gwstring.c:165
+#, c-format
+msgid "%.2f Tb"
+msgstr "%.2f Tb"
+
+#: src/tools/gwstring.c:170
+#, c-format
+msgid "%.2f Pb"
+msgstr "%.2f Pb"
+
+#: src/tools/gwstring.c:175
+#, c-format
+msgid "%.2f Hb"
+msgstr "%.2f Hb"
+
+#: src/tools/gwstring.c:181 src/tools/gwstring.c:187
+#, c-format
+msgid "%.2f Ib"
+msgstr "%.2f Ib"
+
+#: src/gui/gwcapturebox.c:100 src/gui/gwdialogbox.c:80 src/gui/gwmsgbox.c:76
+#: src/gui/gwpropertiesbox.c:202 src/gui/gwsettingswindowbox.c:163
+#: src/gui/gwtextbox.c:110
+msgid "_OK"
+msgstr "OK"
+
+#: src/gui/gwcapturebox.c:125 src/gui/gwdialogbox.c:115
+#: src/gui/gwprogressbarbox.c:139 src/gui/gwprogressbarbox.c:562
+#: src/gui/gwpropertiesbox.c:234 src/gui/gwsettingswindowbox.c:178
+#: src/gui/gwtextbox.c:127 src/gui/gwwindowboxmail.c:219
+msgid "_Cancel"
+msgstr "Άκυρο"
+
+#: src/gui/gwcategorieseditbox.c:85 src/gui/gwmenuactioncallback.c:151
+#: src/gui/gwmenupopup.c:137
+msgid "Edit categories"
+msgstr "Διόρθωση κατηγοριών"
+
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:99
+msgid "Categories list : "
+msgstr "Λίστα κατηγοριών : "
+
+#. 1st column label
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_TITLE	The title column of the column Name
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_NAME_TITLE	The title column of the column Name
+#: src/gui/gwcategorieseditbox.c:126 src/gwapplicationmanager.h:248
+#: src/gwapplicationmanager.h:382 src/gwapplicationmanager.h:546
+msgid "Name"
+msgstr "Όνομα"
+
+#. 2nd column label
+#. Match description check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DESCRIPTION_TITLE	The title column of the column Description
+#: src/gui/gwcategorieseditbox.c:132 src/gui/gwnotebooksearch.c:295
+#: src/gwapplicationmanager.h:368 src/gwapplicationmanager.h:514
+#: src/gwapplicationmanager.h:618
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: src/gui/gwcategorieseditbox.c:143
+msgid "_Update"
+msgstr "Ενημέρωση"
+
+#: src/gui/gwcategorieseditbox.c:151
+msgid ""
+"Allows to update category properties of the selected category. Clicks on "
+"Add / Update button to save updates."
+msgstr ""
+"Επιτρέπει την ενημέρωση των ιδιοτήτων της κατηγορίας που είναι επιλεγμένη. "
+"Κάντε click στο κουμπί Προσθήκη / Ενημέρωση για να αποθηκεύσετε τις αλλαγές."
+
+#: src/gui/gwcategorieseditbox.c:158
+msgid "_Remove"
+msgstr "Διαγραφή"
+
+#: src/gui/gwcategorieseditbox.c:166
+msgid ""
+"Remove the selected category from categories list. This categories may "
+"removed only if there's not any item which uses this category."
+msgstr ""
+"Διαγραφή της επιλεγμένης κατηγορίας από τη λίστα κατηγοριών. Οι κατηγορίες "
+"μπορούν να διαγραφούν μόνο αν δε χρησιμοποιούνται από κανένα αντικείμενο."
+
+#. Label for category name
+#: src/gui/gwcategorieseditbox.c:180
+msgid "Category name : "
+msgstr "Όνομα κατηγορίας : "
+
+#: src/gui/gwcategorieseditbox.c:191
+msgid "Enter the name of the category."
+msgstr "Εισάγετε το όνομα της κατηγορίας."
+
+#. Frame category description
+#: src/gui/gwcategorieseditbox.c:196
+msgid "Description : "
+msgstr "Περιγραφή : "
+
+#: src/gui/gwcategorieseditbox.c:221
+msgid "Enter the description of the category."
+msgstr "Εισάγετε την περιγραφή της κατηγορίας."
+
+#. Is it not mandatory?
+#. g_strdup_to_gtk_text ( _( "Add"), text_utf8);
+#. gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
+#. g_free ( text_utf8);
+#.
+#. gtk_widget_ref ( bt);
+#. (GtkDestroyNotify)gtk_widget_unref
+#: src/gui/gwcategorieseditbox.c:240
+msgid "Add / Update"
+msgstr "Προσθήκη / Ενημέρωση"
+
+#: src/gui/gwcategorieseditbox.c:247
+msgid "Save properties changes of category."
+msgstr "Αποθήκευση των αλλαγών των ιδιοτήτων μιας κατηγορίας."
+
+#: src/gui/gwcategorieseditbox.c:257 src/gui/gwmenupopup.c:67
+#: src/gui/gwmenupopup.c:170
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: src/gui/gwcategorieseditbox.c:264
+msgid "Close the categories properties edit window."
+msgstr "Κλείσιμο του παραθύρου διόρθωσης των ιδιοτήτων των κατηγοριών."
+
+#: src/gui/gwcategorieseditbox.c:308 src/gui/gwnotebookmanagmentcallback.c:265
+#: src/gui/gwpropertiesbox.c:1046
+msgid "none"
+msgstr "καμία"
+
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Remove category"
+msgstr "Διαγραφή κατηγορίας"
+
+#: src/gui/gwcategorieseditbox.c:379
+msgid "Can't remove this category. It's used by an item."
+msgstr ""
+"Αδύνατη η διαγραφή αυτής της κατηγορίας. Χρησιμοποιείται από κάποιο "
+"αντικείμενο."
+
+#: src/gui/gwcategorieseditbox.c:532 src/gui/gwcategorieseditbox.c:843
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: src/gui/gwcategorieseditbox.c:556 src/gui/gwcategorieseditbox.c:873
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: src/gui/gwdialogbox.c:98
+msgid "_No"
+msgstr "Όχι"
+
+#: src/gui/gwfileselectionbox.c:80
+msgid "Hide file operations"
+msgstr "Απόκρυψη των ενεργειών των αρχείων"
+
+#: src/gui/gwfileselectionbox.c:86
+msgid "Show file operation"
+msgstr "Εμφάνιση των ενεργειών των αρχείων"
+
+#: src/gui/gwmenuaction.c:64
+msgid "_Action"
+msgstr "Ενέργεια"
+
+#: src/gui/gwmenuaction.c:85
+msgid "_Expand all"
+msgstr "Επέκταση όλων"
+
+#: src/gui/gwmenuaction.c:101
+msgid "Expand only _disks"
+msgstr "Επέκταση μόνο των δίσκων"
+
+#: src/gui/gwmenuaction.c:115
+msgid "C_ollapse all"
+msgstr "Κατάρρευση όλων"
+
+#: src/gui/gwmenuaction.c:138
+msgid "Edit _categories"
+msgstr "Διόρθωση κατηγοριών"
+
+#: src/gui/gwmenuactioncallback.c:151
+msgid "No catalog is opened : cannot edit categories"
+msgstr "Δεν υπάρχει ανοικτός κάποιος κατάλογος : αδύνατη η διόρθωση κατηγοριών"
+
+#: src/gui/gwmenufile.c:85
+msgid "_File"
+msgstr "Αρχείο"
+
+#: src/gui/gwmenufile.c:106
+msgid "_New"
+msgstr "Δημιουργία"
+
+#: src/gui/gwmenufile.c:120
+msgid "_Open"
+msgstr "Άνοιγμα"
+
+#: src/gui/gwmenufile.c:134
+msgid "_Save"
+msgstr "Αποθήκευση"
+
+#: src/gui/gwmenufile.c:148
+msgid "Sav_e as"
+msgstr "Αποθήκευση ως"
+
+#: src/gui/gwmenufile.c:162
+msgid "C_lose"
+msgstr "Κλείσιμο"
+
+#: src/gui/gwmenufile.c:183
+msgid "Import"
+msgstr ""
+
+#: src/gui/gwmenufile.c:199
+#, fuzzy
+msgid "Export"
+msgstr "Εξερεύνηση"
+
+#: src/gui/gwmenufile.c:222
+msgid "_Properties"
+msgstr "Ιδιότητες"
+
+#: src/gui/gwmenufile.c:243
+msgid "_Recents files"
+msgstr "Πρόσφατα ανοιγμένα αρχεία"
+
+#: src/gui/gwmenufile.c:266
+msgid "E_xit"
+msgstr "Έξοδος"
+
+#. Else ask the new catalog name
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:75
+#: src/gui/gwmenufilecallback.c:607 src/gui/gwmenufilecallback.c:625
+#: src/gui/gwmenufilecallback.c:671 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gui/gwnotebookmanagmentcallback.c:256 src/gui/gwtoolbar.c:77
+msgid "New catalog"
+msgstr "Δημιουργία καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:62 src/gui/gwmenufilecallback.c:95
+#: src/gui/gwmenufilecallback.c:1357 src/gui/gwnotebookmanagmentcallback.c:121
+#: src/gwapplicationmanager.c:130
+msgid "There is no available catalog plugin"
+msgstr ""
+
+#. if ( gw_db_catalog_get_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_db_name ( catalog))>0 ) {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_db_name ( catalog), "\n", NULL);
+#. } else {
+#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_name ( catalog), "\n", NULL);
+#. }
+#. If has been modified, ask to save it before open another catalog
+#: src/gui/gwmenufilecallback.c:69 src/gui/gwmenufilecallback.c:102
+#: src/gui/gwmenufilecallback.c:138 src/gui/gwmenufilecallback.c:180
+#: src/gui/gwmenufilecallback.c:461 src/gui/gwmenufilecallback.c:1367
+msgid ""
+"Would you want save catalog :\n"
+"\n"
+msgstr ""
+"Θα θέλατε να αποθηκεύσετε τον κατάλογο :\n"
+"\n"
+
+#: src/gui/gwmenufilecallback.c:70
+msgid "New file"
+msgstr "Δημιουργία αρχείου"
+
+#: src/gui/gwmenufilecallback.c:75 src/gui/gwmenufilecallback.c:607
+#: src/gui/gwmenufilecallback.c:625 src/gui/gwmenufilecallback.c:671
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Enter catalog name"
+msgstr "Εισάγετε το όνομα του καταλόγου"
+
+#. Else opens file selection box
+#: src/gui/gwmenufilecallback.c:95 src/gui/gwmenufilecallback.c:108
+#: src/gui/gwmenufilecallback.c:702 src/gui/gwmenufilecallback.c:719
+#: src/gui/gwmenufilecallback.c:829 src/gui/gwtoolbar.c:81
+msgid "Open catalog"
+msgstr "Άνοιγμα καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:103 src/gui/gwmenufilecallback.c:1357
+#: src/gui/gwmenufilecallback.c:1369
+msgid "Open file"
+msgstr "Άνοιγμα αρχείου"
+
+#: src/gui/gwmenufilecallback.c:139 src/gui/gwmenufilecallback.c:148
+msgid "Close file"
+msgstr "Κλείσιμο αρχείου"
+
+#: src/gui/gwmenufilecallback.c:148 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:365 src/gui/gwmenufilecallback.c:406
+#: src/gui/gwmenufilecallback.c:428 src/gui/gwmenufilecallback.c:1336
+msgid "No catalog is opened"
+msgstr "Δεν υπάρχει ανοικτός κάποιος κατάλογος"
+
+#: src/gui/gwmenufilecallback.c:181 src/gui/gwmenufilecallback.c:191
+#: src/gui/gwmenufilecallback.c:196 src/gui/gwmenufilecallback.c:270
+msgid "Send file by mail"
+msgstr "Αποστολή αρχείου με mail"
+
+#: src/gui/gwmenufilecallback.c:196
+msgid "Please configure mail options in the settings in order to send mails."
+msgstr ""
+"Παρακαλώ ρυθμίστε τις επιλογές του mail στις Ρυθμίσεις ώστε να στέλνετε "
+"mails."
+
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_new_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_open_saveas_file_selection_ok, NULL);
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks un file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_saveas_file_selection_ok, NULL);
+#. If it's a new catalog, asks a file name.
+#. if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
+#. If it's a new catalog, asks a file name.
+#. gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GtkSignalFunc)gw_menu_file_exit_saveas_file_selection_ok, NULL);
+#: src/gui/gwmenufilecallback.c:228 src/gui/gwmenufilecallback.c:394
+#: src/gui/gwmenufilecallback.c:425 src/gui/gwmenufilecallback.c:428
+#: src/gui/gwmenufilecallback.c:603 src/gui/gwmenufilecallback.c:697
+#: src/gui/gwmenufilecallback.c:749 src/gui/gwmenufilecallback.c:921
+#: src/gui/gwmenufilecallback.c:977 src/gui/gwmenufilecallback.c:1020
+#: src/gui/gwmenufilecallback.c:1122
+msgid "Save as catalog"
+msgstr "Αποθήκευση σαν κατάλογο"
+
+#: src/gui/gwmenufilecallback.c:270
+msgid "The current catalog is never be saved, cannot send it"
+msgstr ""
+
+#: src/gui/gwmenufilecallback.c:365
+msgid "Catalog properties"
+msgstr "Ιδιότητες καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:406 src/gui/gwtoolbar.c:85
+msgid "Save catalog"
+msgstr "Αποθήκευση καταλόγου"
+
+#. If has been modified, ask to save it before exit program
+#: src/gui/gwmenufilecallback.c:455
+msgid "Quit "
+msgstr "Έξοδος"
+
+#: src/gui/gwmenufilecallback.c:1231 src/gui/gwmenufilecallback.c:1233
+#: src/gui/gwmenufilecallback.c:1263 src/gui/gwmenufilecallback.c:1267
+msgid "Import catalog from"
+msgstr ""
+
+#: src/gui/gwmenufilecallback.c:1231
+#, fuzzy
+msgid "Catalog imported"
+msgstr "Ιδιότητες καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:1233
+#, fuzzy
+msgid "Catalog is not imported"
+msgstr "Δεν υπάρχει ανοικτός κάποιος κατάλογος"
+
+#: src/gui/gwmenufilecallback.c:1267
+#, fuzzy
+msgid "A catalog is already opened"
+msgstr "Δεν υπάρχει ανοικτός κάποιος κατάλογος"
+
+#: src/gui/gwmenufilecallback.c:1291 src/gui/gwmenufilecallback.c:1293
+#: src/gui/gwmenufilecallback.c:1329 src/gui/gwmenufilecallback.c:1336
+#, fuzzy
+msgid "Export catalog to"
+msgstr "Εισάγετε το όνομα του καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:1291
+#, fuzzy
+msgid "Catalog exported"
+msgstr "Εξερεύνηση καταλόγου"
+
+#: src/gui/gwmenufilecallback.c:1293
+#, fuzzy
+msgid "Catalog is not exported"
+msgstr "Εξερεύνηση καταλόγου"
+
+#: src/gui/gwmenuhelp.c:53
+msgid "_Help"
+msgstr "Βοήθεια"
+
+#: src/gui/gwmenuhelp.c:75
+msgid "A_bout"
+msgstr "Περί"
+
+#: src/gui/gwmenuoptions.c:54
+msgid "_Options"
+msgstr "Επιλογές"
+
+#: src/gui/gwmenuoptions.c:75
+msgid "Se_ttings"
+msgstr "Ρυθμίσεις"
+
+#: src/gui/gwmenupopup.c:43 src/gui/gwmenupopup.c:146
+msgid "New"
+msgstr "Δημιουργία"
+
+#: src/gui/gwmenupopup.c:49 src/gui/gwmenupopup.c:152
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: src/gui/gwmenupopup.c:55 src/gui/gwmenupopup.c:158
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: src/gui/gwmenupopup.c:61 src/gui/gwmenupopup.c:164
+msgid "Save as"
+msgstr "Αποθήκευση ως"
+
+#: src/gui/gwmenupopup.c:76
+msgid "Exit"
+msgstr "Έξοδος"
+
+#: src/gui/gwmenupopup.c:119 src/gui/gwmenupopup.c:228
+#: src/gui/gwmenupopup.c:304 src/gui/gwmenupopup.c:373
+msgid "Rename"
+msgstr "Μετονομασία"
+
+#. g_strdup_to_gtk_text ( _( "Add new disk"), text_utf8);
+#. menuitem = gtk_menu_item_new_with_label ( text_utf8);
+#. g_free ( text_utf8);
+#. gtk_menu_append ( GTK_MENU ( menu), menuitem);
+#. gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_add_new_disk, node);
+#.
+#: src/gui/gwmenupopup.c:131 src/gui/gwmenupopup.c:246
+#: src/gui/gwmenupopup.c:310 src/gui/gwmenupopup.c:379
+#: src/gui/gwmenupopupcallback.c:171 src/gui/gwmenupopupcallback.c:528
+#: src/gui/gwmenupopupcallback.c:747 src/gui/gwmenupopupcallback.c:1024
+msgid "Edit description"
+msgstr "Διόρθωση περιγραφής"
+
+#: src/gui/gwmenupopup.c:179 src/gui/gwmenupopup.c:255
+#: src/gui/gwmenupopup.c:325 src/gui/gwmenupopup.c:394
+#: src/gui/gwpropertiesbox.c:110
+msgid "Properties"
+msgstr "Ιδιότητες"
+
+#: src/gui/gwmenupopup.c:222 src/gui/gwmenupopup.c:298
+msgid "Move To..."
+msgstr "Μετακίνηση σε..."
+
+#: src/gui/gwmenupopup.c:234
+msgid "Delete disk"
+msgstr "Διαγραφή δίσκου"
+
+#: src/gui/gwmenupopup.c:240 src/gui/gwmenupopupcallback.c:453
+msgid "Change volume label"
+msgstr "Αλλαγή της ετικέτας του τόμου"
+
+#: src/gui/gwmenupopup.c:316 src/gui/gwmenupopup.c:385
+msgid "Remove from catalog"
+msgstr "Διαγραφή από τον κατάλογο"
+
+#: src/gui/gwmenupopup.c:402
+msgid "Edit file"
+msgstr "Διόρθωση αρχείου"
+
+#: src/gui/gwmenupopup.c:402
+msgid "Can't edit this file!!\n"
+msgstr "Αδύνατη η διόρθωση αυτού του αρχείου!!\n"
+
+#: src/gui/gwmenupopupcallback.c:64 src/gui/gwmenupopupcallback.c:121
+msgid "Rename catalog"
+msgstr "Μετονομασία καταλόγου"
+
+#: src/gui/gwmenupopupcallback.c:64
+msgid "Enter new catalog name"
+msgstr "Εισάγετε νέο όνομα καταλόγου"
+
+#: src/gui/gwmenupopupcallback.c:121
+#, fuzzy
+msgid "Invalid filled catalog name"
+msgstr "Εισάγετε όνομα δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:171
+msgid "Catalog description"
+msgstr "Περιγραφή καταλόγου"
+
+#: src/gui/gwmenupopupcallback.c:320 src/gui/gwmenupopupcallback.c:360
+#: src/gui/gwmenupopupcallback.c:374
+msgid "Rename disk"
+msgstr "Μετονομασία δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:320
+msgid "Enter new disk name"
+msgstr "Εισάγετε νέο όνομα δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:360
+msgid "The filled disk name already exist in the current catalog"
+msgstr ""
+
+#: src/gui/gwmenupopupcallback.c:374
+#, fuzzy
+msgid "No new disk name was filled"
+msgstr "Εισάγετε νέο όνομα δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:453
+msgid "Enter new disk volume label"
+msgstr "Εισάγετε νέα ετικέτα τόμου"
+
+#: src/gui/gwmenupopupcallback.c:528
+msgid "Disk description"
+msgstr "Περιγραφή δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:652 src/gui/gwmenupopupcallback.c:693
+#: src/gui/gwmenupopupcallback.c:707
+#, fuzzy
+msgid "Rename folder"
+msgstr "Μετονομασία δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:652
+#, fuzzy
+msgid "Enter new folder name"
+msgstr "Εισάγετε νέο όνομα δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:693
+msgid "The filled folder name already exist in the current folder"
+msgstr ""
+
+#: src/gui/gwmenupopupcallback.c:707
+msgid "No new folder name was filled"
+msgstr ""
+
+#: src/gui/gwmenupopupcallback.c:747
+msgid "Folder description"
+msgstr "Περιγραφή φακέλου"
+
+#: src/gui/gwmenupopupcallback.c:921 src/gui/gwmenupopupcallback.c:956
+#: src/gui/gwmenupopupcallback.c:965
+#, fuzzy
+msgid "Rename file"
+msgstr "Μετονομασία δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:921
+#, fuzzy
+msgid "Enter new file name"
+msgstr "Εισάγετε νέο όνομα δίσκου"
+
+#: src/gui/gwmenupopupcallback.c:956
+msgid "The filled file name already exist in the current folder"
+msgstr ""
+
+#: src/gui/gwmenupopupcallback.c:965
+msgid "No new file name was filled"
+msgstr ""
+
+#: src/gui/gwmenupopupcallback.c:1024
+msgid "File description"
+msgstr "Περιγραφή αρχείου"
+
+#: src/gui/gwnotebookcatalog.c:96
+msgid "Archive"
+msgstr "Καταχώρηση"
+
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebookcatalog.c:202
+msgid "Catalog"
+msgstr "Κατάλογος"
+
+#: src/gui/gwnotebookcatalog.c:764
+msgid "Closing catalog"
+msgstr "Κλείσιμο καταλόγου"
+
+#: src/gui/gwnotebookcatalog.c:764 src/gui/gwnotebooksearchcallback.c:324
+#: src/gwapplicationmanager.c:603
+msgid "Please wait..."
+msgstr "Παρακαλώ περιμένετε..."
+
+#: src/gui/gwnotebookcatalog.c:782
+msgid "Catalog closed"
+msgstr "Ο κατάλογος έκλεισε"
+
+#: src/gui/gwnotebookcatalogcallback.c:1275 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1647
+msgid "unknown owner"
+msgstr "άγνωστος ιδιοκτήτης"
+
+#: src/gui/gwnotebookcatalogcallback.c:1280 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1667
+msgid "unknown group"
+msgstr "άγνωστη ομάδα"
+
+#. Frame of new disk control
+#: src/gui/gwnotebookmanagment.c:159 src/gui/gwnotebookmanagmentcallback.c:275
+msgid "New disk"
+msgstr "Δημιουργία δίσκου"
+
+#: src/gui/gwnotebookmanagment.c:173
+#, fuzzy
+msgid "Select the media that will be added as disk to your catalog."
+msgstr "Επιλέξτε το δίσκο που θα προστεθεί στον κατάλογό σας"
+
+#. Label for media selection
+#: src/gui/gwnotebookmanagment.c:178
+#, fuzzy
+msgid "Select media : "
+msgstr "Επιλογή δίσκου : "
+
+#: src/gui/gwnotebookmanagment.c:212
+msgid ""
+"Enter the number of the new disk. This number can help you with the history "
+"of your catalog."
+msgstr ""
+"Εισάγετε τον αριθμό του νέου δίσκου. Ο αριθμός αυτός μπορεί να σας βοηθήσει "
+"με το ιστορικό του καταλόγου σας."
+
+#. Label for number archive
+#. Number archive label
+#: src/gui/gwnotebookmanagment.c:217 src/gui/gwpropertiesbox.c:842
+msgid "Archive N# : "
+msgstr "Αριθμός καταχώρησης : "
+
+#: src/gui/gwnotebookmanagment.c:232
+#, fuzzy
+msgid ""
+"Enter the name of the new disk. This name will be appear in your catalog."
+msgstr ""
+"Εισάγετε το όνομα του νέου δίσκου. Το όνομά του θα εμφανίζεται στον κατάλογό "
+"σας."
+
+#. Label for disk name
+#: src/gui/gwnotebookmanagment.c:237
+msgid "Name : "
+msgstr "Όνομα : "
+
+#. ComboBox for category selection
+#. It's not mandatory to encode to UTF-8 because gw_combo_box_categories_create() encodes itself.
+#. Combo box for categories list
+#: src/gui/gwnotebookmanagment.c:255 src/gui/gwpropertiesbox.c:1077
+#: src/gui/gwpropertiesbox.c:1403 src/gui/gwpropertiesbox.c:1737
+msgid "Category : "
+msgstr "Κατηγορία : "
+
+#: src/gui/gwnotebookmanagment.c:261
+msgid ""
+"Select the category to apply to the disk which will be added (even if the "
+"option is checked)."
+msgstr ""
+"Επιλέξτε την κατηγορία όπου κατατάσεται ο δίσκος που θα προστεθεί (ακόμα και "
+"αν η επιλογή είναι τσεκαρισμένη)."
+
+#: src/gui/gwnotebookmanagment.c:273
+#, fuzzy
+msgid "Give the device file of the selected media."
+msgstr ""
+"Δώστε τον ελεύθερο χώρο του επιλεγμένου δίσκου (αν εναι προσαρτημένος)."
+
+#. Device file information label
+#: src/gui/gwnotebookmanagment.c:278 src/gui/gwnotebookmanagmentcallback.c:420
+#: src/gui/gwnotebookmanagmentcallback.c:479
+msgid "Info : "
+msgstr "Πληροφορίες : "
+
+#: src/gui/gwnotebookmanagment.c:290
+#, fuzzy
+msgid "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."
+msgstr ""
+"Δώστε τον τύπο του επιλεγμένου δίσκου. Ο τύπος είναι ένας από αυτούς του "
+"αρχείου /etc/fstab."
+
+#. Device type information label
+#: src/gui/gwnotebookmanagment.c:295 src/gui/gwnotebookmanagmentcallback.c:425
+#: src/gui/gwnotebookmanagmentcallback.c:497 src/gui/gwpropertiesbox.c:883
+msgid "Type : "
+msgstr "Τύπος : "
+
+#: src/gui/gwnotebookmanagment.c:307
+#, fuzzy
+msgid "Display if the selected media is mounted or no."
+msgstr "Εμφάνιση αν ο επιλεγμένος δίσκος είναι προσαρτημένος ή όχι."
+
+#. Media mount state information label
+#: src/gui/gwnotebookmanagment.c:312 src/gui/gwnotebookmanagmentcallback.c:431
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Mounted : "
+msgstr "Προσαρτημένος : "
+
+#: src/gui/gwnotebookmanagment.c:324
+#, fuzzy
+msgid "Give the volume name of the selected media (only if is mounted)."
+msgstr ""
+"Δώστε την ονομασία του τόμου του επιλεγμένου δίσκου (αν είναι προσαρτημένος)."
+
+#. Media volume information label
+#: src/gui/gwnotebookmanagment.c:329 src/gui/gwnotebookmanagmentcallback.c:437
+msgid "Volume : "
+msgstr "Τόμος : "
+
+#: src/gui/gwnotebookmanagment.c:340
+#, fuzzy
+msgid ""
+"Give the serial number of the selected media (only if is mounted). This "
+"number is a manufacture number."
+msgstr ""
+"Δώστε το σειριακό αριθμό του επιλεγμένου δίσκου (αν είναι προσαρτημένος). Ο "
+"αριθμός αυτός δίνεται από τον κατασκευαστή."
+
+#. Media serial number information label
+#: src/gui/gwnotebookmanagment.c:345
+msgid "Serial N# : "
+msgstr "Σειριακός αριθμός : "
+
+#: src/gui/gwnotebookmanagment.c:356
+#, fuzzy
+msgid "Give the full space of the selected media (only if is mounted)."
+msgstr ""
+"Δώστε τη συνολική χωρητικότητα του επιλεγμένου δίσκου (αν είναι "
+"προσαρτημένος)."
+
+#. Media capacity information label
+#: src/gui/gwnotebookmanagment.c:361 src/gui/gwnotebookmanagmentcallback.c:447
+#: src/gui/gwnotebookmanagmentcallback.c:539
+msgid "Capacity : "
+msgstr "Χωρητικότητα : "
+
+#: src/gui/gwnotebookmanagment.c:372
+#, fuzzy
+msgid "Give the free space of the selected media (only if is mounted)."
+msgstr ""
+"Δώστε τον ελεύθερο χώρο του επιλεγμένου δίσκου (αν εναι προσαρτημένος)."
+
+#. Media free space information label
+#: src/gui/gwnotebookmanagment.c:377 src/gui/gwnotebookmanagmentcallback.c:452
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "Free space : "
+msgstr "Ελεύθερος χώρος : "
+
+#. Frame for scan options
+#: src/gui/gwnotebookmanagment.c:385
+msgid "Options"
+msgstr "Επιλογές"
+
+#. Check button for the displaying of media information
+#: src/gui/gwnotebookmanagment.c:396
+msgid "Display info"
+msgstr "Εμφάνιση πληροφοριών"
+
+#: src/gui/gwnotebookmanagment.c:404
+#, fuzzy
+msgid ""
+"Displays selected media informations as path, capacity, free space, label,..."
+msgstr ""
+"Εμφανίζει πληροφορίες για την επιλεγμένη συσκευή όπως σημείο προσάρτησης, "
+"χωρητικότητα, ελεύθερος χώρος, ετικέτα,..."
+
+#. Check button for the automount
+#: src/gui/gwnotebookmanagment.c:410
+msgid "Automount"
+msgstr "Αυτόματη προσάρτηση"
+
+#: src/gui/gwnotebookmanagment.c:418
+#, fuzzy
+msgid ""
+"Mount the media if it wasn't mounted. And unmount after the media even if it "
+"was mounted before the scan."
+msgstr ""
+"Προσάρτηση του δίσκου αν δεν είναι προσαρτημένος. Κατόπιν, αποπροσάρτηση του "
+"δίσκου ακόμα και αν ήταν προσαρτημένος πριν την ανίχνευση"
+
+#. Check button for the exploring of tree structure
+#: src/gui/gwnotebookmanagment.c:424
+#, fuzzy
+msgid "Explore tree structure of the media."
+msgstr "Εξερεύνηση της δομής του δίσκου"
+
+#: src/gui/gwnotebookmanagment.c:432
+msgid "Keep this option checked to scan all folders and files informations."
+msgstr ""
+"Τσεκάρετε αυτήν την επιλογή για ανίχνευση πληροφοριών των φακέλων και των "
+"αρχείων."
+
+#. Check button for the exploring of archive files
+#: src/gui/gwnotebookmanagment.c:437
+msgid "Explore archive files (.tar, .gz, .zip, ...)"
+msgstr "Εξερεύνηση σε συμπιεσμένα αρχεία (.tar, .gz, .zip, ...)"
+
+#: src/gui/gwnotebookmanagment.c:445
+msgid ""
+"Not yet implemented!!\n"
+"Explore all archives, as it was a directory. Archives are tarred or gzipped "
+"files."
+msgstr ""
+"Χαρακτηριστικό μη διαθέσιμο ακόμα!!\n"
+"Εξερεύνηση όλων των συμπιεσμένων αρχείων σαν να ήταν φάκελοι."
+
+#. Check button for the auto eject
+#: src/gui/gwnotebookmanagment.c:450
+#, fuzzy
+msgid "Eject media if possible"
+msgstr "Αποβολή του δίσκου αν είναι δυνατόν"
+
+#: src/gui/gwnotebookmanagment.c:458
+#, fuzzy
+msgid ""
+"Eject the media if possible (CD-ROM...), even if the tray was closed. This "
+"is enable only if automount is enable!!"
+msgstr ""
+"Αποβολή του δίσκου αν είναι δυνατόν (CD-ROM...), ακόμα και αν βρισκόταν στο "
+"drive. Η λειτουργία διατίθεται μόνο αν είναι ενεργοποιημένη η επιλογή της "
+"αυτόματης προσάρτησης!!"
+
+#. Check button for setting category recursively
+#: src/gui/gwnotebookmanagment.c:463
+msgid "Sets category recursive"
+msgstr "Επαναληπτική εφαρμογή της κατηγορίας"
+
+#: src/gui/gwnotebookmanagment.c:471
+#, fuzzy
+msgid ""
+"Apply selected category to all items in the disk to add (disk, folders and "
+"files)."
+msgstr ""
+"Εφαρμογή της επιλεγμένης κατηγορίας σε όλα τα αντικείμενα του επιλεγμένου "
+"δίσκου (δίσκος, φάκελοι, αρχεία)."
+
+#. Check button for the auto make description
+#: src/gui/gwnotebookmanagment.c:476
+msgid "Auto make description"
+msgstr "Αυτόματη δημιουργία περιγραφής"
+
+#: src/gui/gwnotebookmanagment.c:484
+msgid ""
+"Make auto description of file (file format description, image size for xmp "
+"or jpg, etc...)."
+msgstr ""
+"Αυτόματη δημιουργία περιγραφής αρχείων (περιγραφή του τύπου τους, μέγεθος "
+"εικόνας για xpm ή jpg, κλπ...)."
+
+#. Check button for the using a pattern to generate disk name
+#: src/gui/gwnotebookmanagment.c:489
+msgid "Use an advanced pattern to generate disk name"
+msgstr "Χρήση προηγμένου προτύπου για τη δημιουργία του ονόματος του δίσκου"
+
+#: src/gui/gwnotebookmanagment.c:497
+#, fuzzy
+msgid ""
+"You can fill extra tags to generate a disk name with disk information :\n"
+"- %% : %\n"
+"- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, "
+"0002, 0003, ..., 0091, ...\n"
+"- %l : media volume label\n"
+"- %t : media type\n"
+"- %s : serial number"
+msgstr ""
+"Μπορείτε να συμπληρώσετε περαιτέρω πεδία για τη δημιουργία του ονόματος του "
+"δίσκου με τις πληροφορίες του :\n"
+"- %% : %\n"
+"- %n : αριθμός καταχώρησης (δυνατή χρήση του 0 ως πρόθεμα : %.4n δίνει 0001, "
+"0002, 0003, ..., 0091, ...\n"
+"- %l : ονομασία τόμου του δίσκου\n"
+"- %t : τύπος του δίσκου\n"
+"- %s : σειριακός αριθμός"
+
+#. Check button for the using media label
+#: src/gui/gwnotebookmanagment.c:502
+#, fuzzy
+msgid "Use media volume name as disk name (only when disk name is empty)"
+msgstr "Χρήση ονόματος τόμου σαν όνομα δίσκου"
+
+#: src/gui/gwnotebookmanagment.c:510
+#, fuzzy
+msgid ""
+"If you didn't enter disk name and if your selected media has a volume name, "
+"the media volume name will be applied as disk name."
+msgstr ""
+"Αν δε δώσατε όνομα δίσκου και η επιλεγμένη συσκευή έχει όνομα τόμου, σαν "
+"όνομα δίσκου θα χρησιμοποιηθεί το όνομα τόμου."
+
+#. The add disk button to start the media scanning
+#. If no disk name is filled
+#. The device cannot be mounted
+#: src/gui/gwnotebookmanagment.c:515 src/gui/gwnotebookmanagmentcallback.c:152
+#: src/gui/gwnotebookmanagmentcallback.c:160
+#: src/gui/gwnotebookmanagmentcallback.c:275
+#: src/gui/gwnotebookmanagmentcallback.c:354
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Add disk"
+msgstr "Προσθήκη δίσκου"
+
+#. Text label of the managment tabbed pane.
+#: src/gui/gwnotebookmanagment.c:561
+msgid "Management"
+msgstr "Διαχείριση"
+
+#: src/gui/gwnotebookmanagmentcallback.c:152
+#, fuzzy
+msgid "The disk hasn't been added : there are not mounted media"
+msgstr "Ο δίσκος δεν προστέθηκε : δεν ήταν προσαρτημένος"
+
+#: src/gui/gwnotebookmanagmentcallback.c:160
+#, fuzzy
+msgid "The disk hasn't been added : cannot mount media"
+msgstr "Ο δίσκος δεν προστέθηκε : ήταν αδύνατη η προσάρτησή του"
+
+#. If no catalog is opened
+#: src/gui/gwnotebookmanagmentcallback.c:256
+msgid "Add new disk"
+msgstr "Προσθήκη νέου δίσκου"
+
+#: src/gui/gwnotebookmanagmentcallback.c:275
+msgid "Enter disk name"
+msgstr "Εισάγετε όνομα δίσκου"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Scanning"
+msgstr "Ανιχνεύοντας"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Adding disk is working"
+msgstr "Προσθήκη δίσκου σε εξέλιξη"
+
+#: src/gui/gwnotebookmanagmentcallback.c:298
+msgid "Please wait"
+msgstr "Παρακαλώ περιμένετε"
+
+#: src/gui/gwnotebookmanagmentcallback.c:308 src/gwcatalogmanager.c:369
+msgid "The disk has been added"
+msgstr "Ο δίσκος προστέθηκε"
+
+#: src/gui/gwnotebookmanagmentcallback.c:354
+msgid "Mount failed\n"
+msgstr "Η προσάρτηση απέτυχε\n"
+
+#: src/gui/gwnotebookmanagmentcallback.c:442
+#: src/gui/gwnotebookmanagmentcallback.c:531
+msgid "Serial number : "
+msgstr "Σειριακός αριθμός : "
+
+#: src/gui/gwnotebookmanagmentcallback.c:479
+#: src/gui/gwnotebookmanagmentcallback.c:494
+#: src/gui/gwnotebookmanagmentcallback.c:519
+#: src/gui/gwnotebookmanagmentcallback.c:523
+#: src/gui/gwnotebookmanagmentcallback.c:531
+#: src/gui/gwnotebookmanagmentcallback.c:539
+#: src/gui/gwnotebookmanagmentcallback.c:550
+msgid "no drive"
+msgstr "Κενό drive"
+
+#: src/gui/gwnotebookmanagmentcallback.c:491 src/gwsupport.c:356
+msgid "unknown"
+msgstr "unknown"
+
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "Yes"
+msgstr "Ναι"
+
+#: src/gui/gwnotebookmanagmentcallback.c:507
+msgid "No"
+msgstr "Όχι"
+
+#: src/gui/gwnotebookmanagmentcallback.c:516
+msgid "No label"
+msgstr "Κενή ετικέτα"
+
+#: src/gui/gwnotebookmanagmentcallback.c:523
+msgid "Volume name : "
+msgstr "Ονομασία τόμου : "
+
+#: src/gui/gwnotebookmanagmentcallback.c:643
+#, fuzzy
+msgid "the disk adding is canceled"
+msgstr "η προσθήκη δίσκου ακυρώθηκε"
+
+#: src/gui/gwnotebookmanagmentcallback.c:707
+msgid "Please select a catalog name\n"
+msgstr "Παρακαλώ επιλέξτε ένα όνομα καταλόγου\n"
+
+#: src/gui/gwnotebooksearch.c:132
+msgid "Search : "
+msgstr "Αναζήτηση : "
+
+#. Start search button.
+#. Text label of the search tabbed pane.
+#: src/gui/gwnotebooksearch.c:153 src/gui/gwnotebooksearch.c:385
+#: src/gui/gwsettingssearch.c:57
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: src/gui/gwnotebooksearch.c:160
+msgid ""
+"The search can be case sensitive. The wildcards search supports character \"*"
+"\".\n"
+"Example : img*.bmp or *.htm\n"
+"The key words search accepts a list of obligatory words."
+msgstr ""
+"Η αναζήτηση μπορεί να κάνει διάκριση μεταξύ πεζών και κεφαλαίων και "
+"υποστηρίζει το χαρακτήρα \"*\".\n"
+"Για παράδειγμα : img*.bmp ή *.htm\n"
+"Η αναζήτηση με λέξεις κλειδιά δέχεται μια λίστα υποχρεωτικών λέξεων."
+
+#. Clear results button.
+#: src/gui/gwnotebooksearch.c:168
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#: src/gui/gwnotebooksearch.c:175
+msgid "Clears all search results"
+msgstr "Καθαρίζει όλα τα αποτελέσματα της αναζήτησης"
+
+#. Case/uncase sensitive check buton.
+#: src/gui/gwnotebooksearch.c:183
+msgid "Case sensitive"
+msgstr "Διάκριση πεζών/κεφαλαίων"
+
+#: src/gui/gwnotebooksearch.c:193
+msgid ""
+"The search can be be or not case sensitive.\n"
+"In case sensitive \"File.txt\" doesn't match with \"file.txt\". But in "
+"uncase sensitive it matches."
+msgstr ""
+"Η αναζήτηση μπορεί να κάνει ή να μην κάνει διάκριση μεταξύ πεζών/κεφαλαίων.\n"
+"Στην περίπτωση της διάκρισης τα \"File.txt\" και \"file.txt\" δεν "
+"ταυτίζονται. Στην αντίθετη περίπτωση ταυτίζονται."
+
+#. Create the radio button group for search type.
+#: src/gui/gwnotebooksearch.c:198
+msgid "Search type"
+msgstr "Αναζήτηση τύπου"
+
+#: src/gui/gwnotebooksearch.c:206
+msgid "Key words"
+msgstr "Λέξεις κλειδιά"
+
+#: src/gui/gwnotebooksearch.c:214
+msgid ""
+"Enter a list of key words which all must be containted is the matched files."
+msgstr ""
+"Εισάγετε μια λίστα από λέξεις κλειδιά που πρέπει όλα να περιέχονται στα "
+"αρχεία που ταιριάζουν."
+
+#: src/gui/gwnotebooksearch.c:218
+msgid "Wildcards"
+msgstr "Χαρακτήρες μπαλαντέρ"
+
+#: src/gui/gwnotebooksearch.c:226
+msgid ""
+"Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" "
+"caracters."
+msgstr ""
+"Εισάγετε το πρότυπο μπαλαντέρ. Μπορεί να περιέχει τους χαρακτήρες \"?\" and "
+"\"*\"."
+
+#: src/gui/gwnotebooksearch.c:230
+msgid "Regular expression"
+msgstr "Φυσική έκφραση"
+
+#: src/gui/gwnotebooksearch.c:238
+msgid "Can use regular expression. See documentation for more information."
+msgstr ""
+"Είναι δυνατή η χρήση φυσικής έκφρασης (regular expression). Ανατρέξτε στις "
+"πληροφορίες για περισσότερες λεπτομέρειες."
+
+#. Match file check buton.
+#: src/gui/gwnotebooksearch.c:243
+msgid "File"
+msgstr "Αρχείο"
+
+#: src/gui/gwnotebooksearch.c:251
+msgid "The search matches with files name."
+msgstr "Αναζήτηση στα ονόματα των αρχείων."
+
+#. Match folder check buton.
+#: src/gui/gwnotebooksearch.c:256
+msgid "Folder"
+msgstr "Φάκελος"
+
+#: src/gui/gwnotebooksearch.c:264
+msgid "The search matches with folders name."
+msgstr "Αναζήτηση στα ονόματα των φακέλων."
+
+#. Match disk check buton.
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gui/gwnotebooksearch.c:269 src/gwapplicationmanager.h:558
+msgid "Disk"
+msgstr "Δίσκος"
+
+#: src/gui/gwnotebooksearch.c:277
+msgid "The search matches with disks name."
+msgstr "Αναζήτηση στα ονόματα των δίσκων."
+
+#. Match category check buton.
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_TITLE	The title column of the column Serial Number
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_CATEGORY_TITLE	The title column of the column Category
+#: src/gui/gwnotebooksearch.c:282 src/gwapplicationmanager.h:356
+#: src/gwapplicationmanager.h:502 src/gwapplicationmanager.h:606
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: src/gui/gwnotebooksearch.c:290
+msgid "The search matches with categories name."
+msgstr "Αναζήτηση στα ονόματα των κατηγοριών."
+
+#: src/gui/gwnotebooksearch.c:303
+msgid "The search matches with descriptions."
+msgstr "Αναζήτηση στις περιγραφές."
+
+#: src/gui/gwnotebooksearchcallback.c:324
+msgid "Search in catalog"
+msgstr "Άναζήτηση στον κατάλογο"
+
+#: src/gui/gwnotebooksearchcallback.c:328
+#, c-format
+msgid "%lu item(s) founded."
+msgstr "%lu αντικείμεν(ο/α) βρέθηκ(ε/αν)."
+
+#: src/gui/gwnotebooksearchcallback.c:329
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "Search result"
+msgstr "Αποτελέσματα αναζήτησης"
+
+#: src/gui/gwnotebooksearchcallback.c:337
+msgid "No item matched."
+msgstr "Δεν ταυτίστηκε κάποιο αντικείμενο."
+
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Searching..."
+msgstr "Αναζητώντας..."
+
+#: src/gui/gwnotebooksearchcallback.c:347
+msgid "Cannot start searching : no catalog loaded"
+msgstr "Αδύνατη η έναρξη αναζήτησης : δεν υπάρχει ανοικτός κατάλογος"
+
+#: src/gui/gwprogressbarbox.c:514
+msgid "_Ok"
+msgstr "Ok"
+
+#: src/gui/gwpropertiesbox.c:360
+msgid "Enter the name of the catalog."
+msgstr "Εισάγετε το όνομα του καταλόγου"
+
+#. Catalog file version label
+#: src/gui/gwpropertiesbox.c:387
+msgid "Version : "
+msgstr "Έκδοση : "
+
+#: src/gui/gwpropertiesbox.c:390
+msgid "Version "
+msgstr "Έκδοση "
+
+#: src/gui/gwpropertiesbox.c:390
+msgid " built with "
+msgstr " δημιουργήθηκε με το "
+
+#. Number of disks label
+#: src/gui/gwpropertiesbox.c:403
+msgid "Disks in catalog : "
+msgstr "Δίσκοι στον κατάλογο : "
+
+#: src/gui/gwpropertiesbox.c:406
+#, c-format
+msgid "Disks in catalog : %d"
+msgstr "Δίσκοι στον κατάλογο : %d"
+
+#. Total number of files label
+#. Total number of files of disk label
+#: src/gui/gwpropertiesbox.c:419 src/gui/gwpropertiesbox.c:928
+msgid "Total Files : "
+msgstr "Σύνολο αρχείων : "
+
+#: src/gui/gwpropertiesbox.c:422 src/gui/gwpropertiesbox.c:931
+#, fuzzy, c-format
+msgid "Total Files : %ld"
+msgstr "Σύνολο αρχείων : %d"
+
+#. Total number of files label
+#. Total number of folders of disk label
+#: src/gui/gwpropertiesbox.c:435 src/gui/gwpropertiesbox.c:944
+msgid "Total Folders : "
+msgstr "Σύνολο φακέλων : "
+
+#: src/gui/gwpropertiesbox.c:438 src/gui/gwpropertiesbox.c:947
+#, fuzzy, c-format
+msgid "Total Folders : %ld"
+msgstr "Σύνολο φακέλων : %d"
+
+#. Catalog size label
+#. The file size label
+#: src/gui/gwpropertiesbox.c:455 src/gui/gwpropertiesbox.c:459
+#: src/gui/gwpropertiesbox.c:1544
+msgid "File Size : "
+msgstr "Μέγεθος αρχείου : "
+
+#. Total capacity of catalog label
+#: src/gui/gwpropertiesbox.c:475 src/gui/gwpropertiesbox.c:479
+msgid "Total Storage Space : "
+msgstr "Συνολικός αποθηκευτικός χώρος : "
+
+#. Used space of catalog label
+#: src/gui/gwpropertiesbox.c:495 src/gui/gwpropertiesbox.c:499
+msgid "Total Used Space : "
+msgstr "Συνολικός χρησιμοποιούμενος χώρος : "
+
+#. Free space of catalog label
+#: src/gui/gwpropertiesbox.c:515 src/gui/gwpropertiesbox.c:519
+msgid "Total Free Space : "
+msgstr "Συνολικός ελεύθερος χώρος : "
+
+#. Statistics label
+#: src/gui/gwpropertiesbox.c:539
+msgid "Disk Statistics : "
+msgstr "Στατιστικά δίσκου : "
+
+#. CD-Roms statistics label
+#: src/gui/gwpropertiesbox.c:556
+msgid "CD-Rom : "
+msgstr "CD-Rom : "
+
+#: src/gui/gwpropertiesbox.c:560
+#, c-format
+msgid "CD-Rom : %d"
+msgstr "CD-Rom : %d"
+
+#. Audio CD statistics label
+#: src/gui/gwpropertiesbox.c:573
+msgid "Audio CD : "
+msgstr ""
+
+#: src/gui/gwpropertiesbox.c:577
+#, fuzzy, c-format
+msgid "Audio CD : %d"
+msgstr "HD : %d"
+
+#. HDs statistics label
+#: src/gui/gwpropertiesbox.c:590
+msgid "HD : "
+msgstr "HD : "
+
+#: src/gui/gwpropertiesbox.c:594
+#, c-format
+msgid "HD : %d"
+msgstr "HD : %d"
+
+#. Floppies statistics label
+#: src/gui/gwpropertiesbox.c:607
+msgid "Floppy : "
+msgstr "Δισκέτα : "
+
+#: src/gui/gwpropertiesbox.c:611
+#, c-format
+msgid "Floppy : %d"
+msgstr "Δισκέτα : %d"
+
+#. Zips statistics label
+#: src/gui/gwpropertiesbox.c:624
+msgid "Zip : "
+msgstr "Zip : "
+
+#: src/gui/gwpropertiesbox.c:628
+#, c-format
+msgid "Zip : %d"
+msgstr "Zip : %d"
+
+#. Tape drive statistics label
+#: src/gui/gwpropertiesbox.c:645
+#, fuzzy
+msgid "Tape : "
+msgstr "Τύπος : "
+
+#: src/gui/gwpropertiesbox.c:649
+#, fuzzy, c-format
+msgid "Tape : %d"
+msgstr "Τύπος : "
+
+#. Network drive statistics label
+#: src/gui/gwpropertiesbox.c:662
+msgid "Network : "
+msgstr ""
+
+#: src/gui/gwpropertiesbox.c:666
+#, fuzzy, c-format
+msgid "Network : %d"
+msgstr "Άλλο : %d"
+
+#. Jaz statistics label
+#: src/gui/gwpropertiesbox.c:679
+#, fuzzy
+msgid "Jaz : "
+msgstr "Όνομα : "
+
+#: src/gui/gwpropertiesbox.c:683
+#, fuzzy, c-format
+msgid "Jaz : %d"
+msgstr "HD : %d"
+
+#. Others media statistics label
+#: src/gui/gwpropertiesbox.c:696
+msgid "Other : "
+msgstr "Άλλο : "
+
+#: src/gui/gwpropertiesbox.c:700
+#, c-format
+msgid "Other : %d"
+msgstr "Άλλο : %d"
+
+#. Combo box for categories list
+#: src/gui/gwpropertiesbox.c:717
+msgid "Catalog categories : "
+msgstr "Κατηγορίες καταλόγου : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:733
+msgid "Catalog Description : "
+msgstr "Περιγραφή καταλόγου : "
+
+#: src/gui/gwpropertiesbox.c:760
+msgid "Catalog Info"
+msgstr "Πληροφορίες καταλόγου"
+
+#: src/gui/gwpropertiesbox.c:827
+msgid "Enter the name of the disk."
+msgstr "Εισάγετε το όνομα του δίσκου."
+
+#: src/gui/gwpropertiesbox.c:858
+msgid "Enter the archive number of the disk."
+msgstr "Εισάγετε τον αριθμό καταχώρησης του δίσκου."
+
+#. Disk type label
+#: src/gui/gwpropertiesbox.c:880
+msgid " Type : "
+msgstr "Τύπος : "
+
+#. Disk serial number label
+#: src/gui/gwpropertiesbox.c:896 src/gui/gwpropertiesbox.c:899
+msgid "Serial : "
+msgstr "Σειριακός αριθμός : "
+
+#. Disk volume name label
+#: src/gui/gwpropertiesbox.c:912 src/gui/gwpropertiesbox.c:915
+msgid "Volume Label : "
+msgstr "Ετικέτα τόμου : "
+
+#. Total capacity of disk label
+#: src/gui/gwpropertiesbox.c:964 src/gui/gwpropertiesbox.c:968
+msgid "Total Capacity : "
+msgstr "Συνολική χωρητικότητα : "
+
+#. Used space of disk label
+#: src/gui/gwpropertiesbox.c:984 src/gui/gwpropertiesbox.c:988
+msgid "Used Space : "
+msgstr "Χρησιμοποιούμενος χώρος : "
+
+#. Free space of disk label
+#: src/gui/gwpropertiesbox.c:1004 src/gui/gwpropertiesbox.c:1008
+msgid "Free Space : "
+msgstr "Ελεύθερος χώρος : "
+
+#. Catalog name label
+#: src/gui/gwpropertiesbox.c:1038 src/gui/gwpropertiesbox.c:1042
+#: src/gui/gwpropertiesbox.c:1044 src/gui/gwpropertiesbox.c:1046
+msgid "Catalog Name : "
+msgstr "Όνομα καταλόγου : "
+
+#. Adding date label of disk
+#: src/gui/gwpropertiesbox.c:1060 src/gui/gwpropertiesbox.c:1064
+msgid "Update in catalog : "
+msgstr "Ενημέρωση στον κατάλογο : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1094
+msgid "Disk Description : "
+msgstr "Περιγραφή δίσκου : "
+
+#: src/gui/gwpropertiesbox.c:1121
+msgid "Disk Info"
+msgstr "Πληροφορίες δίσκου"
+
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1175
+msgid "Folder Name"
+msgstr "Όνομα φακέλου"
+
+#. The folder type label
+#: src/gui/gwpropertiesbox.c:1206
+msgid "Type : (folder)"
+msgstr "Τύπος : (φάκελος)"
+
+#. The folder size label
+#: src/gui/gwpropertiesbox.c:1217 src/gui/gwpropertiesbox.c:1221
+msgid "Folder Size : "
+msgstr "Μέγεθος φακέλου"
+
+#. The folder creation date label
+#. The file creation date label
+#: src/gui/gwpropertiesbox.c:1237 src/gui/gwpropertiesbox.c:1241
+#: src/gui/gwpropertiesbox.c:1567 src/gui/gwpropertiesbox.c:1571
+msgid "Created on : "
+msgstr "Δημιουργία στις : "
+
+#. the folder last update date label
+#. The file last modification date lalbel
+#: src/gui/gwpropertiesbox.c:1255 src/gui/gwpropertiesbox.c:1259
+#: src/gui/gwpropertiesbox.c:1585 src/gui/gwpropertiesbox.c:1589
+msgid "Last modified on : "
+msgstr "Τελευταία τροποποίηση στις : "
+
+#. The folder last access date label
+#. The file last access date label
+#: src/gui/gwpropertiesbox.c:1273 src/gui/gwpropertiesbox.c:1277
+#: src/gui/gwpropertiesbox.c:1603 src/gui/gwpropertiesbox.c:1607
+msgid "Last accessed on : "
+msgstr "Τελευταία πρόσβαση στις : "
+
+#. Folder rights label
+#. the file rights label
+#: src/gui/gwpropertiesbox.c:1295 src/gui/gwpropertiesbox.c:1299
+#: src/gui/gwpropertiesbox.c:1625 src/gui/gwpropertiesbox.c:1629
+msgid "Rights : "
+msgstr "Δικαιώματα : "
+
+#. The folder owner name label
+#. The file owner name label
+#: src/gui/gwpropertiesbox.c:1313 src/gui/gwpropertiesbox.c:1317
+#: src/gui/gwpropertiesbox.c:1319 src/gui/gwpropertiesbox.c:1643
+#: src/gui/gwpropertiesbox.c:1647 src/gui/gwpropertiesbox.c:1649
+msgid "Owner : "
+msgstr "Ιδιοκτήτης : "
+
+#. The folder group name label
+#. File group name label
+#: src/gui/gwpropertiesbox.c:1333 src/gui/gwpropertiesbox.c:1337
+#: src/gui/gwpropertiesbox.c:1339 src/gui/gwpropertiesbox.c:1663
+#: src/gui/gwpropertiesbox.c:1667 src/gui/gwpropertiesbox.c:1669
+msgid "Group : "
+msgstr "Ομάδα : "
+
+#. Disk name label
+#. The disk name label
+#: src/gui/gwpropertiesbox.c:1367 src/gui/gwpropertiesbox.c:1370
+#: src/gui/gwpropertiesbox.c:1697 src/gui/gwpropertiesbox.c:1702
+msgid "Disk Name : "
+msgstr "Όνομα δίσκου : "
+
+#. The folder location label
+#. The file location label
+#: src/gui/gwpropertiesbox.c:1383 src/gui/gwpropertiesbox.c:1388
+#: src/gui/gwpropertiesbox.c:1717 src/gui/gwpropertiesbox.c:1721
+msgid "Location on Disk : "
+msgstr "Τοποθεσία στον δίσκο : "
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1420
+msgid "Folder Description : "
+msgstr "Περιγραφή φακέλου : "
+
+#: src/gui/gwpropertiesbox.c:1447
+msgid "Folder Info"
+msgstr "Πληροφορίες φακέλου"
+
+#. Folder name label
+#: src/gui/gwpropertiesbox.c:1502
+msgid "File name : "
+msgstr "Όνομα αρχείου : "
+
+#. The file type label
+#: src/gui/gwpropertiesbox.c:1533
+msgid "File type : not yet implemented!!"
+msgstr "Τύπος αρχείου : χαρακτηριστικό μη διαθέσιμο ακόμα!!"
+
+#: src/gui/gwpropertiesbox.c:1548
+#, c-format
+msgid "File Size : %s (%s bytes)"
+msgstr "Μέγεθος αρχείου : %s (% bytes)"
+
+#. Title description label
+#: src/gui/gwpropertiesbox.c:1754
+msgid "File Description : "
+msgstr "Περιγραφή αρχείου : "
+
+#: src/gui/gwpropertiesbox.c:1781
+msgid "File Info"
+msgstr "Πληροφορίες αρχείου"
+
+#: src/gui/gwsettingscatalogfile.c:68
+msgid "Catalog file"
+msgstr "Αρχείο καταλόγου"
+
+#. Adds the compression level.
+#: src/gui/gwsettingscatalogfile.c:119
+msgid "Catalog compression level :"
+msgstr "Βαθμός συμπίεσης καταλόγου :"
+
+#: src/gui/gwsettingscatalogfile.c:134
+msgid ""
+"Select the catalog compression level. The default value is 3, it's a good "
+"value between high performance and small size."
+msgstr ""
+"Επιλέξτε το βαθμό συμπίεσης των καταλόγων. Η προεπιλεγμένη τιμή είναι 3, η "
+"χρυσή τομή μεταξύ απόδοσης και μικρού μεγέθους."
+
+#. Adds the history size.
+#: src/gui/gwsettingscatalogfile.c:142
+msgid "Recents opened catalogs :"
+msgstr "Πρόσφατα ανοιγμένοι κατάλογοι :"
+
+#: src/gui/gwsettingscatalogfile.c:157
+msgid ""
+"Select the size of recents opened catalogs history. The default value is 5."
+msgstr ""
+"Επιλέξτε το πλήθος των καταχωρίσεων στους πρόσφατα ανοιγμένους κατάλογους. Η "
+"προεπιλεγμένη τιμή είναι 5."
+
+#. Adds the clear history.
+#: src/gui/gwsettingscatalogfile.c:164
+msgid "Clear history"
+msgstr "Καθαρισμός ιστορικού"
+
+#: src/gui/gwsettingscatalogfile.c:168
+msgid "Click here to clear the recents opened files history."
+msgstr ""
+"Κάντε click εδώ για να καθαρίσετε τη λίστα των πρόσφατα ανοιγμένων αρχείων."
+
+#. Adds the autload catalog option.
+#: src/gui/gwsettingscatalogfile.c:174
+msgid "Autoload catalog"
+msgstr "Αυτόματο άνοιγμα καταλόγου"
+
+#: src/gui/gwsettingscatalogfile.c:179
+msgid "Autoloads a default catalog when at starting."
+msgstr "Ανοίγει αυτόματα έναν προεπιλεγμένο κατάλογο κατά την εκκίνηση."
+
+#. Create the radio button group for autoload options.
+#: src/gui/gwsettingscatalogfile.c:186
+msgid "Load last opened catalog file."
+msgstr "Άνοιγμα του αρχείου καταλόγου που ανοίχθηκε πιο πρόσφατα."
+
+#: src/gui/gwsettingscatalogfile.c:193
+msgid "Load selected catalog file."
+msgstr "Άνοιγμα επιλεγμένου αρχείου καταλόγου."
+
+#: src/gui/gwsettingscatalogfile.c:204
+msgid "Enter the full catalog file path to load."
+msgstr "Εισάγετε τη διαδρομή και το όνομα του προς άνοιγμα αρχείου καταλόγου."
+
+#. Adds the select catalog file.
+#: src/gui/gwsettingscatalogfile.c:211
+msgid "Select catalog"
+msgstr "Επιλέξτε κατάλογο"
+
+#: src/gui/gwsettingscatalogfile.c:217
+msgid "Click here to browse and select the catalog file."
+msgstr ""
+"Κάντε click εδώ για να αναζητήσετε και να επιλέξετε το αρχείο καταλόγου."
+
+#: src/gui/gwsettingscatalogfile.c:607
+msgid "Select autoloaded catalog"
+msgstr "Επιλέξτε τον κατάλογο που θα ανοίγει αυτόματα"
+
+#: src/gui/gwsettingsexplorer.c:56
+msgid "Explorer"
+msgstr "Εξερεύνηση"
+
+#. Adds the case sensitive sort option.
+#: src/gui/gwsettingsexplorer.c:107 src/gui/gwsettingssearch.c:109
+msgid "Case sensitive sort."
+msgstr "Ταξινόμηση με διάκριση πεζών/κεφαλαίων"
+
+#: src/gui/gwsettingsexplorer.c:112
+msgid "The result sort in explorer is case sensitive."
+msgstr ""
+"Η ταξινόμηση του αποτελέσματος στο παράθυρο εξερεύνησης κάνει διάκριση πεζών/"
+"κεφαλαίων."
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingsexplorer.c:118
+msgid "Result sort group by folder/file."
+msgstr "Ταξινόμηση του αποτελέσματος κατά φάκελο/αρχείο."
+
+#: src/gui/gwsettingsexplorer.c:123
+msgid ""
+"The result sort in explorer can be grouped by item type. If this option is "
+"checked all item will be grouped by folders or files."
+msgstr ""
+"Η ταξινόμηση του αποτελέσματος στο παράθυρο εξερεύνησης μπορεί να γίνει κατά "
+"τύπο αντικειμένου. Αν αυτή η επιλογή είναι τσεκαρισμένη τα αντικείμενα θα "
+"ομαδοποιηθούν κατά φακέλους ή αρχεία."
+
+#. Adds the autoload catalog option.
+#. Adds the autoresize column option.
+#: src/gui/gwsettingsexplorer.c:129 src/gui/gwsettingssearch.c:131
+msgid "Autoresize columns"
+msgstr "Αυτόματη προσαρμογή μεγέθους στηλών"
+
+#: src/gui/gwsettingsexplorer.c:134 src/gui/gwsettingssearch.c:136
+msgid "Autoresize all explorer column."
+msgstr ""
+"Αυτόματη προσαρμογή μεγέθους όλων των στηλών του παραθύρου εξερεύνησης."
+
+#: src/gui/gwsettingsexplorerdisk.c:54
+msgid "Disks"
+msgstr "Δίσκοι"
+
+#: src/gui/gwsettingsexplorerdisk.c:112 src/gui/gwsettingsexplorerfile.c:111
+#: src/gui/gwsettingsquicksearch.c:118
+msgid "Visible"
+msgstr "Ορατά"
+
+#: src/gui/gwsettingsexplorerdisk.c:120 src/gui/gwsettingsexplorerfile.c:119
+#: src/gui/gwsettingsquicksearch.c:126
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: src/gui/gwsettingsexplorerdisk.c:125 src/gui/gwsettingsexplorerfile.c:124
+#: src/gui/gwsettingsquicksearch.c:131
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#: src/gui/gwsettingsexplorerdisk.c:141 src/gui/gwsettingsexplorerfile.c:140
+#: src/gui/gwsettingsquicksearch.c:147
+msgid "Hidden"
+msgstr "Κρυμμένα"
+
+#: src/gui/gwsettingsexplorerfile.c:53
+msgid "Files"
+msgstr "Αρχεία"
+
+#: src/gui/gwsettingssearch.c:114
+msgid "The result sort in search is case sensitive."
+msgstr ""
+"Η ταξινόμηση του αποτελέσματος της αναζήτησης κάνει διάκριση μεταξύ πεζών/"
+"κεφαλαίων."
+
+#. Adds the sort group by type option.
+#: src/gui/gwsettingssearch.c:120
+msgid "Result sort group by type."
+msgstr "Ταξινόμηση του αποτελέσματος κατά τύπο."
+
+#: src/gui/gwsettingssearch.c:125
+msgid ""
+"The result sort in search can be grouped by item type. If this option is "
+"checked all item will be grouped by catalogs, disks, folders and files."
+msgstr ""
+"Η ταξινόμηση του αποτελέσματος αναζήτησης μπορεί να γίνει βάσει του τύπου "
+"των αντικειμένων. Αν αυτή η επιλογή είναι τσεκαρισμένη όλα τα αντικείμενα θα "
+"ομαδοποιηθούν κατά καταλόγους, δίσκους, φακέλους και αρχεία."
+
+#. Adds the key words mode option.
+#: src/gui/gwsettingssearch.c:142
+msgid "All key words must match"
+msgstr "Όλες οι λέξεις κλειδιά πρέπει να ταιριάζουν"
+
+#: src/gui/gwsettingssearch.c:147
+msgid ""
+"Choose if all key words or only one of all key words must match with item in "
+"order to be in the search result."
+msgstr ""
+"Επιλέξτε αν πρέπει να ταιριάζουν όλες οι λέξεις κλειδιά ή μόνο μια από αυτές "
+"ώστε το αντικείμενο να περιλαμβάνεται στα αποτελέσματα της αναζήτησης."
+
+#: src/gui/gwsettingsquicksearch.c:60
+msgid "Quick"
+msgstr "Γρήγορη"
+
+#: src/gui/gwsettingsgeneral.c:44
+msgid "Generals options"
+msgstr "Γενικές επιλογές"
+
+#: src/gui/gwsettingsgui.c:54
+msgid "GUI"
+msgstr "Γραφικό περιβάλλον εργασίας"
+
+#. Adds the autosave GUI properties option.
+#: src/gui/gwsettingsgui.c:93
+msgid "Save GUI properties on exit"
+msgstr "Αποθήκευση των ιδιοτήτων του γραφικού περιβάλλοντος κατά την έξοδο"
+
+#: src/gui/gwsettingsgui.c:98
+msgid "Save GUI properties as window position and size."
+msgstr ""
+"Αποθήκευση των ιδιοτήτων γραφικού περιβάλλοντος που αφορούν στη θέση και το "
+"μέγεθος των παραθύρων."
+
+#. Adds the allowing beep option.
+#: src/gui/gwsettingsgui.c:104
+msgid "Allow beep"
+msgstr "Χρήση ήχου"
+
+#: src/gui/gwsettingsgui.c:109
+msgid "Allows to emits a short beep on some event."
+msgstr "Επιτρέπει την εκπομπή σύντομου ήχου σε κάποιο συμβάν."
+
+#: src/gui/gwsettingsmail.c:83
+msgid "Mail"
+msgstr "Αλληλογραφία"
+
+#. Email address.
+#: src/gui/gwsettingsmail.c:126
+msgid "Email address :"
+msgstr "Διεύθυνση email :"
+
+#: src/gui/gwsettingsmail.c:136
+msgid "Enter your email address."
+msgstr "Εισάγετε τη διεύθυνση του email σας."
+
+#. Server address.
+#: src/gui/gwsettingsmail.c:141
+msgid "Out going mail server :"
+msgstr "Server εξερχόμενης αλληλογραφίας :"
+
+#: src/gui/gwsettingsmail.c:151
+msgid ""
+"Enter your out going mail server. Usualy this address is mail.yourdomain.com"
+msgstr ""
+"Εισάγετε τον server της εξερχόμενης αλληλογραφίας σας. Συνήθως η διεύθυνσή "
+"του είναι mail.yourdomain.com"
+
+#. Server port.
+#: src/gui/gwsettingsmail.c:156
+msgid "Server port :"
+msgstr "Θύρα του server :"
+
+#: src/gui/gwsettingsmail.c:166
+msgid "Enter the out going mail server port (the most common value is 25)."
+msgstr ""
+"Εισάγετε τη θύρα του server της εξερχόμενης αλληλογραφίας (η συνηθέστερη "
+"τιμή είναι 25)."
+
+#: src/gui/gwsettingswindowbox.c:82
+msgid ""
+"This Settings box allows to configure some functionnalities and properties "
+"of the program."
+msgstr ""
+"Αυτό το παράθυρο ρυθμίσεων σας επιτρέπει να ρυθμίσετε κάποιες λειτουργίες "
+"και ιδιότητες του προγράμματος."
+
+#: src/gui/gwsettingswindowbox.c:85 src/gui/gwsettingswindowbox.c:124
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: src/gui/gwsettingswindowbox.c:120
+msgid "Select the section to configure."
+msgstr "Επιλέξτε την κατηγορία που θέλετε να ρυθμίσετε."
+
+#: src/gui/gwsettingswindowbox.c:134
+msgid ""
+"Change in this pane all availables properties in order to configure the "
+"program as you want."
+msgstr ""
+"Αλλάξτε εδώ τις διαθέσιμες ιδιότητες ώστε να ρυθμίσετε το πρόγραμμα όπως θα "
+"θέλατε."
+
+#: src/gui/gwsettingswindowbox.c:145
+msgid ""
+"This settings windows box allows to configure the program. Some properties "
+"may be modified here."
+msgstr ""
+"Αυτό το παράθυρο ρυθμίσεων σας επιτρέπει να ρυθμίσετε το πρόγραμμα. Κάποιες "
+"ιδιότητες εδώ μπορούν να μεταβληθούν."
+
+#: src/gui/gwsettingswindowbox.c:170
+msgid "Click on OK button to apply changes and close the Settings box."
+msgstr ""
+"Κάντε click στο κουμπί OK για να εφαρμόσετε τις αλλαγές και να κλείσετε το "
+"παράθυρο Ρυθμίσεων."
+
+#: src/gui/gwsettingswindowbox.c:185
+msgid "Click on Cancel button to cancel changes and close the Settings box."
+msgstr ""
+"Κάντε click στο κουμπί Άκυρο για να ακυρώσετε τις αλλαγές και να κλείσετε το "
+"παράθυρο Ρυθμίσεων."
+
+#: src/gui/gwsettingswindowbox.c:191
+msgid "_Apply"
+msgstr "Εφαρμογή"
+
+#: src/gui/gwsettingswindowbox.c:198
+msgid ""
+"Click on Apply button to apply changes (without close the Settings box)."
+msgstr ""
+"Κάντε click στο κουμπί Εφαρμογή για να εφαρμόσετε τις αλλαγές (χωρίς να "
+"κλείσετε το παράθυρο Ρυθμίσεων)."
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid "Settings changed"
+msgstr "Οι ρυθμίσεις άλλαξαν"
+
+#: src/gui/gwsettingswindowboxcallback.c:89
+msgid ""
+"If you don't apply changes you will lose all changes. Do you want apply "
+"changes?"
+msgstr ""
+"Αν δεν εφαρμόσετε τις αλλαγές αυτές θα χαθούν. Θέλετε να τις εφαρμόσετε;"
+
+#: src/gui/gwstatusbarcallback.c:49
+#, c-format
+msgid " %s [ %s ], total disks : %d"
+msgstr " %s [ %s ], σύνολο δίσκων : %d"
+
+#: src/gui/gwstatusbarcallback.c:50 src/gui/gwstatusbarcallback.c:100
+#: src/gui/gwstatusbarcallback.c:151
+#, c-format
+msgid " Listed Items : %d (total size : %s)"
+msgstr " Αντικείμενα στη λίστα : %d (συνολικό μέγεθος : %s)"
+
+#: src/gui/gwstatusbarcallback.c:81
+#, c-format
+msgid " %s [ %s ], capacity : %s, free : %s"
+msgstr " %s [ %s ], χωρητικότητα : %s, ελεύθερα : %s"
+
+#: src/gui/gwstatusbarcallback.c:91
+msgid " Empty disk"
+msgstr ""
+
+#: src/gui/gwstatusbarcallback.c:94 src/gui/gwstatusbarcallback.c:145
+#: src/gui/gwstatusbarcallback.c:185
+#, c-format
+msgid " Selected Item : %d (total size : %s)"
+msgstr " Επιλεγμένο αντικείμενο : %d (συνολικό μέγεθος : %s)"
+
+#: src/gui/gwstatusbarcallback.c:138
+#, c-format
+msgid " Folder \"%s\", %s (files %d, subfolders %d)"
+msgstr " Φάκελος \"%s\", %s (αρχεία %d, υποφάκελοι %d)"
+
+#: src/gui/gwstatusbarcallback.c:179
+#, c-format
+msgid " %s, %s, %s"
+msgstr " %s, %s, %s"
+
+#: src/gui/gwstatusbarcallback.c:209 src/gui/gwstatusbarcallback.c:228
+#, c-format
+msgid " Selected Item : %d"
+msgstr "Επιλεγμένο αντικείμενο : %d"
+
+#: src/gui/gwstatusbarcallback.c:210
+msgid " Catalog explorer"
+msgstr "Εξερεύνηση καταλόγου"
+
+#: src/gui/gwstatusbarcallback.c:229
+msgid " Search engine"
+msgstr "Μηχανή αναζήτησης"
+
+#: src/gui/gwstatusbarcallback.c:246
+msgid " Catalog managment"
+msgstr "Διαχείριση καταλόγων"
+
+#: src/gui/gwtoolbar.c:89
+msgid "Close catalog"
+msgstr "Κλείσιμο καταλόγου"
+
+#: src/gui/gwtoolbar.c:93
+msgid "Send catalog by mail"
+msgstr "Αποστολή καταλόγου με mail"
+
+#: src/gui/gwwindowboxabout.c:121
+msgid "About"
+msgstr "Περι του προγράμματος"
+
+#: src/gui/gwwindowboxabout.c:152
+msgid ""
+"\n"
+"Removable media catalog managment\n"
+"By Sebastien LECACHEUR\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+msgstr ""
+"\n"
+"Διαχείρηση καταλόγων αποσπώμενων μέσων\n"
+"Από τον Sιbastien LECACHEUR\n"
+"\n"
+"zero@gwhere.org\n"
+"http://www.gwhere.org\n"
+
+#: src/gui/gwwindowboxabout.c:153
+msgid ""
+"GWhere allows to manage a database of yours CDs and others removable media "
+"(hard disks, floppy drive, Zip drive, CD- ROM, etc...). With GWhere it's "
+"easy to browse yours CDs or to make quick search without need to insert "
+"yours CDs in the drive at each once."
+msgstr ""
+"Το GWhere σας επιτρέπει να διαχειριστείτε μια βάση δεδομένων των CD και "
+"άλλων αποσπώμενων μέσων σας (σκληροί δίσκοι, δισκέτες, Zip drive, CD-ROM, "
+"κλπ...). Με το GWhere είναι εύκολο να ρίξετε μια ματιά στα CD σας ή να "
+"αναζητήσετε γρήγορα κάτι σε αυτά χωρίς την ανάγκη να τα εισάγετε στο drive "
+"κάθε φορά."
+
+#: src/gui/gwwindowboxabout.c:154
+msgid ""
+"\n"
+"\n"
+"Runs under "
+msgstr ""
+"\n"
+"\n"
+"Εκτελείται σε "
+
+#: src/gui/gwwindowboxmail.c:85
+msgid ""
+"This window box allows you to send a catalog by mail to one (or more) of "
+"yours contacts."
+msgstr ""
+"Αυτό το παράθυρο σας επιτρέπει να στείλετε έναν κατάλογο με mail σε έναν (ή "
+"περισσότερους) παραλήπτες"
+
+#: src/gui/gwwindowboxmail.c:88 src/gui/gwwindowboxmailcallback.c:57
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid "Send mail"
+msgstr "Αποστολή mail"
+
+#: src/gui/gwwindowboxmail.c:112
+msgid "To :"
+msgstr "Προς :"
+
+#: src/gui/gwwindowboxmail.c:118
+msgid "CC :"
+msgstr "CC :"
+
+#: src/gui/gwwindowboxmail.c:124
+msgid "BCC :"
+msgstr "BCC :"
+
+#: src/gui/gwwindowboxmail.c:130
+msgid "Subject :"
+msgstr "Θέμα :"
+
+#: src/gui/gwwindowboxmail.c:140
+msgid "Enter here the email address of your(s) contact(s)."
+msgstr ""
+"Εισάγετε εδώ την ηλεκτρονική διεύθυνση του παραλήπτη (ή των παραληπτών) σας."
+
+#: src/gui/gwwindowboxmail.c:148
+msgid "Enter here the email address of the copied mail contacts."
+msgstr ""
+"Εισάγετε εδώ την ηλεκτρονική διεύθυνση των αντεγραμμένων παραληπτών του "
+"ηλεκτρονικού σας ταχυδρομείου."
+
+#: src/gui/gwwindowboxmail.c:156
+msgid "Enter here the email address of the hidden copied mail contacts."
+msgstr ""
+"Εισάγετε εδώ την ηλεκτρονική διεύθυνση των κρυφών αντεγραμμένων παραληπτών "
+"του ηλεκτρονικού σας ταχυδρομείου."
+
+#: src/gui/gwwindowboxmail.c:164
+msgid "Enter here the object of your mail."
+msgstr "Εισάγετε εδώ το θέμα του mail σας."
+
+#: src/gui/gwwindowboxmail.c:168
+msgid "Attached file :"
+msgstr "Επισύναψη αρχείου :"
+
+#: src/gui/gwwindowboxmail.c:182
+msgid "Choose to attach or no the catalog file."
+msgstr "Επιλέξτε αν θα επισυνάψετε ή όχι το αρχείο του καταλόγου."
+
+#: src/gui/gwwindowboxmail.c:197
+msgid "Type here the text for the mail message."
+msgstr "Εισάγετε εδώ το κείμενο του μηνύματός σας."
+
+#: src/gui/gwwindowboxmail.c:208
+msgid "_Send"
+msgstr "Αποστολή"
+
+#: src/gui/gwwindowboxmail.c:213
+msgid "Click here to send a mail (with an attached catalog)."
+msgstr ""
+"Κάντε click εδώ για να στείλετε κάποιο mail (με επισύναψη κάποιου καταλόγου)."
+
+#: src/gui/gwwindowboxmail.c:225
+msgid "Click here to cancel the send of a mail."
+msgstr "Κάντε click εδώ για να ακυρώσετε την αποστολή του mail."
+
+#: src/gui/gwwindowboxmailcallback.c:57
+msgid "Sending mail, please wait..."
+msgstr "Αποστέλοντας το mail, παρακαλώ περιμένετε..."
+
+#: src/gui/gwwindowboxmailcallback.c:64
+msgid ""
+"An error occured during the sending of mail. Please check your parameters."
+msgstr ""
+"Παρουσιάστηκε κάποιο σφάλμα κατά την αποστολή του mail. Παρακαλώ ελέγξτε τις "
+"παραμέτρους σας."
+
+#: src/gwsupport.c:129
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr "Αδύνατη η εύρεση του αρχείου του εικονιδίου: %s"
+
+#: src/gwsupport.c:136
+#, c-format
+msgid "Error loading pixmap file: %s"
+msgstr "Σφάλμα κατά την ανάγνωση του αρχείου του εικονιδίου: %s"
+
+#: src/gwcatalogmanager.c:285
+msgid "Error : cannot get current folder."
+msgstr "Σφάλμα : αδύνατη η απόκτηση του τρέχοντος φακέλου."
+
+#: src/gwcatalogmanager.c:369
+msgid "Error : cannot go to working folder."
+msgstr "Σφάλμα : αδύνατη η μετάβαση στον τρέχοντα φάκελο."
+
+#: src/gwcatalogmanager.c:444
+msgid ""
+"The disk hasn't been added\n"
+"Adding canceled by user"
+msgstr ""
+"Ο δίσκος δεν προστέθηκε\n"
+"Η προσθήκη ακυρώθηκα από το χρήστη"
+
+#: src/gwcatalogmanager.c:458 src/gwcatalogmanager.c:463
+#: src/gwcatalogmanager.c:468 src/gwcatalogmanager.c:473
+#: src/gwcatalogmanager.c:478 src/gwcatalogmanager.c:484
+#: src/gwcatalogmanager.c:489 src/gwcatalogmanager.c:494
+#: src/gwcatalogmanager.c:536 src/gwcatalogmanager.c:541
+#: src/gwcatalogmanager.c:546 src/gwcatalogmanager.c:552
+#: src/gwcatalogmanager.c:557 src/gwcatalogmanager.c:563
+msgid "The disk hasn't been added\n"
+msgstr "Ο δίσκος δεν προστέθηκε\n"
+
+#: src/gwcatalogmanager.c:458
+#, c-format
+msgid "%s outside the process's allocated address space."
+msgstr "%s outside the process's allocated address space."
+
+#: src/gwcatalogmanager.c:463
+#, c-format
+msgid ""
+"A component of the following pathname exceeded %d characters, or an entire "
+"path name exceeded %d characters : %s."
+msgstr ""
+"Ένα μέρος της ακόλουθης διαδρομής ξεπέρασε τους %d χαρακτήρες, ή μια "
+"ολόκληρη διαδρομή ξεπέρασε τους %d χαρακτήρες : %s."
+
+#: src/gwcatalogmanager.c:468
+#, c-format
+msgid "The following directory does not exist : %s."
+msgstr "Ο ακόλουθος φάκελος δεν υπάρχει : %s."
+
+#: src/gwcatalogmanager.c:473 src/gwcatalogmanager.c:552
+msgid "Insufficient memory to complete the operation."
+msgstr "Μη επαρκής μνήμη για την ολοκλήρωση της λειτουργίας."
+
+#: src/gwcatalogmanager.c:478
+#, c-format
+msgid "A component of the path prefix is not a directory : %s."
+msgstr "Ένα μέρος του προθέματος της διαδρομής δεν είναι φάκελος : %s."
+
+#: src/gwcatalogmanager.c:484
+#, fuzzy, c-format
+msgid ""
+"Too many symbolic links were encountered in resolving following path : %s."
+msgstr ""
+"Υπερβολικός αριθμός από symbolic links παρουσιάστηκε κατά την επεξεργασία "
+"της ακόλουθης διαδρομής : %s ."
+
+#: src/gwcatalogmanager.c:489
+#, c-format
+msgid "An I/O error occurred when change directory to : %s."
+msgstr "Παρουσιάστηκε σφάλμα Εισόδου/Εξόδου κατά την μετάβαση στο φάκελο : %s."
+
+#: src/gwcatalogmanager.c:494 src/gwcatalogmanager.c:563
+msgid "Unknown error"
+msgstr "Άγνωστο σφάλμα"
+
+#: src/gwcatalogmanager.c:518 src/gwcatalogmanager.c:843
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot go to parent folder."
+msgstr ""
+"Ο δίσκος δεν προστέθηκε\n"
+"Σφάλμα : αδύνατη η μετάβαση στον μητρικό φάκελο."
+
+#: src/gwcatalogmanager.c:536
+msgid "Too many file descriptors in use by process."
+msgstr "Too many file descriptors in use by process."
+
+#: src/gwcatalogmanager.c:541
+msgid "Too many files are currently open in the system."
+msgstr "Υπερβολικός αριθμός ανοικτών αρχείων στο σύστημα."
+
+#: src/gwcatalogmanager.c:546
+#, c-format
+msgid ""
+"The following directory does not exist, or name is an empty string : %s."
+msgstr "Ο ακόλουθος φάκελος δεν υπάρχει ή το όνομά του είναι κενό : %s."
+
+#: src/gwcatalogmanager.c:557
+#, c-format
+msgid "The following directory name is not a directory : %s."
+msgstr "Το ακόλουθο όνομα φακέλου δεν είναι φάκελος : %s."
+
+#: src/gwcatalogmanager.c:735
+#, c-format
+msgid ""
+"A critical error occured when extracting file information of %s%s%s.\n"
+"Save your catalog if it is possible, exit GWhere and report this trouble to "
+"the GWhere project team please."
+msgstr ""
+
+#: src/gwcatalogmanager.c:836
+msgid ""
+"The disk hasn't been added\n"
+"Error : cannot close current folder."
+msgstr ""
+"Ο δίσκος δεν προστέθηκε\n"
+"Σφάλμα : αδύνατο το κλείσιμο του τρέχοντος φακέλου."
+
+#: src/gwapplicationmanager.c:65
+#, c-format
+msgid "Is running on %s"
+msgstr "Εκτελείται σε %s"
+
+#: src/gwapplicationmanager.c:493
+msgid "Catalog loaded"
+msgstr "Ο κατάλογος φορτώθηκε"
+
+#: src/gwapplicationmanager.c:498
+msgid "Loading catalog failed"
+msgstr "Η φόρτωση του καταλόγου απέτυχε"
+
+#: src/gwapplicationmanager.c:499
+msgid "Loading catalog"
+msgstr "Ανάγνωση καταλόγου"
+
+#: src/gwapplicationmanager.c:499
+#, fuzzy
+msgid ""
+"The catalog is invalid or doesn't exists. Check your catalog path please."
+msgstr ""
+"Το αρχείο καταλόγου δεν υπάρχει. Παρακαλώ ελέγξτε τη διαδρομή του αρχείου "
+"σας."
+
+#: src/gwapplicationmanager.c:603
+msgid "Saving catalog"
+msgstr "Αποθήκευση καταλόγου"
+
+#: src/gwapplicationmanager.c:615
+msgid "Catalog saved"
+msgstr "Ο κατάλογος αποθηκεύθηκε"
+
+#: src/gwapplicationmanager.c:621
+msgid "Saving catalog failed"
+msgstr "Η αποθήκευση του καταλόγου απέτυχε"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_TITLE	The title column of the column Rights
+#: src/gwapplicationmanager.h:260
+msgid "Rights"
+msgstr "Δικαιώματα"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_TITLE	The title column of the column Owner
+#: src/gwapplicationmanager.h:272
+msgid "Owner"
+msgstr "Ιδιοκτήτης"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_TITLE	The title column of the column Group
+#: src/gwapplicationmanager.h:284
+msgid "Group"
+msgstr "Ομάδα"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_TITLE	The title column of the column Size
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_SIZE_TITLE	The title column of the column Size
+#: src/gwapplicationmanager.h:296 src/gwapplicationmanager.h:582
+msgid "Size"
+msgstr "Μέγεθος"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_TITLE	The title column of the column INode
+#: src/gwapplicationmanager.h:308
+msgid "INode"
+msgstr "INode"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_TITLE	The title column of the column Access Date
+#: src/gwapplicationmanager.h:320
+msgid "Access date"
+msgstr "Ημερομηνία πρόσβασης"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_TITLE	The title column of the column Modification Date
+#: src/gwapplicationmanager.h:332
+msgid "Modification date"
+msgstr "Ημερομηνία τροποποίησης"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_TITLE	The title column of the column Creation Date
+#: src/gwapplicationmanager.h:344
+msgid "Creation date"
+msgstr "Ημερομηνία δημιουργίας"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_TITLE	The title column of the column File System Name
+#: src/gwapplicationmanager.h:394
+msgid "File system name"
+msgstr "Όνομα συστήματος αρχείων"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_TITLE	The title column of the column Access Path
+#: src/gwapplicationmanager.h:406
+msgid "Access path"
+msgstr "Διαδρομή πρόσβασης"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_TITLE	The title column of the column Archive Number
+#: src/gwapplicationmanager.h:418
+msgid "Archive N#"
+msgstr "Αριθμός καταχώρησης"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_TITLE	The title column of the column Type
+#: src/gwapplicationmanager.h:430
+msgid "Type"
+msgstr "Τύπος"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_TITLE	The title column of the column Volume Name
+#: src/gwapplicationmanager.h:442
+msgid "Volume name"
+msgstr "Ονομασία τόμου"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_TITLE	The title column of the column Full Capacity
+#: src/gwapplicationmanager.h:454
+msgid "Full capacity"
+msgstr "Συνολική χωρητικότητα"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_TITLE	The title column of the column Free Space
+#: src/gwapplicationmanager.h:466
+msgid "Free space"
+msgstr "Ελεύθερος χώρος"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_TITLE	The title column of the column Date
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_DATE_TITLE	The title column of the column Date
+#: src/gwapplicationmanager.h:478 src/gwapplicationmanager.h:594
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#. ! @define	GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_TITLE	The title column of the column Serial Number
+#: src/gwapplicationmanager.h:490
+msgid "Serial number"
+msgstr "Σειριακός αριθμός"
+
+#. ! @define	GW_VALUE_APP_SEARCH_COLUMN_PATH_TITLE	The title column of the column Path
+#: src/gwapplicationmanager.h:570
+msgid "Path"
+msgstr "Διαδρομή"
+
+#. Define all used string in the win32 installer
+#: win32/config.h:287
+msgid "Full"
+msgstr "Πλήρης"
+
+#: win32/config.h:288
+msgid "Compact"
+msgstr "Συνεκτικός"
+
+#: win32/config.h:289
+msgid "GWhere (requiered)"
+msgstr "GWhere (απαιτείται)"
+
+#: win32/config.h:290
+msgid "Main engine application."
+msgstr "Κυρίως εφαρμογή."
+
+#: win32/config.h:291
+#, fuzzy
+msgid "GTK+ 2.6 RunTime (required)"
+msgstr "Περιβάλλον εκτέλεσης GTK+ 2.0 (απαιτείται)"
+
+#: win32/config.h:292
+msgid "RunTime for GUI environment."
+msgstr "Βιβλιοθήκες εκτέλεσης του γραφικού περιβάλλοντος."
+
+#: win32/config.h:293
+msgid "Plugins"
+msgstr "Plugins"
+
+#: win32/config.h:294
+#, fuzzy
+msgid ""
+"Plugins for auto extraction of file descriptions and plugins for importation/"
+"exportation of catalogs."
+msgstr "Plugins για αυτόματη εξαγωγή περιγραφών αρχείων."
+
+#: win32/config.h:295
+msgid "Languages Files"
+msgstr "Πολύγλωσση υποστήριξη"
+
+#: win32/config.h:296
+msgid "All languages files for the program translation."
+msgstr "Αρχεία μεταγλώτισης του προγράμματος."
+
+#: win32/config.h:297
+msgid "You must uninstall your last version of GWhere"
+msgstr ""
+
+#: win32/config.h:298
+msgid "Installer already running"
+msgstr ""
+
+#: win32/config.h:299
+#, fuzzy
+msgid "Install options"
+msgstr "Γενικές επιλογές"
+
+#: win32/config.h:300
+msgid "Which users can run GWhere ?"
+msgstr ""
+
+#: win32/config.h:301
+msgid "GWhere install rights access"
+msgstr ""
+
+#: win32/config.h:302
+msgid ""
+"GWhere can be installed for all users or only for current user. Select for "
+"which you want install GWhere please."
+msgstr ""
+
+#: win32/config.h:303
+msgid "All users|Current user"
+msgstr ""
+
+#: win32/config.h:304
+msgid "All users"
+msgstr ""
+
+#~ msgid ""
+#~ "The catalog file doesn't exists. Check your catalog file path please."
+#~ msgstr ""
+#~ "Το αρχείο καταλόγου δεν υπάρχει. Παρακαλώ ελέγξτε τη διαδρομή του αρχείου "
+#~ "σας."
+
+#~ msgid ""
+#~ "The catalog file to load doesn't have a good file extension. Only .ctg "
+#~ "files are allowed to be loaded."
+#~ msgstr ""
+#~ "Η κατάληξη του προς άνοιγμα αρχείου καταλόγου δεν είναι κατάλληλη. Μόνο "
+#~ "αρχεία .ctg επιτρέπεται να ανοιχθούν."
+
+#~ msgid "Load file"
+#~ msgstr "Άνάγνωση αρχείου"
+
+#~ msgid "Error : cannot open this file."
+#~ msgstr "Σφάλμα : αδύνατο το άνοιγμα αυτού του αρχείου."
+
+#~ msgid "Error : cannot read the file version."
+#~ msgstr "Σφάλμα : αδύνατη η ανάγνωση της έκδοσης του αρχείου."
+
+#~ msgid "Load catalog"
+#~ msgstr "Ανάγνωση καταλόγου"
+
+#~ msgid "Error : cannot close file."
+#~ msgstr "Σφάλμα : αδύνατο το κλείσιμο του αρχείου."
+
+#~ msgid "Error : it's not a GWhere file."
+#~ msgstr "Σφάλμα : δεν είναι αρχείο GWhere."
+
+#~ msgid "Error : this GWhere version file is unknown."
+#~ msgstr "Σφάλμα : αυτή η έκδοση του αρχείου GWhere είναι άγνωστη."
+
+#~ msgid "Error : cannot close this file after loading."
+#~ msgstr ""
+#~ "Σφάλμα : αδύνατο το κλείσιμο αυτού του αρχείου μετά την ανάγνωσή του."
+
+#~ msgid "Error : during the loading of disk."
+#~ msgstr "Σφάλμα : κατά την ανάγνωση του δίσκου."
+
+#~ msgid "Error : cannot create file."
+#~ msgstr "Σφάλμα : αδύνατη η δημιουργία του αρχείου."
+
+#~ msgid "Error : cannot write file version."
+#~ msgstr "Σφάλμα : αδύνατη η εγγραφή της έκδοσης του αρχείου."
+
+#~ msgid "Error : cannot close catalog file."
+#~ msgstr "Σφάλμα : αδύνατο το κλείσιμο του αρχείου του καταλόγου."
+
+#~ msgid "Elapsed time to save the catalog : %d secs"
+#~ msgstr "Χρόνος αποθήκευσης του καταλόγου : %lu secs"
+
+#~ msgid ""
+#~ "Give the device file of the selected disk. The device file is the one of "
+#~ "the /etc/fstab file."
+#~ msgstr ""
+#~ "Δώστε το αρχείο συσκευής του επιλεγμένου δίσκου. Το αρχείο συσκευής είναι "
+#~ "ένα από αυτά του αρχείου /etc/fstab."
+
+#~ msgid "Scan disk"
+#~ msgstr "Ανίχνευση δίσκου"

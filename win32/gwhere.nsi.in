@@ -1,0 +1,551 @@
+;NSIS Modern User Interface version 1.69
+;Multilingual Example Script
+;Written by Joost Verburg
+
+;--------------------------------
+;Include Modern UI
+
+  !include "MUI.nsh"
+  !include "${NSISDIR}\Contrib\Modern UI\System.nsh"
+
+;--------------------------------
+;Configuration
+
+  ;General
+  Name "@PROJECT_NAME@"
+  !define VERSION "@VERSION@"
+  OutFile "@PACKAGE@-${VERSION}-win32_setup.exe"
+  !define MUI_BUILD_DIR "."
+  !define TEMP1 $R0
+
+  ; Show the install and uninstall processing
+  ShowInstDetails show
+  ShowUninstDetails show
+
+  ;Default installation folder
+  InstallDir "$PROGRAMFILES\$(^NameDA)"
+  
+  ;Get installation folder from registry if available
+;  InstallDirRegKey HKCU "Software\$(^NameDA)" ""
+  InstallDirRegKey HKCU "Software\$(^NameDA)" "Install_Dir"
+
+  ;Remember the Start Menu Folder
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\$(^NameDA)"
+  !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+  !define MUI_STARTMENUPAGE_DEFAULTFOLDER "$(^NameDA)"
+
+
+;--------------------------------
+;Interface Settings
+
+  ; Adds an XP manifest to the installer
+  XPStyle on
+  ;!define MUI_ICON "${MUI_BUILD_DIR}\@PACKAGE@.ico"
+  !define MUI_ABORTWARNING
+
+;--------------------------------
+;Language Selection Dialog Settings
+
+  ;Remember the installer language
+  !define MUI_LANGDLL_ALWAYSSHOW
+  !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\$(^NameDA)"
+  !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
+;--------------------------------
+;Pages
+
+  !define MUI_WELCOMEFINISHPAGE_BITMAP "${MUI_BUILD_DIR}\@PACKAGE@_install.bmp"
+  !insertmacro MUI_PAGE_WELCOME
+  !insertmacro MUI_PAGE_LICENSE "$(URL_License)"
+  !insertmacro MUI_PAGE_COMPONENTS
+  !insertmacro MUI_PAGE_DIRECTORY
+  Var STARTMENU_FOLDER
+  !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
+
+  Var INI_VALUE
+  Page custom AllUsers
+  !insertmacro MUI_PAGE_INSTFILES
+  !define MUI_FINISHPAGE_LINK "http://www.@PACKAGE@.org"
+  ;!define MUI_FINISHPAGE_LINK "Visit the $(^NameDA) website for the latest news, FAQs and support"
+  !define MUI_FINISHPAGE_LINK_LOCATION "http://www.@PACKAGE@.org"
+  !define MUI_FINISHPAGE_RUN "$INSTDIR\@PACKAGE@.exe"
+  !define MUI_FINISHPAGE_NOREBOOTSUPPORT
+  !insertmacro MUI_PAGE_FINISH
+  
+  !insertmacro MUI_UNPAGE_WELCOME
+  !insertmacro MUI_UNPAGE_CONFIRM
+  !insertmacro MUI_UNPAGE_INSTFILES
+  !insertmacro MUI_UNPAGE_FINISH
+
+;--------------------------------
+;Languages
+
+  !insertmacro MUI_LANGUAGE "Czech"
+  !include "..\po\cs.nsh"
+  !insertmacro MUI_LANGUAGE "Dutch"
+  !include "..\po\nl.nsh"
+  !insertmacro MUI_LANGUAGE "English"
+  !include "..\po\en.nsh"
+  !insertmacro MUI_LANGUAGE "French"
+  !include "..\po\fr.nsh"
+  !insertmacro MUI_LANGUAGE "German"
+  !include "..\po\de.nsh"
+  !insertmacro MUI_LANGUAGE "Greek"
+  !include "..\po\el.nsh"
+  !insertmacro MUI_LANGUAGE "Hungarian"
+  !include "..\po\hu.nsh"
+  !insertmacro MUI_LANGUAGE "Italian"
+  !include "..\po\it.nsh"
+  !insertmacro MUI_LANGUAGE "Polish"
+  !include "..\po\pl.nsh"
+  !insertmacro MUI_LANGUAGE "Portuguese"
+  !include "..\po\pt.nsh"
+  !insertmacro MUI_LANGUAGE "Russian"
+  !include "..\po\ru.nsh"
+  !insertmacro MUI_LANGUAGE "Serbian"
+  !include "..\po\sr.nsh"
+  !insertmacro MUI_LANGUAGE "Spanish"
+  !include "..\po\es.nsh"
+  !insertmacro MUI_LANGUAGE "SpanishAR"
+  !include "..\po\ar.nsh"
+
+;--------------------------------
+;Reserve Files
+  
+  ;These files should be inserted before other files in the data block
+  ;Keep these lines before any File command
+  ;Only for solid compression (by default, solid compression is enabled for BZIP2 and LZMA)
+  
+  !insertmacro MUI_RESERVEFILE_LANGDLL
+ 
+  ReserveFile "allusers.ini"
+  !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+  ReserveFile "${NSISDIR}\Plugins\NSISdl.dll"
+;  ReserveFile "${NSISDIR}\Plugins\ZipDLL.dll"
+
+;--------------------------------
+
+;--------------------------------
+;Component-selection page
+  ;Titles
+
+  ;Descriptions
+
+  ;Titles
+
+  ;Descriptions
+
+  ;Titles
+
+  ;Descriptions
+
+  ;Titles
+
+  ;Descriptions
+
+;--------------------------------
+;Installer Sections
+
+Section $(TITLE_SecCopyUI) SecCopyUI
+SectionIn 1 2 RO
+  SetOutPath $INSTDIR
+  File "${MUI_BUILD_DIR}\..\src\@PACKAGE@.exe"
+  File "${MUI_BUILD_DIR}\@PACKAGE@.ico"
+  File "${MUI_BUILD_DIR}\iconv.dll"
+  File "${MUI_BUILD_DIR}\intl.dll"
+  File "${MUI_BUILD_DIR}\libintl-1.dll"
+  File "${MUI_BUILD_DIR}\mingwm10.dll"
+  File "${MUI_BUILD_DIR}\libregex.dll"
+  File "${MUI_BUILD_DIR}\zlib1.dll"
+  File "${MUI_BUILD_DIR}\..\AUTHORS"
+  File "${MUI_BUILD_DIR}\..\BUGS"
+  File "${MUI_BUILD_DIR}\..\BUGS.fr"
+  File "${MUI_BUILD_DIR}\..\ChangeLog"
+  File "${MUI_BUILD_DIR}\..\ChangeLog.fr"
+  File "${MUI_BUILD_DIR}\..\COPYING"
+  File "${MUI_BUILD_DIR}\..\NEWS"
+  File "${MUI_BUILD_DIR}\..\README"
+  File "${MUI_BUILD_DIR}\..\TODO"
+  SetOutPath $INSTDIR\plugins\catalog
+  File "${MUI_BUILD_DIR}\..\src\plugins\catalog\libgwcatalog.dll"
+  SetOutPath $INSTDIR
+
+;Read a value from an InstallOptions INI file
+!insertmacro MUI_INSTALLOPTIONS_READ $INI_VALUE "allusers.ini" "Field 3" "State"
+;Display a messagebox if check box was checked
+;StrCmp $INI_VALUE "1" allusers currentuser
+StrCmp $INI_VALUE "$(STATE_SecAllUsersUI)" allusers currentuser
+allusers:
+  WriteRegStr HKLM Software\$(^NameDA) "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM Software\$(^NameDA) "Install_Users" "all"
+  SetShellVarContext all
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "DisplayName" "$(^NameDA) ${VERSION} (remove only)"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg" "Application" '"$INSTDIR\@PACKAGE@.exe"'
+  WriteRegStr HKLM "Software\$(^NameDA)" "Start Menu Folder" "$STARTMENU_FOLDER"
+Goto endusers
+currentuser:
+  WriteRegStr HKCU Software\$(^NameDA) "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM Software\$(^NameDA) "Install_Users" "current"
+  SetShellVarContext current
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "DisplayName" "$(^NameDA) ${VERSION} (remove only)"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  ;WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg" "Application" '"$INSTDIR\@PACKAGE@.exe"'
+  WriteRegStr HKCU "Software\$(^NameDA)" "Start Menu Folder" "$STARTMENU_FOLDER"
+endusers:
+
+  WriteRegStr HKLM "Software\$(^NameDA)" "Installer Language" $LANGUAGE
+  WriteRegStr HKCR ".ctg" "" "$(^NameDA)"
+  WriteRegStr HKCR "$(^NameDA)\Shell\open\command" "" '"$INSTDIR\@PACKAGE@.exe" "%1"'
+  WriteRegStr HKCR "$(^NameDA)\DefaultIcon" "" "$INSTDIR\@PACKAGE@.ico"
+
+  ; Write the installation path into the registry
+;  WriteRegStr HKLM SOFTWARE\$(^NameDA) "Install_Dir" "$INSTDIR"
+;  WriteRegStr HKCU SOFTWARE\$(^NameDA) "Install_Dir" "$INSTDIR"
+;  WriteRegStr HKCU "Software\$(^NameDA)" "Installer Language" $LANGUAGE
+  ; Write the uninstall keys for Windows
+  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "DisplayName" "$(^NameDA) ${MUI_VERSION} (remove only)"
+  ;WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "DisplayName" "$(^NameDA) ${VERSION} (remove only)"
+  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  ;WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg" "Application" '"$INSTDIR\@PACKAGE@.exe"'
+  ;WriteRegStr HKCR ".ctg" "" "$(^NameDA)"
+  ;WriteRegStr HKCR "$(^NameDA)\Shell\open\command" "" '"$INSTDIR\@PACKAGE@.exe" "%1"'
+  ;WriteRegStr HKCR "$(^NameDA)\DefaultIcon" "" "$INSTDIR\@PACKAGE@.ico"
+  WriteUninstaller "uninstall.exe"
+
+  ; optional section Section "Start Menu Shortcuts"
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+  CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+  CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
+  CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\$(^NameDA).lnk" "$INSTDIR\@PACKAGE@.exe" "" "$INSTDIR\@PACKAGE@.exe" 0
+  CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\$(^NameDA) Home Page.lnk" "http://www.@PACKAGE@.org" "" "" 0
+
+  ;Write shortcut location to the registry (for Uninstaller)
+;  WriteRegStr HKCU "Software\$(^NameDA)" "Start Menu Folder" "${MUI_STARTMENUPAGE_VARIABLE}"
+  ;WriteRegStr HKCU "Software\$(^NameDA)" "Start Menu Folder" "$STARTMENU_FOLDER"
+  !insertmacro MUI_STARTMENU_WRITE_END
+SectionEnd
+
+
+Section $(TITLE_SecCopyGTK) SecCopyGTK
+SectionIn 1 2
+  SetOutPath $INSTDIR
+  File "${MUI_BUILD_DIR}\libatk-1.0-0.dll"
+  File "${MUI_BUILD_DIR}\libgdk_pixbuf-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libgdk-win32-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libglib-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libgmodule-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libgobject-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libgtk-win32-2.0-0.dll"
+  File "${MUI_BUILD_DIR}\libpango-1.0-0.dll"
+  File "${MUI_BUILD_DIR}\libpangowin32-1.0-0.dll"
+  SetOutPath $INSTDIR\etc
+  File /r "${MUI_BUILD_DIR}\etc\*.*"
+  SetOutPath $INSTDIR\lib
+  File /r "${MUI_BUILD_DIR}\lib\*.*"
+SectionEnd
+
+
+Section $(TITLE_SecCopyPLUGINS) SecCopyPLUGINS
+SectionIn 1
+  SetOutPath $INSTDIR\plugins\descr
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptionhtml.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptionmp3.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptionavi.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptiondescript_ion.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptionfile_id_diz.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\descr\libgwplugindescriptionmpc.dll"
+  SetOutPath $INSTDIR\plugins\catalog
+  File "${MUI_BUILD_DIR}\..\src\plugins\catalog\libgwcatalog.dll"
+  File "${MUI_BUILD_DIR}\..\src\plugins\catalog\libcsv.dll"
+SectionEnd
+
+
+Section $(TITLE_SecCopyLANG) SecCopyLANG
+SectionIn 1
+  SetOutPath $INSTDIR\locale\ar\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\ar.gmo"
+  SetOutPath $INSTDIR\locale\cs\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\cs-windows-1250.gmo"
+  SetOutPath $INSTDIR\locale\de\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\de.gmo"
+  SetOutPath $INSTDIR\locale\el\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\el.gmo"
+  SetOutPath $INSTDIR\locale\es\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\es.gmo"
+  SetOutPath $INSTDIR\locale\fr\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\fr.gmo"
+  SetOutPath $INSTDIR\locale\hu\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\hu.gmo"
+  SetOutPath $INSTDIR\locale\it\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\it.gmo"
+  SetOutPath $INSTDIR\locale\nl\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\nl.gmo"
+  SetOutPath $INSTDIR\locale\pl\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\pl.gmo"
+  SetOutPath $INSTDIR\locale\pt\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\pt.gmo"
+  SetOutPath $INSTDIR\locale\ru\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\ru.gmo"
+  SetOutPath $INSTDIR\locale\sr\LC_MESSAGES
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\sr.gmo"
+SectionEnd
+
+
+; uninstall stuff
+;UninstallText "This will uninstall @PROJECT_NAME@. Hit next to continue."
+
+; special uninstall section.
+Section "Uninstall"
+  ; remove registry keys
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)"
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)"
+  DeleteRegKey HKLM "SOFTWARE\Classe\$(^NameDA)"
+  DeleteRegKey HKCU "SOFTWARE\Classe\$(^NameDA)"
+
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg\OpenWithList"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg\OpenWithList"
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ctg"
+  DeleteRegKey HKCR ".ctg"
+  DeleteRegKey HKCR "$(^NameDA)\Shell\open\command"
+  DeleteRegKey HKCR "$(^NameDA)\Shell\open"
+  DeleteRegKey HKCR "$(^NameDA)\Shell"
+  DeleteRegKey HKCR "$(^NameDA)"
+  DeleteRegKey HKCR "$(^NameDA)\DefaultIcon"
+  DeleteRegKey HKCR "Applications\@PACKAGE@.exe\shell\open\command"
+  DeleteRegKey HKCR "Applications\@PACKAGE@.exe\shell\open"
+  DeleteRegKey HKCR "Applications\@PACKAGE@.exe\shell"
+  DeleteRegKey HKCR "Applications\@PACKAGE@.exe"
+
+
+  ; remove files
+  Delete "$INSTDIR\@PACKAGE@.exe"
+  Delete "$INSTDIR\@PACKAGE@.ico"
+  Delete "$INSTDIR\iconv.dll"
+  Delete "$INSTDIR\intl.dll"
+  Delete "$INSTDIR\libintl-1.dll"
+  Delete "$INSTDIR\mingwm10.dll"
+  Delete "$INSTDIR\libregex.dll"
+  Delete "$INSTDIR\zlib1.dll"
+  Delete "$INSTDIR\libatk-1.0-0.dll"
+  Delete "$INSTDIR\libgdk_pixbuf-2.0-0.dll"
+  Delete "$INSTDIR\libgdk-win32-2.0-0.dll"
+  Delete "$INSTDIR\libglib-2.0-0.dll"
+  Delete "$INSTDIR\libgmodule-2.0-0.dll"
+  Delete "$INSTDIR\libgobject-2.0-0.dll"
+  Delete "$INSTDIR\libgtk-win32-2.0-0.dll"
+  Delete "$INSTDIR\libpango-1.0-0.dll"
+  Delete "$INSTDIR\libpangowin32-1.0-0.dll"
+  RMDir /r "$INSTDIR\etc"
+  RMDir /r "$INSTDIR\lib"
+  Delete "$INSTDIR\AUTHORS"
+  Delete "$INSTDIR\BUGS"
+  Delete "$INSTDIR\BUGS.fr"
+  Delete "$INSTDIR\ChangeLog"
+  Delete "$INSTDIR\ChangeLog.fr"
+  Delete "$INSTDIR\COPYING"
+  Delete "$INSTDIR\NEWS"
+  Delete "$INSTDIR\README"
+  Delete "$INSTDIR\TODO"
+  Delete "$INSTDIR\locale\ar\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\ar\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\ar"
+  Delete "$INSTDIR\locale\cs\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\cs\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\cs"
+  Delete "$INSTDIR\locale\de\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\de"
+  Delete "$INSTDIR\locale\el\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\el\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\el"
+  Delete "$INSTDIR\locale\es\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\es\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\es"
+  Delete "$INSTDIR\locale\fr\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\fr"
+  Delete "$INSTDIR\locale\hu\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\hu\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\hu"
+  Delete "$INSTDIR\locale\it\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\it\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\it"
+  Delete "$INSTDIR\locale\nl\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\nl\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\nl"
+  Delete "$INSTDIR\locale\pl\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\pl\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\pl"
+  Delete "$INSTDIR\locale\pt\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\pt\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\pt"
+  Delete "$INSTDIR\locale\ru\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\ru\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\ru"
+  Delete "$INSTDIR\locale\sr\LC_MESSAGES\@PACKAGE@.mo"
+  RMDir "$INSTDIR\locale\sr\LC_MESSAGES"
+  RMDir "$INSTDIR\locale\sr"
+  RMDir "$INSTDIR\locale"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptionhtml.dll"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptionmp3.dll"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptionavi.dll"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptiondescript_ion.dll"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptionfile_id_diz.dll"
+  Delete "$INSTDIR\plugins\descr\libgwplugindescriptionmpc.dll"
+  RMDir "$INSTDIR\plugins\descr"
+  Delete "$INSTDIR\plugins\catalog\libgwcatalog.dll"
+  Delete "$INSTDIR\plugins\catalog\libcsv.dll"
+  RMDir "$INSTDIR\plugins\catalog"
+  RMDir "$INSTDIR\plugins"
+
+
+  ;MUST REMOVE UNINSTALLER, too
+  Delete $INSTDIR\uninstall.exe
+
+  ;remove shortcuts, if any.
+  ;Remove shortcut
+  ReadRegStr ${TEMP1} HKLM SOFTWARE\$(^NameDA) "Install_Users"
+  StrCmp ${TEMP1} "all" allusers currentuser
+  allusers:
+    SetShellVarContext all
+    ReadRegStr ${TEMP1} HKLM "Software\$(^NameDA)" "Start Menu Folder"
+  Goto endusers
+  currentuser:
+    SetShellVarContext current
+    ReadRegStr ${TEMP1} HKCU "Software\$(^NameDA)" "Start Menu Folder"
+  endusers:
+
+  StrCmp ${TEMP1} "" noshortcuts
+    Delete "$SMPROGRAMS\${TEMP1}\*.*"
+    RMDir "$SMPROGRAMS\${TEMP1}"
+  noshortcuts:
+
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\${TEMP1}"
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\${TEMP1}"
+  DeleteRegValue HKLM "Software\$(^NameDA)" "Start Menu Folder"
+  DeleteRegValue HKCU "Software\$(^NameDA)" "Start Menu Folder"
+  DeleteRegValue HKLM "Software\$(^NameDA)" "Install_Users"
+  DeleteRegValue HKCU "Software\$(^NameDA)" "Install_Users"
+  DeleteRegKey HKLM "Software\$(^NameDA)"
+  DeleteRegKey HKCU "Software\$(^NameDA)"
+
+  RMDir "$INSTDIR"
+
+
+;  !insertmacro MUI_UNFINISHHEADER
+SectionEnd
+
+
+;--------------------------------
+;Installer Functions
+
+
+
+Function .onInit
+  ;Extract InstallOptions INI files
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "allusers.ini"
+
+ ;Check if @PROJECT_NAME@ is already installed
+  ReadRegStr ${TEMP1} HKLM SOFTWARE\$(^NameDA) "Install_Users"
+  StrCmp ${TEMP1} "all" allusers currentuser
+  allusers:
+    ReadRegStr ${TEMP1} HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString"
+  Goto endusers
+  currentuser:
+    ReadRegStr ${TEMP1} HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^NameDA)" "UninstallString"
+  endusers:
+
+   StrCmp ${TEMP1} "" nouninstall
+     MessageBox MB_OK "$(UninstBefore)"
+     ExecWait '"$INSTDIR\uninstall.exe" _?=$INSTDIR'
+   nouninstall:
+
+ ;Check if the installer is already launched
+ System::Call 'kernel32::CreateMutexA(i 0, i 0, t "myMutex") i .r1 ?e'
+ Pop $0
+
+ StrCmp $0 183 0 +3
+
+   MessageBox MB_OK "$(InstAlready)"
+
+   Abort
+
+ StrCmp $0 0 done
+
+   MessageBox MB_OK "error creating mutex"
+
+ done:
+
+  !insertmacro MUI_LANGDLL_DISPLAY
+
+FunctionEnd
+
+;--------------------------------
+;Descriptions
+
+  ;USE A LANGUAGE STRING IF YOU WANT YOUR DESCRIPTIONS TO BE LANGAUGE SPECIFIC
+
+  ;Assign descriptions to sections
+  !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecCopyUI} $(DESC_SecCopyUI)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecCopyGTK} $(DESC_SecCopyGTK)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecCopyPLUGINS} $(DESC_SecCopyPLUGINS)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SecCopyLANG} $(DESC_SecCopyLANG)
+  !insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+
+;--------------------------------
+;Installer type
+    ;Full install
+
+    ;Compact install
+
+InstType $(InstTypeFull)
+InstType $(InstTypeCompact)
+
+
+;--------------------------------
+;License page
+
+
+ 
+;--------------------------------
+;Uninstaller Section
+
+;Section "Uninstall"
+;
+;  ;ADD YOUR OWN STUFF HERE!
+;
+;  Delete "$INSTDIR\Uninstall.exe"
+;
+;  RMDir "$INSTDIR"
+;
+;  DeleteRegKey /ifempty HKCU "Software\$(^NameDA)"
+;
+;SectionEnd
+
+;--------------------------------
+;Uninstaller Functions
+
+Function un.onInit
+
+  !insertmacro MUI_UNGETLANGUAGE
+  
+FunctionEnd
+
+
+Function AllUsers
+
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "allusers.ini" "Field 1" text $(SUBSUBTITLE_SecAllUsersUI)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "allusers.ini" "Field 2" text $(ASK_SecAllUsersUI)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "allusers.ini" "Field 3" listitems $(LIST_SecAllUsersUI)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "allusers.ini" "Field 3" state $(STATE_SecAllUsersUI)
+  !insertmacro MUI_HEADER_TEXT "$(TITLE_SecAllUsersUI)" "$(SUBTITLE_SecAllUsersUI)"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "allusers.ini"
+
+
+FunctionEnd

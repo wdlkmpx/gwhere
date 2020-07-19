@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+if [ \( "$1" = "upgrade" -o "$1" = "remove" \) -a -f /usr/X11R6/include/X11/pixmaps/gwhere.xpm ]; then
+	rm -f /usr/X11R6/include/X11/pixmaps/gwhere.xpm
+	rm -r /usr/doc/gwhere
+fi

@@ -1,0 +1,11 @@
+To build Slackware package do the following
+
+Copy tar.bz2 file of GWhere sources to some directory, for example 
+/tmp/gwhere.src/
+
+Next Copy gwhere.SlackBuild, slack-desk and GWhere.desktop files 
+to the same directory.
+
+Next go to it and run gwhere.SlackBuild
+   
+   

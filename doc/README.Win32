@@ -1,0 +1,2 @@
+Specific code should be put between #ifdef OS_WIN32 end #endif
+GWhere runs with GTK+ 2.4.x.

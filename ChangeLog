@@ -1,0 +1,388 @@
+GWhere 0.2.3
+
+0.2.3:
+	- Fix some "strict-aliasing" warnings. [Sébastien LECACHEUR]
+	- Fix some "implicite declaration" warnings. [Sébastien LECACHEUR]
+	- Optimize disk scan with "auto description" option. [Sébastien LECACHEUR]
+	- Fix freeze on pipe files during disk scan. [Sébastien LECACHEUR]
+	- Fix "segmentation fault" at closing gwmsgbox with GTK+ 2.x. [Sébastien LECACHEUR]
+	- Fix possible "segmentation fault" at catalog importing. [Sébastien LECACHEUR]
+	- Fix compilation warning of some plugins. [Sébastien LECACHEUR]
+
+0.2.2:	- Add submount support. [Sébastien LECACHEUR]
+	- Fix debug mode. [Sébastien LECACHEUR]
+	- Application initialization secured. [Sébastien LECACHEUR]
+	- Fix possible "segmentation fault" at loading. [Sébastien LECACHEUR]
+	- Fix translation. [Sébastien LECACHEUR]
+	- Russian translation. [LESNEVSKY Gennady]
+	- Serbian translation. [Nemanja AVRAMOVIC]
+
+0.2.1:	- Fix dll dependency under win32. [Sébastien LECACHEUR]
+	- Search engine optimized. [Sébastien LECACHEUR]
+
+0.2.0:	- Rename gwcatalogstats to gwhelper. [Sébastien LECACHEUR]
+	- Add category deleting. [Sébastien LECACHEUR]
+	- Optimize win32 binary with the -O2 gcc option. [Sébastien LECACHEUR]
+	- Fix many warning at the compiling under win32. [Sébastien LECACHEUR]
+	- Fix plugin folder access under win32. [Sébastien LECACHEUR]
+	- Add import/export of catalogs from/to other storage format. [Sébastien LECACHEUR]
+	- Add plugin to store catalogs in CSV file. [Sébastien LECACHEUR]
+	- Add storage catalogs managment with plugins. [Sébastien LECACHEUR]
+	- Fix gwhere.desktop file. [Matthias BRAUN]
+	- Integrate slackware folder in source files. [Venelin GEORGIEV]
+	- Fix memory leak in categories managment. [Sébastien LECACHEUR]
+	- Start the automaticly generated documentation port with Doxygen. [Sébastien LECACHEUR]
+	- Dutch translation. [Herman VIAENE]
+
+0.1.6:	- Disks storage are called "media" and disks in catalog are called "disk" to remove any confusion. [Sébastien LECACHEUR]
+	- Fix spelling error and sentences. [Luis PARRAVICINI, Sébastien LECACHEUR]
+	- Remove any reference to /etc/fstab in win32 port. [Sébastien LECACHEUR]
+	- Interrupt any crash during all plugin calls. [Sébastien LECACHEUR]
+	- Fix bug with plugins description build under win32. [Sébastien LECACHEUR]
+	- Fix bug with "Edit description" feature. [Sébastien LECACHEUR]
+	- Fix bug to display selected files with GTK+ 2.x. [Sébastien LECACHEUR]
+	- Fix bug and improvment of the HTML plugins. [Sébastien LECACHEUR]
+
+0.1.5:	- Fix bug with gw_dialog_box_create() under GTK+ 2.x. [Sébastien LECACHEUR]
+	- Port win32 version to GTK+ 2.4. [Sébastien LECACHEUR]
+	- Start the MAC OS X port. [Sébastien LECACHEUR]
+	- Fix memory leak with the use of the gtk_editable_get_chars() function. [Sébastien LECACHEUR]
+	- Fix UTF-8 encoding for message box. [Sébastien LECACHEUR]
+	- Search engine optimized. [Sébastien LECACHEUR]
+	- Set the catalog file name or the catalog name in the file selection box entry. [Sébastien LECACHEUR]
+	- Fix bad status bar displaying. [Sébastien LECACHEUR]
+	- Fix the scan by forbiding the scan of internal mount points. [Sébastien LECACHEUR]
+	- Fix recents opened catalogs list refreshing. [Sébastien LECACHEUR]
+	- Fix locked folder displaying. [Sébastien LECACHEUR]
+	- Fix crash bug with gw_file_get_name() function. [Sébastien LECACHEUR]
+	- Fix crash bug with empty disk name and label with "use disk label as name" option is checked. [Sébastien LECACHEUR]
+	- Fix bug with renaming catalog and saving it. [Sébastien LECACHEUR]
+
+0.1.4:	- Fix bug with Set-Gid and "sticky" bits file rights detection. [Sébastien LECACHEUR]
+	- Use less memory to store files informations. [Sébastien LECACHEUR]
+	- Fix bug of GWhere translation for normal users when it was installed by administrator under win32. [Sébastien LECACHEUR]
+	- Fix bug to display selected items with GTK+ 2.x under Linux. [Sébastien LECACHEUR]
+	- Add a function in popup menu to rename folders and files. [Sébastien LECACHEUR]
+	- Fix compilation error with Cygwin and/or GCC 3.x. [Luis PARRAVICINI]
+	- Fix compilation error with GTK 2.0. [Sébastien LECACHEUR]
+	- Auto-generation of config.h file for win32. [Sébastien LECACHEUR]
+
+0.1.3:	- Use a RC file to customize the GUI aspect. [Sébastien LECACHEUR]
+	- Catalog loading optimization. [Sébastien LECACHEUR]
+	- Save the horizontal pane position of the explorer view. [Sébastien LECACHEUR]
+	- Fix crash in the reading of /ect/fstab and /etc/mtab files. [Sébastien LECACHEUR]
+	- Fix crash in the loading of device properties. [LUKACS Arpad]
+	- Remove the execution right on the configuration file. [Sébastien LECACHEUR]
+	- Fix memory leak in gw_properties_file_save_all function. [Sébastien LECACHEUR]
+	- Use tempory file for saving to prevent catalog lost if a crash occures. [Sébastien LECACHEUR]
+	- Catalog saving optimization. [Sébastien LECACHEUR]
+	- Add MPC plugin. [Raphaël MARINIER]
+	- Fix spelling error. [Luis PARRAVICINI]
+	- Solve some compilation warning. [Sébastien LECACHEUR]
+	- Fix missing rights when make a folder. [Sébastien LECACHEUR]
+	- Add an option to activate or desactivate beeps. [Sébastien LECACHEUR]
+	- Add expand all/expand only disks/collapse all functions in menu action. [Sébastien LECACHEUR]
+	- Add a button to clear all search results. [Sébastien LECACHEUR]
+	- Fix bug in DESCRIPT.ION plugin and improves the generated description. [Sébastien LECACHEUR]
+	- Fix lines sorting in the search. [Sébastien LECACHEUR]
+	- Add configuration of column which must displayed in search. [Sébastien LECACHEUR]
+	- Support files and folders bigger than 2,1 Go. [Sébastien LECACHEUR]
+	- Add an option to use an advanced pattern to generate disk name from disk information. [Sébastien LECACHEUR]
+	- Save the explorer columns width. [Sébastien LECACHEUR]
+	- Add an option to set case sentitive the sort items in explorer. [Sébastien LECACHEUR]
+	- Add an option to sort items in explorer by folders and files. [Sébastien LECACHEUR]
+	- Add an option to activate the column autoresizing. [Sébastien LECACHEUR, LUKACS Arpad]
+	- Add an option to not explore the disk tree structure when it is added. [Sébastien LECACHEUR]
+	- Save all search settings. [Sébastien LECACHEUR]
+	- Add a new search mode by key words. [Sébastien LECACHEUR, LUKACS Arpad]
+	- Fix spelling errors. [Guillermo GRIATZKY]
+	- Italian translation. [Michele PETRECCA]
+
+0.1.2:	- Better title tree explorer displaying. [Sébastien LECACHEUR]
+	- Fix win32 installer end status. [Sébastien LECACHEUR]
+	- Fix spelling errors. [Guillermo GRIATZKY]
+	- Resize window about box for better displaying. [Sébastien LECACHEUR]
+	- Fix bug in gw_combo_box_categories_set_selected_category() function. [Sébastien LECACHEUR]
+	- Fix missing UTF-8 encoding under GTK+ 2.0. [Sébastien LECACHEUR]
+	- Fix bug with the loading of catalog file settings. [Sébastien LECACHEUR]
+	- Launch uninstaller during installation if GWhere is already installed under win32. [Sébastien LECACHEUR]
+	- Fix the not saving of unmodified catalog with "Save as" functionality. [Sébastien LECACHEUR]
+	- Add FreeBSD port. [Mykhaylo SOROCHAN]
+	- Fix lines sorting in explorer. [Sébastien LECACHEUR]
+	- Fix compressed files loading under win32. [Sébastien LECACHEUR]
+	- Temporaries files are corectly removed under win32. [Sébastien LECACHEUR]
+	- Fix line size limitation of configuration file. [Sébastien LECACHEUR]
+	- Fix memory leak during catalogs loading. [Sébastien LECACHEUR]
+	- Add WAV MPEG 1 Layer 3 support with MP3 plugin. [Sébastien LECACHEUR]
+	- Fix bug in gintlen() function. [Sébastien LECACHEUR]
+	- Fix bug in the gw_str_replace_str() function. [Sébastien LECACHEUR]
+	- Fix bug with cleanning fields after an adding disk failed. [Sébastien LECACHEUR]
+	- Don't still load default media information at application launching. [Sébastien LECACHEUR]
+	- Explorer view changes are applied at once. [Sébastien LECACHEUR]
+	- Add libtool requirement in gwhere.spec.in. [Sébastien LECACHEUR]
+	- Improvement of severals buttons positions. [Sébastien LECACHEUR]
+	- Fix bug with catalog statistics of catalogs built under win32. [Sébastien LECACHEUR]
+	- Improvement of properties box displaying. [Sébastien LECACHEUR]
+	- Fix mount status under Linux. [Sébastien LECACHEUR]
+	- Fix memories leaks with *mntent() functions. [Sébastien LECACHEUR]
+	- Remove depedencies with ws2_32. [Sébastien LECACHEUR]
+	- Fix disk in drive detection under Win 95/98/ME. [Sébastien LECACHEUR]
+	- Hide message box displayed by win32 system when a disk unavailable. [Sébastien LECACHEUR]
+	- Fix spelling error. [Luis PARRAVICINI]
+	- Fix opening catalog from win32 explorer with space caracters in path name. [Sébastien LECACHEUR]
+	- Fix crash with opening a recent opened file. [Sébastien LECACHEUR]
+	- Add use disk volume name as disk name option. [Sébastien LECACHEUR]
+	- Fix unused default properties at first launch in "Disk Managment". [Sébastien LECACHEUR]
+	- Fix information disk access under Win 95/98/ME. [Sébastien LECACHEUR]
+	- Fix bug on UTF-8 string with GtkText. [Sébastien LECACHEUR]
+	- Hide mount status on Win32 systems. [Sébastien LECACHEUR]
+	- Fix bug on loading FS informations under Linux. [Sébastien LECACHEUR]
+	- Fix ISO 9660 files system detection. [Sébastien LECACHEUR]
+	- Fix uncase sensitive detection of description plugins. [Sébastien LECACHEUR]
+	- Add DESCRIPT.ION plugin. [Sébastien LECACHEUR]
+	- Add FILE_ID.DIZ plugin. [Sébastien LECACHEUR]
+	- Fix plugin type detection. [Sébastien LECACHEUR]
+	- Hungarian translation. [LAJOSHÁZI László Gergely]
+
+0.1.1:  - Fix bug in gw_folder_get_disk_name(). [Sébastien LECACHEUR]
+	- Fix bug of double encoding to UTF-8. [Sébastien LECACHEUR]
+	- Delete test on automount option on systems which not support mount. [Sébastien LECACHEUR]
+	- Fix bug to show popup menu for first listed file (at disk root). [Sébastien LECACHEUR]
+	- Fix MS Windows 95 OSR2 detection. [Sébastien LECACHEUR]
+	- Fix GWhere's home folder creation. [Sébastien LECACHEUR]
+	- Add AVI (included DivX) plugin. [Sébastien LECACHEUR]
+	- Add OS information in the about window. [Sébastien LECACHEUR]
+	- Fix unspecified files system type. [Sébastien LECACHEUR]
+	- Fix bug in gwhere.spec.in to integrate plugins links in RPMs. [Sébastien LECACHEUR]
+	- Cleanning Makefile for win32; [Sébastien LECACHEUR]
+	- Fix mkinstalldirs file. [Luis PARRAVICINI]
+	- Fix spelling errors in AUTHORS file. [Luis PARRAVICINI]
+	- Integrate debian folder in source files. [Luis PARRAVICINI]
+
+0.1.0:	- To lower case all sources file name. [Sébastien LECACHEUR]
+	- Avoids the loading of useless device information at the starting of the application. [Sébastien LECACHEUR]
+	- Add gw_package_get_plugins_dir() function to fix plugins dir bug under win32. [Sébastien LECACHEUR]
+	- Add gw_package_get_locale_dir() function to fix locale dir bug under win32. [Sébastien LECACHEUR]
+	- Fix spelling error. [Bogdan MODZELEWSKI, Luis PARRAVICINI]
+	- All columns in explorer and search are autoresizable. [Sébastien LECACHEUR]
+	- Selected the default value in capture box. [Sébastien LECACHEUR]
+	- Improvment of categories edit box. [Sébastien LECACHEUR]
+	- Fix bug of the status bar message when create new catalog in the managment pane. [Sébastien LECACHEUR]
+	- All catalog file must have the ".ctg" extension. [Sébastien LECACHEUR]
+	- By default explorer set view for disks exploring. [Sébastien LECACHEUR]
+	- Fix memory leak in catalog_file_info_free(). [Sébastien LECACHEUR]
+	- Add autoload last opened catalog file option. [Sébastien LECACHEUR]
+	- Fix bug when disk size is bigger than 4 294 967 296 bytes in ProgressBarBox. [Sébastien LECACHEUR]
+	- Add the focus for ProgressBarBox button. [Sébastien LECACHEUR]
+	- Fix home dir under Win9x. [Sébastien LECACHEUR]
+	- Fix untranslated date under win32. [Sébastien LECACHEUR]
+	- Fix double references in the list of recents opened catalog files. [Sébastien LECACHEUR]
+	- Add configuration of column which must displayed. [Sébastien LECACHEUR]
+	- Fix memory leak in Settings object. [Sébastien LECACHEUR]
+	- Single left click on cross node in tree expand or collapse node. [Sébastien LECACHEUR]
+	- Remember last window position and size. [Sébastien LECACHEUR]
+	- Can choose to save or not GUI properties in settings. [Sébastien LECACHEUR]
+	- Fix bug on gw_file_mkdirs() with pathname ending with file separator constant. [Sébastien LECACHEUR]
+	- Change the order of available drives to prevent floppy drive auto-selection. [Sébastien LECACHEUR]
+	- Add the focus for MsgBox. [Sébastien LECACHEUR]
+	- Add an activate signal on CaptureBox and Search entry. [Mike Hokenson]
+	- Start with full-screen window. [Sébastien LECACHEUR]
+	- Fix bug on changing disk volume name. [Sébastien LECACHEUR]
+	- Fix severals memory leaks in PropertiesBox. [Sébastien LECACHEUR]
+	- Fix severals memory leaks in StatusBar. [Sébastien LECACHEUR]
+	- Fix status bar messages for disks. [Sébastien LECACHEUR]
+	- Fix bug with disk bigger than 4 294 967 296 bytes on systems which support guint64. [Sébastien LECACHEUR]
+	- Fix severals memory leaks in NoteBookManagment. [Sébastien LECACHEUR]
+	- Fix bug on rename catalog. [Sébastien LECACHEUR]
+	- Fix bug on remove file from catalog. [Sébastien LECACHEUR]
+	- Fix bug on save disk data. [Sébastien LECACHEUR]
+	- Fix bug with missing files in the root disk file list. [Sébastien LECACHEUR]
+	- Add HTML plugin. [Sébastien LECACHEUR]
+	- Show a message box when no item matched in search. [Sébastien LECACHEUR]
+	- Display in the status bar the search result. [Sébastien LECACHEUR]
+	- Add MP3 plugin. [Sébastien LECACHEUR]
+	- Add plugins manager for auto extracting file information. [Sébastien LECACHEUR]
+	- Fix bug in the file2gchar function. [Sébastien LECACHEUR]
+	- Add autoload catalog option. [Sébastien LECACHEUR]
+	- Adding log function. [Sébastien LECACHEUR]
+	- Fix configuration folder execution right. [Sébastien LECACHEUR, Joe LAZARO]
+	- Remember last selected options in the managment pane. [Sébastien LECACHEUR]
+	- Fix bugs on NotebookManagment component. [Sébastien LECACHEUR]
+	- Fix some bugs on VFSStats access functions. [Sébastien LECACHEUR]
+	- Add a man page. [Luis PARRAVICINI]
+	- Add local file support in gwhere.spec. [Sébastien LECACHEUR]
+	- Improve the configure script. [Sébastien LECACHEUR]
+	- Add an icon and a .desktop file for window manager. [Sébastien LECACHEUR]
+	- Rename the binary name to "gwhere". [Sébastien LECACHEUR]
+	- Adding the recents opened files in the menu file. [Sébastien LECACHEUR]
+	- Fix bug on configuration file parser. [Sébastien LECACHEUR]
+	- Fix bug on circular scanning with links to folder : replace stat by lstat. [Sébastien LECACHEUR, Peter HANSACK]
+	- Port to GTK 2.0 (only for compatibility). [Sébastien LECACHEUR]
+	- Replace all atoi to strtol or strtoul. [Sébastien LECACHEUR]
+	- Fix bug on file2gchar function. [Sébastien LECACHEUR]
+	- Eject CD-ROM on Win32. [Sébastien LECACHEUR]
+	- Start the port to Win32. [Sébastien LECACHEUR]
+	- Czech translation. [Thomas NAVARA]
+	- Greek translation. [Dimitris GARANATSIOS]
+	- Spanish translation. [Victor G. MARIMON]
+
+0.0.26: - Improvment of install scripts. [Sébastien LECACHEUR]
+	- Can give the catalog file name to load in command line. [Sébastien LECACHEUR]
+	- Fix bug on disk data saving. [Sébastien LECACHEUR]
+	- Safe copy of properties file when user quit the application. [Sébastien LECACHEUR]
+	- Possibility to choose the compression ratio of the catalogs. [Sébastien LECACHEUR]
+	- Adding the catalog send by mail. [Sébastien LECACHEUR]
+	- Adding a mail sender component. [Grégory BLOQUEL]
+	- Modification of DialogBox interface. [Sébastien LECACHEUR]
+	- Adding application manager and GUI manager. [Sébastien LECACHEUR]
+	- Adding the control panel. [Sébastien LECACHEUR]
+	- Adding the configuration file. [Sébastien LECACHEUR]
+	- Right click selects in the explorer. [Sébastien LECACHEUR]
+	- Fix bug on catalog renaming via menu popup. [Sébastien LECACHEUR]
+	- Replacement of Calcul.h to GWString.h. [Sébastien LECACHEUR]
+	- Fix bug in gw_str_delete_char. [Sébastien LECACHEUR]
+	- Adding a composant to read properties files. [Sébastien LECACHEUR]
+
+0.0.25:	- Display waiting message during the catalog loading and closing. [Sébastien LECACHEUR]
+	- Hide the selection file box during the catalog loading. [Sébastien LECACHEUR]
+	- Fix memories leaks in the search engine. [Sébastien LECACHEUR]
+	- Fix memory leak in gw_strcmp_strregex. [Sébastien LECACHEUR]
+	- Fix spelling errors. [Luis PARRAVICINI]
+	- Adding the debug mode of tools library. [Sébastien LECACHEUR]
+	- Progress bar is not displayed when there are not max value. [Sébastien LECACHEUR]
+	- Experimental port on Cygwin. [Sébastien LECACHEUR]
+	- Reading of the FAT12, FAT16 volume name. [Sébastien LECACHEUR]
+	- Detect FAT12, FAT16, FAT32 and ISO 9660 file system type. [Sébastien LECACHEUR]
+	- Detect the presence of mount and umount programs in configure.sh. [Sébastien LECACHEUR]
+	- Adding of encode/decode base 64. [Sébastien LECACHEUR]
+	- Logs adding in GUI. [Sébastien LECACHEUR]
+	- Remove AUTHORS-fr and TODO-fr : it's too hard to maintain all files translations. [Sébastien LECACHEUR]
+	- Rename GWhere-x.y.z.spec to GWhere.spec. [Sébastien LECACHEUR]
+	- Use of the constant __PRETTY_FUNCTION__ for functions names in logs. [Sébastien LECACHEUR]
+	- Replace the constant DEBUG_MODE by the constants GW_DEBUG_*_COMPONENT. [Sébastien LECACHEUR]
+	- Replace the string "GWhere" by the constant PACKAGE. [Sébastien LECACHEUR]
+	- Replace the constant GWHERE_VERSION by VERSION. [Sébastien LECACHEUR]
+	- Fix bug of the function gw_str_blob_to_regex to support the character "?". [Sébastien LECACHEUR]
+	- New functions to read lines : gw_file_readline, gw_zfile_readline. [Sébastien LECACHEUR, Luis PARRAVICINI]
+	- Catalogs compression with the zlib. [Luis PARRAVICINI]
+
+0.0.24:	- New quick search engine. [Sébastien LECACHEUR]
+	- Fix result of reloading search when regular expression is activated. [Sébastien LECACHEUR]
+	- Dialog box button aren't auto resized. [Sébastien LECACHEUR]
+	- Checks if a catalog is loaded before launch search. [Sébastien LECACHEUR]
+	- Fix bug on several free() functions. [Sébastien LECACHEUR]
+	- Add of debug mode on compilation (--enable-debug option). [Sébastien LECACHEUR]
+	- Fix spelling errors. [Luis PARRAVICINI]
+	- Cut sources in static libraries. [Sébastien LECACHEUR]
+
+0.0.23:	- Fix spelling errors. [Luis PARRAVICINI]
+	- Fix bug on returning to current folder when adding disk failed. [Sébastien LECACHEUR]
+	- Remaking GUI managment. [Sébastien LECACHEUR]
+	- Search can be with regular expression. [Sébastien LECACHEUR]
+	- Can cancel adding disk during adding process. [Sébastien LECACHEUR]
+	- Progress bar for adding disk. [Sébastien LECACHEUR]
+	- Fix several memory leaks on VFSStats. [Sébastien LECACHEUR]
+	- Argentinian translation. [Luis PARRAVICINI]
+
+0.0.22:	- Fix bug on adding category. [Sébastien LECACHEUR]
+	- Fix bug on directories beginning by "." or ".." support. [Sébastien LECACHEUR]
+	- Fix bug on unkowned owner and group files. [Sébastien LECACHEUR]
+	- Fix bug on testing mount for non root users. [Sébastien LECACHEUR]
+	- News message boxes to report adding disk status. [Sébastien LECACHEUR]
+	- Fix bug on reading of device label. [Sébastien LECACHEUR]
+	- Fix bug on Makefile for internationalization. [Grégory BLOQUEL]
+	- Fix bug on reading of device label. [Grégory BLOQUEL]
+	- Fix bug on mounting of CD for non root users. [Grégory BLOQUEL]
+	- Fix bug on calculation of device size with Mandrake 8.0. [Grégory BLOQUEL]
+
+0.0.21: - Search can be case or uncase sensitive.
+	- Fix bug on calcul of disks capacity/free space/used space.
+	- Fix bug on loading folders/files size/inode.
+	- Fix bug on informations generation when create catalog.
+	- Fix bug when user add a disk and there is no open catalog.
+	- Fix bug on catalogs/disks/categories name saving.
+
+0.0.20:	- Close catalog buton in toolbar.
+	- News functions in menu barre.
+	- Can change category of a disk/folder/file.
+	- Fix bug on datas managment.
+	- Fix bug on saving category of a disk/folder/file.
+	- Can apply recursively a category to all the new disk.
+	- Fix bug on category search.
+	- Fix bug on displaying dates.
+	- Can't edit/delete the default category.
+	- Locked folders don't stop disk adding now and own their icon.
+	- Load/save catalog functions cleanning.
+	- Message box to display errors.
+
+0.0.19:	- Load and save the disk/folders/files categories.
+	- Add the displaying informations of selected device option.
+	- Add categories edition window.
+	- Fix loading file nug with categories list.
+	- French translation.
+
+0.0.18:	- Improvement of notebook managment.
+	- Correct bug with total capacity disk.
+	- Correct memory leak in VFSStats.
+	- Correct bug with "Save As".
+	- Improvement of categories.
+	- Improvement of catalog/disk/folder/file's properties.
+	- Correct displaying bug when opens a file which aren't a GWhere file format.
+	- Catalog may have a name different to file name.
+	- German translation. [Hermann-Josef BECKERS]
+
+0.0.17: - Add quick search.
+	- Support OS supermount.
+	- Correct control of disk adding.
+	- Correct disk infos displaying.
+	- Correct disk infos.
+	- Add capacity disk and capacity catalog in properties.
+	- Add total used and free space disk.
+	- Add volume name disk.
+	- Update of catalog properties.
+	- Window properties minor bug fixed.
+	- Add new catalog information (file version, generator program, categories).
+	- Managment of catalog versions.
+	- Main window may shrinked.
+
+0.0.16:	- Managment of links in the creation of disk.
+	- Icons change with the type of disk (CD-Rom, HD, Floppy and Zip).
+	- Popup menu allow to change disk's volume name.
+	- Edition window of catalog/disk/folder/file's description.
+	- Add catalog description.
+	- Allow to rename catalog or disk.
+	- Correct deleting of item (update size of items that contain it).
+	- Correct adding of disk (control disk name).
+	- Change description integration.
+	- Catalog/disk/folder/file properties.
+	- Popup menu added.
+	- Explorer was better.
+
+0.0.15:	- Suppression of item by popup menu.
+	- Update of size calcul (support until iotaoctet!!).
+	- Optimize memory managment during the catalog loading.
+	- Modify disks loading and saving.
+	- Correct the disk explorer.
+	- Correct the disk adding.
+	- Add disk informations.
+	- Correct the automount (the test of is mounted).
+	
+0.0.14:	- Correct the calcul of disk and catalog size.
+	- Automount is done (support the type "auto" for file system).
+	- CD-Rom eject.
+
+0.0.13: - Correct directory size and add disk size.
+	- Add the statusbar.
+	- Correct scrollbars.
+	- Optimize explores fonctions.
+ 	- Optimize the use of memory.
+
+0.0.12:	- Program rewritting for an organization with module.
+	
+0.0.11:	- Catalog is loaded in memory (before it use a tempory file).
+	- Some bugs fixed.
+
+0.0.6:	- All was be done since 0.0.1
+	- Graphical interface with GTK+.
+
+0.0.1:	- Create and read an image in command ligne.

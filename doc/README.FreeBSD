@@ -1,0 +1,12 @@
+Specific code should be put between #ifdef OS_FREEBSD end #endif
+
+How to compile GWhere under FreeBSD ?
+=====================================
+There were problems building included libintl. You had to --disable-nls
+or manually set BUILD(USE)_INCLUDED_INTL = no to build with your system
+libintl. How should you build it without included intl ?
+So it was:
+./configure --disable-nls   |  ./configure   disable included intl manually
+gmake
+gmake install
+gmake = GNU make

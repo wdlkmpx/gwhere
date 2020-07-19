@@ -1,0 +1,236 @@
+%define name	@PACKAGE@
+%define version	@VERSION@
+%define release	1
+
+Name:		%{name}
+Packager:	SÈbastien LECACHEUR
+Summary:	Removable media catalog managment
+Summary(ar):	AdministraciÛn de cat·logos de medios removibles
+Summary(cs):	Spr·va katalogu v˝mÏnn˝ch mÈdiÌ
+Summary(de):	Katalog-Verwaltung f¸r Wechselmedien
+Summary(el):	ƒÈ·˜ÂﬂÒÁÛÁ Í·Ù·Î¸„˘Ì ·ÔÛ˛ÏÂÌ˘Ì Ï›Û˘Ì
+Summary(es):	GestiÛn de medios extraibles
+Summary(fr):	Gestionnaire de catalogues de media amovibles
+Summary(hu):	Lemez katalÛgus nyilv·ntartÛ program
+Summary(it):	Gestione dei cataloghi per dispositivi rimovibili
+Summary(nl):	Beheer verwijderbare media
+Summary(pl):	Zarz±dzanie katalogiem mediÛw
+Summary(pt):	Gestor de cat·logos de media removivel
+Summary(ru):	–ú–µ–Ω–µ–¥–∂–µ—Ä –∫–∞—Ç–∞–ª–æ–≥–æ–≤ —Å—å—ë–º–Ω—ã—Ö –Ω–æ—Å–∏—Ç–µ–ª–µ–π
+Summary(sr):	Katalog diskova
+Version:	%{version}
+Release:	%{release}
+#License:	GPL
+#Copyright:	SÈbastien LECACHEUR
+Copyright:	GPL
+Source:		%{name}-%{version}.tar.bz2
+#Source0:	http://www.gwhere.org/download/sources/%{name}-%{version}.tar.gz
+Group:		X11/Applications
+URL:		http://www.gwhere.org
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	libtool
+BuildRequires:	zlib-devel
+Obsoletes:	GWhere
+BuildRoot:	/var/tmp/%{name}-buildroot
+Requires:	gtk+ zlib
+Icon:		gwhere.xpm
+
+
+%description
+
+GWhere allows to manage a database of yours CDs and others removable media
+(hard disks, floppy drive, Zip drive, CD-ROM, etc...). With GWhere it's easy
+to browse yours CDs or to make quick search without need to insert yours CDs
+in the drive at each once.
+
+%description -l ar
+GWhere permite administrar una base de datos de tus CDs y otros medios removibles
+(disco duros, diskettes, discos Zip, CD-ROMs, etc...). Con GWhere es f·cil
+navegar tus CDs o realizar b˙squedas sin la necesidad de insertar los CDs en la
+lectora de a uno por vez.
+
+%description -l cs
+GWhere slouæÌ k uchov·nÌ obsahu CD a dalπÌch mÈdiÌ (HDD, floppy, zip,...).Potom
+m˘æete proch·zet datab·zi a vyhled·vat soubory bez nutnosti vloæit CD do mechaniky.
+
+%description -l de
+GWhere erlaubt die Verwaltung einer Datenbank Ihrer CDs und anderer Wechselmedien
+(Festplatten, Floppies, Zip-Disketten, CD-ROM usw. ...). Mit GWhere ist es sehr
+einfach, Ihre CDs zu durchsuchen oder eine Schnellsuche durchzuf¸hren ohne jedesmal
+die CD ins Laufwerk zu stecken.
+
+%description -l el
+‘Ô GWhere Û·Ú ÂÈÙÒ›ÂÈ Ì· ‰È·˜ÂÈÒÈÛÙÂﬂÙÂ ÏÈ· ‚‹ÛÁ ‰Â‰ÔÏ›Ì˘Ì Ù˘Ì CD Í·È
+‹ÎÎ˘Ì ·ÔÛ˛ÏÂÌ˘Ì Ï›Û˘Ì Û·Ú (ÛÍÎÁÒÔﬂ ‰ﬂÛÍÔÈ, ‰ÈÛÍ›ÙÂÚ, Zip drive, CD-ROM,
+ÍÎ...). ÃÂ ÙÔ GWhere ÂﬂÌ·È Â˝ÍÔÎÔ Ì· ÒﬂÓÂÙÂ ÏÈ· Ï·ÙÈ‹ ÛÙ· CD Û·Ú ﬁ Ì·
+·Ì·ÊÁÙﬁÛÂÙÂ „Òﬁ„ÔÒ· Í‹ÙÈ ÛÂ ·ıÙ‹ ˜˘ÒﬂÚ ÙÁÌ ·Ì‹„ÍÁ Ì· Ù· ÂÈÛ‹„ÂÙÂ ÛÙÔ drive
+Í‹ËÂ ˆÔÒ‹.
+
+%description -l es
+GWhere permite manipular una base de datos de tus CDs y otros medios extraibles
+(discos duros, disquetes, Zips, CD-ROM, etc...) Con GWhere es f·cil navegar en tus
+CDs o hacer b˙squedas r·pidas sin necesidad de introducir tus CDs en la unidad cada vez.
+
+%description -l fr
+GWhere permet de gÈrer une base de donnÈes de vos CD et autres media amovibles
+(disques durs, disquettes, disquettes Zip, CD-ROM, etc...). Avec GWhere il est facile
+de parcourir vos CDs ou de faire une recherche rapide sans avoir besoin d'insÈrer vos CDs
+dans le lecteur ‡ chaque fois.
+
+%description -l hu
+GWhere lehetıvÈ teszi a CD lemezeid Ès m·s mozgathatÛ adathordozÛid (hdd, floppy, Zip meghajtÛ, USB drive....) katalogiz·l·s·t.
+A GWhere a lemezekrıl egy adatb·zist kÈszÌt, ami tartalmazza a f·jlok neveit, majd kÈsıbb ebben az
+adatb·zisbÛl a CD lemez ÈrintÈse nÈlk¸l gyorsan meg·llapÌthatod melyik lemezen van a keresett f·jl.
+
+%description -l it
+Gwhere permette di creare e gestire un database dei tuoi CD e di altri
+dispositivi rimovibili come hard disk, floppy drive, Zip drive, CD-ROM,
+etc...). Con GWHERE \xc3\xa8 facile leggere i contenuti dei tuoi CD ed \xc3\xa8
+anchepossibile fare veloci ricerche senza alcuna necessit\xc3\xa0 di inserire i CD
+in tuo possesso nel lettore.
+
+%description -l nl
+Met GWhere kun je een gegevensbank van je CD's en andere verwijderbare media
+beheren (harde schijven, diskettes, ZIP diskettes, CD-ROM, enz...). Met
+GWhere is het makkelijk je CD's te doorlopen of snel iets op te zoeken
+zonder telkens je CD's in de speler te moeten steken.
+
+%description -l pl
+GWhere to program zarz±dzaj±cy baz± p≥yt CD oraz innych mediÛw (takich
+jak twarde dyski, dyskietki, dyski Zip itp.). DziÍki GWhere w ≥atwy
+sposÛb moøna przegl±daÊ swoje p≥yty CD i szybko znaleºÊ potrzebny plik
+bez konieczno∂ci ci±g≥ego wk≥adania p≥yt do napÍdu.
+
+%description -l pt
+
+O GWhere permite gerir uma base de dados dos seus CDs ou outros tipos de
+media removÌvel (discos rÌgidos, disquetes, drives ZIP, CD-ROM, etc...).
+Com o GWhere È f·cil explorar os seus CDs ou fazer r·pidas pesquisas sem a
+necessidade de inserir cada um dos seus CDs na drive.
+
+%description -l ru
+
+GWhere –ø–æ–∑–≤–æ–ª—è–µ—Ç —É–ø—Ä–∞–≤–ª—è—Ç—å –±–∞–∑–æ–π –¥–∞–Ω–Ω—ã—Ö –≤–∞—à–∏—Ö CD –∏–ª–∏ –¥—Ä—É–≥–∏ —Å—å—ë–º–Ω—ã—Ö –Ω–æ—Å–∏—Ç–µ–ª–µ–π 
+(–∂—ë—Å—Ç–∫–∏–µ –¥–∏—Å–∫–∏, –≥–∏–±–∫–∏–µ –º–∞–≥–Ω–∏—Ç–Ω—ã–µ –¥–∏—Å–∫–∏, Zip –¥–∏—Å–∫–∏, –∫–æ–º–ø–∞–∫—Ç –¥–∏—Å–∫–∏, –∏ —Ç.–ø.). –° 
+GWhere –ª–µ–≥–∫–æ –ø—Ä–æ—Å–º–æ—Ç—Ä–µ—Ç—å –≤–∞—à–∏ CD –∏–ª–∏ –≤—ã–ø–æ–ª–Ω–∏—Ç—å –±—ã—Å—Ç—Ä—ã–π –ø–æ–∏—Å–∫ –±–µ–∑ 
+–Ω–µ–æ–±—Ö–æ–¥–∏–º–æ—Å—Ç–∏ –≤—Å—Ç–∞–≤–ª–µ–Ω–∏—è –∫–∞–∂–¥–æ–≥–æ –æ—Ç–¥–µ–ª—å–Ω–æ–≥–æ CD –≤ –ø—Ä–∏–≤–æ–¥.
+
+%description -l sr
+
+GWhere vam omogucava da vodite bazu svojih CDova i drugih medijuma (hard 
+diskovi, dlopi diskovi, zip drajvovi, CD-ROm, itd...). Sa GWhere-om je lako 
+da pronadjete bilo sta na vasim diskova bez ubacivanja disk(ov)a u drajv 
+jedan po jedan.
+
+
+%prep
+rm -rf $RPM_BUILD_ROOT
+
+%setup -q
+
+%build
+%configure
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_bindir}
+install -d $RPM_BUILD_ROOT/%{_datadir}/%{name}
+install -d $RPM_BUILD_ROOT/%{_datadir}/pixmaps
+install -d $RPM_BUILD_ROOT/%{_datadir}/gnome/apps/Applications
+install -d $RPM_BUILD_ROOT/%{_datadir}/applnk/Applications
+install -d $RPM_BUILD_ROOT/%{_mandir}/man1
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/ar/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/cs/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/de/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/fr/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/es/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/it/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/hu/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/pl/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_datadir}/locale/pt/LC_MESSAGES
+install -d $RPM_BUILD_ROOT/%{_libdir}/%{name}/plugins/descr
+install -d $RPM_BUILD_ROOT/%{_datadir}/%{name}/plugins/descr
+install -d $RPM_BUILD_ROOT/%{_libdir}/%{name}/plugins/catalog
+install -d $RPM_BUILD_ROOT/%{_datadir}/%{name}/plugins/catalog
+%makeinstall
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugindescription*.so* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/descr
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugindescription*.la* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/descr
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugindescription*.a* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/descr
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugincatalog*.so* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/catalog
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugincatalog*.la* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/catalog
+mv $RPM_BUILD_ROOT%{_libdir}/libgwplugincatalog*.a* $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins/catalog
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%doc ChangeLog ChangeLog.fr
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/gnome/apps/Applications/%{name}.desktop
+%{_datadir}/applnk/Applications/%{name}.desktop
+%{_mandir}/man1/gwhere.1*
+%{_datadir}/locale/*/LC_MESSAGES/%{name}.mo
+%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/%{name}/plugins/descr/*.la*
+%{_datadir}/%{name}/plugins/descr/*.a*
+%{_datadir}/%{name}/plugins/descr/*.so*
+%{_datadir}/%{name}/plugins/catalog/*.la*
+%{_datadir}/%{name}/plugins/catalog/*.a*
+%{_datadir}/%{name}/plugins/catalog/*.so*
+
+
+%changelog
+* Wed Sep 28 2006 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.2.3 : fix bugs, disk scan optimization
+* Tue Aug 22 2006 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.2.2 : fix bugs, submount support
+* Tue Jun 23 2005 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.2.1 : fix bugs, search engine optimization
+* Mon Jun 20 2005 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.2.0 : fix bugs, catalog plugin managment, import/export support, ...
+* Wed Feb 18 2004 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.1.3 : fix bugs, memory optimization, add search options, ...
+* Mon Sep 01 2003 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.1.0-2 : FreeBSD port, fix bugs, add descript.ion, FILE_ID.DIZ plugin
+* Wed Apr 23 2003 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.1.0-2 : fix bugs, add AVI plugin
+* Tue Apr 15 2003 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.1.0-2 : fix missing link for plugin in RPM.
+* Wed Feb 19 2003 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.1.0 : beta version, win32 port, GTK 2.0 compatibility, file description plugins, ...
+* Tue Sep 17 2002 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.26 : config file, send mail
+* Fri Jul 05 2002 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.25 : zlib support, experimental port on Cygwin
+* Fri Mar 22 2002 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.24 : nouvelles fonctionnalitÈs
+* Thu Jan 23 2002 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.23 : nouvelles fonctionnalitÈs
+* Sun Jan 6 2002 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.22 : corrections de bugs
+* Fri Oct 26 2001 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.21 : corrections de bugs
+* Wed Oct 03 2001 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.20 : corrections de bugs et amÈlioration de divers composants.
+* Thu Sep 27 2001 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.19 : corrections de bugs et traduction.
+* Fri Aug 17 2001 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.18 : correction de bugs et amÈlioration de divers composants.
+* Sun Aug 05 2001 : SÈbastien LECACHEUR <zero@gwhere.org>
+- GWhere-0.0.17 : moteur de recherche intÈgrÈ. Stabilisation de la version.
+* Fri Oct 13 2000 : SÈbastien LECACHEUR <gwhere@marms.com>
+- GWhere-0.0.16 : version ‡ plus stable et utilisable
+* Sun Sep 10 2000 : SÈbastien LECACHEUR <gwhere@marms.com>
+- GWhere-0.0.15 : ajoute/suppression, beaucoup de bugs corrigÈs
+* Sat Aug 26 2000 : SÈbastien LECACHEUR <gwhere@marms.com>
+- GWhere-0.0.14 : implÈmentation du supermount
+* Thu Aug 24 2000 : SÈbastien LECACHEUR <gwhere@marms.com>
+- GWhere-0.0.13 : toujours en version alpha!!
+* Fri May 05 2000 : SÈbastien LECACHEUR <gwhere@marms.com>
+- GWhere-0.0.12 : cette version peut encore Èvoluer

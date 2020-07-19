@@ -1,0 +1,35 @@
+For next versions :
+- In explorer, sort disk in tree as in the right-pane. This feature must be optional.
+- Colomn switching in explorer or search result.
+- Edit disk serial number and disque in order to prevent autodetection failure.
+- Multi-selection in the explorer right-pane and mass category editing on this selection.
+- Multi-catalog opening with drag-and-drop to move disk between catalogs.
+- Multi-threading
+- Put a retry on open(".") for scratched CD-ROMs.
+- Allow to choose a combo box or a button list displaying for device list.
+- Add a filter for available devices.
+- Add a refresh button for device information.
+- Add keybord sortcuts for adding a device (<ctrl>+c for c:\, <ctrl>+D+1 for /dev/hda1, ...).
+- Add keybord sortcuts for explorer navigation.
+- Add a option to do not display the ending adding status or more to show the status with a timeout (2 seconds for example).
+- Sort the "Name" column as number if there is only number names.
+- Real-time scanning status (number of directories, files, descriptions, ...).
+- Add "AND" and "OR" special word of the key words search.
+- Add a search from last search result.
+- Add a option to display search result item in real-time or at the end of the search.
+- An option for catalog autobackup (no backup, backup on open, backup on save).
+- An option to activate/desactivate configuration file autobackup.
+- A button to set default settings.
+- A settings panel for plugin (to list plugins, to display information, to activate/desactivate, to set parameters, ...).
+- Support new file format (MF) for multi document opened with organization by categories.
+- Export catalog to catalog by categories.
+- Add disks from any path.
+- Advanced search.
+- Print to printer.
+- Translate in others languages.
+- Add any plugin description.
+- Function "What is?" inder to say to user what do the fonctions.
+- Reading of archives file (tar, tgz, gz, zip, bz2,...)
+- Implementation of a search engined. Conception of a mini langage (GWSQL) in order to do request on catalog.
+- Recursive cancel.
+- Lot of things...
