@@ -1,7 +1,7 @@
 SUBDIRS = . descr catalog
 SOURCES = gwdescr.h gwcatalog.h
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src \
 	@GTK_CFLAGS@ \

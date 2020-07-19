@@ -40,6 +40,7 @@
 
 
 #include <glib.h>
+#include <gmodule.h>
 
 #include "data/gwdata.h"
 

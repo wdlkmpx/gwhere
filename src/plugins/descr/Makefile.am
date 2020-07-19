@@ -1,4 +1,4 @@
-libdir = $(exec_prefix)/share/${PACKAGE}/plugins/descr
+libdir = $(exec_prefix)/lib/${PACKAGE}/plugins/descr
 
 lib_LTLIBRARIES = libgwplugindescriptionavi.la \
 			libgwplugindescriptiondescript_ion.la \
@@ -21,7 +21,7 @@ libgwplugindescriptionhtml_la_SOURCES = html.c
 libgwplugindescriptionmp3_la_SOURCES = mp3.c
 libgwplugindescriptionmpc_la_SOURCES = mpc.c
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src \
 	@GTK_CFLAGS@

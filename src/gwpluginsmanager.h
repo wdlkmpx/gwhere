@@ -42,6 +42,7 @@
 
 
 #include <glib.h>
+#include <gmodule.h>
 #include "plugins/gwdescr.h"
 #include "plugins/gwcatalog.h"
 

@@ -1,4 +1,4 @@
-libdir = $(exec_prefix)/share/${PACKAGE}/plugins/catalog
+libdir = $(exec_prefix)/lib/${PACKAGE}/plugins/catalog
 
 lib_LTLIBRARIES = libgwplugincataloggwcatalog.la
 
@@ -6,7 +6,7 @@ libgwplugincataloggwcatalog_la_LDFLAGS = 'glib-config --cflags gmodule' -fPIC -v
 
 libgwplugincataloggwcatalog_la_SOURCES = gwcatalog.c
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src \
 	@GTK_CFLAGS@

@@ -7,9 +7,6 @@ noinst_DATA = Doxyfile.in
 doxygen-html: Doxyfile
 	$(DOXYGEN) $<
 
-clean-generic:
-	rm -Rf api
-
 EXTRA_DIST = README.Linux \
 		README.Cygwin \
 		README.Win32 \

@@ -2,7 +2,7 @@
 
 SUBDIRS = tools db data res gui plugins
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src/res \
 	-I$(top_srcdir)/src/tools \
@@ -36,4 +36,4 @@ gwhere_LDADD = \
 	@GTK_LIBS@ \
 	$(INTLLIBS)
 
-gwhere_LDFLAGS = \
+gwhere_LDFLAGS = 

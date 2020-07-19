@@ -20,7 +20,6 @@
 #include "gwsupport.h"
 #include "gwpluginsmanager.h"
 
-#include <gmodule.h>
 #include <dirent.h> /* opendir readir closedir */
 #include <string.h> /* strstr */
 
