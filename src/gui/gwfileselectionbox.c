@@ -48,7 +48,7 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 		}
 
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
-		gtk_file_selection_hide_fileop_buttons ( GTK_FILE_SELECTION ( w));
+		gtk_file_selection_show_fileop_buttons ( GTK_FILE_SELECTION ( w));
 
 		gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), GTK_WINDOW ( window));
@@ -70,14 +70,6 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 		{
 			gtk_signal_connect_object ( GTK_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
-
-		button = gtk_button_new_with_label (_( "Hide file operations"));
-		gtk_signal_connect ( GTK_OBJECT ( button), "clicked", (GtkSignalFunc) gw_file_selection_box_hide_fileops, (gpointer) w);
-		gtk_box_pack_start ( GTK_BOX ( GTK_FILE_SELECTION ( w)->action_area), button, FALSE, FALSE, 0);
-
-		button = gtk_button_new_with_label (_("Show file operation"));
-		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", (GtkSignalFunc) gtk_file_selection_show_fileop_buttons, (gpointer) w);
-		gtk_box_pack_start ( GTK_BOX ( GTK_FILE_SELECTION ( w)->action_area), button, FALSE, FALSE, 0);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )
@@ -90,66 +82,6 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 	}
 
 	return w;
-}
-
-
-GtkWidget * gw_file_selection_box_create_full ( gchar *title, gchar *filename, GtkSignalFunc ok, GtkSignalFunc cancel, gpointer data)
-{
-	GtkWidget *fs = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	fs = gw_file_selection_box_create ( title, filename, ok, cancel);
-
-	if ( fs != NULL )
-	{
-		gtk_object_set_data ( GTK_OBJECT ( fs), GW_REF_FILE_SELECTION_BOX_USER_DATA, data);
-	}
-
-	return fs;
-}
-
-
-gboolean gw_file_selection_box_hide_fileops ( GtkWidget *widget, GtkFileSelection *fs)
-{
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( fs != NULL )
-	{
-		gtk_file_selection_hide_fileop_buttons ( fs);
-
-		result = TRUE;
-	}
-
-	return result;
-}
-
-
-gboolean gw_file_selection_box_show_fileops ( GtkWidget *widget, GtkFileSelection *fs)
-{
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( fs != NULL )
-	{
-		gtk_file_selection_show_fileop_buttons ( fs);
-
-		result = TRUE;
-	}
-
-	return result;
 }
 
 
