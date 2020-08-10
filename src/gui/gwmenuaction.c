@@ -57,53 +57,40 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 
 	/* Menu action header */
 	gw_menu_action_header = gtk_menu_item_new_with_mnemonic (_("_Action"));
-	gtk_widget_ref ( gw_menu_action_header);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_HEADER, gw_menu_action_header, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_HEADER, gw_menu_action_header);
 
 	menu_action = gtk_menu_new ( );
-	gtk_widget_ref ( menu_action);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU, menu_action, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU, menu_action);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_action_header), menu_action);
 
 	/* Menu action -> expand all */
 	gw_menu_action_expand_all = gtk_menu_item_new_with_mnemonic (_("_Expand all"));
-	gtk_widget_ref ( gw_menu_action_expand_all);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_ALL, gw_menu_action_expand_all, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_ALL, gw_menu_action_expand_all);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_all);
-	/* Needs to change keybord shortcut (already used)
-	gtk_widget_add_accelerator ( gw_menu_action_expand_all, "activate", ag, GDK_e, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-	*/
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_all), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_all_click), w);
 
 	/* Menu action -> expand disks */
 	gw_menu_action_expand_disks = gtk_menu_item_new_with_mnemonic (_("Expand only _disks"));
-	gtk_widget_ref ( gw_menu_action_expand_disks);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_DISKS, gw_menu_action_expand_disks, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_DISKS, gw_menu_action_expand_disks);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_disks);
 	gtk_widget_add_accelerator ( gw_menu_action_expand_disks, "activate", ag, GDK_d, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_disks), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_disks_click), w);
 
 	/* Menu action -> collapse */
 	gw_menu_action_collapse_all = gtk_menu_item_new_with_mnemonic (_("C_ollapse all"));
-	gtk_widget_ref ( gw_menu_action_collapse_all);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_COLLAPSE_ALL, gw_menu_action_collapse_all, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_COLLAPSE_ALL, gw_menu_action_collapse_all);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_collapse_all);
-	/* Needs to change keybord shortcut (already used)
-	gtk_widget_add_accelerator ( gw_menu_action_collapse_all, "activate", ag, GDK_o, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-	*/
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_collapse_all), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_collapse_all_click), w);
 
 	/* Menu action -> separator */
 	gw_menu_action_separator = gtk_menu_item_new ( );
-	gtk_widget_ref ( gw_menu_action_separator);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_SEPARATOR, gw_menu_action_separator, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_SEPARATOR, gw_menu_action_separator);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_separator);
 	gtk_widget_set_sensitive ( gw_menu_action_separator, FALSE);
 
 	/* Menu action -> edit categories */
 	gw_menu_action_edit_categories = gtk_menu_item_new_with_mnemonic (_("Edit _categories"));
-	gtk_widget_ref ( gw_menu_action_edit_categories);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_CATEGORIES, gw_menu_action_edit_categories, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_CATEGORIES, gw_menu_action_edit_categories);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_edit_categories);
 	gtk_widget_add_accelerator ( gw_menu_action_edit_categories, "activate", ag, GDK_c, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_edit_categories), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_edit_categories_click), w);

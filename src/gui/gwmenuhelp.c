@@ -46,18 +46,15 @@ GtkWidget * gw_menu_help_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 
 	/* Menu help header */
 	gw_menu_help_header = gtk_menu_item_new_with_mnemonic (_( "_Help"));
-	gtk_widget_ref ( gw_menu_help_header);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_HEADER, gw_menu_help_header, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_HEADER, gw_menu_help_header);
 
 	menu_help = gtk_menu_new ( );
-	gtk_widget_ref ( menu_help);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU, menu_help, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU, menu_help);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_help_header), menu_help);
 
 	/* Menu help -> about */
 	gw_menu_help_about = gtk_menu_item_new_with_mnemonic (_( "A_bout"));
-	gtk_widget_ref ( gw_menu_help_about);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_ABOUT, gw_menu_help_about, (GtkDestroyNotify) gtk_widget_unref);
+	gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_ABOUT, gw_menu_help_about);
 	gtk_container_add ( GTK_CONTAINER ( menu_help), gw_menu_help_about);
 	gtk_widget_add_accelerator ( gw_menu_help_about, "activate", ag, GDK_b, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_help_about), "activate", GTK_SIGNAL_FUNC ( gw_menu_help_about_click), w);
