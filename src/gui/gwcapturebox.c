@@ -40,8 +40,6 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 	GtkWidget *hbox = NULL;
 	GtkWidget *entry_data_capture = NULL;
 	GtkWidget *button = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -52,9 +50,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		/* Init an accel group for shortcuts */
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
-		g_strdup_to_gtk_text ( title, text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), title);
 		gtk_container_border_width ( GTK_CONTAINER ( w), 10);
 
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
@@ -81,9 +77,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		/* Store data capture reference */
 		gtk_widget_ref ( entry_data_capture);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE, entry_data_capture, ( GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( text, text_utf8);
-		gtk_entry_set_text ( GTK_ENTRY ( entry_data_capture), text_utf8);
-		g_free ( text_utf8);
+		gtk_entry_set_text ( GTK_ENTRY ( entry_data_capture), text);
 		gtk_box_pack_start ( GTK_BOX ( vbox), entry_data_capture, TRUE, TRUE, 0);
 		GTK_WIDGET_SET_FLAGS ( entry_data_capture, GTK_CAN_FOCUS);
 		gtk_widget_grab_focus ( entry_data_capture);

@@ -126,8 +126,6 @@ gint gw_status_bar_put_messages ( GtkWindow *w, gchar *first_msg, gchar *second_
 	/* They are static in order to remove last messages before put new messages. */
 	static guint message_id1 = 0;
 	static guint message_id2 = 0;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s() : (%s;%s)\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, first_msg, second_msg);
@@ -143,9 +141,7 @@ gint gw_status_bar_put_messages ( GtkWindow *w, gchar *first_msg, gchar *second_
 			{
 				gtk_statusbar_remove ( status, context_id, message_id1);
 			}
-			g_strdup_to_gtk_text ( first_msg, text_utf8);
-			message_id1 = gtk_statusbar_push ( status, context_id, text_utf8);
-			g_free ( text_utf8);
+			message_id1 = gtk_statusbar_push ( status, context_id, first_msg);
 		}
 
 		if ( second_msg != NULL )
@@ -156,9 +152,7 @@ gint gw_status_bar_put_messages ( GtkWindow *w, gchar *first_msg, gchar *second_
 			{
 				gtk_statusbar_remove ( status, context_id, message_id2);
 			}
-			g_strdup_to_gtk_text ( second_msg, text_utf8);
-			message_id2 = gtk_statusbar_push ( status, context_id, text_utf8);
-			g_free ( text_utf8);
+			message_id2 = gtk_statusbar_push ( status, context_id, second_msg);
 		}
 
 		result = 0;

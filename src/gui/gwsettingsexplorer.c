@@ -86,8 +86,6 @@ gint gw_plugin_settings_explorer_pane_create ( GtkWindow *settings, GtkContainer
 	GtkWidget *chk_sort_case_sensitive;
 	GtkWidget *chk_autoresize;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -105,36 +103,27 @@ gint gw_plugin_settings_explorer_pane_create ( GtkWindow *settings, GtkContainer
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Adds the case sensitive sort option. */
-		g_strdup_to_gtk_text ( _( "Case sensitive sort."), text_utf8);
-		chk_sort_case_sensitive = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_sort_case_sensitive = gtk_check_button_new_with_label (_( "Case sensitive sort."));
 		gtk_widget_ref ( chk_sort_case_sensitive);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "The result sort in explorer is case sensitive."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_sort_case_sensitive, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_sort_case_sensitive,
+		                      _( "The result sort in explorer is case sensitive."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_case_sensitive, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the sort group by type option. */
-		g_strdup_to_gtk_text ( _( "Result sort group by folder/file."), text_utf8);
-		chk_sort_group_by = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_sort_group_by = gtk_check_button_new_with_label (_( "Result sort group by folder/file."));
 		gtk_widget_ref ( chk_sort_group_by);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_SORT_GROUP_BY_FOLDER_CHK, chk_sort_group_by, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "The result sort in explorer can be grouped by item type. If this option is checked all item will be grouped by folders or files."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_sort_group_by, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_sort_group_by,
+		                      _( "The result sort in explorer can be grouped by item type. If this option is checked all item will be grouped by folders or files."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_group_by, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autoload catalog option. */
-		g_strdup_to_gtk_text ( _( "Autoresize columns"), text_utf8);
-		chk_autoresize = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_autoresize = gtk_check_button_new_with_label (_( "Autoresize columns"));
 		gtk_widget_ref ( chk_autoresize);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "Autoresize all explorer column."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_autoresize, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_autoresize,
+		                      _( "Autoresize all explorer column."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoresize, 0, 1, 2, 3, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		*pane = table_pane;
@@ -287,10 +276,8 @@ gint gw_plugin_settings_explorer_pane_apply ( GtkWidget *pane)
 {
 	gint result = -1;
 	GtkToggleButton *chk = NULL;
-	gchar *value = NULL;
 	gboolean bool_value = 0;
 	GtkWindow *settings = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -304,23 +291,17 @@ gint gw_plugin_settings_explorer_pane_apply ( GtkWidget *pane)
 			gw_am_set_settings ( GW_VALUE_APP_EXPLORER_SORT_CASE_SENSITIVE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		value = NULL;
-
 		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_SORT_GROUP_BY_FOLDER_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_EXPLORER_SORT_BY_FOLDER, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		value = NULL;
-
 		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_AUTORESIZE_COLUMN_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_EXPLORER_COLUMN_AUTORESIZE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
-
-		value = NULL;
 
 		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{

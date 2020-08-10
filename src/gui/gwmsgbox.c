@@ -25,8 +25,6 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 {
 	/*static */GtkWidget *w = NULL;
 	GtkWidget *vbox,*label,*button,*hbox;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s() : title=%s subject=%s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, title, subject);
@@ -41,9 +39,7 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 		w = gtk_window_new ( GTK_WINDOW_DIALOG);
 
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
-		g_strdup_to_gtk_text ( title, text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), title);
 		gtk_container_border_width ( GTK_CONTAINER ( w), 10);
 
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
@@ -54,10 +50,7 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 		gtk_container_add ( GTK_CONTAINER ( w), vbox);
 		gtk_container_set_border_width ( GTK_CONTAINER ( vbox), 10);
 
-		g_strdup_to_gtk_text ( subject, text_utf8);
-		label = gtk_label_new ( text_utf8);
-		gtk_label_set_text ( GTK_LABEL ( label), text_utf8);
-		g_free ( text_utf8);
+		label = gtk_label_new (subject);
 		gtk_box_pack_start ( GTK_BOX ( vbox), label, FALSE, FALSE, 0);
 
 		/* The Ok button area */

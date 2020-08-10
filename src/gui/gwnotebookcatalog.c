@@ -52,7 +52,6 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	GtkWidget *scr_win_ctree, *scr_win_info_catalog;
 	GtkWidget *ctree_catalog, *clist_info_catalog;
 	GtkWidget *lbl_col00, *lbl_col01, *lbl_col02, *lbl_col03, *lbl_col04, *lbl_col05, *lbl_col06, *lbl_col07, *lbl_col08, *lbl_col09, *lbl_col10, *lbl_col11;
-	gchar *text_utf8 = NULL;
 	gint hpan_pos = 0;
 
 
@@ -93,9 +92,7 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	gtk_clist_set_sort_type ( GTK_CLIST ( ctree_catalog), GTK_SORT_ASCENDING);
 	gtk_clist_set_auto_sort ( GTK_CLIST ( ctree_catalog), TRUE);
 
-	g_strdup_to_gtk_text ( _( "Archive"), text_utf8);
-	lbl_archive = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl_archive = gtk_label_new (_("Archive"));
 	gtk_widget_ref ( lbl_archive);
 	gtk_object_set_data_full ( GTK_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_ARCHIVE_LABEL, lbl_archive,(GtkDestroyNotify) gtk_widget_unref);
 	gtk_label_set_justify ( GTK_LABEL ( lbl_archive), GTK_JUSTIFY_LEFT);
@@ -185,8 +182,6 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 GtkWidget * gw_notebook_catalog_create_and_add ( GtkWindow * window, GtkNotebook * parent) {
 	GtkWidget *tabbed_pane_catalog = NULL;
 	GtkWidget *catalog_tabbed_pane_label;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -199,9 +194,7 @@ GtkWidget * gw_notebook_catalog_create_and_add ( GtkWindow * window, GtkNotebook
 			gtk_container_add ( GTK_CONTAINER ( parent), tabbed_pane_catalog);
 
 			/* Text label of the search tabbed pane. */
-			g_strdup_to_gtk_text ( _( "Catalog"), text_utf8);
-			catalog_tabbed_pane_label = gtk_label_new ( text_utf8);
-			g_free ( text_utf8);
+			catalog_tabbed_pane_label = gtk_label_new (_( "Catalog"));
 
 			/* Store reference to the title of tabbed pane */
 			gtk_widget_ref ( catalog_tabbed_pane_label);
@@ -234,7 +227,6 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_file ( void) {
 	GtkWindow *w = NULL;
 	GtkCList *clist = NULL;
 	gchar *showed = NULL;
-	gchar *text_utf8 = NULL;
 	gint autoresize = -1;
 	gint width = -1;
 	gint i = 0;
@@ -335,39 +327,28 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_file ( void) {
 		}
 
 		/* Sets columns title. */
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_POSITION_DEFAULT,
+		                            _(GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_RIGHTS_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_OWNER_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_GROUP_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_SIZE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_POSITION_DEFAULT,
+		                             _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_INODE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_CDATE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_MDATE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_ADATE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_CATEGORY_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_FILE_COLUMN_DESCRIPTION_TITLE));
 
 		if ( ((showed = gw_am_get_settings ( GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_SHOW)) != NULL) && (strncmp ( showed, "0", 1) == 0) ) {
 			gtk_clist_set_column_visibility ( clist, GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_POSITION_DEFAULT, FALSE);
@@ -453,11 +434,9 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_disk ( void) {
 	GtkWindow *w = NULL;
 	GtkCList *clist = NULL;
 	gchar *showed = NULL;
-	gchar *text_utf8 = NULL;
 	gint autoresize = -1;
 	gint width = -1;
 	gint i = 0;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -560,42 +539,30 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_disk ( void) {
 		}
 
 		/* Sets columns title. */
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_TITLE), text_utf8);
-		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_POSITION_DEFAULT, text_utf8);
-		g_free ( text_utf8);
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_FSNAME_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_PATH_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NBARCHIVE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_TYPE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_VOLUME_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_CAPACITY_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_FREE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_DATE_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_SERIAL_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_CATEGORY_TITLE));
+		gtk_clist_set_column_title ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_POSITION_DEFAULT,
+		                            _( GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_TITLE));
 
 		if ( ((showed = gw_am_get_settings ( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_SHOW)) != NULL) && (strncmp ( showed, "0", 1) == 0) ) {
 			gtk_clist_set_column_visibility ( clist, GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_POSITION_DEFAULT, FALSE);
@@ -687,8 +654,6 @@ GtkCTreeNode * gw_notebook_catalog_ctree_node_get_child  ( GtkCTreeNode *node, g
 	GdkBitmap *btmp;
 	GdkPixmap *pxmp;
 	GtkCTree *ctree = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -700,15 +665,9 @@ GtkCTreeNode * gw_notebook_catalog_ctree_node_get_child  ( GtkCTreeNode *node, g
 
 		while ( child != NULL ) {
 			if ( gtk_ctree_node_get_pixtext ( GTK_CTREE ( ctree), child, 0, &txt, &spc, &pxmp, &btmp) ) {
-				g_strdup_from_gtk_text ( txt, text_utf8);
-
-				if ( strcmp ( text_utf8, name) == 0 ) {
-					g_free ( text_utf8);
-
+				if ( strcmp (txt, name) == 0 ) {
 					return child;
 				}
-
-				g_free ( text_utf8);
 			}
 
 			child = GTK_CTREE_ROW ( child)->sibling;

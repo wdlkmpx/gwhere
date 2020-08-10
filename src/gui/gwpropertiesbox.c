@@ -80,7 +80,6 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 	GtkWidget *notebook_properties;
 	GtkWidget *hb_buttons;
 	GtkWidget *button;
-	gchar *text_utf8 = NULL;
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCatalog *catalog = NULL;
@@ -101,9 +100,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
-		g_strdup_to_gtk_text ( _( "Properties"), text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), _( "Properties"));
 		gtk_container_set_border_width ( GTK_CONTAINER ( w), 5);
 
 		/* Store parent window reference */
@@ -309,8 +306,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	GtkHBox *cmb_categories;	/* Categories combo box */
 	GtkTooltips *grp_tooltips;
 	gchar *text = NULL;
-	gchar *text_utf8 = NULL;
-
+	gchar *tempstr = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -335,15 +331,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 
 	/* Filled area of catalog name */
 	entry = gtk_entry_new ( );
-	g_strdup_to_gtk_text ( gw_db_catalog_get_name ( catalog), text_utf8);
-	gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-	g_free ( text_utf8);
+	gtk_entry_set_text ( GTK_ENTRY ( entry), gw_db_catalog_get_name ( catalog));
 	gtk_widget_ref ( entry);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
-	g_strdup_to_gtk_text ( _( "Enter the name of the catalog."), text_utf8);
-	gtk_tooltips_set_tip ( grp_tooltips, entry, text_utf8, GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS);
-	g_free ( text_utf8);
+	gtk_tooltips_set_tip ( grp_tooltips, entry,
+	                      _( "Enter the name of the catalog."), GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS);
 
 	/* Empty horizontal box */
 	hb_empty = gtk_hbox_new ( FALSE, 0);
@@ -368,14 +361,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Catalog file version label */
-	g_strdup_to_gtk_text ( _( "Version : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Version : "));
 	text = g_strconcat ( _( "Version "), gw_db_catalog_get_version ( catalog), _( " built with "), gw_db_catalog_get_program_builder ( catalog), NULL);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for number of disks */
@@ -384,14 +373,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Number of disks label */
-	g_strdup_to_gtk_text ( _("Disks in catalog : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_("Disks in catalog : "));
 	text = g_strdup_printf ( _( "Disks in catalog : %d"), ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_nb_db_disks ( gw_am_get_current_catalog_context ( )));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for total number of files */
@@ -400,14 +385,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Total number of files label */
-	g_strdup_to_gtk_text ( _( "Total Files : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Files : "));
 	text = g_strdup_printf ( _( "Total Files : %ld"), ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_nb_db_files ( gw_am_get_current_catalog_context ( )));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for total number of folders */
@@ -416,14 +397,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Total number of files label */
-	g_strdup_to_gtk_text ( _( "Total Folders : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Folders : "));
 	text = g_strdup_printf ( _( "Total Folders : %ld"), ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_nb_db_folders ( gw_am_get_current_catalog_context ( )));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* 2nd vertical box of the 2nd horizontal box */
@@ -436,18 +413,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Catalog size label */
-	g_strdup_to_gtk_text ( _( "File Size : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "File Size : "), (text_utf8 = gw_ul_byte_to_str_format ( gw_db_catalog_get_size ( catalog))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File Size : "));
+	tempstr = gw_ul_byte_to_str_format ( gw_db_catalog_get_size ( catalog));
+	text = g_strconcat ( _( "File Size : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for total capacity of catalog */
@@ -456,18 +429,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Total capacity of catalog label */
-	g_strdup_to_gtk_text ( _( "Total Storage Space : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Total Storage Space : "), (text_utf8 = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_capacity ( gw_am_get_current_catalog_context ( )))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Storage Space : "));
+	tempstr = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_capacity ( gw_am_get_current_catalog_context ( )));
+	text = g_strconcat ( _( "Total Storage Space : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for used space of catalog */
@@ -476,18 +445,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Used space of catalog label */
-	g_strdup_to_gtk_text ( _( "Total Used Space : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Total Used Space : "), (text_utf8 = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_full ( gw_am_get_current_catalog_context ( )))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Used Space : "));
+	tempstr = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_full ( gw_am_get_current_catalog_context ( )));
+	text = g_strconcat ( _( "Total Used Space : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Boite horizontale pour l'espace libre du catalogue */
@@ -496,18 +461,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Free space of catalog label */
-	g_strdup_to_gtk_text ( _( "Total Free Space : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Total Free Space : "), (text_utf8 = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_free ( gw_am_get_current_catalog_context ( )))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Free Space : "));
+	tempstr = gw_ld_byte_to_str_format ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_free ( gw_am_get_current_catalog_context ( )));
+	text = g_strconcat ( _( "Total Free Space : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Separator */
@@ -537,15 +498,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_1), hb_empty, TRUE, TRUE, 0);
 
 	/* CD-Roms statistics label */
-	g_strdup_to_gtk_text ( _( "CD-Rom : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "CD-Rom : "));
 
 	text = g_strdup_printf ( _( "CD-Rom : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), CDROM));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for Audio CD statistics */
@@ -554,15 +511,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Audio CD statistics label */
-	g_strdup_to_gtk_text ( _( "Audio CD : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Audio CD : "));
 
 	text = g_strdup_printf ( _( "Audio CD : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), AUDIOCD));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for HDs statistics */
@@ -571,15 +524,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_1), hb_empty, TRUE, TRUE, 0);
 
 	/* HDs statistics label */
-	g_strdup_to_gtk_text ( _( "HD : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "HD : "));
 
 	text = g_strdup_printf ( _( "HD : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), HD));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for floppies statistics */
@@ -588,15 +537,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Floppies statistics label */
-	g_strdup_to_gtk_text ( _( "Floppy : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Floppy : "));
 
 	text = g_strdup_printf ( _( "Floppy : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), FLOPPY));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for Zips statistics */
@@ -605,15 +550,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_1), hb_empty, TRUE, TRUE, 0);
 
 	/* Zips statistics label */
-	g_strdup_to_gtk_text ( _( "Zip : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Zip : "));
 
 	text = g_strdup_printf ( _( "Zip : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), ZIP_DRIVE));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* 2nd vertical box of 3th horizontal box */
@@ -626,15 +567,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Tape drive statistics label */
-	g_strdup_to_gtk_text ( _( "Tape : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Tape : "));
 
 	text = g_strdup_printf ( _( "Tape : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), TAPE_DRIVE));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for network statistics */
@@ -643,15 +580,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Network drive statistics label */
-	g_strdup_to_gtk_text ( _( "Network : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Network : "));
 
 	text = g_strdup_printf ( _( "Network : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), NETWORK_DRIVE));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for Jaz statistics */
@@ -660,15 +593,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Jaz statistics label */
-	g_strdup_to_gtk_text ( _( "Jaz : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Jaz : "));
 
 	text = g_strdup_printf ( _( "Jaz : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), JAZ_DRIVE));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for others media */
@@ -677,15 +606,11 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_3_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Others media statistics label */
-	g_strdup_to_gtk_text ( _( "Other : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Other : "));
 
 	text = g_strdup_printf ( _( "Other : %d"), gw_helper_db_catalog_get_nb_db_disk_of_type ( gw_am_get_current_catalog_context ( ), NONE));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Empty horizontal box */
@@ -714,9 +639,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Title description label */
-	g_strdup_to_gtk_text ( _( "Catalog Description : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Catalog Description : "));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Text area scrollbar */
@@ -741,9 +664,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), pix_ico_catalog, FALSE, TRUE, 0);
 	gtk_misc_set_padding ( GTK_MISC ( pix_ico_catalog), 3, 1);
 
-	g_strdup_to_gtk_text ( _( "Catalog Info"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Catalog Info"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, TRUE, 0);
 
 	gtk_widget_show_all ( hb_empty);
@@ -771,9 +692,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gchar *text;
 	GdkPixmap *pix;
 	GdkBitmap *msk;
-	gchar *text_utf8 = NULL;
-	gchar *tmp_date = NULL;
-
+	gchar *tempstr = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -802,15 +721,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 
 	/* Filled area of disk name */
 	entry = gtk_entry_new ( );
-	g_strdup_to_gtk_text ( gw_db_disk_get_name ( disk), text_utf8);
-	gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-	g_free ( text_utf8);
+	gtk_entry_set_text ( GTK_ENTRY ( entry), gw_db_disk_get_name ( disk));
 	gtk_widget_ref ( entry);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
-	g_strdup_to_gtk_text ( _( "Enter the name of the disk."), text_utf8);
-	gtk_tooltips_set_tip ( grp_tooltips, entry, text_utf8, GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS);
-	g_free ( text_utf8);
+	gtk_tooltips_set_tip ( grp_tooltips, entry,
+	                      _( "Enter the name of the disk."), GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS);
 
 	/* Empty horizontal box */
 	hb_empty = gtk_hbox_new ( FALSE, 0);
@@ -823,25 +739,21 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( hb_1), hb_empty, FALSE, TRUE, 0);
 
 	/* Number archive label */
-	g_strdup_to_gtk_text ( _( "Archive N# : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Archive N# : "));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, TRUE, 0);
 
 	/* Filled area of number archive */
 	entry = gtk_entry_new ( );
 	text = g_strdup_printf ( "%d", gw_db_disk_get_num ( disk));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_entry_set_text ( GTK_ENTRY ( entry), text);
 	g_free ( text);
-	gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-	g_free ( text_utf8);
 	gtk_widget_ref ( entry);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), entry, FALSE, TRUE, 0);
 	gtk_widget_set_usize ( entry, 40, 20);
-	g_strdup_to_gtk_text ( _( "Enter the archive number of the disk."), text_utf8);
-	gtk_tooltips_set_tip ( grp_tooltips, entry, text_utf8, GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_TOOLTIPS);
-	g_free ( text_utf8);
+	gtk_tooltips_set_tip ( grp_tooltips, entry, 
+	                      _( "Enter the archive number of the disk."),
+	                      GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_TOOLTIPS);
 
 	/* Separator */
 	hseparator = gtk_hseparator_new ( );
@@ -861,14 +773,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, FALSE, 0);
 
 	/* Disk type label */
-	g_strdup_to_gtk_text ( _(" Type : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_(" Type : "));
 	text = g_strconcat ( _( "Type : "), gw_db_disk_get_fstype ( disk), NULL);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for disk serial number */
@@ -877,14 +785,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, FALSE, FALSE, 0);
 
 	/* Disk serial number label */
-	g_strdup_to_gtk_text ( _( "Serial : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Serial : "));
 	text = g_strconcat ( _( "Serial : "), gw_db_disk_get_serial ( disk), NULL);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for disk volume name */
@@ -893,14 +797,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, FALSE, FALSE, 0);
 
 	/* Disk volume name label */
-	g_strdup_to_gtk_text ( _( "Volume Label : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Volume Label : "));
 	text = g_strconcat ( _( "Volume Label : "), gw_db_disk_get_volume ( disk), NULL);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for total number of files of disk */
@@ -909,14 +809,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, FALSE, FALSE, 0);
 
 	/* Total number of files of disk label */
-	g_strdup_to_gtk_text ( _( "Total Files : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Files : "));
 	text = g_strdup_printf ( _( "Total Files : %ld"), ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_disk_get_nb_db_files ( gw_am_get_current_catalog_context ( ), gw_db_disk_get_ref ( disk)));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for total number of folders of disk */
@@ -925,14 +821,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, FALSE, FALSE, 0);
 
 	/* Total number of folders of disk label */
-	g_strdup_to_gtk_text ( _( "Total Folders : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Folders : "));
 	text = g_strdup_printf ( _( "Total Folders : %ld"), ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_disk_get_nb_db_folders ( gw_am_get_current_catalog_context ( ), gw_db_disk_get_ref ( disk)));
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* 2nd vertical box of the 2nd horizontal box */
@@ -945,18 +837,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, FALSE, FALSE, 0);
 
 	/* Total capacity of disk label */
-	g_strdup_to_gtk_text ( _( "Total Capacity : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Total Capacity : "), (text_utf8 = gw_ui64_byte_to_str_format ( gw_db_disk_get_capacity ( disk))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Total Capacity : "));
+	tempstr = gw_ui64_byte_to_str_format ( gw_db_disk_get_capacity ( disk));
+	text = g_strconcat ( _( "Total Capacity : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for used space of disk */
@@ -965,18 +853,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, FALSE, FALSE, 0);
 
 	/* Used space of disk label */
-	g_strdup_to_gtk_text ( _( "Used Space : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Used Space : "), (text_utf8 = gw_ui64_byte_to_str_format ( gw_db_disk_get_full ( disk))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Used Space : "));
+	tempstr = gw_ui64_byte_to_str_format ( gw_db_disk_get_full ( disk));
+	text = g_strconcat ( _( "Used Space : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for free space of disk */
@@ -985,18 +869,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, FALSE, FALSE, 0);
 
 	/* Free space of disk label */
-	g_strdup_to_gtk_text ( _( "Free Space : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Free Space : "), (text_utf8 = gw_ui64_byte_to_str_format ( gw_db_disk_get_free ( disk))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Free Space : "));
+	tempstr = gw_ui64_byte_to_str_format ( gw_db_disk_get_free ( disk));
+	text = g_strconcat ( _( "Free Space : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Empty horizontal box */
@@ -1019,9 +899,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Catalog name label */
-	g_strdup_to_gtk_text ( _( "Catalog Name : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Catalog Name : "));
 	if ( gw_db_catalog_get_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_name ( catalog))>0) {
 		text = g_strconcat ( _( "Catalog Name : "), gw_db_catalog_get_name ( catalog), NULL);
 	} else if ( gw_db_catalog_get_short_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_short_db_name ( catalog))>0) {
@@ -1029,10 +907,8 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	} else {
 		text = g_strconcat ( _( "Catalog Name : "), _( "none"), NULL);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for adding date of disk */
@@ -1041,16 +917,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Adding date label of disk */
-	g_strdup_to_gtk_text ( _( "Update in catalog : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_disk_get_date_to_str ( disk);
-	text = g_strconcat ( _( "Update in catalog : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Update in catalog : "));
+	tempstr = gw_helper_db_disk_get_date_to_str ( disk);
+	text = g_strconcat ( _( "Update in catalog : "), tempstr, NULL);
+	g_free (tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Separator */
@@ -1075,9 +947,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Title description label */
-	g_strdup_to_gtk_text ( _( "Disk Description : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Disk Description : "));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Text area scrollbar */
@@ -1102,9 +972,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), pix_ico_disk, FALSE, TRUE, 0);
 	gtk_misc_set_padding ( GTK_MISC ( pix_ico_disk), 3, 1);
 
-	g_strdup_to_gtk_text ( _( "Disk Info"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Disk Info"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, TRUE, 0);
 
 	gtk_widget_show_all ( hb_empty);
@@ -1130,8 +998,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	GtkHBox *cmb_categories;	/* Categories combo box */
 	GtkTooltips *grp_tooltips;
 	gchar *text;
-	gchar *text_utf8 = NULL;
-	gchar *tmp_date = NULL;
+	gchar *tempstr = NULL;
 
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -1156,12 +1023,8 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( hb_1), pix_ico_folder, FALSE, TRUE, 10);
 
 	/* Folder name label */
-	g_strdup_to_gtk_text ( _( "Folder Name"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	g_strdup_to_gtk_text ( gw_db_file_get_name ( folder), text_utf8);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Folder Name"));
+	gtk_label_set_text ( GTK_LABEL ( lbl), gw_db_file_get_name ( folder));
 	gtk_box_pack_start ( GTK_BOX ( hb_1), lbl, FALSE, TRUE, 0);
 
 	/* Empty horizontal box */
@@ -1187,9 +1050,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder type label */
-	g_strdup_to_gtk_text ( _( "Type : (folder)"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Type : (folder)"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder size */
@@ -1198,18 +1059,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder size label */
-	g_strdup_to_gtk_text ( _( "Folder Size : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Folder Size : "), (text_utf8 = gw_l_byte_to_str_format ( gw_db_file_get_size ( folder))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Folder Size : "));
+	tempstr = gw_l_byte_to_str_format ( gw_db_file_get_size ( folder));
+	text = g_strconcat ( _( "Folder Size : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder creation date */
@@ -1218,16 +1075,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder creation date label */
-	g_strdup_to_gtk_text ( _( "Created on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_cdate_to_str ( folder);
-	text = g_strconcat ( _( "Created on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Created on : "));
+	tempstr = gw_helper_db_file_get_cdate_to_str ( folder);
+	text = g_strconcat ( _( "Created on : "), tempstr, NULL);
+	g_free (tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder last update date */
@@ -1236,16 +1089,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* the folder last update date label */
-	g_strdup_to_gtk_text ( _( "Last modified on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_mdate_to_str ( folder);
-	text = g_strconcat ( _( "Last modified on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Last modified on : "));
+	tempstr = gw_helper_db_file_get_mdate_to_str ( folder);
+	text = g_strconcat ( _( "Last modified on : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder last access date */
@@ -1254,16 +1103,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder last access date label */
-	g_strdup_to_gtk_text ( _( "Last accessed on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_adate_to_str ( folder);
-	text = g_strconcat ( _( "Last accessed on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Last accessed on : "));
+	tempstr = gw_helper_db_file_get_adate_to_str ( folder);
+	text = g_strconcat ( _( "Last accessed on : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* 2nd vertical box of the 2nd horizontal box */
@@ -1276,16 +1121,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* Folder rights label */
-	g_strdup_to_gtk_text ( _( "Rights : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_db_file_get_rights_to_gchar ( folder);
-	text = g_strconcat ( _( "Rights : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Rights : "));
+	tempstr = gw_db_file_get_rights_to_gchar ( folder);
+	text = g_strconcat ( _( "Rights : "), tempstr, NULL);
+	g_free (tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder owner name */
@@ -1294,18 +1135,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder owner name label */
-	g_strdup_to_gtk_text ( _( "Owner : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Owner : "));
 	if ( (gw_db_file_get_owner ( folder) == NULL) || (strlen ( gw_db_file_get_owner ( folder)) == 0) ) {
 		text = g_strconcat ( _( "Owner : "), _( "unknown owner"), NULL);
 	} else {
 		text = g_strconcat ( _( "Owner : "), gw_db_file_get_owner ( folder), NULL);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder group name */
@@ -1314,18 +1151,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* The folder group name label */
-	g_strdup_to_gtk_text ( _( "Group : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Group : "));
 	if ( (gw_db_file_get_group ( folder) == NULL) || (strlen ( gw_db_file_get_group ( folder)) == 0) ) {
 		text = g_strconcat ( _( "Group : "), _( "unknown group"), NULL);
 	} else {
 		text = g_strconcat ( _( "Group : "), gw_db_file_get_group ( folder), NULL);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Empty horizontal box */
@@ -1348,14 +1181,10 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Disk name label */
-	g_strdup_to_gtk_text ( _( "Disk Name : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Disk Name : "));
 	text = g_strconcat ( _( "Disk Name : "), gw_db_disk_get_name ( disk), " (", gw_db_disk_get_fstype ( disk), ")", NULL);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the folder location */
@@ -1364,19 +1193,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* The folder location label */
-	g_strdup_to_gtk_text ( _( "Location on Disk : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-
-	text = g_strconcat ( _( "Location on Disk : "), (text_utf8 = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_file_get_location ( gw_am_get_current_catalog_context ( ), gw_db_file_get_ref ( folder))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Location on Disk : "));
+	tempstr = ((GWCatalogPlugin*) gw_db_context_get_plugin (gw_am_get_current_catalog_context( )))->gw_db_file_get_location (gw_am_get_current_catalog_context(), gw_db_file_get_ref (folder));
+	text = g_strconcat ( _( "Location on Disk : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Separator */
@@ -1401,9 +1225,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Title description label */
-	g_strdup_to_gtk_text ( _( "Folder Description : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Folder Description : "));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Text area scrollbar */
@@ -1428,9 +1250,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), pix_ico_folder, FALSE, TRUE, 0);
 	gtk_misc_set_padding ( GTK_MISC ( pix_ico_folder), 3, 1);
 
-	g_strdup_to_gtk_text ( _( "Folder Info"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Folder Info"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, TRUE, 0);
 
 	gtk_widget_show_all ( hb_empty);
@@ -1455,8 +1275,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	GtkHBox *cmb_categories;	/* Categories combo box */
 	GtkTooltips *grp_tooltips;
 	gchar *text;
-	gchar *text_utf8 = NULL;
-	gchar *tmp_date = NULL;
+	gchar *tempstr = NULL;
 	gchar *tmp = NULL;
 	GWDBDisk *disk = NULL;
 
@@ -1483,12 +1302,8 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( hb_1), pix_ico_file, FALSE, TRUE, 10);
 
 	/* Folder name label */
-	g_strdup_to_gtk_text ( _( "File name : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	g_strdup_to_gtk_text ( gw_db_file_get_name ( file), text_utf8);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File name : "));
+	gtk_label_set_text ( GTK_LABEL ( lbl), gw_db_file_get_name ( file));
 	gtk_box_pack_start ( GTK_BOX ( hb_1), lbl, FALSE, TRUE, 0);
 
 	/* Empty horizontal box */
@@ -1514,9 +1329,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The file type label */
-	g_strdup_to_gtk_text ( _( "File type : not yet implemented!!"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File type : not yet implemented!!"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file size */
@@ -1525,21 +1338,18 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The file size label */
-	g_strdup_to_gtk_text ( _( "File Size : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strdup_printf ( _( "File Size : %s (%s bytes)"), (text_utf8 = gw_l_byte_to_str_format ( gw_db_file_get_size ( file))), ( tmp = gw_ui64_byte_to_str_format ( gw_db_file_get_size ( file))));
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File Size : "));
+	tempstr = gw_l_byte_to_str_format ( gw_db_file_get_size ( file));
+	tmp = gw_ui64_byte_to_str_format ( gw_db_file_get_size ( file));
+	text = g_strdup_printf ( _( "File Size : %s (%s bytes)"), tempstr, tmp);
+	if (tempstr) {
+		g_free (tempstr);
 	}
 	if ( tmp != NULL ) {
 		g_free ( tmp);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file creation date */
@@ -1548,16 +1358,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The file creation date label */
-	g_strdup_to_gtk_text ( _( "Created on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_cdate_to_str ( file);
-	text = g_strconcat ( _( "Created on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Created on : "));
+	tempstr = gw_helper_db_file_get_cdate_to_str ( file);
+	text = g_strconcat ( _( "Created on : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file last modification date */
@@ -1566,16 +1372,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The file last modification date lalbel */
-	g_strdup_to_gtk_text ( _( "Last modified on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_mdate_to_str ( file);
-	text = g_strconcat ( _( "Last modified on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Last modified on : "));
+	tempstr = gw_helper_db_file_get_mdate_to_str ( file);
+	text = g_strconcat ( _( "Last modified on : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file last access date */
@@ -1584,16 +1386,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_1), hb_empty, TRUE, TRUE, 0);
 
 	/* The file last access date label */
-	g_strdup_to_gtk_text ( _( "Last accessed on : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_helper_db_file_get_adate_to_str ( file);
-	text = g_strconcat ( _( "Last accessed on : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Last accessed on : "));
+	tempstr = gw_helper_db_file_get_adate_to_str ( file);
+	text = g_strconcat ( _( "Last accessed on : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* 2nd vertical box of the 2nd horizontal box */
@@ -1606,16 +1404,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* the file rights label */
-	g_strdup_to_gtk_text ( _( "Rights : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	tmp_date = gw_db_file_get_rights_to_gchar ( file);
-	text = g_strconcat ( _( "Rights : "), tmp_date, NULL);
-	g_free ( tmp_date);
-	g_strdup_to_gtk_text ( text, text_utf8);
+	lbl = gtk_label_new (_( "Rights : "));
+	tempstr = gw_db_file_get_rights_to_gchar ( file);
+	text = g_strconcat ( _( "Rights : "), tempstr, NULL);
+	g_free ( tempstr);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file owner name */
@@ -1624,18 +1418,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* The file owner name label */
-	g_strdup_to_gtk_text ( _( "Owner : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Owner : "));
 	if ( (gw_db_file_get_owner ( file) == NULL) || (strlen ( gw_db_file_get_owner ( file)) == 0) ) {
 		text = g_strconcat ( _( "Owner : "), _( "unknown owner"), NULL);
 	} else {
 		text = g_strconcat ( _( "Owner : "), gw_db_file_get_owner ( file), NULL);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for file group name */
@@ -1644,18 +1434,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_2_2), hb_empty, TRUE, TRUE, 0);
 
 	/* File group name label */
-	g_strdup_to_gtk_text ( _( "Group : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Group : "));
 	if ( (gw_db_file_get_group ( file) == NULL) || (strlen ( gw_db_file_get_group ( file)) == 0) ) {
 		text = g_strconcat ( _( "Group : "), _( "unknown group"), NULL);
 	} else {
 		text = g_strconcat ( _( "Group : "), gw_db_file_get_group ( file), NULL);
 	}
-	g_strdup_to_gtk_text ( text, text_utf8);
-	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free (text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
+	g_free (text);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Empty horizontal box */
@@ -1678,18 +1464,13 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* The disk name label */
-	g_strdup_to_gtk_text ( _( "Disk Name : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
+	lbl = gtk_label_new (_( "Disk Name : "));
 	disk = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_file_get_db_disk ( gw_am_get_current_catalog_context ( ), gw_db_file_get_ref ( file));
 	text = g_strconcat ( _( "Disk Name : "), gw_db_disk_get_name ( disk), " (", gw_db_disk_get_fstype ( disk), ")", NULL);
 	gw_db_disk_free ( disk);
 
-	g_strdup_to_gtk_text ( text, text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
 	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free ( text_utf8);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Horizontal box for the file location */
@@ -1698,19 +1479,14 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* The file location label */
-	g_strdup_to_gtk_text ( _( "Location on Disk : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
-	text_utf8 = NULL;
-	text = g_strconcat ( _( "Location on Disk : "), (text_utf8 = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_file_get_location ( gw_am_get_current_catalog_context ( ), gw_db_file_get_ref ( file))), NULL);
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
+	lbl = gtk_label_new (_( "Location on Disk : "));
+	tempstr = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_file_get_location ( gw_am_get_current_catalog_context ( ), gw_db_file_get_ref ( file));
+	text = g_strconcat ( _( "Location on Disk : "), tempstr, NULL);
+	if (tempstr) {
+		g_free (tempstr);
 	}
-
-	g_strdup_to_gtk_text ( text, text_utf8);
-	g_free ( text);
-	gtk_label_set_text ( GTK_LABEL ( lbl), text_utf8);
-	g_free (text_utf8);
+	gtk_label_set_text ( GTK_LABEL ( lbl), text);
+	g_free (text);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Separator */
@@ -1735,9 +1511,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_empty, FALSE, FALSE, 0);
 
 	/* Title description label */
-	g_strdup_to_gtk_text ( _( "File Description : "), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File Description : "));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, FALSE, 0);
 
 	/* Text area scrollbar */
@@ -1762,9 +1536,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), pix_ico_file, FALSE, TRUE, 0);
 	gtk_misc_set_padding ( GTK_MISC ( pix_ico_file), 3, 1);
 
-	g_strdup_to_gtk_text ( _( "File Info"), text_utf8);
-	lbl = gtk_label_new ( text_utf8);
-	g_free ( text_utf8);
+	lbl = gtk_label_new (_( "File Info"));
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), lbl, FALSE, TRUE, 0);
 
 	gtk_widget_show_all ( hb_empty);

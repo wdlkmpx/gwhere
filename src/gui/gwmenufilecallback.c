@@ -290,17 +290,16 @@ gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFil
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCatalog *catalog = NULL;
 	gboolean result = FALSE;
-	gchar *text_utf8 = NULL;
-
+	const gchar * text1;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8);
+		text1 = gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry));
 
-		if ( (strlen ( text_utf8) > 0 ) && (strcmp ( text_utf8, "") != 0) ) {
+		if ( (strlen (text1) > 0 ) && (strcmp (text1, "") != 0) ) {
 //			/* Updates informations of opened catalog. */
 //			catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
 
@@ -331,9 +330,6 @@ gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFil
 			gw_mail_window_box_create ( window, gw_db_catalog_get_db_name ( catalog));
 			gw_db_catalog_free ( catalog);
 		}
-
-		g_free ( text_utf8);
-
 		result = TRUE;
 	}
 
@@ -480,8 +476,7 @@ gboolean gw_menu_file_exit_click ( GtkMenuItem *mi, GtkWindow *w) {
 gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 //	GWDBCatalog *catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-	gchar *text_utf8 = NULL;
-
+	const gchar * text1;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -492,10 +487,10 @@ gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 		g_print ( "*** GW - %s (%d) :: %s() : beginning...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8);
+		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
 		/* Checkes if a catalog has been selected */
-		if ( (strlen ( text_utf8) > 0) && (strcmp ( text_utf8, "") != 0) ) {
+		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) ) {
 			gtk_widget_hide ( GTK_WIDGET ( fs));
 
 //TODO use helper functions
@@ -514,8 +509,6 @@ gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
 		}
-
-		g_free ( text_utf8);
 	}
 
 	return FALSE;
@@ -633,20 +626,20 @@ gboolean gw_menu_file_new_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 
 gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	GtkWindow *window = NULL;
-	gchar *text_utf8[2];
+	const gchar * text1, * text2;
 	gboolean result = FALSE;
-
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
+	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
-	if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	{
 		/* Saves the catalog. */
-		g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-		switch ( gw_am_save_catalog ( text_utf8[1])) {
+		text2 = gtk_file_selection_get_filename (fs);
+		switch (gw_am_save_catalog (text2)) {
 			case 0:
 						break;
 
@@ -663,8 +656,6 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelec
 						break;
 		}
 
-		g_free ( text_utf8[1]);
-
 		/* Close the file selection box and displays a new fill box of new catalog. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 		window = gw_gui_manager_main_interface_get_main_window ( );
@@ -672,8 +663,6 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelec
 
 		result = TRUE;
 	}
-
-	g_free ( text_utf8[0]);
 
 	return result;
 }
@@ -791,20 +780,20 @@ gboolean gw_menu_file_open_recents_files_save_file_no ( GtkWidget *bt, GtkWindow
 
 gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	gboolean result = FALSE;
-	gchar *text_utf8[2];
-
+	const gchar * text1, * text2;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
+		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
-		if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+		{
 			/* Save the catalog. */
-			g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-			switch ( gw_am_save_catalog ( text_utf8[1])) {
+			text2 = gtk_file_selection_get_filename (fs);
+			switch (gw_am_save_catalog (text2)) {
 				case 0:		result = TRUE;
 
 							break;
@@ -822,14 +811,10 @@ gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 							break;
 			}
 
-			g_free ( text_utf8[1]);
-
 			/* Closes the file selection box and displays a new fill box of new catalog. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
 			gw_file_selection_box_create ( _( "Open catalog"), NULL, (GtkSignalFunc)gw_menu_file_open_file_ok, (GtkSignalFunc)gw_menu_file_open_file_cancel);
 		}
-
-		g_free ( text_utf8[0]);
 	}
 
 	return result;
@@ -838,7 +823,7 @@ gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 
 gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	gboolean result = FALSE;
-	gchar *text_utf8[2];
+	const gchar * text1, * text2;
 	gpointer file_index = NULL;
 	gchar *catalog_path_name = NULL;
 
@@ -848,7 +833,7 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
 #endif
 
 	if ( fs != NULL ) {
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
+		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
 		/* Gets the real file name in the recents opened catalogs list, because after saving the current
 		   opened catalog, the wanted catalog in the recents list (may) will not have the same index. */
@@ -857,10 +842,11 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
 		/* Warning use a gint value instead of a gpointer value!! */
 		catalog_path_name = gw_am_get_catalog_path_name_from_recents_files ( GPOINTER_TO_UINT ( file_index));
 
-		if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+		{
 			/* Save the catalog. */
-			g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-			switch ( gw_am_save_catalog ( text_utf8[1])) {
+			text2 = gtk_file_selection_get_filename (fs);;
+			switch (gw_am_save_catalog (text2)) {
 				case 0:		result = TRUE;
 
 							break;
@@ -878,15 +864,11 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
 							break;
 			}
 
-			g_free ( text_utf8[1]);
-
 			/* Closes the file selection box and displays a new fill box of new catalog. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
 
 			result = gw_am_load_catalog ( catalog_path_name);
 		}
-
-		g_free ( text_utf8[0]);
 
 		if ( catalog_path_name != NULL ) {
 			g_free ( catalog_path_name);
@@ -952,20 +934,20 @@ gboolean gw_menu_file_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 
 gboolean gw_menu_file_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	gboolean result = FALSE;
-	gchar *text_utf8[2];
-
+	const gchar * text1, * text2;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
-g_print("save as %s\n",text_utf8[0]);
+	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+g_print("save as %s\n",text1);
 
-	if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	{
 		/* Save the opened catalog. */
-		g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-		switch ( gw_am_save_catalog ( text_utf8[1])) {
+		text2 = gtk_file_selection_get_filename (fs);
+		switch (gw_am_save_catalog (text2)) {
 			case 0:		result = TRUE;
 
 						break;
@@ -985,13 +967,9 @@ g_print("save as %s\n",text_utf8[0]);
 						break;
 		}
 
-		g_free ( text_utf8[1]);
-
 		/* Closes the file selection box. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 	}
-
-	g_free ( text_utf8[0]);
 
 	return result;
 }
@@ -1057,21 +1035,22 @@ gboolean gw_menu_file_close_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	GWDBCatalog *catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
 	gboolean result = FALSE;
-	gchar *text_utf8[2];
+	const gchar * text1, * text2;
 
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
+	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
-	if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	{
 		/* Updates informations of opened catalog. */
 //TODO use helper functions
 		if ( catalog != NULL ) {
-			g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-			switch ( gw_am_save_catalog ( text_utf8[1]) ) {
+			text2 = gtk_file_selection_get_filename (fs);
+			switch (gw_am_save_catalog (text2)) {
 				case 0:			result = TRUE;
 
 							break;
@@ -1088,16 +1067,12 @@ gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSel
 				default:
 							break;
 			}
-
-			g_free ( text_utf8[1]);
 		} else {}
 
 		/* Closes the file selection box and closes the catalog. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 		gw_am_close_catalog ( FALSE);
 	}
-
-	g_free ( text_utf8[0]);
 
 	return result;
 }
@@ -1153,20 +1128,19 @@ gboolean gw_menu_file_exit_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 
 gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
 	gboolean result = FALSE;
-	gchar *text_utf8[2];
-
+	const gchar * text1, * text2;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8[0]);
+		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
 
-		if ( (strlen ( text_utf8[0]) > 0) && (strcmp ( text_utf8[0], "") != 0) ) {
+		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) ) {
 			/* Saves the catalog. */
-			g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), text_utf8[1]);
-			switch ( gw_am_save_catalog ( text_utf8[1]) ) {
+			text2 = gtk_file_selection_get_filename (fs);
+			switch (gw_am_save_catalog (text2)) {
 				case 0:		result = TRUE;
 							break;
 
@@ -1183,16 +1157,12 @@ gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 							break;
 			}
 
-			g_free ( text_utf8[1]);
-
 			/* Exits the program. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
 			gw_menu_file_exit ( );
 
 			result = TRUE;
 		}
-
-		g_free ( text_utf8[0]);
 	}
 
 	return result;

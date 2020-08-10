@@ -303,7 +303,7 @@ gint gw_properties_box_catalog_name_check ( GtkWidget *w, GtkCTreeNode *node, GW
 	guint8 spc;
 	GdkBitmap *btmp;
 	GdkPixmap *pxmp;
-	gchar *catalog_name = NULL, *name = NULL, *text_utf8 = NULL;
+	gchar *catalog_name = NULL, *name = NULL;
 	gint result = -1;
 
 
@@ -319,20 +319,16 @@ gint gw_properties_box_catalog_name_check ( GtkWidget *w, GtkCTreeNode *node, GW
 				gw_db_catalog_set_name ( catalog, g_strdup ( catalog_name));
 
 				gtk_ctree_node_get_pixtext ( ctree_properties, node, 0, &name, &spc, &pxmp, &btmp);
-				g_strdup_to_gtk_text ( gw_db_catalog_get_name ( catalog), text_utf8);
-				gtk_ctree_node_set_pixtext ( ctree_properties, node, 0, text_utf8, spc, pxmp, btmp);
-				g_free ( text_utf8);
+				gtk_ctree_node_set_pixtext ( ctree_properties, node, 0,
+				                            gw_db_catalog_get_name (catalog), spc, pxmp, btmp);
 			} else {
 				gw_db_catalog_set_name ( catalog, NULL);
 
 				gtk_ctree_node_get_pixtext ( ctree_properties, node, 0, &name, &spc, &pxmp, &btmp);
-				g_strdup_to_gtk_text ( gw_db_catalog_get_short_db_name ( catalog), text_utf8);
-				gtk_ctree_node_set_pixtext ( ctree_properties, node, 0, text_utf8, spc, pxmp, btmp);
-				g_free ( text_utf8);
+				gtk_ctree_node_set_pixtext ( ctree_properties, node, 0,
+				                            gw_db_catalog_get_short_db_name (catalog), spc, pxmp, btmp);
 			}
-
 			result = 0;
-
 			g_free ( catalog_name);
 		}
 	}
@@ -373,7 +369,7 @@ gint gw_properties_box_disk_name_check ( GtkWidget *w, GtkCTreeNode *node, GWDBC
 	guint8 spc;
 	GdkBitmap *btmp;
 	GdkPixmap *pxmp;
-	gchar *disk_name = NULL, *name = NULL, *text_utf8 = NULL;
+	gchar *disk_name = NULL, *name = NULL;
 	gint result = -1;
 
 
@@ -388,14 +384,10 @@ gint gw_properties_box_disk_name_check ( GtkWidget *w, GtkCTreeNode *node, GWDBC
 				if ( !gw_helper_db_disk_name_is_exist ( gw_am_get_current_catalog_context ( ), disk_name)) {
 					gw_db_disk_set_name ( disk, g_strdup ( disk_name));
 					gtk_ctree_node_get_pixtext ( ctree_properties, node, 0, &name, &spc, &pxmp, &btmp);
-					g_strdup_to_gtk_text ( disk_name, text_utf8);
-					gtk_ctree_node_set_pixtext ( ctree_properties, node, 0, text_utf8, spc, pxmp, btmp);
-					g_free ( text_utf8);
+					gtk_ctree_node_set_pixtext ( ctree_properties, node, 0, disk_name, spc, pxmp, btmp);
 				} else {}
 			}
-
 			result = 0;
-
 			g_free ( disk_name);
 		}
 	}

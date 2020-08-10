@@ -104,8 +104,6 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 	GtkWidget *ent_server_address;
 	GtkWidget *ent_server_port;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -123,9 +121,7 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Email address. */
-		g_strdup_to_gtk_text ( _( "Email address :"), text_utf8);
-		lbl_email_address = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_email_address = gtk_label_new (_( "Email address :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_email_address, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_email_address), 0, 0.5);
 
@@ -133,14 +129,10 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_widget_ref ( ent_email_address);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EMAIL_ADDRESS_ENTRY, ent_email_address, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_email_address, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter your email address."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, ent_email_address, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, ent_email_address, _( "Enter your email address."), NULL);
 
 		/* Server address. */
-		g_strdup_to_gtk_text ( _( "Out going mail server :"), text_utf8);
-		lbl_server_address = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_server_address = gtk_label_new (_( "Out going mail server :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_server_address, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_server_address), 0, 0.5);
 
@@ -148,14 +140,11 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_widget_ref ( ent_server_address);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_ADDRESS_ENTRY, ent_server_address, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_address, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter your out going mail server. Usualy this address is mail.yourdomain.com"), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, ent_server_address, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, ent_server_address,
+		                      _( "Enter your out going mail server. Usualy this address is mail.yourdomain.com"), NULL);
 
 		/* Server port. */
-		g_strdup_to_gtk_text ( _( "Server port :"), text_utf8);
-		lbl_server_port = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_server_port = gtk_label_new (_( "Server port :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_server_port, 0, 1, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_server_port), 0, 0.5);
 
@@ -163,9 +152,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_widget_ref ( ent_server_port);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_PORT_ENTRY, ent_server_port, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_port, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter the out going mail server port (the most common value is 25)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, ent_server_port, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, ent_server_port,
+		                      _( "Enter the out going mail server port (the most common value is 25)."), NULL);
 
 		*pane = table_pane;
 
@@ -188,8 +176,6 @@ gint gw_plugin_settings_mail_pane_load ( GtkWidget *pane)
 	gint result = -1;
 	GtkEntry *entry = NULL;
 	gchar *value = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -201,10 +187,7 @@ gint gw_plugin_settings_mail_pane_load ( GtkWidget *pane)
 		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EMAIL_ADDRESS_ENTRY))) != NULL)
 		{
 			value = gw_am_get_settings ( GW_VALUE_APP_MAIL_EMAIL_ADDRESS);
-
-			g_strdup_to_gtk_text ( value, text_utf8);
-			gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-			g_free ( text_utf8);
+			gtk_entry_set_text ( GTK_ENTRY ( entry), value);
 		}
 
 		entry = NULL;
@@ -213,10 +196,7 @@ gint gw_plugin_settings_mail_pane_load ( GtkWidget *pane)
 		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SERVER_ADDRESS_ENTRY))) != NULL)
 		{
 			value = gw_am_get_settings ( GW_VALUE_APP_MAIL_SERVER_ADDRESS);
-
-			g_strdup_to_gtk_text ( value, text_utf8);
-			gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-			g_free ( text_utf8);
+			gtk_entry_set_text ( GTK_ENTRY ( entry), value);
 		}
 
 		entry = NULL;
@@ -226,21 +206,12 @@ gint gw_plugin_settings_mail_pane_load ( GtkWidget *pane)
 		{
 			value = gw_am_get_settings ( GW_VALUE_APP_MAIL_SERVER_PORT);
 
-			if ( value == NULL )
-			{
-				g_strdup_to_gtk_text ( GW_VALUE_APP_MAIL_SERVER_PORT_DEFAULT, text_utf8);
-			}
-			else
-			{
-				g_strdup_to_gtk_text ( value, text_utf8);
+			if ( value == NULL ) {
+				value = GW_VALUE_APP_MAIL_SERVER_PORT_DEFAULT;
 			}
 
-			gtk_entry_set_text ( GTK_ENTRY ( entry), text_utf8);
-			g_free ( text_utf8);
+			gtk_entry_set_text ( GTK_ENTRY ( entry), value);
 		}
-
-		entry = NULL;
-		value = NULL;
 
 		result = 0;
 	}

@@ -61,8 +61,6 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 	static GtkWidget *w = NULL;
 	GtkWidget *vb, *hb, *scr, *list, *bt, *hsp, *ent, *lbl, *frm, *txt;
 	GtkTooltips *tips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -77,9 +75,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, FALSE);
-		g_strdup_to_gtk_text ( _( "Edit categories"), text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), _( "Edit categories"));
 		gtk_container_set_border_width ( GTK_CONTAINER ( w), 5);
 
 		gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_MAIN_WINDOW, window);
@@ -91,9 +87,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_container_add ( GTK_CONTAINER ( w), vb);
 
 		/* Frame category description */
-		g_strdup_to_gtk_text ( _( "Categories list : "), text_utf8);
-		frm = gtk_frame_new ( text_utf8);
-		g_free ( text_utf8);
+		frm = gtk_frame_new (_( "Categories list : "));
 		gtk_box_pack_start ( GTK_BOX ( vb), frm, TRUE, TRUE, 0);
 
 		/* 1st horizontal box*/
@@ -118,15 +112,11 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_clist_column_titles_show ( GTK_CLIST ( list));
 
 		/* 1st column label */
-		g_strdup_to_gtk_text ( _( "Name"), text_utf8);
-		lbl = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl = gtk_label_new (_( "Name"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( list), 0, lbl);
 
 		/* 2nd column label */
-		g_strdup_to_gtk_text ( _( "Description"), text_utf8);
-		lbl = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl = gtk_label_new (_( "Description"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( list), 1, lbl);
 
 		/* 2nd horizontal box */
@@ -139,9 +129,9 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_update_click), GTK_WINDOW ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
-		g_strdup_to_gtk_text ( _( "Allows to update category properties of the selected category. Clicks on Add / Update button to save updates."), text_utf8);
-		gtk_tooltips_set_tip ( tips, bt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, bt,
+		                       _( "Allows to update category properties of the selected category. Clicks on Add / Update button to save updates."),
+		                       GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON_TOOLTIPS);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 
 		/* Remove button */
@@ -150,9 +140,9 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_remove_click), GTK_WINDOW ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
-		g_strdup_to_gtk_text ( _( "Remove the selected category from categories list. This categories may removed only if there's not any item which uses this category."), text_utf8);
-		gtk_tooltips_set_tip ( tips, bt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, bt,
+		                       _( "Remove the selected category from categories list. This categories may removed only if there's not any item which uses this category."),
+		                       GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON_TOOLTIPS);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 
 		/* 1st horizontal separator */
@@ -164,9 +154,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_box_pack_start ( GTK_BOX ( vb), hb, TRUE, TRUE, 0);
 
 		/* Label for category name */
-		g_strdup_to_gtk_text ( _( "Category name : "), text_utf8);
-		lbl = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl = gtk_label_new (_( "Category name : "));
 		gtk_box_pack_start ( GTK_BOX ( hb), lbl, FALSE, FALSE, 5);
 
 		/* Field text for category name */
@@ -175,14 +163,11 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY, ent, /*(GtkDestroyNotify)gtk_widget_unref*/NULL);
 		gtk_signal_connect ( GTK_OBJECT ( ent), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_name_changed), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), ent, TRUE, TRUE, 5);
-		g_strdup_to_gtk_text ( _( "Enter the name of the category."), text_utf8);
-		gtk_tooltips_set_tip ( tips, ent, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, ent,
+		                       _( "Enter the name of the category."), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS);
 
 		/* Frame category description */
-		g_strdup_to_gtk_text ( _( "Description : "), text_utf8);
-		frm = gtk_frame_new ( text_utf8);
-		g_free ( text_utf8);
+		frm = gtk_frame_new (_( "Description : "));
 		gtk_box_pack_start ( GTK_BOX ( vb), frm, TRUE, TRUE, 0);
 
 		/* 4th horizontal box */
@@ -202,9 +187,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect ( G_OBJECT ( gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( txt))), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_description_changed), w);
 
 		gtk_container_add ( GTK_CONTAINER ( scr), txt);
-		g_strdup_to_gtk_text ( _( "Enter the description of the category."), text_utf8);
-		gtk_tooltips_set_tip ( tips, txt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, txt,
+		                       _( "Enter the description of the category."), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS);
 
 		/* The Add/Update/Close button area */
 		hb = gtk_hbutton_box_new ( );
@@ -218,9 +202,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_add_update_click), w);
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
-		g_strdup_to_gtk_text ( _( "Save properties changes of category."), text_utf8);
-		gtk_tooltips_set_tip ( tips, bt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, bt, 
+		                       _( "Save properties changes of category."), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON_TOOLTIPS);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_FOCUS);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_DEFAULT);
@@ -231,9 +214,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_signal_connect_object ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
-		g_strdup_to_gtk_text ( _( "Close the categories properties edit window."), text_utf8);
-		gtk_tooltips_set_tip ( tips, bt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tips, bt,
+		                      _( "Close the categories properties edit window."), GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_FOCUS);
 	}
 
@@ -441,9 +423,7 @@ gboolean gw_categories_edit_box_list_select_row ( GtkCList *list, gint line, gin
 
 gint gw_categories_edit_box_set_category_name ( GtkWindow *w, gchar *category_name) {
 	GtkEntry *entry = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -451,10 +431,7 @@ gint gw_categories_edit_box_set_category_name ( GtkWindow *w, gchar *category_na
 
 	if ( w != NULL ) {
 		if ( (entry = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY)) != NULL ) {
-			g_strdup_to_gtk_text ( category_name, text_utf8);
-			gtk_entry_set_text ( entry, text_utf8);
-			g_free ( text_utf8);
-
+			gtk_entry_set_text ( entry, category_name);
 			result = 0;
 		}
 	}
@@ -487,9 +464,7 @@ gint gw_categories_edit_box_set_category_description ( GtkWindow *w, gchar *cate
 
 gint gw_categories_edit_box_set_add_state ( GtkWindow *w) {
 	GtkButton *bt = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -497,10 +472,7 @@ gint gw_categories_edit_box_set_add_state ( GtkWindow *w) {
 
 	if ( w != NULL ) {
 		if ( (bt = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON)) != NULL ) {
-			g_strdup_to_gtk_text ( _( "Add"), text_utf8);
-			gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-			g_free ( text_utf8);
-
+			gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), _( "Add"));
 			result = 0;
 		}
 	}
@@ -511,9 +483,7 @@ gint gw_categories_edit_box_set_add_state ( GtkWindow *w) {
 
 gint gw_categories_edit_box_set_update_state ( GtkWindow *w) {
 	GtkButton *bt = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -521,10 +491,7 @@ gint gw_categories_edit_box_set_update_state ( GtkWindow *w) {
 
 	if ( w != NULL ) {
 		if ( (bt = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON)) != NULL ) {
-			g_strdup_to_gtk_text ( _( "Update"), text_utf8);
-			gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-			g_free ( text_utf8);
-
+			gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), _( "Update"));
 			result = 0;
 		}
 	}
@@ -594,7 +561,6 @@ gint gw_categories_edit_box_update_category ( GtkWindow *w) {
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCategory *category = NULL;
 	GtkCList *list = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
 
 
@@ -612,12 +578,8 @@ gint gw_categories_edit_box_update_category ( GtkWindow *w) {
 
 					plugin->gw_db_category_update ( context, category);
 
-					g_strdup_to_gtk_text ( gw_db_category_get_name ( category), text_utf8);
-					gtk_clist_set_text ( list, (gint)(list->selection->data), 0, text_utf8);
-					g_free ( text_utf8);
-					g_strdup_to_gtk_text ( gw_db_category_get_description ( category), text_utf8);
-					gtk_clist_set_text ( list, (gint)(list->selection->data), 1, text_utf8);
-					g_free ( text_utf8);
+					gtk_clist_set_text ( list, (gint)(list->selection->data), 0, gw_db_category_get_name (category));
+					gtk_clist_set_text ( list, (gint)(list->selection->data), 1, gw_db_category_get_description (category));
 
 					result = 0;
 				}
@@ -795,9 +757,7 @@ gchar * gw_categories_edit_box_get_category_description ( GtkWindow *w) {
 gboolean gw_categories_edit_box_get_isadd_state ( GtkWindow *w) {
 	GtkButton *bt = NULL;
 	gchar *label = NULL;
-	gchar *text_utf8 = NULL;
 	gboolean result = FALSE;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -808,13 +768,9 @@ gboolean gw_categories_edit_box_get_isadd_state ( GtkWindow *w) {
 
 		if ( bt != NULL ) {
 			gtk_label_get ( GTK_LABEL ( GTK_BIN ( bt)->child), &label);
-			g_strdup_to_gtk_text ( _( "Add"), text_utf8);
-
-			if ( strcmp ( label, text_utf8) == 0 ) {
+			if ( strcmp ( label, _( "Add")) == 0 ) {
 				result = TRUE;
 			}
-
-			g_free ( text_utf8);
 		}
 	}
 
@@ -825,9 +781,7 @@ gboolean gw_categories_edit_box_get_isadd_state ( GtkWindow *w) {
 gboolean gw_categories_edit_box_get_isupdate_state ( GtkWindow *w) {
 	GtkButton *bt = NULL;
 	gchar *label = NULL;
-	gchar *text_utf8 = NULL;
 	gboolean result = FALSE;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -838,13 +792,9 @@ gboolean gw_categories_edit_box_get_isupdate_state ( GtkWindow *w) {
 
 		if ( bt != NULL ) {
 			gtk_label_get ( GTK_LABEL ( GTK_BIN ( bt)->child), &label);
-			g_strdup_to_gtk_text ( _( "Update"), text_utf8);
-
-			if ( strcmp ( label, text_utf8) == 0 ) {
+			if ( strcmp ( label, _( "Update")) == 0 ) {
 				result = TRUE;
 			}
-
-			g_free ( text_utf8);
 		}
 	}
 

@@ -192,8 +192,6 @@ gboolean gw_menu_file_set_import ( GtkWindow *w, gchar **plugins) {
 	GtkWidget *menu_item_import = NULL;
 	GtkWidget *import_submenu = NULL;
 	guint i = 0;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -217,10 +215,7 @@ gboolean gw_menu_file_set_import ( GtkWindow *w, gchar **plugins) {
 				g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu item at %d\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, i);
 				g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu item => %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, plugins[i]);
 #endif
-
-				g_strdup_to_gtk_text ( plugins[i], text_utf8);
-				menu_item_import = gtk_menu_item_new_with_label ( text_utf8);
-				g_free ( text_utf8);
+				menu_item_import = gtk_menu_item_new_with_label (plugins[i]);
 				gtk_container_add ( GTK_CONTAINER ( import_submenu), menu_item_import);
 
 				gtk_signal_connect ( GTK_OBJECT ( menu_item_import), "activate", GTK_SIGNAL_FUNC ( gw_menu_file_import_item_click), plugins[i]);
@@ -246,8 +241,6 @@ gboolean gw_menu_file_set_export ( GtkWindow *w, gchar **plugins) {
 	GtkWidget *menu_item_import = NULL;
 	GtkWidget *import_submenu = NULL;
 	guint i = 0;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -271,10 +264,7 @@ gboolean gw_menu_file_set_export ( GtkWindow *w, gchar **plugins) {
 				g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu item at %d\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, i);
 				g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu item => %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, plugins[i]);
 #endif
-
-				g_strdup_to_gtk_text ( plugins[i], text_utf8);
-				menu_item_import = gtk_menu_item_new_with_label ( text_utf8);
-				g_free ( text_utf8);
+				menu_item_import = gtk_menu_item_new_with_label (plugins[i]);
 				gtk_container_add ( GTK_CONTAINER ( import_submenu), menu_item_import);
 
 				/* Warning use a gint value instead of a gpointer value!! */
@@ -301,8 +291,6 @@ gboolean gw_menu_file_set_recents_files ( GtkWindow *w, gchar **files) {
 	GtkWidget *menu_item_recents_files = NULL;
 	GtkWidget *recents_files_submenu = NULL;
 	guint i = 0;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -327,9 +315,7 @@ gboolean gw_menu_file_set_recents_files ( GtkWindow *w, gchar **files) {
 				g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu item => %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, files[i]);
 #endif
 
-				g_strdup_to_gtk_text ( files[i], text_utf8);
-				menu_item_recents_files = gtk_menu_item_new_with_label ( text_utf8);
-				g_free ( text_utf8);
+				menu_item_recents_files = gtk_menu_item_new_with_label (files[i]);
 				gtk_container_add ( GTK_CONTAINER ( recents_files_submenu), menu_item_recents_files);
 
 				/* Warning use a gint value instead of a gpointer value!! */

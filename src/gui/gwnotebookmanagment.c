@@ -133,7 +133,6 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	GtkTooltips *tooltips_group;
 	GtkCTree *tree = NULL;
 	GtkCTreeNode *root = NULL;
-	gchar *text_utf8 = NULL;
 
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -156,9 +155,7 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), hb_control, TRUE, TRUE, 0);
 
 		/* Frame of new disk control */
-		g_strdup_to_gtk_text ( _( "New disk"), text_utf8);
-		frm_new_disk_control = gtk_frame_new ( text_utf8);
-		g_free ( text_utf8);
+		frm_new_disk_control = gtk_frame_new (_( "New disk"));
 		gtk_container_set_border_width ( GTK_CONTAINER ( frm_new_disk_control), 10);
 		gtk_box_pack_start ( GTK_BOX ( hb_control), frm_new_disk_control, FALSE, TRUE, 0);
 	
@@ -170,14 +167,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_disk_selection = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_disk_selection), 10);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_disk_selection, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Select the media that will be added as disk to your catalog."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_disk_selection, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_disk_selection,
+		                      _( "Select the media that will be added as disk to your catalog."), NULL);
 	
 		/* Label for media selection */
-		g_strdup_to_gtk_text ( _( "Select media : "), text_utf8);
-		lbl_disk_selection = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_disk_selection = gtk_label_new (_( "Select media : "));
 		gtk_box_pack_start ( GTK_BOX ( hb_disk_selection), lbl_disk_selection, FALSE, FALSE, 0);
 	
 		/* ComboBox to select media */
@@ -209,14 +203,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_number_archive = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_number_archive), 10);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_number_archive, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Enter the number of the new disk. This number can help you with the history of your catalog."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_number_archive, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_number_archive,
+		                      _( "Enter the number of the new disk. This number can help you with the history of your catalog."), NULL);
 	
 		/* Label for number archive */
-		g_strdup_to_gtk_text ( _( "Archive N# : "), text_utf8);
-		lbl_number_archive = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_number_archive = gtk_label_new (_( "Archive N# : "));
 		gtk_box_pack_start ( GTK_BOX ( hb_number_archive), lbl_number_archive, FALSE, FALSE, 0);
 	
 		/* Entry for number archive */
@@ -229,14 +220,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_disk_name = gtk_hbox_new ( FALSE, 0);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_disk_name, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_disk_name), 10);
-		g_strdup_to_gtk_text ( _( "Enter the name of the new disk. This name will be appear in your catalog."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_disk_name, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_disk_name,
+		                      _( "Enter the name of the new disk. This name will be appear in your catalog."), NULL);
 	
 		/* Label for disk name */
-		g_strdup_to_gtk_text ( _( "Name : "), text_utf8);
-		lbl_disk_name = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_disk_name = gtk_label_new (_( "Name : "));
 		gtk_box_pack_start ( GTK_BOX ( hb_disk_name), lbl_disk_name, FALSE, FALSE, 0);
 	
 		/* Entry for disk name */
@@ -258,9 +246,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gw_combo_box_categories_load ( cmb_categories);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), GTK_WIDGET ( cmb_categories), TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( cmb_categories), 10);
-		g_strdup_to_gtk_text ( _( "Select the category to apply to the disk which will be added (even if the option is checked)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, GTK_WIDGET ( cmb_categories), text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, GTK_WIDGET ( cmb_categories),
+		                      _( "Select the category to apply to the disk which will be added (even if the option is checked)."), NULL);
 	
 		/* Horizontal separator */
 		hseparator = gtk_hseparator_new ( );
@@ -270,14 +257,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_file = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_file), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_file, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Give the device file of the selected media."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_file, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_file,
+		                      _( "Give the device file of the selected media."), NULL);
 	
 		/* Device file information label */
-		g_strdup_to_gtk_text ( _( "Info : "), text_utf8);
-		lbl_device_file = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_file = gtk_label_new (_( "Info : "));
 		gtk_widget_ref ( lbl_device_file);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_INFO, lbl_device_file, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_file), lbl_device_file, FALSE, FALSE, 0);
@@ -287,14 +271,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gtk_widget_show ( hb_device_type);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_type, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_type), 5);
-		g_strdup_to_gtk_text ( _( "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_type, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_type,
+		                      _( "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."), NULL);
 	
 		/* Device type information label */
-		g_strdup_to_gtk_text ( _( "Type : "), text_utf8);
-		lbl_device_type = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_type = gtk_label_new (_( "Type : "));
 		gtk_widget_ref ( lbl_device_type);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_TYPE, lbl_device_type, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_type), lbl_device_type, FALSE, FALSE, 0);
@@ -304,14 +285,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_ismounted = gtk_hbox_new ( FALSE, 0);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_ismounted, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_ismounted), 5);
-		g_strdup_to_gtk_text ( _( "Display if the selected media is mounted or no."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_ismounted, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_ismounted,
+		                      _( "Display if the selected media is mounted or no."), NULL);
 	
 		/* Media mount state information label */
-		g_strdup_to_gtk_text ( _( "Mounted : "), text_utf8);
-		lbl_device_ismounted = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_ismounted = gtk_label_new (_( "Mounted : "));
 		gtk_widget_ref ( lbl_device_ismounted);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_MOUNTED, lbl_device_ismounted, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_ismounted), lbl_device_ismounted, FALSE, FALSE, 0);
@@ -321,14 +299,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_volume_name = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_volume_name), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_volume_name, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Give the volume name of the selected media (only if is mounted)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_volume_name, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_volume_name,
+		                      _( "Give the volume name of the selected media (only if is mounted)."), NULL);
 	
 		/* Media volume information label */
-		g_strdup_to_gtk_text ( _( "Volume : "), text_utf8);
-		lbl_device_volume_name = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_volume_name = gtk_label_new (_( "Volume : "));
 		gtk_widget_ref ( lbl_device_volume_name);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_VOLUME, lbl_device_volume_name, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_volume_name), lbl_device_volume_name, FALSE, FALSE, 0);
@@ -337,14 +312,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_serial_number = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_serial_number), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_serial_number, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Give the serial number of the selected media (only if is mounted). This number is a manufacture number."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_serial_number, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_serial_number,
+		                      _( "Give the serial number of the selected media (only if is mounted). This number is a manufacture number."), NULL);
 	
 		/* Media serial number information label */
-		g_strdup_to_gtk_text ( _( "Serial N# : "), text_utf8);
-		lbl_device_serial_number = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_serial_number = gtk_label_new (_( "Serial N# : "));
 		gtk_widget_ref ( lbl_device_serial_number);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_SERIAL_NUMBER, lbl_device_serial_number, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_serial_number), lbl_device_serial_number, FALSE, FALSE, 0);
@@ -353,14 +325,11 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_capacity = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_capacity), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_capacity, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Give the full space of the selected media (only if is mounted)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_capacity, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_capacity,
+		                      _( "Give the full space of the selected media (only if is mounted)."), NULL);
 	
 		/* Media capacity information label */
-		g_strdup_to_gtk_text ( _( "Capacity : "), text_utf8);
-		lbl_device_capacity = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_capacity = gtk_label_new (_( "Capacity : "));
 		gtk_widget_ref ( lbl_device_capacity);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_CAPACITY, lbl_device_capacity, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_capacity), lbl_device_capacity, FALSE, FALSE, 0);
@@ -369,22 +338,17 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_free_space = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_free_space), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_free_space, TRUE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Give the free space of the selected media (only if is mounted)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_free_space, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, hb_device_free_space,
+		                      _( "Give the free space of the selected media (only if is mounted)."), NULL);
 	
 		/* Media free space information label */
-		g_strdup_to_gtk_text ( _( "Free space : "), text_utf8);
-		lbl_device_free_space = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_device_free_space = gtk_label_new (_( "Free space : "));
 		gtk_widget_ref ( lbl_device_free_space);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_FREE_SPACE, lbl_device_free_space, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_free_space), lbl_device_free_space, FALSE, FALSE, 0);
 	
 		/* Frame for scan options */
-		g_strdup_to_gtk_text ( _( "Options"), text_utf8);
-		frm_options = gtk_frame_new ( text_utf8);
-		g_free ( text_utf8);
+		frm_options = gtk_frame_new (_( "Options"));
 		gtk_container_set_border_width ( GTK_CONTAINER ( frm_options), 10);
 		gtk_box_pack_start ( GTK_BOX ( hb_control), frm_options, TRUE, TRUE, 0);
 	
@@ -393,128 +357,99 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gtk_container_add ( GTK_CONTAINER ( frm_options), vb_options);
 	
 		/* Check button for the displaying of media information */
-		g_strdup_to_gtk_text ( _( "Display info"), text_utf8);
-		chk_display_device_info = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_display_device_info = gtk_check_button_new_with_label (_( "Display info"));
 		gtk_widget_ref ( chk_display_device_info);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO, chk_display_device_info, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_display_device_info), "clicked", GTK_SIGNAL_FUNC ( gw_notebook_managment_refresh_info), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_display_device_info), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_display_device_info, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Displays selected media informations as path, capacity, free space, label,..."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_display_device_info, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_display_device_info,
+		                      _( "Displays selected media informations as path, capacity, free space, label,..."), NULL);
 
 #ifdef HAVE_MOUNT_SYSTEM
 		/* Check button for the automount */
-		g_strdup_to_gtk_text ( _("Automount"), text_utf8);
-		chk_automount_device = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_automount_device = gtk_check_button_new_with_label (_("Automount"));
 		gtk_widget_ref ( chk_automount_device);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT, chk_automount_device, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_automount_device), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_automount_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_automount_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_automount_device, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Mount the media if it wasn't mounted. And unmount after the media even if it was mounted before the scan."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_automount_device, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_automount_device,
+		                      _( "Mount the media if it wasn't mounted. And unmount after the media even if it was mounted before the scan."), NULL);
 #endif
 	
 		/* Check button for the exploring of tree structure */
-		g_strdup_to_gtk_text ( _( "Explore tree structure of the media."), text_utf8);
-		chk_explore_tree_structure = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_explore_tree_structure = gtk_check_button_new_with_label (_( "Explore tree structure of the media."));
 		gtk_widget_ref ( chk_explore_tree_structure);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE, chk_explore_tree_structure, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_explore_tree_structure), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_explore_tree_structure_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_tree_structure), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_tree_structure, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Keep this option checked to scan all folders and files informations."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_explore_tree_structure, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_explore_tree_structure,
+		                      _( "Keep this option checked to scan all folders and files informations."), NULL);
 
 		/* Check button for the exploring of archive files */
-		g_strdup_to_gtk_text ( _( "Explore archive files (.tar, .gz, .zip, ...)"), text_utf8);
-		chk_explore_archive_files = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_explore_archive_files = gtk_check_button_new_with_label (_( "Explore archive files (.tar, .gz, .zip, ...)"));
 		gtk_widget_ref ( chk_explore_archive_files);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE, chk_explore_archive_files, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_explore_archive_files), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_explore_archive_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_archive_files), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_archive_files, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Not yet implemented!!\nExplore all archives, as it was a directory. Archives are tarred or gzipped files."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_explore_archive_files, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_explore_archive_files,
+		                      _( "Not yet implemented!!\nExplore all archives, as it was a directory. Archives are tarred or gzipped files."), NULL);
 	
 		/* Check button for the auto eject */
-		g_strdup_to_gtk_text ( _( "Eject media if possible"), text_utf8);
-		chk_auto_eject_device = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_auto_eject_device = gtk_check_button_new_with_label (_( "Eject media if possible"));
 		gtk_widget_ref ( chk_auto_eject_device);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT, chk_auto_eject_device, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_auto_eject_device), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_eject_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_eject_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_eject_device, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Eject the media if possible (CD-ROM...), even if the tray was closed. This is enable only if automount is enable!!"), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_auto_eject_device, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_auto_eject_device,
+		                      _( "Eject the media if possible (CD-ROM...), even if the tray was closed. This is enable only if automount is enable!!"), NULL);
 	
 		/* Check button for setting category recursively */
-		g_strdup_to_gtk_text ( _( "Sets category recursive"), text_utf8);
-		chk_category_recursively = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_category_recursively = gtk_check_button_new_with_label (_( "Sets category recursive"));
 		gtk_widget_ref ( chk_category_recursively);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE, chk_category_recursively, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_category_recursively), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_category_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_category_recursively), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_category_recursively, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Apply selected category to all items in the disk to add (disk, folders and files)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_category_recursively, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_category_recursively,
+		                      _( "Apply selected category to all items in the disk to add (disk, folders and files)."), NULL);
 	
 		/* Check button for the auto make description */
-		g_strdup_to_gtk_text ( _( "Auto make description"), text_utf8);
-		chk_auto_make_description = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_auto_make_description = gtk_check_button_new_with_label (_( "Auto make description"));
 		gtk_widget_ref ( chk_auto_make_description);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION, chk_auto_make_description, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_auto_make_description), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_description_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_make_description), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_make_description, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "Make auto description of file (file format description, image size for xmp or jpg, etc...)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_auto_make_description, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_auto_make_description,
+		                      _( "Make auto description of file (file format description, image size for xmp or jpg, etc...)."), NULL);
 	
 		/* Check button for the using a pattern to generate disk name */
-		g_strdup_to_gtk_text ( _( "Use an advanced pattern to generate disk name"), text_utf8);
-		chk_use_pattern = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_use_pattern = gtk_check_button_new_with_label (_( "Use an advanced pattern to generate disk name"));
 		gtk_widget_ref ( chk_use_pattern);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN, chk_use_pattern, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_use_pattern), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_use_pattern_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_pattern), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_pattern, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "You can fill extra tags to generate a disk name with disk information :\n- %% : %\n- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, 0002, 0003, ..., 0091, ...\n- %l : media volume label\n- %t : media type\n- %s : serial number"), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_use_pattern, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_use_pattern,
+		                      _( "You can fill extra tags to generate a disk name with disk information :\n- %% : %\n- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, 0002, 0003, ..., 0091, ...\n- %l : media volume label\n- %t : media type\n- %s : serial number"), NULL);
 
 		/* Check button for the using media label */
-		g_strdup_to_gtk_text ( _( "Use media volume name as disk name (only when disk name is empty)"), text_utf8);
-		chk_use_disk_label = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_use_disk_label = gtk_check_button_new_with_label (_( "Use media volume name as disk name (only when disk name is empty)"));
 		gtk_widget_ref ( chk_use_disk_label);
 		gtk_object_set_data_full ( GTK_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL, chk_use_disk_label, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( chk_use_disk_label), "clicked", GTK_SIGNAL_FUNC (gw_notebook_managment_option_use_disk_label_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_disk_label), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_disk_label, FALSE, FALSE, 0);
-		g_strdup_to_gtk_text ( _( "If you didn't enter disk name and if your selected media has a volume name, the media volume name will be applied as disk name."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips_group, chk_use_disk_label, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips_group, chk_use_disk_label,
+		                      _( "If you didn't enter disk name and if your selected media has a volume name, the media volume name will be applied as disk name."), NULL);
 
 		/* The add disk button to start the media scanning */
-		g_strdup_to_gtk_text ( _( "Add disk"), text_utf8);
-		bt_start_device_scan = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		bt_start_device_scan = gtk_button_new_with_label (_( "Add disk"));
 		gtk_signal_connect ( GTK_OBJECT ( bt_start_device_scan), "clicked", GTK_SIGNAL_FUNC ( gw_notebook_managment_scan_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( bt_start_device_scan), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), bt_start_device_scan, FALSE, FALSE, 0);
@@ -542,8 +477,6 @@ GtkWidget * gw_notebook_managment_create_and_add ( GtkWindow *window, GtkNoteboo
 {
 	GtkWidget *tabbed_pane = NULL;
 	GtkWidget *managment_tabbed_pane_label;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -558,9 +491,7 @@ GtkWidget * gw_notebook_managment_create_and_add ( GtkWindow *window, GtkNoteboo
 			gtk_container_add ( GTK_CONTAINER ( parent), tabbed_pane);
 
 			/* Text label of the managment tabbed pane. */
-			g_strdup_to_gtk_text ( _( "Management"), text_utf8);
-			managment_tabbed_pane_label = gtk_label_new ( text_utf8);
-			g_free ( text_utf8);
+			managment_tabbed_pane_label = gtk_label_new (_( "Management"));
 
 			/* Store reference to the title of tabbed pane */
 			gtk_widget_ref ( managment_tabbed_pane_label);
@@ -588,9 +519,7 @@ gint gw_notebook_managment_set_device_dir ( GtkWindow *w, gchar *device_dir)
 gint gw_notebook_managment_set_device_name ( GtkWindow *w, gchar *device_name)
 {
 	GtkEntry *ent = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -600,10 +529,7 @@ gint gw_notebook_managment_set_device_name ( GtkWindow *w, gchar *device_name)
 	{
 		if ( (ent = gtk_object_get_data ( GTK_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME)) != NULL)
 		{
-			g_strdup_to_gtk_text ( device_name, text_utf8);
-			gtk_entry_set_text ( ent, text_utf8);
-			g_free ( text_utf8);
-
+			gtk_entry_set_text ( ent, device_name);
 			result = 0;
 		}
 	}
@@ -615,9 +541,7 @@ gint gw_notebook_managment_set_device_name ( GtkWindow *w, gchar *device_name)
 gint gw_notebook_managment_set_device_number ( GtkWindow *w, gchar *device_number)
 {
 	GtkEntry *ent = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -627,10 +551,7 @@ gint gw_notebook_managment_set_device_number ( GtkWindow *w, gchar *device_numbe
 	{
 		if ( (ent = gtk_object_get_data ( GTK_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE)) != NULL)
 		{
-			g_strdup_to_gtk_text ( device_number, text_utf8);
-			gtk_entry_set_text ( ent, text_utf8);
-			g_free ( text_utf8);
-
+			gtk_entry_set_text ( ent, device_number);
 			result = 0;
 		}
 	}

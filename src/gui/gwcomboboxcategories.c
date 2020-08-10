@@ -31,8 +31,6 @@
 
 GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog) {
 	GtkWidget *hb, *lbl, *cmb;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -44,9 +42,7 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
 
 	/* Title label for categories */
 	if ( title != NULL ) {
-		g_strdup_to_gtk_text ( title, text_utf8);
-		lbl = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl = gtk_label_new (title);
 		gtk_box_pack_start ( GTK_BOX ( hb), lbl, FALSE, FALSE, 0);
 	}
 
@@ -66,10 +62,8 @@ gint gw_combo_box_categories_load ( GtkHBox *cbc) {
 	GList *categories = NULL;
 	GList *glist = NULL;
 	GtkCombo *cmb = NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
 	gint i = 0;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -96,10 +90,7 @@ gint gw_combo_box_categories_load ( GtkHBox *cbc) {
 			}
 
 			if ( categories != NULL ) {
-				g_strdup_to_gtk_text ( g_list_first ( categories)->data, text_utf8);
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), text_utf8);
-
-				g_free ( text_utf8);
+				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), g_list_first (categories)->data);
 
 				result = 0;
 			} else {
@@ -136,7 +127,6 @@ gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryP
 	GList *categories = NULL;
 	GList *selection = NULL;
 	GtkCombo *cmb;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
 	gint i = 0;
 
@@ -149,9 +139,7 @@ gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryP
 		if ( (categories = gw_combo_box_categories_get_categories ( cbc)) != NULL ) {
 			if ( (selection = g_list_find_custom ( categories, ref, (GCompareFunc)category_ref_cmp)) != NULL ) {
 				cmb = gw_combo_box_categories_get_combo ( cbc);
-				g_strdup_to_gtk_text ( gw_db_category_get_name ( selection->data), text_utf8);
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), text_utf8);
-				g_free ( text_utf8);
+				gtk_entry_set_text (GTK_ENTRY (cmb->entry), gw_db_category_get_name (selection->data));
 
 				result = 0;
 			}
@@ -184,7 +172,6 @@ gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *n
 	GList *categories = NULL;
 	GList *selection = NULL;
 	GtkCombo *cmb;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
 	gint i = 0;
 
@@ -197,9 +184,7 @@ gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *n
 		if ( (categories = gw_combo_box_categories_get_categories ( cbc)) != NULL ) {
 			if ( (selection = g_list_find_custom ( categories, name, (GCompareFunc)category_name_cmp)) != NULL ) {
 				cmb = gw_combo_box_categories_get_combo ( cbc);
-				g_strdup_to_gtk_text ( g_list_first ( selection)->data, text_utf8);
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), text_utf8);
-				g_free ( text_utf8);
+				gtk_entry_set_text (GTK_ENTRY (cmb->entry), g_list_first (selection)->data);
 
 				result = 0;
 			}

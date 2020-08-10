@@ -49,15 +49,13 @@ void gtk_text_area_clear ( GtkTextArea *text)
 /* Insert text in a GtkTextArea */
 void gtk_text_area_insert ( GtkTextArea *text, const gchar *words)
 {
-	gchar *text_utf8 = NULL;
 	GtkTextBuffer *buffer;
 	GtkTextIter end;
 
 	if ( text != NULL ) {
-		g_strdup_to_gtk_text ( words, text_utf8);
 		buffer = gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( text));
 		gtk_text_buffer_get_end_iter ( buffer, &end);
-		gtk_text_buffer_insert ( buffer, &end, text_utf8, -1);
+		gtk_text_buffer_insert ( buffer, &end, words, -1);
 	}
 	return;
 }
@@ -65,7 +63,7 @@ void gtk_text_area_insert ( GtkTextArea *text, const gchar *words)
 
 /* Get text in a GtkTextArea */
 gchar * gtk_text_area_get_text ( GtkTextArea *text) {
-	gchar *words = NULL, *text_utf8 = NULL;
+	gchar *words = NULL;
 	GtkTextBuffer *buffer;
 	GtkTextIter start;
 	GtkTextIter end;
@@ -74,14 +72,8 @@ gchar * gtk_text_area_get_text ( GtkTextArea *text) {
 		buffer = gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( text));
 		gtk_text_buffer_get_start_iter ( buffer, &start);
 		gtk_text_buffer_get_end_iter ( buffer, &end);
-		text_utf8 = gtk_text_buffer_get_text ( buffer, &start, &end, TRUE);
+		words = gtk_text_buffer_get_text ( buffer, &start, &end, TRUE);
 	}
 	/* words must be free later with g_free() */
-	g_strdup_from_gtk_text ( text_utf8, words);
-
-	if ( text_utf8 != NULL ) {
-		g_free ( text_utf8);
-	}
-
 	return words;
 }

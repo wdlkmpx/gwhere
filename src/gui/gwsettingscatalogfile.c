@@ -96,7 +96,6 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 	gfloat level = GW_VALUE_APP_CATALOG_COMPRESSION_LEVEL_DEFAULT;
 	gfloat size = GW_VALUE_APP_RECENT_SIZE_DEFAULT;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
 	GtkWidget *radio_last = NULL;
 	GtkWidget *radio_selected = NULL;
 
@@ -117,9 +116,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Adds the compression level. */
-		g_strdup_to_gtk_text ( _( "Catalog compression level :"), text_utf8);
-		lbl_catalog_level_compression = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_catalog_level_compression = gtk_label_new (_( "Catalog compression level :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_catalog_level_compression, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_catalog_level_compression), 0, 0.5);
 
@@ -129,17 +126,14 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_COMPRESSION_LEVEL_ENTRY, spn_catalog_level_compression, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
-		g_strdup_to_gtk_text ( _( "Select the catalog compression level. The default value is 3, it's a good value between high performance and small size."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, spn_catalog_level_compression, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, spn_catalog_level_compression,
+		                      _( "Select the catalog compression level. The default value is 3, it's a good value between high performance and small size."), NULL);
 
 		gtk_table_attach ( GTK_TABLE ( table_pane), spn_catalog_level_compression, 1, 2, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 
 		/* Adds the history size. */
-		g_strdup_to_gtk_text ( _( "Recents opened catalogs :"), text_utf8);
-		lbl_catalog_history_size = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_catalog_history_size = gtk_label_new (_( "Recents opened catalogs :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_catalog_history_size, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_catalog_history_size), 0, 0.5);
 
@@ -149,45 +143,35 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_HISTORY_SIZE_ENTRY, spn_catalog_history_size, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
-		g_strdup_to_gtk_text ( _( "Select the size of recents opened catalogs history. The default value is 5."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, spn_catalog_history_size, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, spn_catalog_history_size,
+		                      _( "Select the size of recents opened catalogs history. The default value is 5."), NULL);
 
 		gtk_table_attach ( GTK_TABLE ( table_pane), spn_catalog_history_size, 1, 2, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the clear history. */
-		g_strdup_to_gtk_text ( _( "Clear history"), text_utf8);
-		btn_history_clear = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		btn_history_clear = gtk_button_new_with_label (_( "Clear history"));
 		gtk_signal_connect ( GTK_OBJECT ( btn_history_clear), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_clear_history_click, table_pane);
-		g_strdup_to_gtk_text ( _( "Click here to clear the recents opened files history."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btn_history_clear, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btn_history_clear,
+		                      _( "Click here to clear the recents opened files history."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_history_clear, 1, 2, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autload catalog option. */
-		g_strdup_to_gtk_text ( _( "Autoload catalog"), text_utf8);
-		chk_autoload = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_autoload = gtk_check_button_new_with_label (_( "Autoload catalog"));
 		gtk_widget_ref ( chk_autoload);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_CHK, chk_autoload, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "Autoloads a default catalog when at starting."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_autoload, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_autoload,
+		                      _( "Autoloads a default catalog when at starting."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoload, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_signal_connect ( GTK_OBJECT ( chk_autoload), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_autoload_catalog_click, table_pane);
 
 		/* Create the radio button group for autoload options. */
-		g_strdup_to_gtk_text ( _("Load last opened catalog file."), text_utf8);
-		radio_last = gtk_radio_button_new_with_label_from_widget ( NULL, text_utf8);
-		g_free ( text_utf8);
+		radio_last = gtk_radio_button_new_with_label_from_widget ( NULL, _("Load last opened catalog file."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), radio_last, 0, 1, 4, 5, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_ref ( radio_last);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_LAST_RADIO, radio_last, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( radio_last), FALSE);
-		g_strdup_to_gtk_text ( _("Load selected catalog file."), text_utf8);
-		radio_selected = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_last), text_utf8);
-		g_free ( text_utf8);
+		radio_selected = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_last),
+		                                                              _("Load selected catalog file."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), radio_selected, 0, 1, 5, 6, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_ref ( radio_selected);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_SELECTED_RADIO, radio_selected, (GtkDestroyNotify) gtk_widget_unref);
@@ -196,25 +180,19 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		entry_autoload_filepath = gtk_entry_new ( );
 		gtk_widget_ref ( entry_autoload_filepath);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_ENTRY, entry_autoload_filepath, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "Enter the full catalog file path to load."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, entry_autoload_filepath, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, entry_autoload_filepath,
+		                      _( "Enter the full catalog file path to load."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), entry_autoload_filepath, 1, 2, 5, 6, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( entry_autoload_filepath), FALSE);
 
 		/* Adds the select catalog file. */
-		g_strdup_to_gtk_text ( _( "Select catalog"), text_utf8);
-		btn_autoload = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		btn_autoload = gtk_button_new_with_label (_( "Select catalog"));
 		gtk_widget_ref ( btn_autoload);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_SELECT_BTN, btn_autoload, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_signal_connect ( GTK_OBJECT ( btn_autoload), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_select_catalog_click, table_pane);
-		g_strdup_to_gtk_text ( _( "Click here to browse and select the catalog file."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btn_autoload, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btn_autoload, _( "Click here to browse and select the catalog file."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_autoload, 1, 2, 6, 7, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_autoload), FALSE);
-
 
 		*pane = table_pane;
 		pane_settings_catalog_file = *pane;
@@ -248,8 +226,6 @@ gint gw_plugin_settings_catalog_file_pane_load ( GtkWidget *pane)
 	gfloat size = GW_VALUE_APP_RECENT_SIZE_DEFAULT;
 	gfloat autoload = 0;
 	gchar *value = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -407,9 +383,7 @@ gint gw_plugin_settings_catalog_file_pane_load ( GtkWidget *pane)
 #endif
 		}
 
-		g_strdup_to_gtk_text ( value, text_utf8);
-		gtk_entry_set_text ( entry_autoload_filepath, text_utf8);
-		g_free ( text_utf8);
+		gtk_entry_set_text ( entry_autoload_filepath, value);
 		entry_autoload_filepath = NULL;
 		value = NULL;
 
@@ -611,8 +585,7 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok ( GtkWidget *bt
 {
 	gint result = -1;
 	GtkEntry *entry_autoload_filepath = NULL;
-	gchar *text_utf8 = NULL;
-
+	const gchar * text;
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -620,9 +593,9 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok ( GtkWidget *bt
 
 	if ( fs != NULL)
 	{
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), text_utf8);
+		text = gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry));
 
-		if ( strcmp ( text_utf8, "") != 0 )
+		if ( strcmp (text, "") != 0 )
 		{
 			if ( (entry_autoload_filepath = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( pane_settings_catalog_file), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_ENTRY))) != NULL)
 			{
@@ -630,8 +603,6 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok ( GtkWidget *bt
 				result = 0;
 			}
 		}
-
-		g_free ( text_utf8);
 
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 	}

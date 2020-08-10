@@ -77,9 +77,6 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 	GtkWidget *scr_clist_visible;
 	GtkWidget *clist_visible;
 	GtkWidget *col_title_visible;
-	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -90,8 +87,6 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s() : Creating configuration pane...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-		tooltips = gtk_tooltips_new ( );
 
 		hbox = gtk_hbox_new ( FALSE, 0);
 		gtk_widget_ref ( GTK_WIDGET ( settings));
@@ -109,22 +104,16 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_visible), 0);
 		gtk_clist_column_titles_show (GTK_CLIST (clist_visible));
 
-		g_strdup_to_gtk_text ( _( "Visible"), text_utf8);
-		col_title_visible = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		col_title_visible = gtk_label_new (_( "Visible"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( clist_visible), 0, col_title_visible);
 
 		vbox_btn = gtk_vbox_new ( TRUE, 0);
 		gtk_box_pack_start ( GTK_BOX ( hbox), vbox_btn, TRUE, TRUE, 5);
 
-		g_strdup_to_gtk_text ( _( "Hide"), text_utf8);
-		btn_hidden = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		btn_hidden = gtk_button_new_with_label (_( "Hide"));
 		gtk_box_pack_start ( GTK_BOX ( vbox_btn), btn_hidden, FALSE, FALSE, 0);
 
-		g_strdup_to_gtk_text ( _( "Show"), text_utf8);
-		btn_show = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		btn_show = gtk_button_new_with_label (_( "Show"));
 		gtk_box_pack_start ( GTK_BOX ( vbox_btn), btn_show, FALSE, FALSE, 0);
 		
 		scr_clist_hidden = gtk_scrolled_window_new ( NULL, NULL);
@@ -138,9 +127,7 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_hidden), 0);
 		gtk_clist_column_titles_show ( GTK_CLIST ( clist_hidden));
 
-		g_strdup_to_gtk_text ( _( "Hidden"), text_utf8);
-		col_title_hidden = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		col_title_hidden = gtk_label_new (_( "Hidden"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( clist_hidden), 0, col_title_hidden);
 
 		*pane = hbox;

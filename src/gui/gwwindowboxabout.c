@@ -99,7 +99,6 @@ GtkWidget * gw_window_box_about_create ( GtkWindow *window)
 	GdkPixmap *pix_gw_logo = NULL;
 	GdkBitmap *msk_gw_logo = NULL;
         gchar * text = NULL;
-        gchar * text_utf8 = NULL;
         GdkCursor *cursor = NULL;
         gchar * os_version = NULL;
 
@@ -118,9 +117,7 @@ GtkWidget * gw_window_box_about_create ( GtkWindow *window)
                 gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
                 gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
                 gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
-                g_strdup_to_gtk_text ( _( "About"), text_utf8);
-                gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-                g_free ( text_utf8);
+                gtk_window_set_title ( GTK_WINDOW ( w), _( "About"));
 
                 gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gw_window_box_about_destroy), &w);
                 gtk_signal_connect ( GTK_OBJECT ( w), "delete-event", GTK_SIGNAL_FUNC ( gtk_widget_destroy), NULL);
@@ -159,11 +156,8 @@ GtkWidget * gw_window_box_about_create ( GtkWindow *window)
                 	g_free ( os_version);
                 }
 
-		g_strdup_to_gtk_text ( text, text_utf8);
+                label = gtk_label_new ( text);
                 g_free ( text);
-
-                label = gtk_label_new ( text_utf8);
-                g_free ( text_utf8);
                 gtk_label_set_justify ( GTK_LABEL ( label), GTK_JUSTIFY_FILL);
                 gtk_label_set_line_wrap ( GTK_LABEL ( label), TRUE);
                 gtk_container_add ( GTK_CONTAINER ( vbox_about), label);

@@ -46,7 +46,6 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 	GtkWidget *file_name;
 	GtkWidget *progress_bar	= NULL;
 	GtkWidget *button;
-	gchar *text_utf8 = NULL;
 
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -57,9 +56,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 	{
 		w = gtk_window_new ( GTK_WINDOW_DIALOG);
 		gtk_window_set_policy (	GTK_WINDOW ( w), FALSE,	FALSE, FALSE);
-		g_strdup_to_gtk_text ( title, text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w),	text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w),	title);
 		gtk_container_border_width ( GTK_CONTAINER ( w), 5);
 
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
@@ -80,18 +77,14 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 			gtk_signal_connect ( GTK_OBJECT	( w), "destroy", GTK_SIGNAL_FUNC ( gw_progress_bar_box_signal_do_nothing),	NULL);
 		}
 
-		g_strdup_to_gtk_text ( subject, text_utf8);
-		frame =	gtk_frame_new (	text_utf8);
-		g_free ( text_utf8);
+		frame =	gtk_frame_new (subject);
 		gtk_container_add ( GTK_CONTAINER ( w),	frame);
 
 		vbox = gtk_vbox_new ( FALSE, 0);
 		gtk_container_add ( GTK_CONTAINER ( frame), vbox);
 		gtk_container_set_border_width ( GTK_CONTAINER ( vbox),	10);
 
-		g_strdup_to_gtk_text ( text, text_utf8);
-		file_name = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		file_name = gtk_label_new ( text);
 
 		/* Store the reference to the text info	label to describe the current processing. */
 		gtk_widget_ref ( file_name);
@@ -115,9 +108,8 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 			gtk_progress_set_show_text ( GTK_PROGRESS ( progress_bar), TRUE);
 
 			/* Set the format string of progess state visualization	*/
-			g_strdup_to_gtk_text ( GW_PROGRESS_BAR_BOX_PROGRESS_BAR_FORMAT_STRING, text_utf8);
-			gtk_progress_set_format_string ( GTK_PROGRESS (	progress_bar), text_utf8);
-			g_free ( text_utf8);
+			gtk_progress_set_format_string ( GTK_PROGRESS (	progress_bar),
+			                                GW_PROGRESS_BAR_BOX_PROGRESS_BAR_FORMAT_STRING);
 			gtk_box_pack_start ( GTK_BOX ( vbox), progress_bar, TRUE, TRUE,	0);
 		}
 
@@ -273,9 +265,7 @@ gboolean gw_progress_bar_box_get_isok_state ( GtkWindow *w)
 gchar *	gw_progress_bar_box_get_text ( GtkWindow *w)
 {
 	GtkLabel *label	= NULL;
-	gchar *text = NULL;
-	gchar *text_utf8 = NULL;
-
+	const gchar *text = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print	( "*** GW - %s (%d) :: %s()\n",	__FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -285,12 +275,12 @@ gchar *	gw_progress_bar_box_get_text ( GtkWindow *w)
 	{
 		if ( (label = GTK_LABEL ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
 		{
-			gtk_label_get (	label, &text);
-			g_strdup_from_gtk_text ( text, text_utf8);
+			text = gtk_label_get_text (label);
 		}
 	}
 
-	return text_utf8;
+	if (text) return (g_strdup (text));
+	else return NULL;
 }
 
 
@@ -435,9 +425,7 @@ gint gw_progress_bar_box_set_percentage ( GtkWindow *w, gfloat percentage)
 gint gw_progress_bar_box_set_text ( GtkWindow *w, gchar *file_name)
 {
 	GtkLabel *label	= NULL;
-	gchar *text_utf8 = NULL;
 	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print	( "*** GW - %s (%d) :: %s()\n",	__FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -447,14 +435,10 @@ gint gw_progress_bar_box_set_text ( GtkWindow *w, gchar *file_name)
 	{
 		if ( (label = GTK_LABEL ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
 		{
-			g_strdup_to_gtk_text ( file_name, text_utf8);
-			gtk_label_set_text ( label, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( label, file_name);
 		}
-
 		result = 0;
 	}
-
 	return result;
 }
 

@@ -63,8 +63,6 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 	GtkWidget *btnCancel;
 	GtkWidget *btnSend;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -76,12 +74,9 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 	if ( !w )
 	{
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
-		g_strdup_to_gtk_text ( _( "This window box allows you to send a catalog by mail to one (or more) of yours contacts."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, GTK_WIDGET ( w), text_utf8, NULL);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( "Send mail"), text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, GTK_WIDGET ( w),
+		                      _( "This window box allows you to send a catalog by mail to one (or more) of yours contacts."), NULL);
+		gtk_window_set_title ( GTK_WINDOW ( w), _( "Send mail"));
 
 		gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
@@ -103,27 +98,19 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_table_set_col_spacings ( GTK_TABLE ( tblSendOptions), 5);
 
 
-		g_strdup_to_gtk_text ( _( "To :"), text_utf8);
-		lblTo = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lblTo = gtk_label_new ( _( "To :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblTo, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lblTo), 0, 0.5);
 
-		g_strdup_to_gtk_text ( _( "CC :"), text_utf8);
-		lblCC = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lblCC = gtk_label_new ( _( "CC :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblCC, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lblCC), 0, 0.5);
 
-		g_strdup_to_gtk_text ( _( "BCC :"), text_utf8);
-		lblBCC = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lblBCC = gtk_label_new ( _( "BCC :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblBCC, 0, 1, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lblBCC), 0, 0.5);
 
-		g_strdup_to_gtk_text ( _( "Subject :"), text_utf8);
-		lblObject = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lblObject = gtk_label_new ( _( "Subject :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblObject, 0, 1, 3, 4,(GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lblObject), 0, 0.5);
 
@@ -131,51 +118,41 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_widget_ref ( entTo);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY, entTo,(GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entTo, 1, 2, 0, 1,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter here the email address of your(s) contact(s)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, entTo, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, entTo,
+		                      _( "Enter here the email address of your(s) contact(s)."), NULL);
 
 		entCC = gtk_entry_new ( );
 		gtk_widget_ref ( entCC);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY, entCC,(GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach (GTK_TABLE (tblSendOptions), entCC, 1, 2, 1, 2,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL),(GtkAttachOptions) ( 0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter here the email address of the copied mail contacts."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, entCC, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, entCC,
+		                      _( "Enter here the email address of the copied mail contacts."), NULL);
 
 		entBCC = gtk_entry_new ( );
 		gtk_widget_ref ( entBCC);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY, entBCC, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entBCC, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter here the email address of the hidden copied mail contacts."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, entBCC, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, entBCC,
+		                      _( "Enter here the email address of the hidden copied mail contacts."), NULL);
 
 		entObject = gtk_entry_new ( );
 		gtk_widget_ref ( entObject);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY, entObject, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entObject, 1, 2, 3, 4, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		g_strdup_to_gtk_text ( _( "Enter here the object of your mail."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, entObject, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, entObject, _( "Enter here the object of your mail."), NULL);
 
-		g_strdup_to_gtk_text ( _( "Attached file :"), text_utf8);
-		lblAttachedFile = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lblAttachedFile = gtk_label_new ( _( "Attached file :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblAttachedFile, 0, 1, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lblAttachedFile), 0, 0.5);
 
 		if ( file_name != NULL )
 		{
-			g_strdup_to_gtk_text ( file_name, text_utf8);
-			chkBtnAttachedFile = gtk_check_button_new_with_label ( text_utf8);
-			g_free ( text_utf8);
+			chkBtnAttachedFile = gtk_check_button_new_with_label ( file_name);
 			gtk_widget_ref ( chkBtnAttachedFile);
 			gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK, chkBtnAttachedFile, (GtkDestroyNotify) gtk_widget_unref);
 			gtk_table_attach ( GTK_TABLE ( tblSendOptions), chkBtnAttachedFile, 1, 2, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-			g_strdup_to_gtk_text ( _( "Choose to attach or no the catalog file."), text_utf8);
-			gtk_tooltips_set_tip ( tooltips, chkBtnAttachedFile, text_utf8, NULL);
-			g_free ( text_utf8);
+			gtk_tooltips_set_tip ( tooltips, chkBtnAttachedFile,
+			                      _( "Choose to attach or no the catalog file."), NULL);
 			gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( chkBtnAttachedFile), TRUE);
 		}
 
@@ -188,9 +165,8 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA, txtMail, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_text_area_set_editable ( GTK_TEXT_AREA ( txtMail), TRUE);
 		gtk_container_add ( GTK_CONTAINER ( scrTextMail), txtMail);
-		g_strdup_to_gtk_text ( _( "Type here the text for the mail message."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, txtMail, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, txtMail,
+		                      _( "Type here the text for the mail message."), NULL);
 
 		/* The Send/Cancel button area */
 		hbSendMailControl = gtk_hbutton_box_new ( );
@@ -200,18 +176,16 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 		btnSend = gtk_button_new_with_mnemonic (_("_Send"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnSend, FALSE, TRUE, 0);
-		g_strdup_to_gtk_text ( _( "Click here to send a mail (with an attached catalog)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btnSend, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btnSend,
+		                      _( "Click here to send a mail (with an attached catalog)."), NULL);
 		gtk_signal_connect ( GTK_OBJECT ( btnSend), "clicked", GTK_SIGNAL_FUNC ( gw_mail_window_box_send_click), GTK_WINDOW ( w));
 
 		btnCancel = gtk_button_new_with_label (_("_Cancel"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnCancel, TRUE, TRUE, 0);
 		GTK_WIDGET_UNSET_FLAGS ( btnCancel, GTK_CAN_FOCUS);
-		g_strdup_to_gtk_text ( _( "Click here to cancel the send of a mail."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btnCancel, text_utf8, NULL);
+		gtk_tooltips_set_tip ( tooltips, btnCancel,
+		                      _( "Click here to cancel the send of a mail."), NULL);
 		gtk_signal_connect_object ( GTK_OBJECT ( btnCancel), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
-		g_free ( text_utf8);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

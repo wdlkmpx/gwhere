@@ -31,8 +31,6 @@ GtkMenu * gw_menu_popup_create ( GtkWindow *w)
 {
 	GtkWidget *menu = NULL;
 	GtkWidget *menuitem = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -40,42 +38,30 @@ GtkMenu * gw_menu_popup_create ( GtkWindow *w)
 
 	menu = gtk_menu_new ( );
 
-	g_strdup_to_gtk_text ( _( "New"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_("New"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_new_click, w);
 
-	g_strdup_to_gtk_text ( _( "Open"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_("Open"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_open_click, w);
 
-	g_strdup_to_gtk_text ( _( "Save"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Save"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_save_click, w);
 
-	g_strdup_to_gtk_text ( _( "Save as"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_("Save as"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_saveas_click, w);
 
-	g_strdup_to_gtk_text ( _( "Close"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_("Close"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_close_click, w);
 
 	menuitem = gtk_menu_item_new ( );
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-	g_strdup_to_gtk_text ( _( "Exit"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_("Exit"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_exit_click, w);
 
@@ -108,77 +94,55 @@ GtkMenu * gw_menu_popup_catalog_create ( GtkCTreeNode *node, GtkWindow *w)
 {
 	GtkWidget *menu = NULL;
 	GtkWidget *menuitem = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	menu = gtk_menu_new ( );
-	g_strdup_to_gtk_text ( _( "Rename"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Rename"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_rename, node);
 
-/*	g_strdup_to_gtk_text ( _( "Add new disk"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+/*	menuitem = gtk_menu_item_new_with_label (_("Add new disk"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_add_new_disk, node);
 */
-	g_strdup_to_gtk_text ( _( "Edit description"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Edit description"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_edit_description, node);
 
-	g_strdup_to_gtk_text ( _( "Edit categories"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Edit categories"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_edit_categories, node);
 
 	menuitem = gtk_menu_item_new ( );
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-	g_strdup_to_gtk_text ( _( "New"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "New"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_new_click, w);
 
-	g_strdup_to_gtk_text ( _( "Open"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Open"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_open_click, w);
 
-	g_strdup_to_gtk_text ( _( "Save"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Save"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_save_click, w);
 
-	g_strdup_to_gtk_text ( _( "Save as"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Save as"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_saveas_click, w);
 
-	g_strdup_to_gtk_text ( _( "Close"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Close"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_file_close_click, w);
 
 	menuitem = gtk_menu_item_new ( );
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-	g_strdup_to_gtk_text ( _( "Properties"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Properties"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_catalog_properties, node);
 
@@ -211,50 +175,36 @@ GtkMenu * gw_menu_popup_disk_create ( GtkCTreeNode *node, GtkWindow *w)
 {
 	GtkWidget *menu = NULL;
 	GtkWidget *menuitem = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	menu = gtk_menu_new ( );
-	g_strdup_to_gtk_text ( _( "Move To..."), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Move To..."));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_move_to, node);
 
-	g_strdup_to_gtk_text ( _( "Rename"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Rename"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_rename, node);
 
-	g_strdup_to_gtk_text ( _( "Delete disk"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Delete disk"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_delete, node);
 
-	g_strdup_to_gtk_text ( _( "Change volume label"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Change volume label"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_change_volume_label, node);
 
-	g_strdup_to_gtk_text ( _( "Edit description"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Edit description"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_edit_description, node);
 
 	menuitem = gtk_menu_item_new ( );
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-	g_strdup_to_gtk_text ( _( "Properties"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Properties"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_disk_properties, node);
 
@@ -287,44 +237,32 @@ GtkMenu * gw_menu_popup_dir_create ( GtkCTreeNode *node, GtkWindow *w)
 {
 	GtkWidget *menu = NULL;
 	GtkWidget *menuitem = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	menu = gtk_menu_new ( );
-	g_strdup_to_gtk_text ( _( "Move To..."), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Move To..."));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_folder_move_to, node);
 
-	g_strdup_to_gtk_text ( _( "Rename"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Rename"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_folder_rename, node);
 
-	g_strdup_to_gtk_text ( _( "Edit description"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Edit description"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_folder_edit_description, node);
 
-	g_strdup_to_gtk_text ( _( "Remove from catalog"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Remove from catalog"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_folder_remove, node);
 
 	menuitem = gtk_menu_item_new ( );
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-	g_strdup_to_gtk_text ( _( "Properties"), text_utf8);
-	menuitem = gtk_menu_item_new_with_label ( text_utf8);
-	g_free ( text_utf8);
+	menuitem = gtk_menu_item_new_with_label (_( "Properties"));
 	gtk_menu_append ( GTK_MENU ( menu), menuitem);
 	gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_folder_properties, node);
 
@@ -357,8 +295,6 @@ GtkMenu * gw_menu_popup_file_create ( gpointer row, GtkWindow *w)
 {
 	GtkWidget *menu = NULL;
 	GtkWidget *menuitem = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -370,30 +306,22 @@ GtkMenu * gw_menu_popup_file_create ( gpointer row, GtkWindow *w)
 
 		if ( (menu != NULL) && (GPOINTER_TO_UINT ( row) >= 0) )
 		{
-			g_strdup_to_gtk_text ( _( "Rename"), text_utf8);
-			menuitem = gtk_menu_item_new_with_label ( text_utf8);
-			g_free ( text_utf8);
+			menuitem = gtk_menu_item_new_with_label (_( "Rename"));
 			gtk_menu_append ( GTK_MENU ( menu), menuitem);
 			gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_file_rename, row);
 
-			g_strdup_to_gtk_text ( _( "Edit description"), text_utf8);
-			menuitem = gtk_menu_item_new_with_label ( text_utf8);
-			g_free ( text_utf8);
+			menuitem = gtk_menu_item_new_with_label (_( "Edit description"));
 			gtk_menu_append ( GTK_MENU ( menu), menuitem);
 			gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_file_edit_description, row);
 
-			g_strdup_to_gtk_text ( _( "Remove from catalog"), text_utf8);
-			menuitem = gtk_menu_item_new_with_label ( text_utf8);
-			g_free ( text_utf8);
+			menuitem = gtk_menu_item_new_with_label (_( "Remove from catalog"));
 			gtk_menu_append ( GTK_MENU ( menu), menuitem);
 			gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_file_remove, row);
 
 			menuitem = gtk_menu_item_new ( );
 			gtk_menu_append ( GTK_MENU ( menu), menuitem);
 
-			g_strdup_to_gtk_text ( _( "Properties"), text_utf8);
-			menuitem = gtk_menu_item_new_with_label ( text_utf8);
-			g_free ( text_utf8);
+			menuitem = gtk_menu_item_new_with_label (_( "Properties"));
 			gtk_menu_append ( GTK_MENU ( menu), menuitem);
 			gtk_signal_connect ( GTK_OBJECT ( menuitem), "activate", (GtkSignalFunc)gw_menu_popup_file_properties, row);
 		}

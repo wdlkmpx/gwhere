@@ -32,8 +32,6 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 	/*static */GtkWidget *w = NULL;
 	GtkWidget *label;
 	GtkWidget *button;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -59,13 +57,9 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		gtk_container_set_border_width ( GTK_CONTAINER ( w), 10);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
 
-		g_strdup_to_gtk_text ( title, text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), title);
 
-		g_strdup_to_gtk_text ( text, text_utf8);
-		label = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		label = gtk_label_new (text);
 		gtk_misc_set_padding ( GTK_MISC ( label), 10, 10);
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->vbox), label, TRUE, TRUE, 0);
 

@@ -61,7 +61,6 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 	GtkWidget *btn_cancel;
 	GtkWidget *btn_apply;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -72,13 +71,10 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 	if ( !settings_window_box )
 	{
 		settings_window_box = gtk_window_new ( GTK_WINDOW_DIALOG);
-		g_strdup_to_gtk_text ( _( "This Settings box allows to configure some functionnalities and properties of the program."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, settings_window_box, text_utf8, NULL);
-		g_free ( text_utf8);
-		g_strdup_to_gtk_text ( _( "Settings"), text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( settings_window_box), text_utf8);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, settings_window_box,
+		                      _( "This Settings box allows to configure some functionnalities and properties of the program."), NULL);
 
+		gtk_window_set_title ( GTK_WINDOW ( settings_window_box), _( "Settings"));
 		gtk_window_set_modal ( GTK_WINDOW ( settings_window_box), TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( settings_window_box), window);
 		gtk_window_set_position ( GTK_WINDOW ( settings_window_box), GTK_WIN_POS_CENTER);
@@ -107,13 +103,9 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CTREE, ctree_settings, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_paned_pack1 ( GTK_PANED ( hp_settings), ctree_settings, FALSE, TRUE);
 		gtk_container_set_border_width ( GTK_CONTAINER ( ctree_settings), 5);
-		g_strdup_to_gtk_text ( _( "Select the section to configure."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, ctree_settings, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, ctree_settings, _( "Select the section to configure."), NULL);
 
-		g_strdup_to_gtk_text ( _( "Settings"), text_utf8);
-		lbl_settings = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		lbl_settings = gtk_label_new (_( "Settings"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( ctree_settings), 0, lbl_settings);
 
 		notebook_settings = gtk_notebook_new ( );
@@ -121,9 +113,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_NOTEBOOK, notebook_settings, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_paned_pack2 ( GTK_PANED ( hp_settings), notebook_settings, TRUE, TRUE);
 		GTK_WIDGET_UNSET_FLAGS ( notebook_settings, GTK_CAN_FOCUS);
-		g_strdup_to_gtk_text ( _( "Change in this pane all availables properties in order to configure the program as you want."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, notebook_settings, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, notebook_settings,
+		                      _( "Change in this pane all availables properties in order to configure the program as you want."), NULL);
 		gtk_notebook_set_show_tabs ( GTK_NOTEBOOK ( notebook_settings), FALSE);
 		gtk_notebook_set_show_border ( GTK_NOTEBOOK ( notebook_settings), FALSE);
 		gtk_notebook_set_scrollable ( GTK_NOTEBOOK ( notebook_settings), TRUE);
@@ -132,9 +123,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		home_notebook_page = gtk_vbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( home_notebook_page), 5);
 		gtk_container_add ( GTK_CONTAINER ( notebook_settings), home_notebook_page);
-		g_strdup_to_gtk_text ( _( "This settings windows box allows to configure the program. Some properties may be modified here."), text_utf8);
-		text_home_notebook_page = gtk_label_new ( text_utf8);
-		g_free ( text_utf8);
+		text_home_notebook_page = gtk_label_new (_( "This settings windows box allows to configure the program. Some properties may be modified here."));
 		gtk_label_set_justify ( GTK_LABEL ( text_home_notebook_page), GTK_JUSTIFY_FILL);
 		gtk_label_set_line_wrap ( GTK_LABEL ( text_home_notebook_page), TRUE);
 		gtk_container_add ( GTK_CONTAINER ( home_notebook_page), text_home_notebook_page);
@@ -153,9 +142,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_widget_ref ( btn_ok);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_OK_BTN, btn_ok, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_ok, TRUE, TRUE, 10);
-		g_strdup_to_gtk_text ( _( "Click on OK button to apply changes and close the Settings box."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btn_ok, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btn_ok,
+		                      _( "Click on OK button to apply changes and close the Settings box."), NULL);
 		GTK_WIDGET_SET_FLAGS ( btn_ok, GTK_CAN_FOCUS);
 		GTK_WIDGET_SET_FLAGS ( btn_ok, GTK_CAN_DEFAULT);
 		gtk_widget_grab_default ( btn_ok);
@@ -164,18 +152,16 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_widget_ref ( btn_cancel);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN, btn_cancel, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_cancel, TRUE, TRUE, 10);
-		g_strdup_to_gtk_text ( _( "Click on Cancel button to cancel changes and close the Settings box."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btn_cancel, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btn_cancel,
+		                      _( "Click on Cancel button to cancel changes and close the Settings box."), NULL);
 		GTK_WIDGET_SET_FLAGS ( btn_cancel, GTK_CAN_FOCUS);
 
 		btn_apply = gtk_button_new_with_mnemonic (_("_Apply"));
 		gtk_widget_ref ( btn_apply);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN, btn_apply, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_apply, TRUE, TRUE, 10);
-		g_strdup_to_gtk_text ( _( "Click on Apply button to apply changes (without close the Settings box)."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, btn_apply, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, btn_apply,
+		                      _( "Click on Apply button to apply changes (without close the Settings box)."), NULL);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_apply), FALSE);
 		GTK_WIDGET_SET_FLAGS ( btn_apply, GTK_CAN_FOCUS);
 
@@ -230,8 +216,6 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 	GtkWidget *frm_section_notebook_page = NULL;
 	GWSettingsModule *modules[6];
 	gint i, j;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -295,11 +279,10 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 				gtk_object_set_data ( GTK_OBJECT ( notebook_settings), g_strdup_printf ( "%d", i), modules[i]);
 
 				/* Creates a new entry in the settings module tree explorer. */
-				g_strdup_to_gtk_text ( modules[i]->name, text_utf8);
-				parent_settings_node = settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), NULL, NULL, &text_utf8, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
+				parent_settings_node = settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), NULL, NULL,
+				                                           &modules[i]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
 
-				frm_section_notebook_page = gtk_frame_new ( text_utf8);
-				g_free ( text_utf8);
+				frm_section_notebook_page = gtk_frame_new (modules[i]->name);
 				gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
 				gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->pane);
 
@@ -331,11 +314,10 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 							gtk_object_set_data ( GTK_OBJECT ( notebook_settings), g_strdup_printf ( "%d", j), modules[i]->child[j]);
 			
 							/* Creates a new entry in the settings module tree explorer. */
-							g_strdup_to_gtk_text ( modules[i]->child[j]->name, text_utf8);
-							settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), parent_settings_node, NULL, &text_utf8, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
+							settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), parent_settings_node, NULL,
+							                                       &modules[i]->child[j]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
 			
-							frm_section_notebook_page = gtk_frame_new ( text_utf8);
-							g_free ( text_utf8);
+							frm_section_notebook_page = gtk_frame_new (modules[i]->child[j]->name);
 							gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
 							gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->child[j]->pane);
 			

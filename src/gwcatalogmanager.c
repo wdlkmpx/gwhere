@@ -165,7 +165,7 @@ gint gw_cm_load_disk_node ( GtkCTree *ctree, GtkCTreeNode *parent, GWDBDisk *dis
 gint gw_cm_load ( GWDBContext *context) {
 	gint result = -1;
 	GtkCList *clist;
-	gchar *tmp_text = NULL, *text_utf8 = NULL;
+	gchar *tmp_text = NULL;
 	gchar *text[1];
 	GWDBCatalog *catalog = NULL;
 	GWDBDisk **disks = NULL;
@@ -182,10 +182,8 @@ gint gw_cm_load ( GWDBContext *context) {
 
 	/* Sets the new window title */
 	tmp_text = g_strconcat ( PROJECT_NAME, " - ", gw_helper_db_catalog_get_full_name ( catalog), NULL);
-	g_strdup_to_gtk_text ( tmp_text, text_utf8);
+	gtk_window_set_title ( window, tmp_text);
 	g_free ( tmp_text);
-	gtk_window_set_title ( window, text_utf8);
-	g_free ( text_utf8);
 
 	/* Freezes the exploration tree */
 	clist = GTK_CLIST ( ctree);

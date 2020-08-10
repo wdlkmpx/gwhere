@@ -71,8 +71,6 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 	GtkWidget *chk_autosave;
 	GtkWidget *chk_beep;
 	GtkTooltips *tooltips;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -90,25 +88,19 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Adds the autosave GUI properties option. */
-		g_strdup_to_gtk_text ( _( "Save GUI properties on exit"), text_utf8);
-		chk_autosave = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_autosave = gtk_check_button_new_with_label (_( "Save GUI properties on exit"));
 		gtk_widget_ref ( chk_autosave);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK, chk_autosave, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "Save GUI properties as window position and size."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_autosave, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_autosave,
+		                      _( "Save GUI properties as window position and size."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autosave, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the allowing beep option. */
-		g_strdup_to_gtk_text ( _( "Allow beep"), text_utf8);
-		chk_beep = gtk_check_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		chk_beep = gtk_check_button_new_with_label (_( "Allow beep"));
 		gtk_widget_ref ( chk_beep);
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK, chk_beep, (GtkDestroyNotify) gtk_widget_unref);
-		g_strdup_to_gtk_text ( _( "Allows to emits a short beep on some event."), text_utf8);
-		gtk_tooltips_set_tip ( tooltips, chk_beep, text_utf8, NULL);
-		g_free ( text_utf8);
+		gtk_tooltips_set_tip ( tooltips, chk_beep,
+		                      _( "Allows to emits a short beep on some event."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_beep, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		*pane = table_pane;
@@ -132,7 +124,6 @@ gint gw_plugin_settings_gui_pane_load ( GtkWidget *pane)
 	gint result = -1;
 	GtkToggleButton *chk = NULL;
 	gfloat value = 0;
-
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);

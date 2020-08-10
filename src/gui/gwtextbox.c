@@ -41,7 +41,6 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 	GtkWidget *scroll_zone = NULL;
 	GtkWidget *txt_area = NULL;
 	GtkWidget *button = NULL;
-	gchar *text_utf8 = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -51,9 +50,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 	{
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
-		g_strdup_to_gtk_text ( title, text_utf8);
-		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
-		g_free ( text_utf8);
+		gtk_window_set_title ( GTK_WINDOW ( w), title);
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);

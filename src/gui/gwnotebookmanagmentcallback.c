@@ -46,8 +46,6 @@ gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
 	GtkCombo *cmb = NULL;
 	gint result = -1;
 	gchar *selected_device = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -75,10 +73,7 @@ gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
 					tmp = g_list_first ( devices);
 				} else {}
 
-				//FIXME Is it necessary to encode to UTF-8 ?
-				g_strdup_to_gtk_text ( tmp->data, text_utf8);
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), text_utf8);
-				g_free ( text_utf8);
+				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), tmp->data);
 
 				if ( devices != NULL ) {
 					g_list_foreach ( devices, (GFunc)g_free, NULL);
@@ -400,9 +395,8 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 	struct vfs_stats *vfs = NULL;
 	gint result = -1;
 	gchar *selected_device = NULL;
-	gchar *text_utf8 = NULL;
 	GtkCombo *cmb = NULL;
-
+	char *tempstr = NULL;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -417,41 +411,27 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 #endif
 
 			l = gw_notebook_managment_get_label_device_info ( w);
-			g_strdup_to_gtk_text ( _( "Info : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Info : "));
 
 			l = gw_notebook_managment_get_label_device_type ( w);
-			g_strdup_to_gtk_text ( _( "Type : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Type : "));
 
 #ifdef HAVE_MOUNT_SYSTEM
 			l = gw_notebook_managment_get_label_device_mounted ( w);
-			g_strdup_to_gtk_text ( _( "Mounted : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Mounted : "));
 #endif
 
 			l = gw_notebook_managment_get_label_device_volume ( w);
-			g_strdup_to_gtk_text ( _( "Volume : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Volume : "));
 
 			l = gw_notebook_managment_get_label_device_serial_number ( w);
-			g_strdup_to_gtk_text ( _( "Serial number : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Serial number : "));
 
 			l = gw_notebook_managment_get_label_device_capacity ( w);
-			g_strdup_to_gtk_text ( _( "Capacity : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Capacity : "));
 
 			l = gw_notebook_managment_get_label_device_free_space ( w);
-			g_strdup_to_gtk_text ( _( "Free space : "), text_utf8);
-			gtk_label_set_text ( l, text_utf8);
-			g_free ( text_utf8);
+			gtk_label_set_text ( l, _( "Free space : "));
 
 			result = 0;
 		} else {
@@ -479,10 +459,8 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 				text = g_strconcat ( _( "Info : "), disk_in_drive?vfs_stats_get_name ( vfs):_( "no drive"), NULL);
 				l = gw_notebook_managment_get_label_device_info ( w);
 
-				g_strdup_to_gtk_text ( text, text_utf8);
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 				if ( disk_in_drive ) {
 					msg = g_strdup ( vfs_stats_get_type ( vfs));
@@ -497,18 +475,14 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 				text = g_strconcat ( _( "Type : "), msg, NULL);
 				g_free ( msg);
 				l = gw_notebook_managment_get_label_device_type ( w);
-				g_strdup_to_gtk_text ( text, text_utf8);
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 #ifdef HAVE_MOUNT_SYSTEM
 				l = gw_notebook_managment_get_label_device_mounted ( w);
 				text = g_strconcat ( _( "Mounted : "), mounted?_( "Yes"):_( "No"), NULL);
-				g_strdup_to_gtk_text ( text, text_utf8);
-				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
+				gtk_label_set_text ( l, text);
+				g_free (text);
 #endif
 
 				if ( disk_in_drive ) {
@@ -522,39 +496,37 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 				l = gw_notebook_managment_get_label_device_volume ( w);
 				text = g_strconcat ( _( "Volume name : "), disk_in_drive?msg:_("no drive"), NULL);
 				g_free ( msg);
-				g_strdup_to_gtk_text ( text, text_utf8);
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 				l = gw_notebook_managment_get_label_device_serial_number ( w);
 				text = g_strconcat ( _( "Serial number : "), disk_in_drive?vfs_stats_get_serial_number ( vfs):_( "no drive"), NULL);
-				g_strdup_to_gtk_text ( text, text_utf8);
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 				l = gw_notebook_managment_get_label_device_capacity ( w);
-				text_utf8 = NULL;
-				text = g_strconcat ( _( "Capacity : "), disk_in_drive?(text_utf8 = gw_ui64_byte_to_str_format ( vfs_stats_get_total_capacity ( vfs))):_( "no drive"), NULL);
-				if ( text_utf8 != NULL ) {
-					g_free ( text_utf8);
+				tempstr = NULL;
+				if (disk_in_drive) {
+					tempstr = gw_ui64_byte_to_str_format ( vfs_stats_get_total_capacity ( vfs));
 				}
-				g_strdup_to_gtk_text ( text, text_utf8);
+				text = g_strconcat ( _( "Capacity : "), disk_in_drive ? tempstr : _( "no drive"), NULL);
+				if (tempstr) {
+					g_free (tempstr);
+				}
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 				l = gw_notebook_managment_get_label_device_free_space ( w);
-				text_utf8 = NULL;
-				text = g_strconcat ( _( "Free space : "), disk_in_drive?(text_utf8 = gw_ui64_byte_to_str_format ( vfs_stats_get_total_free_space ( vfs))):_( "no drive"), NULL);
-				if ( text_utf8 != NULL ) {
-					g_free ( text_utf8);
+				tempstr = NULL;
+				if (disk_in_drive) {
+					tempstr = gw_ui64_byte_to_str_format (vfs_stats_get_total_free_space (vfs));
 				}
-				g_strdup_to_gtk_text ( text, text_utf8);
+				text = g_strconcat ( _( "Free space : "), disk_in_drive ? tempstr : _( "no drive"), NULL);
+				if (tempstr != NULL ) {
+					g_free (tempstr);
+				}
+				gtk_label_set_text ( l, text);
 				g_free ( text);
-				gtk_label_set_text ( l, text_utf8);
-				g_free ( text_utf8);
 
 				result = 0;
 

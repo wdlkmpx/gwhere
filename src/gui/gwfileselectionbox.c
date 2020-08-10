@@ -32,8 +32,6 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 	static GtkWidget *w = NULL;
 	GtkWidget *button;
 	GtkWindow *window = NULL;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -43,14 +41,10 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 	{
 		window = gw_gui_manager_main_interface_get_main_window ( );
 
-		g_strdup_to_gtk_text ( title, text_utf8);
-		w = gtk_file_selection_new ( text_utf8);
-		g_free ( text_utf8);
+		w = gtk_file_selection_new (title);
 
 		if ( filename != NULL ) {
-			g_strdup_to_gtk_text ( filename, text_utf8);
-			gtk_file_selection_set_filename ( GTK_FILE_SELECTION ( w), text_utf8);
-			g_free ( text_utf8);
+			gtk_file_selection_set_filename ( GTK_FILE_SELECTION ( w), filename);
 		}
 
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
@@ -77,15 +71,11 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 			gtk_signal_connect_object ( GTK_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
-		g_strdup_to_gtk_text ( _( "Hide file operations"), text_utf8);
-		button = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		button = gtk_button_new_with_label (_( "Hide file operations"));
 		gtk_signal_connect ( GTK_OBJECT ( button), "clicked", (GtkSignalFunc) gw_file_selection_box_hide_fileops, (gpointer) w);
 		gtk_box_pack_start ( GTK_BOX ( GTK_FILE_SELECTION ( w)->action_area), button, FALSE, FALSE, 0);
 
-		g_strdup_to_gtk_text ( _( "Show file operation"), text_utf8);
-		button = gtk_button_new_with_label ( text_utf8);
-		g_free ( text_utf8);
+		button = gtk_button_new_with_label (_("Show file operation"));
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", (GtkSignalFunc) gtk_file_selection_show_fileop_buttons, (gpointer) w);
 		gtk_box_pack_start ( GTK_BOX ( GTK_FILE_SELECTION ( w)->action_area), button, FALSE, FALSE, 0);
 	}
