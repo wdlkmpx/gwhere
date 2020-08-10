@@ -212,11 +212,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		txt = gtk_text_area_new ( );
 		gtk_text_area_set_editable ( GTK_TEXT_AREA ( txt), TRUE);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT, txt, /*(GtkDestroyNotify)gtk_widget_unref*/NULL);
-#if defined ( HAVE_GTK12)
- 		gtk_signal_connect ( GTK_OBJECT ( txt), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_description_changed), w);
-#elif defined ( HAVE_GTK20)
 		g_signal_connect ( G_OBJECT ( gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( txt))), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_description_changed), w);
-#endif
+
 		gtk_container_add ( GTK_CONTAINER ( scr), txt);
 		g_strdup_to_gtk_text ( _( "Enter the description of the category."), text_utf8);
 		gtk_tooltips_set_tip ( tips, txt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS);

@@ -62,30 +62,14 @@
 
 #define str_equals(a,b) ((a==NULL&&b==NULL)||(a!=NULL&&b!=NULL&&strcmp(a,b)==0))
 
+/*! @define	g_strdup_to_gtk_text	encode string to UTF-8 */
+#define g_strdup_to_gtk_text(str,text) if(str!=NULL){text=g_locale_to_utf8(str,-1,NULL,NULL,NULL);}else{text=g_strdup("");}
 
-#if defined ( HAVE_GTK12)
-	/*! @define	g_strdup_to_gtk_text	With GTK 1.2 just duplicate string */
-	#define g_strdup_to_gtk_text(str,text) if(str!=NULL){text=g_strdup(str);}else{text=g_strdup("");}
-#elif defined ( HAVE_GTK20)
-	/*! @define	g_strdup_to_gtk_text	With GTK 2.0 encode string to UTF-8 */
-	#define g_strdup_to_gtk_text(str,text) if(str!=NULL){text=g_locale_to_utf8(str,-1,NULL,NULL,NULL);}else{text=g_strdup("");}
-#endif
+/*! @define	g_strlen_gtk_text	give the UTF-8 string length */
+#define g_strlen_gtk_text(str) g_utf8_strlen(str,-1)
 
-#if defined ( HAVE_GTK12)
-	/*! @define	g_strlen_gtk_text	With GTK 1.2 just duplicate call strlen */
-	#define g_strlen_gtk_text(str) strlen(str)
-#elif defined ( HAVE_GTK20)
-	/*! @define	g_strlen_gtk_text	With GTK 2.0 give the UTF-8 string length */
-	#define g_strlen_gtk_text(str) g_utf8_strlen(str,-1)
-#endif
-
-#if defined ( HAVE_GTK12)
-	/*! @define	g_strdup_from_gtk_text	With GTK 1.2 just duplicate string */
-	#define g_strdup_from_gtk_text(str,text) if(str!=NULL){text=g_strdup(str);}else{text=g_strdup("");}
-#elif defined ( HAVE_GTK20)
-	/*! @define	g_strdup_from_gtk_text	With GTK 2.0 decode string from UTF-8 */
-	#define g_strdup_from_gtk_text(str,text) if(str!=NULL){text=g_locale_from_utf8(str,-1,NULL,NULL,NULL);}else{text=g_strdup("");}
-#endif
+/*! @define	g_strdup_from_gtk_text	decode string from UTF-8 */
+#define g_strdup_from_gtk_text(str,text) if(str!=NULL){text=g_locale_from_utf8(str,-1,NULL,NULL,NULL);}else{text=g_strdup("");}
 
 #if defined ( OS_LINUX) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
 	/*! @define	HAVE_MOUNT_SYSTEM	Define system with mount system */
@@ -94,26 +78,14 @@
 
 
 /* Defines extra long number format */
-#ifndef G_HAVE_GINT64
-	typdef guint64 guint32;
-	#define G_MAXUINT64 G_MAXULONG
-	#define G_GUINT64_FORMAT "u"
-	#define strtoui64(x,y,z) strtoul(x,y,z)
-#elif defined ( HAVE_GTK12)
-	#define G_GUINT64_FORMAT "llu"
-	#define strtoui64(x,y,z) strtoull(x,y,z)
-#else
-	#define strtoui64(x,y,z) strtoull(x,y,z)
-#endif
+#define strtoui64(x,y,z) strtoull(x,y,z)
 
 
 /* Defines plugin file extension*/
-#if defined ( HAVE_GTK12)
-	#if defined ( OS_WIN32)
-		#define G_MODULE_SUFFIX "dll"
-	#else
-		#define G_MODULE_SUFFIX "so"
-	#endif
+#if defined ( OS_WIN32)
+	#define G_MODULE_SUFFIX "dll"
+#else
+	#define G_MODULE_SUFFIX "so"
 #endif
 
 

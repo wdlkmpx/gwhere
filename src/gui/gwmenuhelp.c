@@ -53,9 +53,6 @@ GtkWidget * gw_menu_help_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	g_strdup_to_gtk_text ( _( "_Help"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_help_header)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_help_header, "activate-item", ag, tmp_key, GDK_MOD1_MASK, 0);
-#endif
 	gtk_widget_ref ( gw_menu_help_header);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_HEADER, gw_menu_help_header, (GtkDestroyNotify) gtk_widget_unref);
 
@@ -64,20 +61,14 @@ GtkWidget * gw_menu_help_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU, menu_help, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_help_header), menu_help);
 
-#if defined ( HAVE_GTK12)
-	gw_menu_help_ag = gtk_menu_ensure_uline_accel_group ( GTK_MENU ( menu_help));
-#else
 	gw_menu_help_ag = gtk_accel_group_new ( );
-#endif
 
 	/* Menu help -> about */
 	gw_menu_help_about = gtk_menu_item_new_with_label ( "");
 	g_strdup_to_gtk_text ( _( "A_bout"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_help_about)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_help_about, "activate-item", gw_menu_help_ag, tmp_key, 0, 0);
-#endif
+
 	gtk_widget_ref ( gw_menu_help_about);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_HELP_MENU_ABOUT, gw_menu_help_about, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_help), gw_menu_help_about);

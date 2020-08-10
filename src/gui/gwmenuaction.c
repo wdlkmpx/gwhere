@@ -64,9 +64,6 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	g_strdup_to_gtk_text ( _( "_Action"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_header)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_action_header, "activate-item", ag, tmp_key, GDK_MOD1_MASK, 0);
-#endif
 	gtk_widget_ref ( gw_menu_action_header);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_HEADER, gw_menu_action_header, (GtkDestroyNotify) gtk_widget_unref);
 
@@ -74,20 +71,13 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gtk_widget_ref ( menu_action);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU, menu_action, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_action_header), menu_action);
-#if defined ( HAVE_GTK12)
-	gw_menu_action_ag = gtk_menu_ensure_uline_accel_group ( GTK_MENU ( menu_action));
-#else
 	gw_menu_action_ag = gtk_accel_group_new ( );
-#endif
 
 	/* Menu action -> expand all */
 	gw_menu_action_expand_all = gtk_menu_item_new_with_label ( "");
 	g_strdup_to_gtk_text ( _( "_Expand all"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_expand_all)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_action_expand_all, "activate-item", gw_menu_action_ag, tmp_key, 0, 0);
-#endif
 	gtk_widget_ref ( gw_menu_action_expand_all);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_ALL, gw_menu_action_expand_all, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_all);
@@ -101,9 +91,6 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	g_strdup_to_gtk_text ( _( "Expand only _disks"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_expand_disks)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_action_expand_disks, "activate-item", gw_menu_action_ag, tmp_key, 0, 0);
-#endif
 	gtk_widget_ref ( gw_menu_action_expand_disks);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_DISKS, gw_menu_action_expand_disks, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_disks);
@@ -115,9 +102,6 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	g_strdup_to_gtk_text ( _( "C_ollapse all"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_collapse_all)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_action_collapse_all, "activate-item", gw_menu_action_ag, tmp_key, 0, 0);
-#endif
 	gtk_widget_ref ( gw_menu_action_collapse_all);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_COLLAPSE_ALL, gw_menu_action_collapse_all, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_collapse_all);
@@ -138,9 +122,6 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	g_strdup_to_gtk_text ( _( "Edit _categories"), text_utf8);
 	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_edit_categories)->child), text_utf8);
 	g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-	gtk_widget_add_accelerator ( gw_menu_action_edit_categories, "activate-item", gw_menu_action_ag, tmp_key, 0, 0);
-#endif
 	gtk_widget_ref ( gw_menu_action_edit_categories);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_CATEGORIES, gw_menu_action_edit_categories, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_edit_categories);

@@ -22,61 +22,36 @@
 
 
 /* Create a new GtkTextArea */
-GtkWidget * gtk_text_area_new ( ) {
+GtkWidget * gtk_text_area_new ( )
+{
 	GtkWidget *text = NULL;
-
-
-#if defined HAVE_GTK12
-	text = gtk_text_new ( NULL, NULL);
-#elif defined HAVE_GTK20
 	text = gtk_text_view_new ( );
-#endif
-
 	return text;
 }
 
 
 /* Clear a GtkTextArea */
-void gtk_text_area_clear ( GtkTextArea *text) {
-#if defined HAVE_GTK12
-	if ( text != NULL ) {
-		gtk_text_freeze ( GTK_TEXT ( text));
-		gtk_text_set_point ( GTK_TEXT ( text), 0);
-		gtk_text_forward_delete ( GTK_TEXT ( text), gtk_text_get_length ( GTK_TEXT ( text)));
-		gtk_text_thaw ( GTK_TEXT ( text));
-	}
-#elif defined HAVE_GTK20
-		GtkTextBuffer *buffer;
-		GtkTextIter start;
-		GtkTextIter end;
-
-
+void gtk_text_area_clear ( GtkTextArea *text)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter start;
+	GtkTextIter end;
 	if ( text != NULL ) {
 		buffer = gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( text));
 		gtk_text_buffer_get_start_iter ( buffer, &start);
 		gtk_text_buffer_get_end_iter ( buffer, &end);
 		gtk_text_buffer_delete ( buffer, &start, &end);
 	}
-#endif
-
 	return;
 }
 
 
 /* Insert text in a GtkTextArea */
-void gtk_text_area_insert ( GtkTextArea *text, const gchar *words) {
+void gtk_text_area_insert ( GtkTextArea *text, const gchar *words)
+{
 	gchar *text_utf8 = NULL;
-#if defined HAVE_GTK12
-
-
-	if ( text != NULL ) {
-		g_strdup_to_gtk_text ( words, text_utf8);
-		gtk_text_insert ( GTK_TEXT ( text), NULL, NULL, NULL, text_utf8, -1);
-	}
-#elif defined HAVE_GTK20
 	GtkTextBuffer *buffer;
 	GtkTextIter end;
-
 
 	if ( text != NULL ) {
 		g_strdup_to_gtk_text ( words, text_utf8);
@@ -84,8 +59,6 @@ void gtk_text_area_insert ( GtkTextArea *text, const gchar *words) {
 		gtk_text_buffer_get_end_iter ( buffer, &end);
 		gtk_text_buffer_insert ( buffer, &end, text_utf8, -1);
 	}
-#endif
-
 	return;
 }
 
@@ -93,17 +66,9 @@ void gtk_text_area_insert ( GtkTextArea *text, const gchar *words) {
 /* Get text in a GtkTextArea */
 gchar * gtk_text_area_get_text ( GtkTextArea *text) {
 	gchar *words = NULL, *text_utf8 = NULL;
-#if defined HAVE_GTK12
-
-
-	if ( text != NULL ) {
-		text_utf8 = gtk_editable_get_chars ( GTK_EDITABLE ( text), 0, -1);
-	}
-#elif defined HAVE_GTK20
 	GtkTextBuffer *buffer;
 	GtkTextIter start;
 	GtkTextIter end;
-
 
 	if ( text != NULL ) {
 		buffer = gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( text));
@@ -111,8 +76,6 @@ gchar * gtk_text_area_get_text ( GtkTextArea *text) {
 		gtk_text_buffer_get_end_iter ( buffer, &end);
 		text_utf8 = gtk_text_buffer_get_text ( buffer, &start, &end, TRUE);
 	}
-#endif
-
 	/* words must be free later with g_free() */
 	g_strdup_from_gtk_text ( text_utf8, words);
 

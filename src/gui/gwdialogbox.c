@@ -63,9 +63,6 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		gtk_container_set_border_width ( GTK_CONTAINER ( w), 10);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
 
-#ifdef HAVE_GTK12
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &w);
-#endif
 		g_strdup_to_gtk_text ( title, text_utf8);
 		gtk_window_set_title ( GTK_WINDOW ( w), text_utf8);
 		g_free ( text_utf8);

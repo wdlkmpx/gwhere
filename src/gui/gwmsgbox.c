@@ -54,10 +54,6 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 
-#ifdef HAVE_GTK12
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &w);
-#endif
-
 		vbox = gtk_vbox_new ( TRUE, 10);
 		gtk_container_add ( GTK_CONTAINER ( w), vbox);
 		gtk_container_set_border_width ( GTK_CONTAINER ( vbox), 10);

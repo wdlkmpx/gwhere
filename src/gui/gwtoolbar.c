@@ -54,19 +54,12 @@ GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_HANDLE_TOOL_BAR, handle_box, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_handle_box_set_shadow_type ( GTK_HANDLE_BOX ( handle_box), GTK_SHADOW_OUT);
 
-        /* Should put defined ( OS_WIN32) because gtk_toolbar_new(void) is undefined?! */
-#if defined ( HAVE_GTK12)
-        tool_bar = gtk_toolbar_new ( GTK_ORIENTATION_HORIZONTAL, GTK_TOOLBAR_ICONS);
-#elif defined ( HAVE_GTK20)
-        tool_bar = gtk_toolbar_new ( );
-#endif
+	/* Should put defined ( OS_WIN32) because gtk_toolbar_new(void) is undefined?! */
+	tool_bar = gtk_toolbar_new ( );
 
 	/* Stores the tool bar box reference */
 	gtk_widget_ref ( tool_bar);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_TOOL_BAR, tool_bar, (GtkDestroyNotify) gtk_widget_unref);
-#if defined ( HAVE_GTK12)
-	gtk_toolbar_set_button_relief ( GTK_TOOLBAR ( tool_bar), GTK_RELIEF_NONE);
-#endif
 	gtk_container_add ( GTK_CONTAINER ( handle_box), tool_bar);
 
 	/* Loads icons for tool bar */

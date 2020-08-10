@@ -105,9 +105,6 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		hp_settings = gtk_hpaned_new ( );
 		gtk_box_pack_start ( GTK_BOX ( vb_settings), hp_settings, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hp_settings), 5);
-#if defined (HAVE_GTK12)
-		gtk_paned_set_handle_size ( GTK_PANED ( hp_settings), 5);
-#endif
 		gtk_paned_set_position ( GTK_PANED ( hp_settings), 180);
 
 		ctree_settings = gtk_ctree_new ( 1, 0);

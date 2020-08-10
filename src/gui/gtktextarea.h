@@ -39,13 +39,8 @@
 
 
 /* Define the GtkTextArea */
-#if defined ( HAVE_GTK12)
-	typedef GtkText GtkTextArea;
-	#define GTK_TEXT_AREA GTK_TEXT
-#elif defined ( HAVE_GTK20)
-	typedef GtkTextView GtkTextArea;
-	#define GTK_TEXT_AREA GTK_TEXT_VIEW
-#endif
+typedef GtkTextView GtkTextArea;
+#define GTK_TEXT_AREA GTK_TEXT_VIEW
 
 
 /*!
@@ -59,11 +54,7 @@ GtkWidget * gtk_text_area_new ( );
 
 
 /* Set the editable property of GtkTextArea */
-#if defined HAVE_GTK12
-	#define gtk_text_area_set_editable(text,editable) gtk_text_set_editable(GTK_TEXT(text),editable)
-#elif defined HAVE_GTK20
-	#define gtk_text_area_set_editable(text,editable) gtk_text_view_set_editable(GTK_TEXT_VIEW(text),editable)
-#endif
+#define gtk_text_area_set_editable(text,editable) gtk_text_view_set_editable(GTK_TEXT_VIEW(text),editable)
 
 
 /*!

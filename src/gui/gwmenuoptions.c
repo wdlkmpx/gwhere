@@ -54,9 +54,6 @@ GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget 
 		g_strdup_to_gtk_text ( _( "_Options"), text_utf8);
 		tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_options_header)->child), text_utf8);
 		g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-		gtk_widget_add_accelerator ( gw_menu_options_header, "activate-item", ag, tmp_key, GDK_MOD1_MASK, 0);
-#endif
 		gtk_widget_ref ( gw_menu_options_header);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU_HEADER, gw_menu_options_header, (GtkDestroyNotify) gtk_widget_unref);
 
@@ -64,20 +61,13 @@ GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget 
 		gtk_widget_ref ( menu_options);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU, menu_options, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_options_header), menu_options);
-#if defined ( HAVE_GTK12)
-		gw_menu_options_ag = gtk_menu_ensure_uline_accel_group ( GTK_MENU ( menu_options));
-#else
 		gw_menu_options_ag = gtk_accel_group_new ( );
-#endif
 
 		/* Menu action -> edit categories */
 		gw_menu_options_settings = gtk_menu_item_new_with_label ( "");
 		g_strdup_to_gtk_text ( _( "Se_ttings"), text_utf8);
 		tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_options_settings)->child), text_utf8);
 		g_free ( text_utf8);
-#if defined ( HAVE_GTK12)
-		gtk_widget_add_accelerator ( gw_menu_options_settings, "activate-item", gw_menu_options_ag, tmp_key, 0, 0);
-#endif
 		gtk_widget_ref ( gw_menu_options_settings);
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU_SETTINGS, gw_menu_options_settings, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_container_add ( GTK_CONTAINER ( menu_options), gw_menu_options_settings);

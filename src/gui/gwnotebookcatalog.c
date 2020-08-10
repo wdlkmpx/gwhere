@@ -806,11 +806,7 @@ gint gw_notebook_catalog_get_hpan_position ( GtkWindow *w) {
 
 	if ( w != NULL ) {
 		if ( (hpan = GTK_PANED ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_NOTEBOOK_CATALOG_PANE))) != NULL) {
-#ifdef HAVE_GTK20
 			position = gtk_paned_get_position ( hpan);
-#elif defined HAVE_GTK12
-			position = hpan->handle_xpos;
-#endif
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : hpan position = %d\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, position);

@@ -129,9 +129,6 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_COMPRESSION_LEVEL_ENTRY, spn_catalog_level_compression, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
-#if defined ( HAVE_GTK12)
-		gtk_spin_button_set_shadow_type ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), GTK_SHADOW_OUT);
-#endif
 		g_strdup_to_gtk_text ( _( "Select the catalog compression level. The default value is 3, it's a good value between high performance and small size."), text_utf8);
 		gtk_tooltips_set_tip ( tooltips, spn_catalog_level_compression, text_utf8, NULL);
 		g_free ( text_utf8);
@@ -152,9 +149,6 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_HISTORY_SIZE_ENTRY, spn_catalog_history_size, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
-#if defined ( HAVE_GTK12)
-		gtk_spin_button_set_shadow_type ( GTK_SPIN_BUTTON ( spn_catalog_history_size), GTK_SHADOW_OUT);
-#endif
 		g_strdup_to_gtk_text ( _( "Select the size of recents opened catalogs history. The default value is 5."), text_utf8);
 		gtk_tooltips_set_tip ( tooltips, spn_catalog_history_size, text_utf8, NULL);
 		g_free ( text_utf8);
