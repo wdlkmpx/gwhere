@@ -25,8 +25,6 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 {
 	/*static */GtkWidget *w = NULL;
 	GtkWidget *vbox,*label,*button,*hbox;
-	GtkAccelGroup *accel;
-	guint button_key;
 	gchar *text_utf8 = NULL;
 
 
@@ -39,8 +37,6 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 #ifdef GW_DEBUG_GUI_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s() new dialog window\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-		accel = gtk_accel_group_new ( );
 
 		w = gtk_window_new ( GTK_WINDOW_DIALOG);
 
@@ -70,18 +66,12 @@ GtkWindow * gw_msg_box_create ( GtkWindow *window, gchar *title, gchar *subject)
 		gtk_button_box_set_spacing ( GTK_BUTTON_BOX ( hbox), 5);
 		gtk_box_pack_end ( GTK_BOX ( vbox), hbox, FALSE, FALSE, 0);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_OK"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_OK"));
 		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, FALSE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
 		gtk_widget_grab_focus ( button);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w))

@@ -80,8 +80,6 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 	GtkWidget *notebook_properties;
 	GtkWidget *hb_buttons;
 	GtkWidget *button;
-	guint button_key;
-	GtkAccelGroup *accel = NULL;
 	gchar *text_utf8 = NULL;
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
@@ -93,10 +91,6 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Inits an accel group for keystroke shortcuts */
-	accel = gtk_accel_group_new ( );
-
 
 	if ( !w && context != NULL ) {
 		plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context);
@@ -198,11 +192,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		gtk_button_box_set_spacing ( GTK_BUTTON_BOX ( hb_buttons), 5);
 		gtk_box_pack_end ( GTK_BOX ( vb_properties), hb_buttons, FALSE, FALSE, 0);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_OK"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_OK"));
 		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
 		gtk_box_pack_start ( GTK_BOX ( hb_buttons), button, TRUE, TRUE, 0);
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
@@ -230,17 +220,11 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 			default :		break;
 		}
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
 		gtk_box_pack_start ( GTK_BOX ( hb_buttons), button, TRUE, TRUE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel);
 
 		gw_db_catalog_free ( catalog);
 	}

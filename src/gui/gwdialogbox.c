@@ -32,8 +32,6 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 	/*static */GtkWidget *w = NULL;
 	GtkWidget *label;
 	GtkWidget *button;
-	guint button_key;
-	GtkAccelGroup *accel;
 	gchar *text_utf8 = NULL;
 
 
@@ -43,8 +41,6 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 
 	if ( !w )
 	{
-		accel = gtk_accel_group_new ( );
-
 		w = gtk_dialog_new ( );
 
 		if ( window != NULL )
@@ -73,11 +69,7 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		gtk_misc_set_padding ( GTK_MISC ( label), 10, 10);
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->vbox), label, TRUE, TRUE, 0);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_OK"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_OK"));
 
 		if ( ok != NULL )
 		{
@@ -91,11 +83,7 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
 		gtk_widget_grab_focus ( button);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _("_No"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_No"));
 
 		if ( no != NULL )
 		{
@@ -108,11 +96,7 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _("_Cancel"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 
 		if ( cancel != NULL )
 		{
@@ -124,8 +108,6 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		}
 
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

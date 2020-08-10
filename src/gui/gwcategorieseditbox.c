@@ -60,8 +60,6 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 	/* This window must be single, this property may be changed */
 	static GtkWidget *w = NULL;
 	GtkWidget *vb, *hb, *scr, *list, *bt, *hsp, *ent, *lbl, *frm, *txt;
-	guint bt_key;
-	GtkAccelGroup *accel;
 	GtkTooltips *tips;
 	gchar *text_utf8 = NULL;
 
@@ -69,9 +67,6 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Init an accel group for shortcuts */
-	accel = gtk_accel_group_new ( );
 
 	/* Init tooltips */
 	tips = gtk_tooltips_new ( );
@@ -139,12 +134,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_box_pack_start ( GTK_BOX ( vb), hb, TRUE, TRUE, 0);
 
 		/* Update button */
-		bt = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Update"), text_utf8);
-		bt_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-		g_free ( text_utf8);
+		bt = gtk_button_new_with_mnemonic (_("_Update"));
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON, bt, /*(GtkDestroyNotify)gtk_widget_unref*/NULL);
-		gtk_widget_add_accelerator ( bt, "clicked", accel, bt_key, GDK_MOD1_MASK, 0);
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_update_click), GTK_WINDOW ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
@@ -154,12 +145,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 
 		/* Remove button */
-		bt = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Remove"), text_utf8);
-		bt_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-		g_free ( text_utf8);
+		bt = gtk_button_new_with_mnemonic (_( "_Remove"));
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON, bt, /*(GtkDestroyNotify) gtk_widget_unref)*/NULL);
-		gtk_widget_add_accelerator ( bt, "clicked", accel, bt_key, GDK_MOD1_MASK, 0);
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_remove_click), GTK_WINDOW ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
@@ -226,18 +213,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_box_pack_end ( GTK_BOX ( vb), hb, FALSE, FALSE, 0);
 
 		/* Add/Update button */
-		bt = gtk_button_new_with_label ( "");
-		/* Is it not mandatory? */
-		/*g_strdup_to_gtk_text ( _( "Add"), text_utf8);
-		gtk_label_set_text ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-		g_free ( text_utf8);
-		*/
-		/*gtk_widget_ref ( bt);*/
+		bt = gtk_button_new_with_mnemonic (_( "_Add / Update"));
 		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON, bt, /*(GtkDestroyNotify)gtk_widget_unref*/NULL);
-		g_strdup_to_gtk_text ( _( "Add / Update"), text_utf8);
-		bt_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( bt, "clicked", accel, bt_key, GDK_MOD1_MASK, 0);
 		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_add_update_click), w);
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
@@ -250,11 +227,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_widget_grab_default ( bt);
 
 		/* Close button */
-		bt = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "Close"), text_utf8);
-		bt_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( bt, "clicked", accel, bt_key, GDK_MOD1_MASK, 0);
+		bt = gtk_button_new_with_mnemonic (_( "_Close"));
 		gtk_signal_connect_object ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		gtk_object_set_user_data ( GTK_OBJECT ( bt), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
@@ -262,8 +235,6 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_tooltips_set_tip ( tips, bt, text_utf8, GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS);
 		g_free ( text_utf8);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_FOCUS);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) ) {

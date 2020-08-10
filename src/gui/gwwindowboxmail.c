@@ -60,11 +60,8 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 	GtkWidget *scrTextMail;
 	GtkWidget *txtMail;
 	GtkWidget *hbSendMailControl;
-	guint btnCancel_key;
 	GtkWidget *btnCancel;
-	guint btnSend_key;
 	GtkWidget *btnSend;
-	GtkAccelGroup *accel_group;
 	GtkTooltips *tooltips;
 	gchar *text_utf8 = NULL;
 
@@ -75,9 +72,6 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 	/* Inits the tooltips group. */
 	tooltips = gtk_tooltips_new ( );
-
-	/* Init an accel group for shortcuts */
-	accel_group = gtk_accel_group_new ( );
 
 	if ( !w )
 	{
@@ -204,30 +198,20 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_button_box_set_spacing ( GTK_BUTTON_BOX ( hbSendMailControl), 5);
 		gtk_box_pack_end ( GTK_BOX ( vbMailWindowsBox), hbSendMailControl, FALSE, FALSE, 0);
 
-		btnSend = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Send"), text_utf8);
-		btnSend_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( btnSend)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( btnSend, "clicked", accel_group, btnSend_key, GDK_MOD1_MASK, (GtkAccelFlags) 0);
+		btnSend = gtk_button_new_with_mnemonic (_("_Send"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnSend, FALSE, TRUE, 0);
 		g_strdup_to_gtk_text ( _( "Click here to send a mail (with an attached catalog)."), text_utf8);
 		gtk_tooltips_set_tip ( tooltips, btnSend, text_utf8, NULL);
 		g_free ( text_utf8);
 		gtk_signal_connect ( GTK_OBJECT ( btnSend), "clicked", GTK_SIGNAL_FUNC ( gw_mail_window_box_send_click), GTK_WINDOW ( w));
 
-		btnCancel = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-		btnCancel_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( btnCancel)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( btnCancel, "clicked", accel_group, btnCancel_key, GDK_MOD1_MASK, (GtkAccelFlags) 0);
+		btnCancel = gtk_button_new_with_label (_("_Cancel"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnCancel, TRUE, TRUE, 0);
 		GTK_WIDGET_UNSET_FLAGS ( btnCancel, GTK_CAN_FOCUS);
 		g_strdup_to_gtk_text ( _( "Click here to cancel the send of a mail."), text_utf8);
 		gtk_tooltips_set_tip ( tooltips, btnCancel, text_utf8, NULL);
 		gtk_signal_connect_object ( GTK_OBJECT ( btnCancel), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		g_free ( text_utf8);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel_group);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

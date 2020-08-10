@@ -71,20 +71,13 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	GtkWidget *gw_menu_file_recents_files = NULL;
 	GtkWidget *gw_menu_file_recents_files_items = NULL;
 	GtkWidget *gw_menu_file_exit = NULL;
-	GtkAccelGroup *gw_menu_file_ag = NULL;
-	guint tmp_key;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	/* Menu file header */
-	gw_menu_file_header = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_File"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_header)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_header = gtk_menu_item_new_with_mnemonic (_("_File"));
 	gtk_widget_ref ( gw_menu_file_header);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_HEADER, gw_menu_file_header, (GtkDestroyNotify) gtk_widget_unref);
 
@@ -92,13 +85,9 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_widget_ref ( menu_file);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU, menu_file, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_file_header), menu_file);
-	gw_menu_file_ag = gtk_accel_group_new ( );
 
 	/* Menu file -> new */
-	gw_menu_file_new = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_New"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_new)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_new = gtk_menu_item_new_with_mnemonic (_("_New"));
 	gtk_widget_ref ( gw_menu_file_new);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_NEW, gw_menu_file_new, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_new);
@@ -106,10 +95,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_file_new), "activate", GTK_SIGNAL_FUNC ( gw_menu_file_new_click), w);
 
 	/* Menu file -> open */
-	gw_menu_file_open = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Open"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_open)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_open = gtk_menu_item_new_with_mnemonic (_( "_Open"));
 	gtk_widget_ref ( gw_menu_file_open);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_OPEN, gw_menu_file_open, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_open);
@@ -117,10 +103,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_file_open), "activate", GTK_SIGNAL_FUNC ( gw_menu_file_open_click), w);
 
 	/* Menu file -> save */
-	gw_menu_file_save = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Save"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_save)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_save = gtk_menu_item_new_with_mnemonic (_( "_Save"));
 	gtk_widget_ref ( gw_menu_file_save);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_SAVE, gw_menu_file_save, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_save);
@@ -128,10 +111,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_file_save), "activate", GTK_SIGNAL_FUNC ( gw_menu_file_save_click), w);
 
 	/* Menu file -> save as */
-	gw_menu_file_saveas = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "Sav_e as"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_saveas)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_saveas = gtk_menu_item_new_with_mnemonic (_( "Sav_e as"));
 	gtk_widget_ref ( gw_menu_file_saveas);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_SAVEAS, gw_menu_file_saveas, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_saveas);
@@ -139,10 +119,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_file_saveas), "activate", GTK_SIGNAL_FUNC ( gw_menu_file_saveas_click), w);
 
 	/* Menu file -> close */
-	gw_menu_file_close = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "C_lose"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_close)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_close = gtk_menu_item_new_with_mnemonic (_( "C_lose"));
 	gtk_widget_ref ( gw_menu_file_close);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_CLOSE, gw_menu_file_close, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_close);
@@ -157,10 +134,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_widget_set_sensitive ( gw_menu_file_separator, FALSE);
 
 	/* Menu file -> import catalog */
-	gw_menu_file_import = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "Import"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_import)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_import = gtk_menu_item_new_with_mnemonic (_( "Import"));
 	gtk_widget_ref ( gw_menu_file_import);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_IMPORT, gw_menu_file_import, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_import);
@@ -170,10 +144,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_file_import), gw_menu_file_import_items);
 
 	/* Menu file -> export catalog */
-	gw_menu_file_export = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "Export"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_export)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_export = gtk_menu_item_new_with_mnemonic (_( "Export"));
 	gtk_widget_ref ( gw_menu_file_export);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_EXPORT, gw_menu_file_export, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_export);
@@ -190,10 +161,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_widget_set_sensitive ( gw_menu_file_separator, FALSE);
 
 	/* Menu file -> properties */
-	gw_menu_file_properties = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Properties"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_properties)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_properties = gtk_menu_item_new_with_mnemonic (_("_Properties"));
 	gtk_widget_ref ( gw_menu_file_properties);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_PROPERTIES, gw_menu_file_properties, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_properties);
@@ -208,10 +176,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_widget_set_sensitive ( gw_menu_file_separator, FALSE);
 
 	/* Menu file -> recents files */
-	gw_menu_file_recents_files = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Recents files"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_recents_files)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_recents_files = gtk_menu_item_new_with_mnemonic (_( "_Recents files"));
 	gtk_widget_ref ( gw_menu_file_recents_files);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_RECENTS_FILES, gw_menu_file_recents_files, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_recents_files);
@@ -228,10 +193,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_widget_set_sensitive ( gw_menu_file_separator, FALSE);
 
 	/* Menu file -> exit */
-	gw_menu_file_exit = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "E_xit"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_file_exit)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_file_exit = gtk_menu_item_new_with_mnemonic (_( "E_xit"));
 	gtk_widget_ref ( gw_menu_file_exit);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_EXIT, gw_menu_file_exit, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_exit);

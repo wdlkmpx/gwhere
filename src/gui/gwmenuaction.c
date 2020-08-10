@@ -50,20 +50,13 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	GtkWidget *gw_menu_action_collapse_all = NULL;
 	GtkWidget *gw_menu_action_edit_categories = NULL;
 	GtkWidget *gw_menu_action_separator = NULL;
-	GtkAccelGroup *gw_menu_action_ag = NULL;
-	guint tmp_key;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	/* Menu action header */
-	gw_menu_action_header = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Action"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_header)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_action_header = gtk_menu_item_new_with_mnemonic (_("_Action"));
 	gtk_widget_ref ( gw_menu_action_header);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_HEADER, gw_menu_action_header, (GtkDestroyNotify) gtk_widget_unref);
 
@@ -71,13 +64,9 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gtk_widget_ref ( menu_action);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU, menu_action, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_action_header), menu_action);
-	gw_menu_action_ag = gtk_accel_group_new ( );
 
 	/* Menu action -> expand all */
-	gw_menu_action_expand_all = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "_Expand all"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_expand_all)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_action_expand_all = gtk_menu_item_new_with_mnemonic (_("_Expand all"));
 	gtk_widget_ref ( gw_menu_action_expand_all);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_ALL, gw_menu_action_expand_all, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_all);
@@ -87,10 +76,7 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_all), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_all_click), w);
 
 	/* Menu action -> expand disks */
-	gw_menu_action_expand_disks = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "Expand only _disks"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_expand_disks)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_action_expand_disks = gtk_menu_item_new_with_mnemonic (_("Expand only _disks"));
 	gtk_widget_ref ( gw_menu_action_expand_disks);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_DISKS, gw_menu_action_expand_disks, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_disks);
@@ -98,10 +84,7 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_disks), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_disks_click), w);
 
 	/* Menu action -> collapse */
-	gw_menu_action_collapse_all = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "C_ollapse all"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_collapse_all)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_action_collapse_all = gtk_menu_item_new_with_mnemonic (_("C_ollapse all"));
 	gtk_widget_ref ( gw_menu_action_collapse_all);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_COLLAPSE_ALL, gw_menu_action_collapse_all, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_collapse_all);
@@ -118,10 +101,7 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gtk_widget_set_sensitive ( gw_menu_action_separator, FALSE);
 
 	/* Menu action -> edit categories */
-	gw_menu_action_edit_categories = gtk_menu_item_new_with_label ( "");
-	g_strdup_to_gtk_text ( _( "Edit _categories"), text_utf8);
-	tmp_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( gw_menu_action_edit_categories)->child), text_utf8);
-	g_free ( text_utf8);
+	gw_menu_action_edit_categories = gtk_menu_item_new_with_mnemonic (_("Edit _categories"));
 	gtk_widget_ref ( gw_menu_action_edit_categories);
 	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_CATEGORIES, gw_menu_action_edit_categories, (GtkDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_edit_categories);

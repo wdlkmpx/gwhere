@@ -40,8 +40,6 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 	GtkWidget *hbox = NULL;
 	GtkWidget *entry_data_capture = NULL;
 	GtkWidget *button = NULL;
-	guint button_key;
-	GtkAccelGroup *accel = NULL;
 	gchar *text_utf8 = NULL;
 
 
@@ -52,8 +50,6 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 	if ( !w )
 	{
 		/* Init an accel group for shortcuts */
-		accel = gtk_accel_group_new ( );
-
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
 		g_strdup_to_gtk_text ( title, text_utf8);
@@ -96,11 +92,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		hbox = gtk_hbox_new ( TRUE, 10);
 		gtk_container_add ( GTK_CONTAINER ( vbox), hbox);
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_OK"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_OK"));
 		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 
@@ -121,16 +113,11 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 			gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
-		button = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked", accel, button_key, GDK_MOD1_MASK, 0);
+		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 
-		gtk_window_add_accel_group ( GTK_WINDOW ( w), accel);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

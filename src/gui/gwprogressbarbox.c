@@ -46,17 +46,12 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 	GtkWidget *file_name;
 	GtkWidget *progress_bar	= NULL;
 	GtkWidget *button;
-	guint button_key;
-	GtkAccelGroup *accel = NULL;
 	gchar *text_utf8 = NULL;
 
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print	( "*** GW - %s (%d) :: %s() : %f\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, max);
 #endif
-
-	/* Inits accel group for keystroke shortcuts */
-	accel =	gtk_accel_group_new ( );
 
 	if ( !w	)
 	{
@@ -130,16 +125,12 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		gtk_container_add ( GTK_CONTAINER ( vbox), hbox);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hbox),	5);
 
-		button = gtk_button_new_with_label ( "");
+		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 
 		/* Store reference to the ok/cancel button */
 		gtk_widget_ref ( button);
 		gtk_object_set_data_full ( GTK_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON, button, (GtkDestroyNotify) gtk_widget_unref);
 		gw_progress_bar_box_set_state ( GTK_WINDOW ( w), STATE_CANCEL);
-		g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-		button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( button)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( button, "clicked",	accel, button_key, GDK_MOD1_MASK, 0);
 		gtk_object_set_user_data ( GTK_OBJECT (	button), w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 		gtk_widget_grab_focus ( button);
@@ -160,8 +151,6 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 
 			gtk_signal_connect ( GTK_OBJECT	( button), "clicked", GTK_SIGNAL_FUNC (	gw_progress_bar_box_ok_cancel_click), w);
 		}
-
-		gtk_window_add_accel_group ( GTK_WINDOW	( w), accel);
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )
@@ -493,11 +482,7 @@ gint gw_progress_bar_box_set_state ( GtkWindow *w, gint state)
 gint gw_progress_bar_box_set_ok_state ( GtkWindow *w)
 {
 	GtkButton *bt =	NULL;
-	GtkAccelGroup *accel = NULL;
-	guint button_key;
 	gint result = -1;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print	( "*** GW - %s (%d) :: %s()\n",	__FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -509,13 +494,7 @@ gint gw_progress_bar_box_set_ok_state ( GtkWindow *w)
 
 		if ( bt	!= NULL	)
 		{
-			/* Inits new accel group for keystroke shortcuts */
-			accel =	gtk_accel_group_new ( );
-			g_strdup_to_gtk_text ( _( "_Ok"), text_utf8);
-			button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child),	text_utf8);
-			g_free ( text_utf8);
-			gtk_widget_add_accelerator ( GTK_WIDGET	( bt), "clicked", accel, button_key, GDK_MOD1_MASK, 0);
-			gtk_window_add_accel_group ( w,	accel);
+			gtk_button_set_label (GTK_BUTTON (bt), _("_Ok"));
 			gw_progress_bar_box_set_state ( w, STATE_OK);
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -541,11 +520,7 @@ gint gw_progress_bar_box_set_ok_state ( GtkWindow *w)
 gint gw_progress_bar_box_set_cancel_state ( GtkWindow *w)
 {
 	GtkButton *bt =	NULL;
-	GtkAccelGroup *accel = NULL;
-	guint button_key;
 	gint result = -1;
-	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print	( "*** GW - %s (%d) :: %s()\n",	__FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -557,13 +532,7 @@ gint gw_progress_bar_box_set_cancel_state ( GtkWindow *w)
 
 		if ( bt	!= NULL	)
 		{
-			/* Inits new accel groups for keystroke	shortcuts */
-			accel =	gtk_accel_group_new ( );
-			g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-			button_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( bt)->child),	text_utf8);
-			g_free ( text_utf8);
-			gtk_widget_add_accelerator ( GTK_WIDGET	( bt), "clicked", accel, button_key, GDK_MOD1_MASK, 0);
-			gtk_window_add_accel_group ( w,	accel);
+			gtk_button_set_label (GTK_BUTTON (bt), _( "_Cancel"));
 			gw_progress_bar_box_set_state ( w, STATE_CANCEL);
 
 #ifdef GW_DEBUG_GUI_COMPONENT

@@ -57,24 +57,17 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 	GtkWidget *home_notebook_page;
 	GtkWidget *text_home_notebook_page;
 	GtkWidget *hb_settings_controls;
-	guint btn_ok_key;
 	GtkWidget *btn_ok;
-	guint btn_cancel_key;
 	GtkWidget *btn_cancel;
-	guint btn_apply_key;
 	GtkWidget *btn_apply;
-	GtkAccelGroup *accel_group = NULL;
 	GtkTooltips *tooltips;
 	gchar *text_utf8 = NULL;
-
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	tooltips = gtk_tooltips_new ( );
-
-	accel_group = gtk_accel_group_new ( );
 
 	if ( !settings_window_box )
 	{
@@ -156,11 +149,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_button_box_set_spacing ( GTK_BUTTON_BOX ( hb_settings_controls), 5);
 		gtk_box_pack_end ( GTK_BOX ( vb_settings), hb_settings_controls, FALSE, FALSE, 0);
 
-		btn_ok = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_OK"), text_utf8);
-		btn_ok_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( btn_ok)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( btn_ok, "clicked", accel_group, btn_ok_key, GDK_MOD1_MASK, (GtkAccelFlags) 0);
+		btn_ok = gtk_button_new_with_mnemonic (_("_OK"));
 		gtk_widget_ref ( btn_ok);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_OK_BTN, btn_ok, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_ok, TRUE, TRUE, 10);
@@ -171,11 +160,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		GTK_WIDGET_SET_FLAGS ( btn_ok, GTK_CAN_DEFAULT);
 		gtk_widget_grab_default ( btn_ok);
 
-		btn_cancel = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Cancel"), text_utf8);
-		btn_cancel_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( btn_cancel)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( btn_cancel, "clicked", accel_group, btn_cancel_key, GDK_MOD1_MASK, (GtkAccelFlags) 0);
+		btn_cancel = gtk_button_new_with_mnemonic (_("_Cancel"));
 		gtk_widget_ref ( btn_cancel);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN, btn_cancel, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_cancel, TRUE, TRUE, 10);
@@ -184,11 +169,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		g_free ( text_utf8);
 		GTK_WIDGET_SET_FLAGS ( btn_cancel, GTK_CAN_FOCUS);
 
-		btn_apply = gtk_button_new_with_label ( "");
-		g_strdup_to_gtk_text ( _( "_Apply"), text_utf8);
-		btn_apply_key = gtk_label_parse_uline ( GTK_LABEL ( GTK_BIN ( btn_apply)->child), text_utf8);
-		g_free ( text_utf8);
-		gtk_widget_add_accelerator ( btn_apply, "clicked", accel_group, btn_apply_key, GDK_MOD1_MASK, (GtkAccelFlags) 0);
+		btn_apply = gtk_button_new_with_mnemonic (_("_Apply"));
 		gtk_widget_ref ( btn_apply);
 		gtk_object_set_data_full ( GTK_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN, btn_apply, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_apply, TRUE, TRUE, 10);
@@ -210,8 +191,6 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_signal_connect ( GTK_OBJECT ( btn_apply), "clicked", GTK_SIGNAL_FUNC (gw_settings_window_box_btn_apply_clicked), GTK_WINDOW ( settings_window_box));
 
 		gtk_widget_grab_focus ( btn_ok);
-
-		gtk_window_add_accel_group ( GTK_WINDOW ( settings_window_box), accel_group);
 
 		gw_settings_window_box_load_sections ( GTK_WINDOW ( settings_window_box));
 	}
