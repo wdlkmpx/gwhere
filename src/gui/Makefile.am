@@ -39,7 +39,6 @@ libgwgui_a_SOURCES = \
 	gwmenuoptions.c gwmenuoptions.h \
 	gwmenuoptionscallback.c gwmenuoptionscallback.h \
 	gwmenuhelp.c gwmenuhelp.h \
-	gwmenuhelpcallback.c gwmenuhelpcallback.h \
 	gwmenupopup.c gwmenupopup.h \
 	gwmenupopupcallback.c gwmenupopupcallback.h \
 	gwtoolbar.c toolbar.h \

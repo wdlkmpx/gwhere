@@ -64,7 +64,6 @@ GtkWidget * gw_menu_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent)
 
 	/* Help menu */
 	menu_help = gw_menu_help_create ( w, ag, menu_bar);
-	gtk_menu_item_right_justify ( GTK_MENU_ITEM ( menu_help));
 	gtk_container_add ( GTK_CONTAINER ( menu_bar), menu_help);
 
 	return menu_bar;
