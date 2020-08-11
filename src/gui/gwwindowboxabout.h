@@ -49,19 +49,4 @@
  */
 GtkWidget * gw_window_box_about_create ( GtkWindow *window);
 
-
-/*!
- * @function	gw_window_box_about_destroy
- * @abstract	Destroyes the about window.
- * @discussion	This function destroyes the about window. This window
- *		can be destroyed by clicking on.
- * @param	w	refence to the about window
- * @param	self_window	refence to the pointer of about window
- * @result	an error code.<br>
- *		Returns <i>0</i> when it's done.<br>
- *		Returns <i>-1</i> when an error occured.<br>
- */
-gint gw_window_box_about_destroy ( GtkWindow *w, GtkWidget **self_window);
-
-
 #endif
