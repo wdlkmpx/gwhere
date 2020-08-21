@@ -19,18 +19,16 @@
 
 #include "../gwsupport.h"
 #include "gwmenuoptions.h"
+#include "gwsettingswindowbox.h"
 
 #include <gdk/gdkkeysyms.h>
 
-#include "gwmenuoptionscallback.h"
-
-
-/*! @define	GW_REF_MENU_BAR_OPTIONS_MENU_HEADER	The options menu header reference */
-#define GW_REF_MENU_BAR_OPTIONS_MENU_HEADER "gw_menu_bar_options_menu_header"
-/*! @define	GW_REF_MENU_BAR_OPTIONS_MENU	The options menu reference */
-#define GW_REF_MENU_BAR_OPTIONS_MENU "gw_menu_bar_options_menu"
-/*! @define	GW_REF_MENU_BAR_OPTIONS_MENU_SETTINGS	The options menu -> settings reference */
-#define GW_REF_MENU_BAR_OPTIONS_MENU_SETTINGS "gw_menu_bar_options_menu_settings"
+void gw_menu_options_settings_click (GtkMenuItem *m, gpointer w)
+{
+	if (w) {
+		gw_settings_window_box_create (GTK_WINDOW (w));
+	}
+}
 
 
 GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent)
@@ -47,18 +45,12 @@ GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget 
 	{
 		/* Menu action header */
 		gw_menu_options_header = gtk_menu_item_new_with_mnemonic (_("_Options"));
-		gtk_widget_ref ( gw_menu_options_header);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU_HEADER, gw_menu_options_header, (GtkDestroyNotify) gtk_widget_unref);
 
 		menu_options = gtk_menu_new ( );
-		gtk_widget_ref ( menu_options);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU, menu_options, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_options_header), menu_options);
 
 		/* Menu action -> edit categories */
 		gw_menu_options_settings = gtk_menu_item_new_with_mnemonic (_("Se_ttings"));
-		gtk_widget_ref ( gw_menu_options_settings);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MENU_BAR_OPTIONS_MENU_SETTINGS, gw_menu_options_settings, (GtkDestroyNotify) gtk_widget_unref);
 		gtk_container_add ( GTK_CONTAINER ( menu_options), gw_menu_options_settings);
 		gtk_widget_add_accelerator ( gw_menu_options_settings, "activate", ag, GDK_t, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 		gtk_signal_connect ( GTK_OBJECT ( gw_menu_options_settings), "activate", GTK_SIGNAL_FUNC ( gw_menu_options_settings_click), w);
