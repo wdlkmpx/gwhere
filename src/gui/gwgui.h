@@ -79,7 +79,6 @@
 #include "gwstatusbarcallback.h"
 #include "gwtextbox.h"
 #include "gwtoolbar.h"
-#include "gwwindowboxabout.h"
 #include "gwwindowboxmail.h"
 #include "gwwindowboxmailcallback.h"
 
