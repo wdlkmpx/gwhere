@@ -23,7 +23,6 @@
 #include "gwmenufile.h"
 #include "gwmenuaction.h"
 #include "gwmenuoptions.h"
-#include "gwmenuhelp.h"
 
 #include "gwreferences.h"
 

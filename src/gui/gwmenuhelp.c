@@ -18,7 +18,7 @@
 
 
 #include "../gwsupport.h"
-#include "gwmenuhelp.h"
+#include "gwmenu.h"
 
 #include "gwreferences.h"
 
