@@ -268,7 +268,7 @@ SectionIn 1
   SetOutPath $INSTDIR\locale\ar\LC_MESSAGES
   File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\ar.gmo"
   SetOutPath $INSTDIR\locale\cs\LC_MESSAGES
-  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\cs-windows-1250.gmo"
+  File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\cs.gmo"
   SetOutPath $INSTDIR\locale\de\LC_MESSAGES
   File /oname=@PACKAGE@.mo "${MUI_BUILD_DIR}\..\po\de.gmo"
   SetOutPath $INSTDIR\locale\el\LC_MESSAGES
