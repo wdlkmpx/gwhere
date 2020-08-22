@@ -22,7 +22,6 @@
 
 #include "gwmenufile.h"
 #include "gwmenuaction.h"
-#include "gwmenuoptions.h"
 
 #include "gwreferences.h"
 

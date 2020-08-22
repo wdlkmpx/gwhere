@@ -51,6 +51,7 @@
 GtkWidget * gw_menu_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent);
 
 
+GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent);
 GtkWidget * gw_menu_help_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent);
 
 #endif

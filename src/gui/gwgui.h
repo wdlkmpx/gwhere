@@ -48,7 +48,6 @@
 #include "gwmenuactioncallback.h"
 #include "gwmenufile.h"
 #include "gwmenufilecallback.h"
-#include "gwmenuoptions.h"
 #include "gwmenupopup.h"
 #include "gwmenupopupcallback.h"
 #include "gwmsgbox.h"

@@ -18,12 +18,13 @@
 
 
 #include "../gwsupport.h"
-#include "gwmenuoptions.h"
+#include "gwmenu.h"
 #include "gwsettingswindowbox.h"
 
 #include <gdk/gdkkeysyms.h>
 
-void gw_menu_options_settings_click (GtkMenuItem *m, gpointer w)
+static void
+gw_menu_options_settings_click (GtkMenuItem *m, gpointer w)
 {
 	if (w) {
 		gw_settings_window_box_create (GTK_WINDOW (w));
