@@ -73,12 +73,12 @@ GtkWindow * gw_gui_manager_main_interface_create ( ) {
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "window size is %dx%d", width, height);
 #endif
 
-	/* It is better to use gtk_widget_set_usize() or gtk_window_set_default_size()? */
+	/* It is better to use gtk_widget_set_size_request() or gtk_window_set_default_size()? */
 	gtk_window_set_default_size ( GTK_WINDOW ( main_window), width, height);
 
 	/* Checks if have lasty position and checks if the window can be displayed in the current screen. */
 	if ( ((x = gw_am_get_settings_tol ( GW_VALUE_APP_WIN_X)) >= 0) && ((y = gw_am_get_settings_tol ( GW_VALUE_APP_WIN_Y)) >= 0) ) {
-		 gtk_widget_set_uposition ( main_window, x, y);
+		 gtk_window_move (GTK_WINDOW (main_window), x, y);
 	} else {
 		gtk_window_set_position ( GTK_WINDOW ( main_window), GTK_WIN_POS_CENTER);
 	}
@@ -92,8 +92,8 @@ GtkWindow * gw_gui_manager_main_interface_create ( ) {
 
 	/* Vertical box */
 	vbox = gtk_vbox_new ( FALSE, 0);
-	gtk_widget_ref ( vbox);
-	g_object_set_data_full (G_OBJECT ( main_window), "VbMainWindow", vbox, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( vbox);
+	g_object_set_data_full (G_OBJECT ( main_window), "VbMainWindow", vbox, (GDestroyNotify) g_object_unref);
 	gtk_container_add ( GTK_CONTAINER ( main_window), vbox);
 
 	/* Menu bar */
@@ -547,7 +547,7 @@ void gw_gui_manager_exit ( void) {
 		/* Saves the main window size and position. */
 		if ( gw_am_get_settings_tol ( GW_VALUE_APP_GUI_AUTOSAVE) == 1 ) {
 			gdk_window_get_position ( GTK_WIDGET ( window)->window, &x, &y);
-			gdk_window_get_size ( GTK_WIDGET ( window)->window, &width, &height);
+			gdk_drawable_get_size ( GTK_WIDGET ( window)->window, &width, &height);
 			gw_am_set_settings ( GW_VALUE_APP_WIN_X, g_strdup_printf ( "%d", x));
 			gw_am_set_settings ( GW_VALUE_APP_WIN_Y, g_strdup_printf ( "%d", y));
 			gw_am_set_settings ( GW_VALUE_APP_WIN_WIDTH, g_strdup_printf ( "%d", width));

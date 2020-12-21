@@ -72,7 +72,7 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GCallb
 		}
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( w) )
+	if ( !gtk_widget_get_visible ( w) )
 	{
 		gtk_widget_show_all ( w);
 	}

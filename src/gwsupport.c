@@ -88,8 +88,8 @@ static GtkWidget* create_dummy_pixmap ( GtkWidget *widget) {
 	if (gdkpixmap == NULL)
 		g_error ("Couldn't create replacement pixmap.");
 	pixmap = gtk_pixmap_new (gdkpixmap, mask);
-	gdk_pixmap_unref (gdkpixmap);
-	gdk_bitmap_unref (mask);
+	g_object_unref (gdkpixmap);
+	g_object_unref (mask);
 	return pixmap;
 	}
 
@@ -139,8 +139,8 @@ GtkWidget* create_pixmap ( GtkWidget *widget, const gchar *filename) {
 		}
 	g_free (found_filename);
 	pixmap = gtk_pixmap_new (gdkpixmap, mask);
-	gdk_pixmap_unref (gdkpixmap);
-	gdk_bitmap_unref (mask);
+	g_object_unref (gdkpixmap);
+	g_object_unref (mask);
 	return pixmap;
 	}
 

@@ -48,10 +48,10 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
 
 	/* Combo box for categories */
 	cmb = gtk_combo_new ( );
-	gtk_widget_ref ( cmb);
+	g_object_ref ( cmb);
 	gtk_combo_set_use_arrows_always ( GTK_COMBO ( cmb), TRUE);
-	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) gtk_widget_unref);
-	gtk_entry_set_editable ( GTK_ENTRY ( GTK_COMBO ( cmb)->entry), FALSE);
+	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) g_object_unref);
+	gtk_editable_set_editable (GTK_EDITABLE ( GTK_COMBO ( cmb)->entry), FALSE);
 	gtk_box_pack_start ( GTK_BOX ( hb), cmb, TRUE, TRUE, 0);
 
 	return GTK_HBOX ( hb);

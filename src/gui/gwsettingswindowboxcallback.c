@@ -48,7 +48,7 @@ void gw_settings_window_box_tree_select_row ( GtkCTree *ctree, GList *node, gint
 #endif
 
 			/* Switches to the selected setting page. */
-			gtk_notebook_set_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
+			gtk_notebook_set_current_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
 		}
 	}
 
@@ -105,7 +105,7 @@ void gw_settings_window_box_tree_unselect_row ( GtkCTree *ctree, GList *node, gi
 		}
 
 		/* Switches to the home page of settings. */
-/*		gtk_notebook_set_page ( notebook_settings, 0);
+/*		gtk_notebook_set_current_page ( notebook_settings, 0);
 */	}
 
 	return;
@@ -347,7 +347,7 @@ void gw_settings_window_box_apply_cancel ( GtkButton *button, GtkWindow *w)
 			if ( (notebook_settings = gw_settings_window_box_get_notebook ( module->settings_window)) != NULL )
 			{
 				/* Switches to the selected setting page. */
-				gtk_notebook_set_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
+				gtk_notebook_set_current_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
 			}
 		}
 		else

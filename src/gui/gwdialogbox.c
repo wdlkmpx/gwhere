@@ -104,7 +104,7 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( w) )
+	if ( !gtk_widget_get_visible ( w) )
 	{
 		gtk_widget_show_all ( w);
 	}

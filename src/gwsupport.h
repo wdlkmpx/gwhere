@@ -53,13 +53,6 @@
 	#include <windows.h>
 #endif
 
-
-#if defined ( HAVE_GTK20)
-	/*! @define	GTK_WINDOW_DIALOG	Define it for GTK 2.0 compilation */
-	#define GTK_WINDOW_DIALOG GTK_WINDOW_TOPLEVEL
-#endif
-
-
 #define str_equals(a,b) ((a==NULL&&b==NULL)||(a!=NULL&&b!=NULL&&strcmp(a,b)==0))
 
 /*! @define	g_strdup_to_gtk_text	encode string to UTF-8 */

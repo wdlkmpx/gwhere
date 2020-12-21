@@ -89,16 +89,16 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 #endif
 
 		hbox = gtk_hbox_new ( FALSE, 0);
-		gtk_widget_ref ( GTK_WIDGET ( settings));
-		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( settings));
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) g_object_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hbox), 5);
 		
 		scr_clist_visible = gtk_scrolled_window_new ( NULL, NULL);
 		gtk_box_pack_start ( GTK_BOX ( hbox), scr_clist_visible, TRUE, TRUE, 0);
 
 		clist_visible = gtk_clist_new ( 1);
-		gtk_widget_ref ( clist_visible);
-		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_DISK_LIST_VISIBLE, clist_visible, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( clist_visible);
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_DISK_LIST_VISIBLE, clist_visible, (GDestroyNotify) g_object_unref);
 		gtk_container_add ( GTK_CONTAINER ( scr_clist_visible), clist_visible);
 		gtk_clist_set_column_width ( GTK_CLIST ( clist_visible), 0, 80);
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_visible), 0);
@@ -120,8 +120,8 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 		gtk_box_pack_start ( GTK_BOX ( hbox), scr_clist_hidden, TRUE, TRUE, 0);
 
 		clist_hidden = gtk_clist_new ( 1);
-		gtk_widget_ref ( clist_hidden);
-		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_DISK_LIST_HIDDEN, clist_hidden, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( clist_hidden);
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_DISK_LIST_HIDDEN, clist_hidden, (GDestroyNotify) g_object_unref);
 		gtk_container_add ( GTK_CONTAINER (scr_clist_hidden), clist_hidden);
 		gtk_clist_set_column_width ( GTK_CLIST ( clist_hidden), 0, 80);
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_hidden), 0);

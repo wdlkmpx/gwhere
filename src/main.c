@@ -63,7 +63,6 @@ int main (int argc, char *argv[]) {
 	}
 #endif
 
-	gtk_set_locale ( );
 
 //	g_log_set_handler ( "Gtk", G_LOG_LEVEL_WARNING, (GLogFunc) gtk_false, NULL);
 //	g_log_set_handler ( "Gtk", G_LOG_LEVEL_WARNING, g_log_default_handler, NULL);

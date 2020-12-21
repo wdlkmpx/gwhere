@@ -201,7 +201,7 @@ gboolean gw_menu_file_set_import ( GtkWindow *w, gchar **plugins) {
 		import_menu = GTK_MENU_ITEM ( g_object_get_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_IMPORT));
 
 		if ( import_menu != NULL ) {
-			gtk_menu_item_remove_submenu ( import_menu);
+			gtk_menu_item_set_submenu (import_menu, NULL);
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -250,7 +250,7 @@ gboolean gw_menu_file_set_export ( GtkWindow *w, gchar **plugins) {
 		import_menu = GTK_MENU_ITEM ( g_object_get_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_EXPORT));
 
 		if ( import_menu != NULL ) {
-			gtk_menu_item_remove_submenu ( import_menu);
+			gtk_menu_item_set_submenu ( import_menu, NULL);
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -300,7 +300,7 @@ gboolean gw_menu_file_set_recents_files ( GtkWindow *w, gchar **files) {
 		recents_files_menu = GTK_MENU_ITEM ( g_object_get_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_RECENTS_FILES));
 
 		if ( recents_files_menu != NULL ) {
-			gtk_menu_item_remove_submenu ( recents_files_menu);
+			gtk_menu_item_set_submenu ( recents_files_menu, NULL);
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : Creating a new submenu...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);

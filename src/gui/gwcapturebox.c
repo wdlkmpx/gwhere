@@ -51,7 +51,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_window_set_policy ( GTK_WINDOW ( w), FALSE, FALSE, TRUE);
 		gtk_window_set_title ( GTK_WINDOW ( w), title);
-		gtk_container_border_width ( GTK_CONTAINER ( w), 10);
+		gtk_container_set_border_width ( GTK_CONTAINER ( w), 10);
 
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
@@ -61,8 +61,8 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		g_signal_connect (G_OBJECT ( w), "delete-event", G_CALLBACK ( gtk_widget_destroy), NULL);
 
 		/* Store parent window reference */
-		gtk_widget_ref ( GTK_WIDGET ( window));
-		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW, window, ( GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( window));
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW, window, ( GDestroyNotify) g_object_unref);
 
 		frame = gtk_frame_new ( subject);
 		gtk_container_add ( GTK_CONTAINER ( w), frame);
@@ -75,13 +75,13 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		g_signal_connect (G_OBJECT ( entry_data_capture), "activate", G_CALLBACK ( ok), w);
 
 		/* Store data capture reference */
-		gtk_widget_ref ( entry_data_capture);
-		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE, entry_data_capture, ( GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( entry_data_capture);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE, entry_data_capture, ( GDestroyNotify) g_object_unref);
 		gtk_entry_set_text ( GTK_ENTRY ( entry_data_capture), text);
 		gtk_box_pack_start ( GTK_BOX ( vbox), entry_data_capture, TRUE, TRUE, 0);
 		GTK_WIDGET_SET_FLAGS ( entry_data_capture, GTK_CAN_FOCUS);
 		gtk_widget_grab_focus ( entry_data_capture);
-		gtk_entry_select_region ( GTK_ENTRY ( entry_data_capture), 0, -1);
+		gtk_editable_select_region (GTK_EDITABLE ( entry_data_capture), 0, -1);
 
 		hbox = gtk_hbox_new ( TRUE, 10);
 		gtk_container_add ( GTK_CONTAINER ( vbox), hbox);
@@ -114,7 +114,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( w) )
+	if ( !gtk_widget_get_visible ( w) )
 	{
 #ifdef GW_DEBUG_GUI_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s() : show the window\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);

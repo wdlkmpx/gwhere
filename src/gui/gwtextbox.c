@@ -54,13 +54,13 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
-		gtk_container_border_width ( GTK_CONTAINER ( w), 5);
+		gtk_container_set_border_width ( GTK_CONTAINER ( w), 5);
 
 		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK ( gtk_widget_destroyed), &w);
 
 		/* Store parent window reference */
-		gtk_widget_ref ( GTK_WIDGET ( window));
-		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( window));
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW, window, (GDestroyNotify) g_object_unref);
 
 		frame = gtk_frame_new ( subject);
 		gtk_container_add ( GTK_CONTAINER ( w), frame);
@@ -85,11 +85,11 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 			gtk_text_area_insert ( GTK_TEXT_AREA ( txt_area), text);
 		}
 
-		gtk_widget_set_usize ( txt_area, 400, 300);
-		gtk_widget_ref ( txt_area);
+		gtk_widget_set_size_request ( txt_area, 400, 300);
+		g_object_ref ( txt_area);
 
 		/* Store data text reference */
-		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_DATA_TEXT, txt_area, (GDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_DATA_TEXT, txt_area, (GDestroyNotify) g_object_unref);
 		gtk_container_add ( GTK_CONTAINER ( scroll_zone), txt_area);
 		gtk_widget_grab_focus ( txt_area);
 
@@ -116,7 +116,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( w) )
+	if ( !gtk_widget_get_visible ( w) )
 	{
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s() : show the window\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);

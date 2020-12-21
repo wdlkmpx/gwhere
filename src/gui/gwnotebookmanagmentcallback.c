@@ -404,7 +404,7 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 	if ( (entry != NULL) && (w != NULL) ) {
 		cmb = gw_notebook_managment_get_combo_box_device ( w);
 
-		if ( !gw_notebook_managment_get_option_display_info ( w) || !GTK_WIDGET_HAS_FOCUS ( entry)) {
+		if ( !gw_notebook_managment_get_option_display_info ( w) || !gtk_widget_has_focus ( entry)) {
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : no display device informations\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif

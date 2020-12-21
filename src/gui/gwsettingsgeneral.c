@@ -70,8 +70,8 @@ gint gw_plugin_settings_general_pane_create ( GtkWindow *settings, GtkContainer 
 	if ( settings != NULL && parent != NULL )
 	{
 		table_pane = gtk_table_new ( 0, 2, FALSE);
-		gtk_widget_ref ( GTK_WIDGET ( settings));
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( settings));
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) g_object_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);

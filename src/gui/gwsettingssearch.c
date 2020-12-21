@@ -98,40 +98,40 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 	if ( settings != NULL && parent != NULL )
 	{
 		table_pane = gtk_table_new ( 5, 2, FALSE);
-		gtk_widget_ref ( GTK_WIDGET ( settings));
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( settings));
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) g_object_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Adds the case sensitive sort option. */
 		chk_sort_case_sensitive = gtk_check_button_new_with_label (_( "Case sensitive sort."));
-		gtk_widget_ref ( chk_sort_case_sensitive);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_sort_case_sensitive);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_sort_case_sensitive,
 		                      _( "The result sort in search is case sensitive."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_case_sensitive, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the sort group by type option. */
 		chk_sort_group_by = gtk_check_button_new_with_label (_( "Result sort group by type."));
-		gtk_widget_ref ( chk_sort_group_by);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK, chk_sort_group_by, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_sort_group_by);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK, chk_sort_group_by, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_sort_group_by,
 		                      _( "The result sort in search can be grouped by item type. If this option is checked all item will be grouped by catalogs, disks, folders and files."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_group_by, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autoresize column option. */
 		chk_autoresize = gtk_check_button_new_with_label (_( "Autoresize columns"));
-		gtk_widget_ref ( chk_autoresize);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_autoresize);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_autoresize,
 		                      _( "Autoresize all explorer column."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoresize, 0, 1, 2, 3, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the key words mode option. */
 		chk_key_words_mode = gtk_check_button_new_with_label (_( "All key words must match"));
-		gtk_widget_ref ( chk_key_words_mode);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK, chk_key_words_mode, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_key_words_mode);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK, chk_key_words_mode, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_key_words_mode,
 		                      _( "Choose if all key words or only one of all key words must match with item in order to be in the search result."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_key_words_mode, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);

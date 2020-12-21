@@ -45,8 +45,8 @@ GtkWidget * gw_menu_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *parent)
 
 	/* Menu */
 	menu_bar = gtk_menu_bar_new ( );
-	gtk_widget_ref ( menu_bar);
-	g_object_set_data_full (G_OBJECT ( w), GW_REF_MENU_BAR, menu_bar, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( menu_bar);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_MENU_BAR, menu_bar, (GDestroyNotify) g_object_unref);
 
 	/* File menu */
 	menu_file = gw_menu_file_create ( w, ag, menu_bar);

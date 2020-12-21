@@ -176,10 +176,10 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* ComboBox to select media */
 		cmb_disk_selection = gtk_combo_new ( );
-		gtk_widget_ref ( cmb_disk_selection);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE, cmb_disk_selection, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( cmb_disk_selection);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE, cmb_disk_selection, (GDestroyNotify) g_object_unref);
 		gtk_combo_set_use_arrows_always ( GTK_COMBO ( cmb_disk_selection), TRUE);
-		gtk_entry_set_editable ( GTK_ENTRY ( GTK_COMBO ( cmb_disk_selection)->entry), FALSE);
+		gtk_editable_set_editable (GTK_EDITABLE ( GTK_COMBO ( cmb_disk_selection)->entry), FALSE);
 
 		/* Loads the list of devices */
 		gw_notebook_managment_load_device_list ( window);
@@ -192,8 +192,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Entry of ComboBox to select disk */
 		entry_cmb_disk_selection = GTK_COMBO ( cmb_disk_selection)->entry;
-		gtk_widget_ref ( entry_cmb_disk_selection);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR, entry_cmb_disk_selection, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( entry_cmb_disk_selection);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR, entry_cmb_disk_selection, (GDestroyNotify) g_object_unref);
 
 		/* Horizontal separator */
 		hseparator = gtk_hseparator_new ( );
@@ -212,8 +212,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Entry for number archive */
 		entry_number_archive = gtk_entry_new ( );
-		gtk_widget_ref ( entry_number_archive);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE, entry_number_archive, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( entry_number_archive);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE, entry_number_archive, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_number_archive), entry_number_archive, TRUE, TRUE, 0);
 	
 		/* Horizontal box for disk name */
@@ -229,8 +229,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Entry for disk name */
 		entry_disk_name = gtk_entry_new ( );
-		gtk_widget_ref ( entry_disk_name);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME, entry_disk_name, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( entry_disk_name);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME, entry_disk_name, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_disk_name), entry_disk_name, TRUE, TRUE, 0);
 		g_signal_connect (G_OBJECT ( entry_disk_name), "activate", G_CALLBACK ( gw_notebook_managment_scan_click), window);
 
@@ -241,8 +241,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		/* ComboBox for category selection */
 		/* It's not mandatory to encode to UTF-8 because gw_combo_box_categories_create() encodes itself. */
 		cmb_categories = gw_combo_box_categories_create ( window, _( "Category : "), gtk_ctree_node_get_row_data ( tree, root));
-		gtk_widget_ref ( GTK_WIDGET ( cmb_categories));
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY, GTK_WIDGET ( cmb_categories), (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( cmb_categories));
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY, GTK_WIDGET ( cmb_categories), (GDestroyNotify) g_object_unref);
 		gw_combo_box_categories_load ( cmb_categories);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), GTK_WIDGET ( cmb_categories), TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( cmb_categories), 10);
@@ -262,8 +262,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Device file information label */
 		lbl_device_file = gtk_label_new (_( "Info : "));
-		gtk_widget_ref ( lbl_device_file);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_INFO, lbl_device_file, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_file);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_INFO, lbl_device_file, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_file), lbl_device_file, FALSE, FALSE, 0);
 	
 		/* Horizontal box for device type information */
@@ -276,8 +276,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Device type information label */
 		lbl_device_type = gtk_label_new (_( "Type : "));
-		gtk_widget_ref ( lbl_device_type);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_TYPE, lbl_device_type, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_type);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_TYPE, lbl_device_type, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_type), lbl_device_type, FALSE, FALSE, 0);
 	
 #ifdef HAVE_MOUNT_SYSTEM
@@ -290,8 +290,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Media mount state information label */
 		lbl_device_ismounted = gtk_label_new (_( "Mounted : "));
-		gtk_widget_ref ( lbl_device_ismounted);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_MOUNTED, lbl_device_ismounted, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_ismounted);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_MOUNTED, lbl_device_ismounted, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_ismounted), lbl_device_ismounted, FALSE, FALSE, 0);
 #endif
 	
@@ -304,8 +304,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Media volume information label */
 		lbl_device_volume_name = gtk_label_new (_( "Volume : "));
-		gtk_widget_ref ( lbl_device_volume_name);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_VOLUME, lbl_device_volume_name, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_volume_name);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_VOLUME, lbl_device_volume_name, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_volume_name), lbl_device_volume_name, FALSE, FALSE, 0);
 	
 		/* Horizontal box for media serial number information */
@@ -317,8 +317,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Media serial number information label */
 		lbl_device_serial_number = gtk_label_new (_( "Serial N# : "));
-		gtk_widget_ref ( lbl_device_serial_number);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_SERIAL_NUMBER, lbl_device_serial_number, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_serial_number);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_SERIAL_NUMBER, lbl_device_serial_number, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_serial_number), lbl_device_serial_number, FALSE, FALSE, 0);
 	
 		/* Horizontal box for media capacity information */
@@ -330,8 +330,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Media capacity information label */
 		lbl_device_capacity = gtk_label_new (_( "Capacity : "));
-		gtk_widget_ref ( lbl_device_capacity);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_CAPACITY, lbl_device_capacity, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_capacity);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_CAPACITY, lbl_device_capacity, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_capacity), lbl_device_capacity, FALSE, FALSE, 0);
 	
 		/* Horizontal box for media free space information */
@@ -343,8 +343,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Media free space information label */
 		lbl_device_free_space = gtk_label_new (_( "Free space : "));
-		gtk_widget_ref ( lbl_device_free_space);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_FREE_SPACE, lbl_device_free_space, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( lbl_device_free_space);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_FREE_SPACE, lbl_device_free_space, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_device_free_space), lbl_device_free_space, FALSE, FALSE, 0);
 	
 		/* Frame for scan options */
@@ -358,8 +358,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for the displaying of media information */
 		chk_display_device_info = gtk_check_button_new_with_label (_( "Display info"));
-		gtk_widget_ref ( chk_display_device_info);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO, chk_display_device_info, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_display_device_info);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO, chk_display_device_info, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_display_device_info), "clicked", G_CALLBACK ( gw_notebook_managment_refresh_info), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_display_device_info), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_display_device_info, FALSE, FALSE, 0);
@@ -369,8 +369,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 #ifdef HAVE_MOUNT_SYSTEM
 		/* Check button for the automount */
 		chk_automount_device = gtk_check_button_new_with_label (_("Automount"));
-		gtk_widget_ref ( chk_automount_device);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT, chk_automount_device, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_automount_device);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT, chk_automount_device, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_automount_device), "clicked", G_CALLBACK (gw_notebook_managment_option_automount_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_automount_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_automount_device, FALSE, FALSE, 0);
@@ -380,8 +380,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for the exploring of tree structure */
 		chk_explore_tree_structure = gtk_check_button_new_with_label (_( "Explore tree structure of the media."));
-		gtk_widget_ref ( chk_explore_tree_structure);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE, chk_explore_tree_structure, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_explore_tree_structure);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE, chk_explore_tree_structure, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_explore_tree_structure), "clicked", G_CALLBACK (gw_notebook_managment_option_explore_tree_structure_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_tree_structure), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_tree_structure, FALSE, FALSE, 0);
@@ -390,8 +390,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 
 		/* Check button for the exploring of archive files */
 		chk_explore_archive_files = gtk_check_button_new_with_label (_( "Explore archive files (.tar, .gz, .zip, ...)"));
-		gtk_widget_ref ( chk_explore_archive_files);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE, chk_explore_archive_files, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_explore_archive_files);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE, chk_explore_archive_files, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_explore_archive_files), "clicked", G_CALLBACK (gw_notebook_managment_option_explore_archive_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_archive_files), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_archive_files, FALSE, FALSE, 0);
@@ -400,8 +400,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for the auto eject */
 		chk_auto_eject_device = gtk_check_button_new_with_label (_( "Eject media if possible"));
-		gtk_widget_ref ( chk_auto_eject_device);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT, chk_auto_eject_device, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_auto_eject_device);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT, chk_auto_eject_device, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_auto_eject_device), "clicked", G_CALLBACK (gw_notebook_managment_option_eject_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_eject_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_eject_device, FALSE, FALSE, 0);
@@ -410,8 +410,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for setting category recursively */
 		chk_category_recursively = gtk_check_button_new_with_label (_( "Sets category recursive"));
-		gtk_widget_ref ( chk_category_recursively);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE, chk_category_recursively, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_category_recursively);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE, chk_category_recursively, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_category_recursively), "clicked", G_CALLBACK (gw_notebook_managment_option_category_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_category_recursively), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_category_recursively, FALSE, FALSE, 0);
@@ -420,8 +420,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for the auto make description */
 		chk_auto_make_description = gtk_check_button_new_with_label (_( "Auto make description"));
-		gtk_widget_ref ( chk_auto_make_description);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION, chk_auto_make_description, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_auto_make_description);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION, chk_auto_make_description, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_auto_make_description), "clicked", G_CALLBACK (gw_notebook_managment_option_description_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_make_description), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_make_description, FALSE, FALSE, 0);
@@ -430,8 +430,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	
 		/* Check button for the using a pattern to generate disk name */
 		chk_use_pattern = gtk_check_button_new_with_label (_( "Use an advanced pattern to generate disk name"));
-		gtk_widget_ref ( chk_use_pattern);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN, chk_use_pattern, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_use_pattern);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN, chk_use_pattern, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_use_pattern), "clicked", G_CALLBACK (gw_notebook_managment_option_use_pattern_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_pattern), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_pattern, FALSE, FALSE, 0);
@@ -440,8 +440,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 
 		/* Check button for the using media label */
 		chk_use_disk_label = gtk_check_button_new_with_label (_( "Use media volume name as disk name (only when disk name is empty)"));
-		gtk_widget_ref ( chk_use_disk_label);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL, chk_use_disk_label, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_use_disk_label);
+		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL, chk_use_disk_label, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( chk_use_disk_label), "clicked", G_CALLBACK (gw_notebook_managment_option_use_disk_label_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_disk_label), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_disk_label, FALSE, FALSE, 0);
@@ -494,8 +494,8 @@ GtkWidget * gw_notebook_managment_create_and_add ( GtkWindow *window, GtkNoteboo
 			managment_tabbed_pane_label = gtk_label_new (_( "Management"));
 
 			/* Store reference to the title of tabbed pane */
-			gtk_widget_ref ( managment_tabbed_pane_label);
-			g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_MANAGMENT_TABBED_PANE_LABEL, managment_tabbed_pane_label,(GDestroyNotify) gtk_widget_unref);
+			g_object_ref ( managment_tabbed_pane_label);
+			g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_MANAGMENT_TABBED_PANE_LABEL, managment_tabbed_pane_label,(GDestroyNotify) g_object_unref);
 			gtk_notebook_set_tab_label ( parent, gtk_notebook_get_nth_page ( parent, 2), managment_tabbed_pane_label);
 		}
 	}

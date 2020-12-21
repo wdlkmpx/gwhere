@@ -81,24 +81,24 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 	if ( settings != NULL && parent != NULL )
 	{
 		table_pane = gtk_table_new ( 5, 2, FALSE);
-		gtk_widget_ref ( GTK_WIDGET ( settings));
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( settings));
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) g_object_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
 
 		/* Adds the autosave GUI properties option. */
 		chk_autosave = gtk_check_button_new_with_label (_( "Save GUI properties on exit"));
-		gtk_widget_ref ( chk_autosave);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK, chk_autosave, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_autosave);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK, chk_autosave, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_autosave,
 		                      _( "Save GUI properties as window position and size."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autosave, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the allowing beep option. */
 		chk_beep = gtk_check_button_new_with_label (_( "Allow beep"));
-		gtk_widget_ref ( chk_beep);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK, chk_beep, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( chk_beep);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK, chk_beep, (GDestroyNotify) g_object_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_beep,
 		                      _( "Allows to emits a short beep on some event."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_beep, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);

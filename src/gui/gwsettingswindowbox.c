@@ -70,7 +70,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 
 	if ( !settings_window_box )
 	{
-		settings_window_box = gtk_window_new ( GTK_WINDOW_DIALOG);
+		settings_window_box = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_tooltips_set_tip ( tooltips, settings_window_box,
 		                      _( "This Settings box allows to configure some functionnalities and properties of the program."), NULL);
 
@@ -79,14 +79,14 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_window_set_transient_for ( GTK_WINDOW ( settings_window_box), window);
 		gtk_window_set_position ( GTK_WINDOW ( settings_window_box), GTK_WIN_POS_CENTER);
 		gtk_window_set_policy ( GTK_WINDOW ( settings_window_box), TRUE, TRUE, FALSE);
-/*		gtk_widget_set_usize ( settings_window_box, 600, 400);
+/*		gtk_widget_set_size_request ( settings_window_box, 600, 400);
 		gtk_window_set_default_size ( GTK_WINDOW ( settings_window_box), 600, 400);
 */		g_signal_connect (G_OBJECT ( settings_window_box), "destroy", G_CALLBACK ( gw_settings_window_box_closed), window);
 		g_signal_connect (G_OBJECT ( settings_window_box), "destroy", G_CALLBACK ( gtk_widget_destroyed), &settings_window_box);
 
 		/* Store parent window reference */
-		gtk_widget_ref ( GTK_WIDGET ( window));
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_PARENT_WINDOW, window, ( GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( window));
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_PARENT_WINDOW, window, ( GDestroyNotify) g_object_unref);
 
 		vb_settings = gtk_vbox_new ( FALSE, 0);
 		gtk_container_add ( GTK_CONTAINER ( settings_window_box), vb_settings);
@@ -99,8 +99,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		ctree_settings = gtk_ctree_new ( 1, 0);
 		gtk_clist_set_column_width ( GTK_CLIST ( ctree_settings), 0, 170);
 		gtk_clist_column_titles_show ( GTK_CLIST ( ctree_settings));
-		gtk_widget_ref ( ctree_settings);
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CTREE, ctree_settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( ctree_settings);
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CTREE, ctree_settings, (GDestroyNotify) g_object_unref);
 		gtk_paned_pack1 ( GTK_PANED ( hp_settings), ctree_settings, FALSE, TRUE);
 		gtk_container_set_border_width ( GTK_CONTAINER ( ctree_settings), 5);
 		gtk_tooltips_set_tip ( tooltips, ctree_settings, _( "Select the section to configure."), NULL);
@@ -109,8 +109,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_clist_set_column_widget ( GTK_CLIST ( ctree_settings), 0, lbl_settings);
 
 		notebook_settings = gtk_notebook_new ( );
-		gtk_widget_ref ( notebook_settings);
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_NOTEBOOK, notebook_settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( notebook_settings);
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_NOTEBOOK, notebook_settings, (GDestroyNotify) g_object_unref);
 		gtk_paned_pack2 ( GTK_PANED ( hp_settings), notebook_settings, TRUE, TRUE);
 		GTK_WIDGET_UNSET_FLAGS ( notebook_settings, GTK_CAN_FOCUS);
 		gtk_tooltips_set_tip ( tooltips, notebook_settings,
@@ -135,12 +135,12 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		/* The OK/Cancel button area */
 		hb_settings_controls = gtk_hbutton_box_new ( );
 		gtk_button_box_set_layout ( GTK_BUTTON_BOX ( hb_settings_controls), GTK_BUTTONBOX_END);
-		gtk_button_box_set_spacing ( GTK_BUTTON_BOX ( hb_settings_controls), 5);
+		gtk_box_set_spacing (GTK_BOX ( hb_settings_controls), 5);
 		gtk_box_pack_end ( GTK_BOX ( vb_settings), hb_settings_controls, FALSE, FALSE, 0);
 
 		btn_ok = gtk_button_new_with_mnemonic (_("_OK"));
-		gtk_widget_ref ( btn_ok);
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_OK_BTN, btn_ok, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( btn_ok);
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_OK_BTN, btn_ok, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_ok, TRUE, TRUE, 10);
 		gtk_tooltips_set_tip ( tooltips, btn_ok,
 		                      _( "Click on OK button to apply changes and close the Settings box."), NULL);
@@ -149,16 +149,16 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_widget_grab_default ( btn_ok);
 
 		btn_cancel = gtk_button_new_with_mnemonic (_("_Cancel"));
-		gtk_widget_ref ( btn_cancel);
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN, btn_cancel, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( btn_cancel);
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN, btn_cancel, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_cancel, TRUE, TRUE, 10);
 		gtk_tooltips_set_tip ( tooltips, btn_cancel,
 		                      _( "Click on Cancel button to cancel changes and close the Settings box."), NULL);
 		GTK_WIDGET_SET_FLAGS ( btn_cancel, GTK_CAN_FOCUS);
 
 		btn_apply = gtk_button_new_with_mnemonic (_("_Apply"));
-		gtk_widget_ref ( btn_apply);
-		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN, btn_apply, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( btn_apply);
+		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN, btn_apply, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_apply, TRUE, TRUE, 10);
 		gtk_tooltips_set_tip ( tooltips, btn_apply,
 		                      _( "Click on Apply button to apply changes (without close the Settings box)."), NULL);
@@ -181,7 +181,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gw_settings_window_box_load_sections ( GTK_WINDOW ( settings_window_box));
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( settings_window_box) )
+	if ( !gtk_widget_get_visible ( settings_window_box) )
 	{
 #ifdef GW_DEBUG_GUI_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s() : show the window\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -506,7 +506,7 @@ gboolean gw_settings_window_box_apply_button_get_enable ( GtkWindow *w)
 
 		if ( button != NULL )
 		{
-			result = GTK_WIDGET_IS_SENSITIVE ( button);
+			result = gtk_widget_is_sensitive (GTK_WIDGET (button));
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : can apply = %d\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, result);

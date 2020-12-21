@@ -54,17 +54,17 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 
 	if ( !w	)
 	{
-		w = gtk_window_new ( GTK_WINDOW_DIALOG);
+		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
 		gtk_window_set_policy (	GTK_WINDOW ( w), FALSE,	FALSE, FALSE);
 		gtk_window_set_title ( GTK_WINDOW ( w),	title);
-		gtk_container_border_width ( GTK_CONTAINER ( w), 5);
+		gtk_container_set_border_width ( GTK_CONTAINER ( w), 5);
 
 		gtk_window_set_modal ( GTK_WINDOW ( w),TRUE);
 		gtk_window_set_transient_for ( GTK_WINDOW ( w),	window);
 		gtk_window_set_position	( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 
-		gtk_widget_ref ( GTK_WIDGET ( window));
-		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( window));
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW, window, (GDestroyNotify) g_object_unref);
 
 		if ( stop != NULL )
 		{
@@ -87,8 +87,8 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		file_name = gtk_label_new ( text);
 
 		/* Store the reference to the text info	label to describe the current processing. */
-		gtk_widget_ref ( file_name);
-		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL, file_name,	(GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( file_name);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL, file_name,	(GDestroyNotify) g_object_unref);
 		gtk_label_set_justify (	GTK_LABEL ( file_name),	GTK_JUSTIFY_LEFT);
 		gtk_box_pack_start ( GTK_BOX ( vbox), file_name, TRUE, TRUE, 0);
 
@@ -98,8 +98,8 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		progress_bar = gtk_progress_bar_new ( );
 
 		/* Store reference to the real progress	bar */
-		gtk_widget_ref ( progress_bar);
-		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR, progress_bar,	(GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( progress_bar);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR, progress_bar,	(GDestroyNotify) g_object_unref);
 
 		/* Doesn't show	the progress bar if max	value is 0 */
 		if ( max > 0 )
@@ -120,8 +120,8 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 
 		/* Store reference to the ok/cancel button */
-		gtk_widget_ref ( button);
-		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON, button, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( button);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON, button, (GDestroyNotify) g_object_unref);
 		gw_progress_bar_box_set_state ( GTK_WINDOW ( w), STATE_CANCEL);
 		g_object_set_data (G_OBJECT (button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
@@ -145,7 +145,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		}
 	}
 
-	if ( !GTK_WIDGET_VISIBLE ( w) )
+	if ( !gtk_widget_get_visible ( w) )
 	{
 #ifdef GW_DEBUG_GUI_COMPONENT
 			g_print	( "*** GW - %s (%d) :: %s() : show window\n", __FILE__,	__LINE__, __PRETTY_FUNCTION__);

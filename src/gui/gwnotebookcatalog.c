@@ -61,8 +61,8 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 
 	/* Horizontal pane for the first notebook pane.*/
 	hpan_catalog = gtk_hpaned_new ( );
-	gtk_widget_ref ( hpan_catalog);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_PANE, hpan_catalog, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( hpan_catalog);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_PANE, hpan_catalog, (GDestroyNotify) g_object_unref);
 	/* Gets the saved value of the horizontal pane position. */
 	if ( (hpan_pos = gw_am_get_settings_tod ( GW_VALUE_APP_EXPLORER_HPAN_POSITION)) == -1 ) {
 		hpan_pos = GW_VALUE_APP_EXPLORER_HPAN_POSITION_DEFAULT;
@@ -71,14 +71,14 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 
 	/* Catalog tree explorer */
 	scr_win_ctree = gtk_scrolled_window_new ( NULL, NULL);
-	gtk_widget_ref ( scr_win_ctree);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_TREE_SCROLLPANE, scr_win_ctree, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( scr_win_ctree);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_TREE_SCROLLPANE, scr_win_ctree, (GDestroyNotify) g_object_unref);
 	gtk_scrolled_window_set_policy ( GTK_SCROLLED_WINDOW ( scr_win_ctree), GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
 	gtk_container_add ( GTK_CONTAINER ( hpan_catalog), scr_win_ctree);
 
 	ctree_catalog = gtk_ctree_new ( 1, 0);
-	gtk_widget_ref ( ctree_catalog);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_TREE, ctree_catalog, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( ctree_catalog);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_TREE, ctree_catalog, (GDestroyNotify) g_object_unref);
 	g_signal_connect (G_OBJECT ( ctree_catalog), "button_press_event", G_CALLBACK ( gw_notebook_catalog_ctree_button_press_event), NULL);
 //	g_signal_connect (G_OBJECT ( ctree_catalog), "tree_select_row", G_CALLBACK ( gw_notebook_catalog_ctree_select_row), NULL);
 	g_signal_connect_after (G_OBJECT ( ctree_catalog), "tree_select_row", G_CALLBACK ( gw_notebook_catalog_ctree_select_row), NULL);
@@ -93,23 +93,23 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	gtk_clist_set_auto_sort ( GTK_CLIST ( ctree_catalog), TRUE);
 
 	lbl_archive = gtk_label_new (_("Archive"));
-	gtk_widget_ref ( lbl_archive);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_ARCHIVE_LABEL, lbl_archive,(GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( lbl_archive);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_ARCHIVE_LABEL, lbl_archive,(GDestroyNotify) g_object_unref);
 	gtk_label_set_justify ( GTK_LABEL ( lbl_archive), GTK_JUSTIFY_LEFT);
 	gtk_misc_set_alignment ( GTK_MISC ( lbl_archive), 0, 0.5);
 	gtk_clist_set_column_widget ( GTK_CLIST ( ctree_catalog), 0, lbl_archive);
 
 	/* List of catalog explorer. */
 	scr_win_info_catalog = gtk_scrolled_window_new ( NULL, NULL);
-	gtk_widget_ref ( scr_win_info_catalog);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_LIST_SCROLLPANE, scr_win_info_catalog, (GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( scr_win_info_catalog);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_LIST_SCROLLPANE, scr_win_info_catalog, (GDestroyNotify) g_object_unref);
 	gtk_scrolled_window_set_policy ( GTK_SCROLLED_WINDOW ( scr_win_info_catalog), GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
 	gtk_container_add ( GTK_CONTAINER ( hpan_catalog), scr_win_info_catalog);
 
 	clist_info_catalog = gtk_clist_new ( 12);
 	clist_info = GTK_CLIST ( clist_info_catalog);
-	gtk_widget_ref ( clist_info_catalog);
-	g_object_set_data_full (G_OBJECT ( window), GW_REF_CLIST_EXPLORER, clist_info_catalog,(GDestroyNotify) gtk_widget_unref);
+	g_object_ref ( clist_info_catalog);
+	g_object_set_data_full (G_OBJECT ( window), GW_REF_CLIST_EXPLORER, clist_info_catalog,(GDestroyNotify) g_object_unref);
 //	g_signal_connect (G_OBJECT ( clist_info_catalog), "resize-column", G_CALLBACK ( gw_notebook_catalog_clist_column_resized), NULL);
 //	g_signal_connect (G_OBJECT ( clist_info_catalog), "click_column", G_CALLBACK ( gw_notebook_catalog_column_sort), NULL);
 //	g_signal_connect (G_OBJECT ( clist_info_catalog), "button_press_event", G_CALLBACK ( gw_notebook_catalog_clist_button_press_event), NULL);
@@ -197,8 +197,8 @@ GtkWidget * gw_notebook_catalog_create_and_add ( GtkWindow * window, GtkNotebook
 			catalog_tabbed_pane_label = gtk_label_new (_( "Catalog"));
 
 			/* Store reference to the title of tabbed pane */
-			gtk_widget_ref ( catalog_tabbed_pane_label);
-			g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_TABBED_PANE_LABEL, catalog_tabbed_pane_label,(GDestroyNotify) gtk_widget_unref);
+			g_object_ref ( catalog_tabbed_pane_label);
+			g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CATALOG_TABBED_PANE_LABEL, catalog_tabbed_pane_label,(GDestroyNotify) g_object_unref);
 			gtk_notebook_set_tab_label ( parent, gtk_notebook_get_nth_page ( parent, 0), catalog_tabbed_pane_label);
 		}
 	}

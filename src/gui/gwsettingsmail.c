@@ -114,8 +114,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 	if ( settings != NULL && parent != NULL )
 	{
 		table_pane = gtk_table_new ( 3, 2, FALSE);
-		gtk_widget_ref ( GTK_WIDGET ( settings));
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( GTK_WIDGET ( settings));
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) g_object_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
@@ -126,8 +126,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_email_address), 0, 0.5);
 
 		ent_email_address = gtk_entry_new ( );
-		gtk_widget_ref ( ent_email_address);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EMAIL_ADDRESS_ENTRY, ent_email_address, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( ent_email_address);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EMAIL_ADDRESS_ENTRY, ent_email_address, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_email_address, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, ent_email_address, _( "Enter your email address."), NULL);
 
@@ -137,8 +137,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_server_address), 0, 0.5);
 
 		ent_server_address = gtk_entry_new ( );
-		gtk_widget_ref ( ent_server_address);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_ADDRESS_ENTRY, ent_server_address, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( ent_server_address);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_ADDRESS_ENTRY, ent_server_address, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_address, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, ent_server_address,
 		                      _( "Enter your out going mail server. Usualy this address is mail.yourdomain.com"), NULL);
@@ -149,8 +149,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_server_port), 0, 0.5);
 
 		ent_server_port = gtk_entry_new ( );
-		gtk_widget_ref ( ent_server_port);
-		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_PORT_ENTRY, ent_server_port, (GDestroyNotify) gtk_widget_unref);
+		g_object_ref ( ent_server_port);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_PORT_ENTRY, ent_server_port, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_port, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, ent_server_port,
 		                      _( "Enter the out going mail server port (the most common value is 25)."), NULL);
