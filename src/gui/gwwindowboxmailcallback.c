@@ -21,7 +21,7 @@
 #include "gwwindowboxmailcallback.h"
 
 #include "gwwindowboxmail.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 #include "gwprogressbarbox.h"
 
 #include "../gwapplicationmanager.h"
@@ -32,8 +32,6 @@ gboolean gw_mail_window_box_send_click ( GtkWidget *bt, GtkWindow *w)
 {
 	gboolean result = FALSE;
 	GWMail *mail = NULL;
-	GtkWindow *msg_box = NULL;
-
 
 	if ( w != NULL )
 	{
@@ -54,18 +52,15 @@ gboolean gw_mail_window_box_send_click ( GtkWidget *bt, GtkWindow *w)
 				mail->file_path = NULL;
 			}
 
-			msg_box = gw_msg_box_create ( w, _( "Send mail"), _( "Sending mail, please wait..."));
+			gw_msg_box_create ( w, _( "Send mail"), _( "Sending mail, please wait..."));
 			gw_gui_manager_main_interface_refresh ( );
 
 			if ( gw_am_send_mail ( mail) == -1 )
 			{
-				gtk_widget_destroy ( GTK_WIDGET ( msg_box));
-
 				gw_msg_box_create ( w, _( "Send mail"), _( "An error occured during the sending of mail. Please check your parameters."));
 			}
 			else
 			{
-				gtk_widget_destroy ( GTK_WIDGET ( msg_box));
 				gtk_widget_destroy ( GTK_WIDGET ( w));
 			}
 

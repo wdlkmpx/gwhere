@@ -50,7 +50,7 @@
 #include "gwmenufilecallback.h"
 #include "gwmenupopup.h"
 #include "gwmenupopupcallback.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 #include "gwnotebook.h"
 #include "gwnotebookcallback.h"
 #include "gwnotebookcatalog.h"

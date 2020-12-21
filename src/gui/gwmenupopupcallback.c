@@ -29,7 +29,7 @@
 #include "gwpropertiesbox.h"
 #include "gwcapturebox.h"
 #include "gwtextbox.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 
 #include "../gwguimanager.h"
 #include "../gwapplicationmanager.h"

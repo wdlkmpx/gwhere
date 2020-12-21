@@ -25,7 +25,7 @@
 #include "gwnotebooksearch.h"
 #include "gwstatusbar.h"
 #include "gwstatusbarcallback.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 
 #include "data/gwdata.h"
 

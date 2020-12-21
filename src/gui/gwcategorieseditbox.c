@@ -24,7 +24,7 @@
 
 #include "../gwapplicationmanager.h"
 #include "gtktextarea.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 #include "gwnotebookmanagmentcallback.h"
 
 

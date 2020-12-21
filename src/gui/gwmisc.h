@@ -18,7 +18,7 @@
 
 
 /*!
- * @header	gwmsgbox.h
+ * @header	gwmisc.h
  *		GWhere<br>
  *		Copyright (C) 2000  Sébastien LECACHEUR<br><br>
  *		This Distributed under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public Licence</a><br><br>
@@ -30,27 +30,25 @@
  * @see		gtk/gtk.h
  * @link	GWhere Web Site <http://www.gwhere.org>
  * @link	GTK+ Web Site <http://www.gtk.org>
- * @ref		gwmsgbox.c
+ * @ref		gwmisc.c
  * @author	Author <zero@gwhere.org>
  */
 
 
-#ifndef GW_GUI_GW_MSG_BOX_H
-#define GW_GUI_GW_MSG_BOX_H
+#ifndef GW_GUI_GW_MISC_H
+#define GW_GUI_GW_MISC_H
 
 
 /*!
  * @function	gw_msg_box_create
  * @abstract	Creates the message box window.
  * @discussion	This function creates the message box window.
- *		This window can be destroyed by clicking on the OK button.
  * @param	w	main window
  * @param	title	the window title
  * @param	msg	the message to display
  * @result	the message box.<br>
- *		Returns <i>NULL</i> when an error occured.
  */
-GtkWindow *gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
+void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
 
 
 #endif

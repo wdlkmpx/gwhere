@@ -22,7 +22,7 @@
 
 #include "gwmenufilecallback.h"
 #include "gwmenupopupcallback.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 
 #include "../gwguimanager.h"
 

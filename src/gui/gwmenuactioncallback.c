@@ -21,7 +21,7 @@
 #include "gwmenuactioncallback.h"
 
 #include "gwcategorieseditbox.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 
 #include "../gwguimanager.h"
 

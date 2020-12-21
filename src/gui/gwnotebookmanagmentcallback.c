@@ -31,7 +31,7 @@
 #include "gwnotebookmanagment.h"
 #include "gwcapturebox.h"
 #include "gwprogressbarbox.h"
-#include "gwmsgbox.h"
+#include "gwmisc.h"
 
 #include "../gwapplicationmanager.h"
 #include "../gwguimanager.h"
@@ -90,7 +90,6 @@ gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
 
 
 gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
-	GtkWindow *msg = NULL;
 	gint num_archive = 0, form_num;
 	gchar *name = NULL, *disk_name = NULL, *dir = NULL, *num = NULL, *tmp = NULL, *index = NULL, *str_num = NULL, *str_form_num = NULL, *str_form_num_value = NULL;
 	struct vfs_stats *vfs = NULL;
@@ -144,7 +143,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 				g_print ( "*** GW - %s (%d) :: %s() : device is not mounted\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-					msg = gw_msg_box_create ( window, _( "Add disk"), _( "The disk hasn't been added : there are not mounted media"));
+					gw_msg_box_create ( window, _( "Add disk"), _( "The disk hasn't been added : there are not mounted media"));
 
 					result = FALSE;
 				} else if ( gw_dm_disk_can_mounted_from_vfs_stats ( vfs) == FALSE ) {
@@ -152,7 +151,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 					g_print ( "*** GW - %s (%d) :: %s() : cannot mount device\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-					msg = gw_msg_box_create ( window, _( "Add disk"), _( "The disk hasn't been added : cannot mount media"));
+					gw_msg_box_create ( window, _( "Add disk"), _( "The disk hasn't been added : cannot mount media"));
 
 					result = FALSE;
 				} else {

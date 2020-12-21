@@ -48,7 +48,7 @@ libgwgui_a_SOURCES = \
 	gwnotebooksearchcallback.c gwnotebooksearchcallback.h \
 	gwnotebookmanagment.c gwnotebookmanagment.h \
 	gwnotebookmanagmentcallback.c gwnotebookmanagmentcallback.h \
-	gwmsgbox.c gwmsgbox.h \
+	gwmisc.c gwmisc.h \
 	gwprogressbarbox.c gwprogressbarbox.h \
 	gwpropertiesbox.c gwpropertiesbox.h \
 	gwpropertiesboxcallback.c gwpropertiesboxcallback.h \
