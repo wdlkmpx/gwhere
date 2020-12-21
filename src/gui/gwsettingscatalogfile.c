@@ -383,7 +383,9 @@ gint gw_plugin_settings_catalog_file_pane_load ( GtkWidget *pane)
 #endif
 		}
 
-		gtk_entry_set_text ( entry_autoload_filepath, value);
+		if (value) {
+			gtk_entry_set_text ( entry_autoload_filepath, value);
+		}
 		entry_autoload_filepath = NULL;
 		value = NULL;
 
