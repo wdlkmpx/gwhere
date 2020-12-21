@@ -26,7 +26,6 @@ libgwgui_a_SOURCES = \
 	gwsettingssearch.c gwsettingssearch.h \
 	gwsettingsquicksearch.c gwsettingsquicksearch.h \
 	gwsettingsmail.c gwsettingsmail.h \
-	gwfileselectionbox.c gwfileselectionbox.h \
 	gwcategorieseditbox.c gwcategorieseditbox.h \
 	gwcomboboxcategories.c gwcomboboxcategories.h \
 	gwdialogbox.c gwdialogbox.h \

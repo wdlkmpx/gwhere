@@ -51,4 +51,15 @@
 void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
 
 
+/*!
+ * @function	gw_file_chooser_box_create
+ * @abstract	Creates and shows a file selection window box.
+ * @discussion	This function creates and shows a file selection box.
+ * @param	title		the file selection box title
+ * @param	filename	the default file name
+ * @param	ok		the function which will be call when user clicks on ok button
+ * @param	cancel		the function which will be call when user clicks on cancel button
+ */
+void gw_file_chooser_box_create (gchar *title, gchar *filename, GCallback ok, GCallback cancel);
+
 #endif

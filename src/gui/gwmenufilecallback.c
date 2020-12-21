@@ -32,7 +32,7 @@
 #include "gwmisc.h"
 #include "gwdialogbox.h"
 #include "gwmisc.h"
-#include "gwfileselectionbox.h"
+#include "gwmisc.h"
 #include "gwnotebookmanagmentcallback.h"
 #include "gwnotebookcatalog.h"
 
@@ -105,7 +105,7 @@ gboolean gw_menu_file_open_click ( GtkMenuItem *mi, GtkWindow *w) {
 			gw_db_catalog_free ( catalog);
 		} else {
 			/* Else opens file selection box */
-			gw_file_selection_box_create ( _( "Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
+			gw_file_chooser_box_create ( _( "Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
 		}
 	}
 
@@ -225,7 +225,7 @@ gboolean gw_menu_file_send_mail_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 			/* Checks if it's a new catalog (in this case his full name is "./[catalog_full_name]"). */
 			if ( gw_helper_db_catalog_is_new ( catalog)) {
 				/* If it's a new catalog, asks a file name. */
-				gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_send_mail_saveas_file_selection_ok, NULL);
+				gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_send_mail_saveas_file_selection_ok, NULL);
 			} else {
 				/* Else save it directly and send it by mail. */
 				gw_menu_file_save_click ( NULL, NULL);
@@ -284,27 +284,27 @@ gboolean gw_menu_file_send_mail_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 }
 
 
-gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	GtkWindow *window = gw_gui_manager_main_interface_get_main_window ( );
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCatalog *catalog = NULL;
 	gboolean result = FALSE;
-	const gchar * text1;
+	gchar * filexname;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		text1 = gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry));
+		filexname = gtk_file_chooser_get_filename (fs);
 
-		if ( (strlen (text1) > 0 ) && (strcmp (text1, "") != 0) ) {
+		if (filexname) {
 //			/* Updates informations of opened catalog. */
 //			catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
 
 			/* Updates informations of opened catalog. */
-			switch ( gw_am_save_catalog ( gtk_file_selection_get_filename ( fs))) {
+			switch ( gw_am_save_catalog (filexname)) {
 				case 0:
 							break;
 
@@ -323,6 +323,7 @@ gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFil
 
 			/* Closes the file selection box. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
+			g_free (filexname);
 
 			/* Shows the mail window box. */
 			plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context);
@@ -387,7 +388,7 @@ gboolean gw_menu_file_save_click ( GtkMenuItem *mi, GtkWindow *w) {
 
 			case GWECATNOFILENAME:	//TODO should we set the catalog title as catalog file name by default in the file selection box??
 						catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-						gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
+						gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
 						gw_db_catalog_free ( catalog);
 
 						break;
@@ -418,7 +419,7 @@ gboolean gw_menu_file_saveas_click ( GtkMenuItem *mi, GtkWindow *w) {
 //TODO use helper functions
 	if ( gw_am_get_current_catalog_context ( ) != NULL) {
 		catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-		gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
 		gw_db_catalog_free ( catalog);
 	} else {
 		gw_msg_box_create ( w, _( "Save as catalog"), _( "No catalog is opened"));
@@ -473,10 +474,10 @@ gboolean gw_menu_file_exit_click ( GtkMenuItem *mi, GtkWindow *w) {
 }
 
 
-gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
+gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileChooser *fs) {
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 //	GWDBCatalog *catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-	const gchar * text1;
+	gchar * filexname;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -487,10 +488,10 @@ gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 		g_print ( "*** GW - %s (%d) :: %s() : beginning...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+		filexname = gtk_file_chooser_get_filename (fs);
 
 		/* Checkes if a catalog has been selected */
-		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) ) {
+		if (filexname) {
 			gtk_widget_hide ( GTK_WIDGET ( fs));
 
 //TODO use helper functions
@@ -505,9 +506,10 @@ gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 			}
 
 			/* Loads the catalog. */
-			gw_am_load_catalog ( gtk_file_selection_get_filename ( fs));
+			gw_am_load_catalog (gtk_file_chooser_get_filename (fs));
 
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
+			g_free (filexname);
 		}
 	}
 
@@ -515,7 +517,7 @@ gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileSelection *fs) {
 }
 
 
-gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileSelection *fs) {
+gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileChooser *fs) {
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
@@ -592,8 +594,8 @@ gboolean gw_menu_file_new_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
 //	if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
 		/* If it's a new catalog, asks a file name. */
-//		gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_new_saveas_file_selection_ok, NULL);
-		gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_new_saveas_file_selection_ok, NULL);
+//		gw_file_chooser_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_new_saveas_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_new_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save it directly and displays a fill box of new catalog */
 		gw_menu_file_save_click ( NULL, NULL);
@@ -624,22 +626,21 @@ gboolean gw_menu_file_new_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 }
 
 
-gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	GtkWindow *window = NULL;
-	const gchar * text1, * text2;
+	gchar * filexname;
 	gboolean result = FALSE;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+	filexname = gtk_file_chooser_get_filename (fs);
 
-	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	if (filexname)
 	{
 		/* Saves the catalog. */
-		text2 = gtk_file_selection_get_filename (fs);
-		switch (gw_am_save_catalog (text2)) {
+		switch (gw_am_save_catalog (filexname)) {
 			case 0:
 						break;
 
@@ -658,6 +659,7 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelec
 
 		/* Close the file selection box and displays a new fill box of new catalog. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
+		g_free (filexname);
 		window = gw_gui_manager_main_interface_get_main_window ( );
 		gw_capture_box_create ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
 
@@ -682,13 +684,13 @@ gboolean gw_menu_file_open_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
 //	if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
 		/* If it's a new catalog, asks file name. */
-//		gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_open_saveas_file_selection_ok, NULL);
-		gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_open_saveas_file_selection_ok, NULL);
+//		gw_file_chooser_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_open_saveas_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_open_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save it directly and displays a file selection box to select the catalog to open. */
 		gw_menu_file_save_click ( NULL, NULL);
 
-		gw_file_selection_box_create ( _("Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
+		gw_file_chooser_box_create ( _("Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
 	}
 
 	return TRUE;
@@ -705,7 +707,7 @@ gboolean gw_menu_file_open_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 
 	if ( dg != NULL ) {
 		gtk_widget_destroy ( GTK_WIDGET ( dg));
-		gw_file_selection_box_create ( _("Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
+		gw_file_chooser_box_create ( _("Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
 
 		result = TRUE;
 	}
@@ -735,7 +737,7 @@ gboolean gw_menu_file_open_recents_files_save_file_ok ( GtkWidget *bt, GtkWindow
 
 		/* Checks if it's a new catalog (in this case his full name is ".[/catalog_full_name]"). */
 		if ( gw_helper_db_catalog_is_new ( catalog)) {
-			gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_open_recents_files_saveas_file_selection_ok, file_index);
+			gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_open_recents_files_saveas_file_selection_ok, file_index);
 		} else {
 			/* Else save it directly and displays a file selection box to select the catalog to open. */
 			gw_menu_file_save_click ( NULL, NULL);
@@ -778,22 +780,21 @@ gboolean gw_menu_file_open_recents_files_save_file_no ( GtkWidget *bt, GtkWindow
 }
 
 
-gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	gboolean result = FALSE;
-	const gchar * text1, * text2;
+	gchar * filexname;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+		filexname = gtk_file_chooser_get_filename (fs);
 
-		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+		if (filexname)
 		{
 			/* Save the catalog. */
-			text2 = gtk_file_selection_get_filename (fs);
-			switch (gw_am_save_catalog (text2)) {
+			switch (gw_am_save_catalog (filexname)) {
 				case 0:		result = TRUE;
 
 							break;
@@ -813,7 +814,8 @@ gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 
 			/* Closes the file selection box and displays a new fill box of new catalog. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
-			gw_file_selection_box_create ( _( "Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
+			g_free (filexname);
+			gw_file_chooser_box_create ( _( "Open catalog"), NULL, (GCallback)gw_menu_file_open_file_ok, (GCallback)gw_menu_file_open_file_cancel);
 		}
 	}
 
@@ -821,9 +823,9 @@ gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 }
 
 
-gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	gboolean result = FALSE;
-	const gchar * text1, * text2;
+	gchar * filexname;
 	gpointer file_index = NULL;
 	gchar *catalog_path_name = NULL;
 
@@ -833,20 +835,20 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
 #endif
 
 	if ( fs != NULL ) {
-		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+		filexname = gtk_file_chooser_get_filename (fs);
 
 		/* Gets the real file name in the recents opened catalogs list, because after saving the current
 		   opened catalog, the wanted catalog in the recents list (may) will not have the same index. */
-		file_index = gw_file_selection_box_get_user_data ( GTK_WINDOW ( fs));
+#define GW_REF_FILE_SELECTION_BOX_USER_DATA "gw_ref_file_selection_box_user_data"
+		file_index = g_object_get_data (G_OBJECT (fs), GW_REF_FILE_SELECTION_BOX_USER_DATA);
 
 		/* Warning use a gint value instead of a gpointer value!! */
 		catalog_path_name = gw_am_get_catalog_path_name_from_recents_files ( GPOINTER_TO_UINT ( file_index));
 
-		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+		if (filexname)
 		{
 			/* Save the catalog. */
-			text2 = gtk_file_selection_get_filename (fs);;
-			switch (gw_am_save_catalog (text2)) {
+			switch (gw_am_save_catalog (filexname)) {
 				case 0:		result = TRUE;
 
 							break;
@@ -866,6 +868,7 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
 
 			/* Closes the file selection box and displays a new fill box of new catalog. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
+			g_free (filexname);
 
 			result = gw_am_load_catalog ( catalog_path_name);
 		}
@@ -899,8 +902,8 @@ gboolean gw_menu_file_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
 //	if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
 		/* If it's a new catalog, asks un file name. */
-//		gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
-		gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
+//		gw_file_chooser_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save it directly. */
 		gw_menu_file_save_click ( NULL, NULL);
@@ -932,22 +935,21 @@ gboolean gw_menu_file_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 }
 
 
-gboolean gw_menu_file_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	gboolean result = FALSE;
-	const gchar * text1, * text2;
+	gchar * filexname;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
-g_print("save as %s\n",text1);
+	filexname = gtk_file_chooser_get_filename (fs);
+g_print("save as %s\n",filexname);
 
-	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	if (filexname)
 	{
 		/* Save the opened catalog. */
-		text2 = gtk_file_selection_get_filename (fs);
-		switch (gw_am_save_catalog (text2)) {
+		switch (gw_am_save_catalog (filexname)) {
 			case 0:		result = TRUE;
 
 						break;
@@ -956,7 +958,7 @@ g_print("save as %s\n",text1);
 						break;
 
 			case GWECATNOFILENAME:
-						gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ))), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
+						gw_file_chooser_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ))), (GCallback)gw_menu_file_saveas_file_selection_ok, NULL);
 
 						break;
 
@@ -969,6 +971,7 @@ g_print("save as %s\n",text1);
 
 		/* Closes the file selection box. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
+		g_free (filexname);
 	}
 
 	return result;
@@ -995,7 +998,7 @@ gboolean gw_menu_file_close_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 		/* Checks if it's a new catalog (in this case his full name is "./[catalog_full_name]"). */
 		if ( gw_helper_db_catalog_is_new ( catalog)) {
 			/* If it's a new catalog, asks a file name. */
-			gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_close_saveas_file_selection_ok, NULL);
+			gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_close_saveas_file_selection_ok, NULL);
 		} else {
 			/* Else save it directly and close it. */
 			gw_menu_file_save_click ( NULL, NULL);
@@ -1032,25 +1035,24 @@ gboolean gw_menu_file_close_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 }
 
 
-gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	GWDBCatalog *catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
 	gboolean result = FALSE;
-	const gchar * text1, * text2;
+	gchar * filexname;
 
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+	filexname = gtk_file_chooser_get_filename (fs);
 
-	if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) )
+	if (filexname)
 	{
 		/* Updates informations of opened catalog. */
 //TODO use helper functions
 		if ( catalog != NULL ) {
-			text2 = gtk_file_selection_get_filename (fs);
-			switch (gw_am_save_catalog (text2)) {
+			switch (gw_am_save_catalog (filexname)) {
 				case 0:			result = TRUE;
 
 							break;
@@ -1071,6 +1073,8 @@ gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSel
 
 		/* Closes the file selection box and closes the catalog. */
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
+		g_free (filexname);
+
 		gw_am_close_catalog ( FALSE);
 	}
 
@@ -1093,8 +1097,8 @@ gboolean gw_menu_file_exit_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
 //	if ( gw_db_catalog_get_db_name ( catalog)==NULL || strlen ( gw_db_catalog_get_db_name ( catalog))==0 ) {
 		/* If it's a new catalog, asks a file name. */
-//		gw_file_selection_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_exit_saveas_file_selection_ok, NULL);
-		gw_file_selection_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_exit_saveas_file_selection_ok, NULL);
+//		gw_file_chooser_box_create ( _( "Save as catalog"), gw_db_catalog_get_name ( catalog), (GCallback)gw_menu_file_exit_saveas_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_exit_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save the catalog directly and exit program. */
 		gw_menu_file_save_click ( NULL, NULL);
@@ -1126,21 +1130,20 @@ gboolean gw_menu_file_exit_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 }
 
 
-gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	gboolean result = FALSE;
-	const gchar * text1, * text2;
+	gchar * filexname;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
 	if ( fs != NULL ) {
-		text1 = gtk_entry_get_text (GTK_ENTRY (GTK_FILE_SELECTION (fs)->selection_entry));
+		filexname = gtk_file_chooser_get_filename (fs);
 
-		if ( (strlen (text1) > 0) && (strcmp (text1, "") != 0) ) {
+		if (filexname) {
 			/* Saves the catalog. */
-			text2 = gtk_file_selection_get_filename (fs);
-			switch (gw_am_save_catalog (text2)) {
+			switch (gw_am_save_catalog (filexname)) {
 				case 0:		result = TRUE;
 							break;
 
@@ -1159,6 +1162,7 @@ gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileSele
 
 			/* Exits the program. */
 			gtk_widget_destroy ( GTK_WIDGET ( fs));
+			g_free (filexname);
 			gw_menu_file_exit ( );
 
 			result = TRUE;
@@ -1181,7 +1185,7 @@ void gw_menu_file_exit ( void) {
 }
 
 
-gboolean gw_menu_file_import_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_import_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	GtkWindow *window = gw_gui_manager_main_interface_get_main_window ( );
 	gboolean result = FALSE;
 	gchar *short_db_name = NULL, *db_name = NULL;
@@ -1191,11 +1195,11 @@ gboolean gw_menu_file_import_file_selection_ok ( GtkWidget *bt, GtkFileSelection
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), short_db_name);
+	g_strdup_from_gtk_text (gtk_file_chooser_get_filename (fs), short_db_name);
 
 	if ( short_db_name != NULL && strlen ( short_db_name) > 0 ) {
 		/* Import the opened catalog */
-		g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), db_name);
+		g_strdup_from_gtk_text (gtk_file_chooser_get_filename (fs), db_name);
 
 		if ( gw_am_import_catalog_from ( gw_pm_get_current_catalog_plugin ( ), gw_pm_get_selected_import_catalog_plugin ( ), db_name, short_db_name) != -1) {
 			gw_msg_box_create ( window, _( "Import catalog from"), _( "Catalog imported"));
@@ -1230,7 +1234,7 @@ gboolean gw_menu_file_import_item_click ( GtkMenuItem *m, gpointer data) {
 	if ( context == NULL) {
 		gw_pm_set_selected_import_catalog_plugin ( gw_pm_get_catalog_plugin ( plugin_name));
 
-		gw_file_selection_box_create ( _( "Import catalog from"), NULL, (GCallback)gw_menu_file_import_file_selection_ok, NULL);
+		gw_file_chooser_box_create ( _( "Import catalog from"), NULL, (GCallback)gw_menu_file_import_file_selection_ok, NULL);
 
 		result = TRUE;
 	} else {
@@ -1241,7 +1245,7 @@ gboolean gw_menu_file_import_item_click ( GtkMenuItem *m, gpointer data) {
 }
 
 
-gboolean gw_menu_file_export_file_selection_ok ( GtkWidget *bt, GtkFileSelection *fs) {
+gboolean gw_menu_file_export_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs) {
 	GtkWindow *window = gw_gui_manager_main_interface_get_main_window ( );
 	gboolean result = FALSE;
 	gchar *short_db_name = NULL, *db_name = NULL;
@@ -1251,11 +1255,11 @@ gboolean gw_menu_file_export_file_selection_ok ( GtkWidget *bt, GtkFileSelection
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( GTK_FILE_SELECTION ( fs)->selection_entry)), short_db_name);
+	g_strdup_from_gtk_text (gtk_file_chooser_get_filename (fs), short_db_name);
 
 	if ( short_db_name != NULL && strlen ( short_db_name) > 0 ) {
 		/* Export the opened catalog */
-		g_strdup_from_gtk_text ( gtk_file_selection_get_filename ( fs), db_name);
+		g_strdup_from_gtk_text ( gtk_file_chooser_get_filename ( fs), db_name);
 
 		if ( gw_am_export_catalog_to ( gw_am_get_current_catalog_context ( ), gw_pm_get_selected_export_catalog_plugin ( ), db_name, short_db_name) != -1) {
 			gw_msg_box_create ( window, _( "Export catalog to"), _( "Catalog exported"));
@@ -1296,7 +1300,7 @@ gboolean gw_menu_file_export_item_click ( GtkMenuItem *m, gpointer data) {
 			/* Sets the catalog plugin to export */
 			gw_pm_set_selected_export_catalog_plugin ( gw_pm_get_catalog_plugin ( plugin_name));
 
-			gw_file_selection_box_create ( _( "Export catalog to"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_export_file_selection_ok, NULL);
+			gw_file_chooser_box_create ( _( "Export catalog to"), gw_helper_db_catalog_get_usefull_name ( catalog), (GCallback)gw_menu_file_export_file_selection_ok, NULL);
 
 			gw_db_catalog_free ( catalog);
 

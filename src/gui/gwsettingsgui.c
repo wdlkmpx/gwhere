@@ -21,7 +21,7 @@
 #include "gwsettingsgui.h"
 
 #include "gwsettingswindowbox.h"
-#include "gwfileselectionbox.h"
+#include "gwmisc.h"
 
 #include "../gwapplicationmanager.h"
 #include "../gwguimanager.h"
