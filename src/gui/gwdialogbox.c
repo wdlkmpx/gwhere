@@ -45,12 +45,12 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 		{
 			gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
 			gtk_window_set_transient_for ( GTK_WINDOW ( w), GTK_WINDOW ( window));
-			gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_DIALOG_BOX_PARENT_WINDOW, window);
+			g_object_set_data (G_OBJECT ( w), GW_REF_DIALOG_BOX_PARENT_WINDOW, window);
 		}
 
 		if ( data != NULL )
 		{
-			gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_DIALOG_BOX_USER_DATA, data);
+			g_object_set_data (G_OBJECT ( w), GW_REF_DIALOG_BOX_USER_DATA, data);
 		}
 
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
@@ -128,7 +128,7 @@ gpointer gw_dialog_box_get_user_data ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		data = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_DIALOG_BOX_USER_DATA);
+		data = g_object_get_data (G_OBJECT ( w), GW_REF_DIALOG_BOX_USER_DATA);
 	}
 
 	return data;
@@ -146,7 +146,7 @@ GtkWindow * gw_dialog_box_get_parent_window ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		window = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_DIALOG_BOX_PARENT_WINDOW);
+		window = g_object_get_data (G_OBJECT ( w), GW_REF_DIALOG_BOX_PARENT_WINDOW);
 	}
 
 	return window;

@@ -50,7 +50,7 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
 	cmb = gtk_combo_new ( );
 	gtk_widget_ref ( cmb);
 	gtk_combo_set_use_arrows_always ( GTK_COMBO ( cmb), TRUE);
-	gtk_object_set_data_full ( GTK_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) gtk_widget_unref);
 	gtk_entry_set_editable ( GTK_ENTRY ( GTK_COMBO ( cmb)->entry), FALSE);
 	gtk_box_pack_start ( GTK_BOX ( hb), cmb, TRUE, TRUE, 0);
 
@@ -235,7 +235,7 @@ gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc) {
 #endif
 
 	if ( cbc != NULL ) {
-		if ( (cmb = gtk_object_get_data ( GTK_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB)) != NULL) {
+		if ( (cmb = g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB)) != NULL) {
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( cmb->entry)), category_name);
 		}
 	}
@@ -253,7 +253,7 @@ GtkCombo * gw_combo_box_categories_get_combo ( GtkHBox *cbc) {
 #endif
 
 	if ( cbc != NULL ) {
-		combo = GTK_COMBO ( gtk_object_get_data ( GTK_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB));
+		combo = GTK_COMBO ( g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB));
 	}
 
 	return combo;

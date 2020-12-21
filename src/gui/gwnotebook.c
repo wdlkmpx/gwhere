@@ -43,7 +43,7 @@ GtkWidget * gw_notebook_create ( GtkWindow *w, GtkWidget *parent)
 	{
 		notebook = gtk_notebook_new ( );
 		gtk_widget_ref ( notebook);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_NOTEBOOK, notebook,(GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_NOTEBOOK, notebook,(GDestroyNotify) gtk_widget_unref);
 		gtk_widget_show ( notebook);
 
 		/* Notebook catalog */

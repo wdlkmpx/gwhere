@@ -1214,7 +1214,7 @@ plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context);
 					gw_str_replace_char ( info[GW_VALUE_APP_EXPLORER_DISK_COLUMN_DESCRIPTION_POSITION_DEFAULT], '\n', ' ');
 					row = gtk_clist_append ( clist_info, info);
 
-					gtk_clist_set_row_data_full ( clist_info, row, disks[i], (GtkDestroyNotify)gw_db_disk_free);
+					gtk_clist_set_row_data_full ( clist_info, row, disks[i], (GDestroyNotify)gw_db_disk_free);
 					gtk_clist_set_pixtext ( clist_info, row, 0, info[0], 5, gw_helper_db_disk_get_pixmap ( disks[i]), gw_helper_db_disk_get_bitmap ( disks[i]));
 
 					/* Frees memory used by info. */
@@ -1302,11 +1302,11 @@ plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context);
 						if ( strcmp ( gw_db_file_get_name ( files[i]), "..") == 0) {
 							compt_file++;
 							row = gtk_clist_prepend ( clist_info, info);
-							gtk_clist_set_row_data_full ( clist_info, row, files[i], (GtkDestroyNotify)gw_db_file_free);
+							gtk_clist_set_row_data_full ( clist_info, row, files[i], (GDestroyNotify)gw_db_file_free);
 							gtk_clist_set_pixtext ( clist_info, row, 0, info[GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_POSITION_DEFAULT], 5, PixParentFolder, MskParentFolder);
 						} else {
 							row = gtk_clist_append ( clist_info, info);
-							gtk_clist_set_row_data_full ( clist_info, row, files[i], (GtkDestroyNotify)gw_db_file_free);
+							gtk_clist_set_row_data_full ( clist_info, row, files[i], (GDestroyNotify)gw_db_file_free);
 							if ( gw_db_file_is_directory ( files[i])) {
 								//TODO test if it is a locked folder...
 								//gtk_clist_set_pixtext ( clist_info, row, 0, info[GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_POSITION_DEFAULT], 5, PixLockedFolder, MskLockedFolder);

@@ -93,7 +93,7 @@ GtkWindow * gw_gui_manager_main_interface_create ( ) {
 	/* Vertical box */
 	vbox = gtk_vbox_new ( FALSE, 0);
 	gtk_widget_ref ( vbox);
-	gtk_object_set_data_full ( GTK_OBJECT ( main_window), "VbMainWindow", vbox, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( main_window), "VbMainWindow", vbox, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( main_window), vbox);
 
 	/* Menu bar */
@@ -157,7 +157,7 @@ GtkWindow * gw_gui_manager_main_interface_get_progress_bar_box ( void) {
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
 #endif
 
-	progress_bar_box = gtk_object_get_data ( GTK_OBJECT ( window), GW_REF_PROGRESS_BAR_BOX);
+	progress_bar_box = g_object_get_data (G_OBJECT ( window), GW_REF_PROGRESS_BAR_BOX);
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	if ( progress_bar_box == NULL ) {
@@ -177,7 +177,7 @@ GtkCTree * gw_gui_manager_main_interface_get_tree ( void) {
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
 #endif
 
-	tree = GTK_CTREE ( gtk_object_get_data ( GTK_OBJECT ( window), GW_REF_TREE));
+	tree = GTK_CTREE ( g_object_get_data (G_OBJECT ( window), GW_REF_TREE));
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	if ( tree == NULL ) {

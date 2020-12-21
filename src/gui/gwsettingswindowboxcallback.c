@@ -238,7 +238,7 @@ void gw_settings_window_box_btn_apply_clicked ( GtkButton *button, GtkWindow *w)
 			page = gtk_notebook_get_current_page ( notebook_settings);
 			if ( (current_page = gtk_notebook_get_nth_page ( notebook_settings, page)) != NULL )
 			{
-				if ( (module = gtk_object_get_data ( GTK_OBJECT ( current_page), GW_REF_SETTINGS_MODULE)) != NULL )
+				if ( (module = g_object_get_data (G_OBJECT ( current_page), GW_REF_SETTINGS_MODULE)) != NULL )
 				{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 					g_print ( "*** GW - %s (%d) :: %s() : current settings module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);

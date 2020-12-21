@@ -86,7 +86,7 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_PARENT_WINDOW, window, ( GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_PARENT_WINDOW, window, ( GDestroyNotify) gtk_widget_unref);
 
 		vbMailWindowsBox = gtk_vbox_new ( FALSE, 5);
 		gtk_container_add ( GTK_CONTAINER ( w), vbMailWindowsBox);
@@ -116,28 +116,28 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 		entTo = gtk_entry_new ( );
 		gtk_widget_ref ( entTo);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY, entTo,(GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY, entTo,(GDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entTo, 1, 2, 0, 1,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, entTo,
 		                      _( "Enter here the email address of your(s) contact(s)."), NULL);
 
 		entCC = gtk_entry_new ( );
 		gtk_widget_ref ( entCC);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY, entCC,(GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY, entCC,(GDestroyNotify) gtk_widget_unref);
 		gtk_table_attach (GTK_TABLE (tblSendOptions), entCC, 1, 2, 1, 2,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL),(GtkAttachOptions) ( 0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, entCC,
 		                      _( "Enter here the email address of the copied mail contacts."), NULL);
 
 		entBCC = gtk_entry_new ( );
 		gtk_widget_ref ( entBCC);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY, entBCC, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY, entBCC, (GDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entBCC, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, entBCC,
 		                      _( "Enter here the email address of the hidden copied mail contacts."), NULL);
 
 		entObject = gtk_entry_new ( );
 		gtk_widget_ref ( entObject);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY, entObject, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY, entObject, (GDestroyNotify) gtk_widget_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entObject, 1, 2, 3, 4, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 		gtk_tooltips_set_tip ( tooltips, entObject, _( "Enter here the object of your mail."), NULL);
 
@@ -149,7 +149,7 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		{
 			chkBtnAttachedFile = gtk_check_button_new_with_label ( file_name);
 			gtk_widget_ref ( chkBtnAttachedFile);
-			gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK, chkBtnAttachedFile, (GtkDestroyNotify) gtk_widget_unref);
+			g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK, chkBtnAttachedFile, (GDestroyNotify) gtk_widget_unref);
 			gtk_table_attach ( GTK_TABLE ( tblSendOptions), chkBtnAttachedFile, 1, 2, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
 			gtk_tooltips_set_tip ( tooltips, chkBtnAttachedFile,
 			                      _( "Choose to attach or no the catalog file."), NULL);
@@ -162,7 +162,7 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 		txtMail = gtk_text_area_new ( );
 		gtk_widget_ref ( txtMail);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA, txtMail, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA, txtMail, (GDestroyNotify) gtk_widget_unref);
 		gtk_text_area_set_editable ( GTK_TEXT_AREA ( txtMail), TRUE);
 		gtk_container_add ( GTK_CONTAINER ( scrTextMail), txtMail);
 		gtk_tooltips_set_tip ( tooltips, txtMail,
@@ -220,7 +220,7 @@ GtkWindow * gw_mail_window_box_get_main_window ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		parent = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_PARENT_WINDOW);
+		parent = g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_PARENT_WINDOW);
 	}
 
 	if ( parent == NULL )
@@ -246,7 +246,7 @@ gchar * gw_mail_window_box_get_to ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY))) != NULL )
+		if ( (entry = GTK_ENTRY ( g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY))) != NULL )
 		{
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), text);
 		}
@@ -272,7 +272,7 @@ gchar * gw_mail_window_box_get_cc ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY))) != NULL )
+		if ( (entry = GTK_ENTRY ( g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY))) != NULL )
 		{
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), text);
 		}
@@ -298,7 +298,7 @@ gchar * gw_mail_window_box_get_bcc ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY))) != NULL )
+		if ( (entry = GTK_ENTRY ( g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY))) != NULL )
 		{
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), text);
 		}
@@ -324,7 +324,7 @@ gchar * gw_mail_window_box_get_subject ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY))) != NULL )
+		if ( (entry = GTK_ENTRY ( g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY))) != NULL )
 		{
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), text);
 		}
@@ -350,7 +350,7 @@ gboolean gw_mail_window_box_get_option_attach_file ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (chk = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK)) != NULL )
+		if ( (chk = g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK)) != NULL )
 		{
 			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 		}
@@ -372,7 +372,7 @@ gchar * gw_mail_window_box_get_file_path ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		chk_button = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK);
+		chk_button = g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK);
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 		g_print ( "*** GW - %s (%d) :: %s() : file path = %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, text);
@@ -401,7 +401,7 @@ gchar * gw_mail_window_box_get_msg ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (text_area = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA)) != NULL )
+		if ( (text_area = g_object_get_data (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA)) != NULL )
 		{
 			text = gtk_text_area_get_text ( GTK_TEXT_AREA ( text_area));
 		}

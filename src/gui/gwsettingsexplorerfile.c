@@ -89,7 +89,7 @@ gint gw_plugin_settings_explorer_file_pane_create ( GtkWindow *settings, GtkCont
 
 		hbox = gtk_hbox_new ( FALSE, 0);
 		gtk_widget_ref ( GTK_WIDGET ( settings));
-		gtk_object_set_data_full ( GTK_OBJECT ( hbox), GW_PLUGIN_SETTINGS_WINDOW, settings, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hbox), 5);
 		
 		scr_clist_visible = gtk_scrolled_window_new ( NULL, NULL);
@@ -97,7 +97,7 @@ gint gw_plugin_settings_explorer_file_pane_create ( GtkWindow *settings, GtkCont
 
 		clist_visible = gtk_clist_new ( 1);
 		gtk_widget_ref ( clist_visible);
-		gtk_object_set_data_full ( GTK_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE, clist_visible, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE, clist_visible, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_add ( GTK_CONTAINER ( scr_clist_visible), clist_visible);
 		gtk_clist_set_column_width ( GTK_CLIST ( clist_visible), 0, 80);
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_visible), 0);
@@ -120,7 +120,7 @@ gint gw_plugin_settings_explorer_file_pane_create ( GtkWindow *settings, GtkCont
 
 		clist_hidden = gtk_clist_new ( 1);
 		gtk_widget_ref ( clist_hidden);
-		gtk_object_set_data_full ( GTK_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN, clist_hidden, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( hbox), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN, clist_hidden, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_add ( GTK_CONTAINER (scr_clist_hidden), clist_hidden);
 		gtk_clist_set_column_width ( GTK_CLIST ( clist_hidden), 0, 80);
 		gtk_clist_optimal_column_width ( GTK_CLIST ( clist_hidden), 0);
@@ -165,14 +165,14 @@ gint gw_plugin_settings_explorer_file_pane_load ( GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		list_visible = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
-		list_hidden = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
+		list_visible = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
+		list_hidden = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
 
 		if ( (list_visible != NULL) && (list_hidden != NULL) )
 		{
 			if ( (fields = gw_plugin_settings_explorer_file_get_all_fields ( )) != NULL )
 			{
-			gtk_object_set_data_full ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE, fields, (GtkDestroyNotify) gw_settings_explorer_field_freev);
+			g_object_set_data_full (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE, fields, (GDestroyNotify) gw_settings_explorer_field_freev);
 
 			gtk_clist_freeze ( list_visible);
 			gtk_clist_freeze ( list_hidden);
@@ -223,7 +223,7 @@ gint gw_plugin_settings_explorer_file_pane_on_change ( GtkEntry *entry, GtkWidge
 
 	if ( pane != NULL )
 	{
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, TRUE);
 
@@ -251,9 +251,9 @@ gint gw_plugin_settings_explorer_file_pane_apply ( GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		list_visible = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
-		list_hidden = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
-		fields = (GWSettingsExplorerField**)gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
+		list_visible = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
+		list_hidden = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
+		fields = (GWSettingsExplorerField**)g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
 
 		if ( (list_visible != NULL) && (list_hidden != NULL) && (fields != NULL) )
 		{
@@ -264,7 +264,7 @@ gint gw_plugin_settings_explorer_file_pane_apply ( GtkWidget *pane)
 			}
 		}
 
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, FALSE);
 		}
@@ -294,9 +294,9 @@ gint gw_plugin_settings_explorer_file_btn_show_click ( GtkButton *btn, GtkWidget
 
 	if ( pane != NULL)
 	{
-		list_visible = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
-		list_hidden = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
-		fields = (GWSettingsExplorerField**)gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
+		list_visible = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
+		list_hidden = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
+		fields = (GWSettingsExplorerField**)g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
 
 		if ( (list_visible != NULL) && (list_hidden != NULL) )
 		{
@@ -326,7 +326,7 @@ gint gw_plugin_settings_explorer_file_btn_show_click ( GtkButton *btn, GtkWidget
 					gtk_clist_thaw ( list_visible);
 					gtk_clist_thaw ( list_hidden);
 
-					if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+					if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 					{
 						gw_settings_window_box_set_modified ( settings, TRUE);
 
@@ -359,9 +359,9 @@ gint gw_plugin_settings_explorer_file_btn_hide_click ( GtkButton *btn, GtkWidget
 
 	if ( pane != NULL)
 	{
-		list_visible = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
-		list_hidden = GTK_CLIST ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
-		fields = (GWSettingsExplorerField**)gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
+		list_visible = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_VISIBLE));
+		list_hidden = GTK_CLIST ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_LIST_HIDDEN));
+		fields = (GWSettingsExplorerField**)g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_EXPLORER_FILE_FIELDS_TABLE);
 
 		if ( (list_visible != NULL) && (list_hidden != NULL) )
 		{
@@ -391,7 +391,7 @@ gint gw_plugin_settings_explorer_file_btn_hide_click ( GtkButton *btn, GtkWidget
 					gtk_clist_thaw ( list_visible);
 					gtk_clist_thaw ( list_hidden);
 
-					if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+					if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 					{
 						gw_settings_window_box_set_modified ( settings, TRUE);
 

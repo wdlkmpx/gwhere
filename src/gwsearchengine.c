@@ -397,7 +397,7 @@ gint search_engine_add_item ( GtkCList *clist, GWDBFile *file, GWDBCategory *cat
 				}
 
 				/* Note : doesn't give the free function else data will be destroy from database */
-				gtk_clist_set_row_data_full ( clist, row, (struct search_item_info*)search_item, /*(GtkDestroyNotify)search_item_info_free*/NULL);
+				gtk_clist_set_row_data_full ( clist, row, (struct search_item_info*)search_item, /*(GDestroyNotify)search_item_info_free*/NULL);
 
 				if ( gw_db_file_is_real_directory ( file)) {
 					gtk_clist_set_pixtext ( clist, row, 0, info[0], 5, PixFolder, MskFolder);
@@ -454,7 +454,7 @@ gint search_engine_add_disk ( GtkCList *clist, GWDBDisk *disk, GWDBCategory *cat
 		search_item_info_set_description ( search_item, g_strdup ( gw_db_disk_get_description ( disk)));
 
 		/* Note : doesn't give the free function else data will be destroy from database */
-		gtk_clist_set_row_data_full ( clist, row, (struct search_item_info*)search_item, (GtkDestroyNotify) search_item_info_free);
+		gtk_clist_set_row_data_full ( clist, row, (struct search_item_info*)search_item, (GDestroyNotify) search_item_info_free);
 
 		gtk_clist_set_pixtext ( clist, row, 0, info[0], 5, gw_helper_db_disk_get_pixmap ( disk), gw_helper_db_disk_get_bitmap ( disk));
 

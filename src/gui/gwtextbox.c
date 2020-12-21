@@ -60,7 +60,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW, window, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
 
 		frame = gtk_frame_new ( subject);
 		gtk_container_add ( GTK_CONTAINER ( w), frame);
@@ -89,7 +89,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		gtk_widget_ref ( txt_area);
 
 		/* Store data text reference */
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_TEXT_DATA_TEXT, txt_area, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_TEXT_DATA_TEXT, txt_area, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_add ( GTK_CONTAINER ( scroll_zone), txt_area);
 		gtk_widget_grab_focus ( txt_area);
 
@@ -98,7 +98,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		gtk_container_set_border_width ( GTK_CONTAINER ( hbox), 5);
 
 		button = gtk_button_new_with_mnemonic (_( "_OK"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 
 		if ( ok != NULL )
@@ -111,7 +111,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		}
 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT (button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 	}
@@ -149,7 +149,7 @@ gchar * gw_text_box_get_text ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		if ( (text_area = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_TEXT_DATA_TEXT)) != NULL )
+		if ( (text_area = g_object_get_data (G_OBJECT ( w), GW_REF_TEXT_DATA_TEXT)) != NULL )
 		{
 			text = gtk_text_area_get_text ( GTK_TEXT_AREA ( text_area));
 		}
@@ -170,7 +170,7 @@ GtkWindow * gw_text_box_get_parent_window ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		parent = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW);
+		parent = g_object_get_data (G_OBJECT ( w), GW_REF_TEXT_BOX_PARENT_WINDOW);
 	}
 
 	return parent;

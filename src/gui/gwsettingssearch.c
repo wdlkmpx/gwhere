@@ -99,7 +99,7 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 	{
 		table_pane = gtk_table_new ( 5, 2, FALSE);
 		gtk_widget_ref ( GTK_WIDGET ( settings));
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
@@ -107,7 +107,7 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 		/* Adds the case sensitive sort option. */
 		chk_sort_case_sensitive = gtk_check_button_new_with_label (_( "Case sensitive sort."));
 		gtk_widget_ref ( chk_sort_case_sensitive);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_sort_case_sensitive,
 		                      _( "The result sort in search is case sensitive."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_case_sensitive, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -115,7 +115,7 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 		/* Adds the sort group by type option. */
 		chk_sort_group_by = gtk_check_button_new_with_label (_( "Result sort group by type."));
 		gtk_widget_ref ( chk_sort_group_by);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK, chk_sort_group_by, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK, chk_sort_group_by, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_sort_group_by,
 		                      _( "The result sort in search can be grouped by item type. If this option is checked all item will be grouped by catalogs, disks, folders and files."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_group_by, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -123,7 +123,7 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 		/* Adds the autoresize column option. */
 		chk_autoresize = gtk_check_button_new_with_label (_( "Autoresize columns"));
 		gtk_widget_ref ( chk_autoresize);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_autoresize,
 		                      _( "Autoresize all explorer column."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoresize, 0, 1, 2, 3, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -131,7 +131,7 @@ gint gw_plugin_settings_search_pane_create ( GtkWindow *settings, GtkContainer *
 		/* Adds the key words mode option. */
 		chk_key_words_mode = gtk_check_button_new_with_label (_( "All key words must match"));
 		gtk_widget_ref ( chk_key_words_mode);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK, chk_key_words_mode, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK, chk_key_words_mode, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_key_words_mode,
 		                      _( "Choose if all key words or only one of all key words must match with item in order to be in the search result."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_key_words_mode, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -172,7 +172,7 @@ gint gw_plugin_settings_search_pane_load ( GtkWidget *pane)
 #endif
 
 		/* Checks case sensitive sort option. */
-		if ( (chk_bt = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK))) != NULL)
+		if ( (chk_bt = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the case sensitive sort option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -199,7 +199,7 @@ gint gw_plugin_settings_search_pane_load ( GtkWidget *pane)
 		chk_bt = NULL;
 
 		/* Checks sort group by option. */
-		if ( (chk_bt = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK))) != NULL)
+		if ( (chk_bt = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the sort group by option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -226,7 +226,7 @@ gint gw_plugin_settings_search_pane_load ( GtkWidget *pane)
 		chk_bt = NULL;
 
 		/* Checks autoresize option. */
-		if ( (chk_bt = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK))) != NULL)
+		if ( (chk_bt = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the autoresize option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -253,7 +253,7 @@ gint gw_plugin_settings_search_pane_load ( GtkWidget *pane)
 		chk_bt = NULL;
 
 		/* Checks key words mode option. */
-		if ( (chk_bt = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK))) != NULL)
+		if ( (chk_bt = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the key words mode option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -298,7 +298,7 @@ gint gw_plugin_settings_search_pane_on_change ( GtkEntry *entry, GtkWidget *pane
 
 	if ( pane != NULL )
 	{
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, TRUE);
 
@@ -324,31 +324,31 @@ gint gw_plugin_settings_search_pane_apply ( GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_CASE_SENSITIVE_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_SEARCH_SORT_CASE_SENSITIVE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_SORT_GROUP_BY_TYPE_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_SEARCH_SORT_BY_TYPE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_AUTORESIZE_COLUMN_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_SEARCH_COLUMN_AUTORESIZE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_SEARCH_KEY_WORDS_MODE_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_SEARCH_TYPE_KEY_WORDS_MODE, g_strdup_printf ( "%d", (gint)bool_value));
 		}
 
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, FALSE);
 		}

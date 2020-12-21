@@ -26,7 +26,7 @@
  * 		GWhere is a GUI application (Graphical User Interface). This interface contains many components. In order to acces to
  * 		theses components the API many functions.<br><br>
  * 		All graphical components are GtkWidget. Theses widget can be referenced to the application with the function :<br>
- * 		<i>gtk_object_set_data_full ( gtk_object_referencer, "reference_object", gtk_object_referenced, (GtkDestroyNotify) gtk_widget_unref);</i><br><br>
+ * 		<i>g_object_set_data_full ( gtk_object_referencer, "reference_object", gtk_object_referenced, (GDestroyNotify) gtk_widget_unref);</i><br><br>
  * 		<div align="center"><table border="1">
  * 			<tr>
  * 				<td>Name</td>

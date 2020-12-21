@@ -71,7 +71,7 @@ gint gw_plugin_settings_general_pane_create ( GtkWindow *settings, GtkContainer 
 	{
 		table_pane = gtk_table_new ( 0, 2, FALSE);
 		gtk_widget_ref ( GTK_WIDGET ( settings));
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
@@ -117,7 +117,7 @@ gint gw_plugin_settings_general_pane_on_change ( GtkEntry *entry, GtkWidget *pan
 
 	if ( pane != NULL )
 	{
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, TRUE);
 
@@ -141,7 +141,7 @@ gint gw_plugin_settings_general_pane_apply ( GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, FALSE);
 		}

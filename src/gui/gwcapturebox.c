@@ -62,7 +62,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW, window, ( GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW, window, ( GDestroyNotify) gtk_widget_unref);
 
 		frame = gtk_frame_new ( subject);
 		gtk_container_add ( GTK_CONTAINER ( w), frame);
@@ -76,7 +76,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 
 		/* Store data capture reference */
 		gtk_widget_ref ( entry_data_capture);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE, entry_data_capture, ( GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE, entry_data_capture, ( GDestroyNotify) gtk_widget_unref);
 		gtk_entry_set_text ( GTK_ENTRY ( entry_data_capture), text);
 		gtk_box_pack_start ( GTK_BOX ( vbox), entry_data_capture, TRUE, TRUE, 0);
 		GTK_WIDGET_SET_FLAGS ( entry_data_capture, GTK_CAN_FOCUS);
@@ -87,7 +87,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		gtk_container_add ( GTK_CONTAINER ( vbox), hbox);
 
 		button = gtk_button_new_with_mnemonic (_("_OK"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 
 		if ( ok != NULL )
@@ -108,7 +108,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		}
 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 
@@ -147,7 +147,7 @@ gchar * gw_capture_box_get_text ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (entry = GTK_ENTRY ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE))) != NULL)
+		if ( (entry = GTK_ENTRY ( g_object_get_data (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_DATA_CAPTURE))) != NULL)
 		{
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), text);
 
@@ -172,7 +172,7 @@ GtkWindow * gw_capture_box_get_main_window ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		parent = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW);
+		parent = g_object_get_data (G_OBJECT ( w), GW_REF_GW_CAPTURE_BOX_PARENT_WINDOW);
 	}
 
 	if ( parent == NULL )

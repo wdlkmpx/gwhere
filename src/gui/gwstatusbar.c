@@ -48,14 +48,14 @@ GtkWidget * gw_status_bar_create ( GtkWindow *w)
 	/* First status bar */
 	status_bar1 = gtk_statusbar_new ( );
 	gtk_widget_ref ( status_bar1);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_STATUS_BAR_FIRST_STATUS, status_bar1, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_STATUS_BAR_FIRST_STATUS, status_bar1, (GDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hbox), status_bar1, FALSE, FALSE, 0);
 	gtk_widget_set_usize ( status_bar1, 500, -2);
 
 	/* Second status bar */
 	status_bar2 = gtk_statusbar_new ( );
 	gtk_widget_ref ( status_bar2);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_STATUS_BAR_SECOND_STATUS, status_bar2, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_STATUS_BAR_SECOND_STATUS, status_bar2, (GDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hbox), status_bar2, TRUE, TRUE, 0);
 
 	return gw_status_bar_box;
@@ -93,7 +93,7 @@ GtkStatusbar * gw_status_bar_get_first_status ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		status = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_STATUS_BAR_FIRST_STATUS);
+		status = g_object_get_data (G_OBJECT ( w), GW_REF_STATUS_BAR_FIRST_STATUS);
 	}
 
 	return status;
@@ -111,7 +111,7 @@ GtkStatusbar * gw_status_bar_get_second_status ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		status = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_STATUS_BAR_SECOND_STATUS);
+		status = g_object_get_data (G_OBJECT ( w), GW_REF_STATUS_BAR_SECOND_STATUS);
 	}
 
 	return status;

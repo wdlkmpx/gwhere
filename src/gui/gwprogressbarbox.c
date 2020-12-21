@@ -64,7 +64,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 		gtk_window_set_position	( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 
 		gtk_widget_ref ( GTK_WIDGET ( window));
-		gtk_object_set_data_full ( GTK_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW, window, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
 
 		if ( stop != NULL )
 		{
@@ -88,7 +88,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 
 		/* Store the reference to the text info	label to describe the current processing. */
 		gtk_widget_ref ( file_name);
-		gtk_object_set_data_full ( GTK_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL, file_name,	(GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL, file_name,	(GDestroyNotify) gtk_widget_unref);
 		gtk_label_set_justify (	GTK_LABEL ( file_name),	GTK_JUSTIFY_LEFT);
 		gtk_box_pack_start ( GTK_BOX ( vbox), file_name, TRUE, TRUE, 0);
 
@@ -99,7 +99,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 
 		/* Store reference to the real progress	bar */
 		gtk_widget_ref ( progress_bar);
-		gtk_object_set_data_full ( GTK_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR, progress_bar,	(GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR, progress_bar,	(GDestroyNotify) gtk_widget_unref);
 
 		/* Doesn't show	the progress bar if max	value is 0 */
 		if ( max > 0 )
@@ -121,9 +121,9 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 
 		/* Store reference to the ok/cancel button */
 		gtk_widget_ref ( button);
-		gtk_object_set_data_full ( GTK_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON, button, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT (	w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON, button, (GDestroyNotify) gtk_widget_unref);
 		gw_progress_bar_box_set_state ( GTK_WINDOW ( w), STATE_CANCEL);
-		gtk_object_set_user_data ( GTK_OBJECT (	button), w);
+		g_object_set_data (G_OBJECT (button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
 		gtk_widget_grab_focus ( button);
 
@@ -177,7 +177,7 @@ GtkWindow * gw_progress_bar_box_get_parent_window ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		parent = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW));
+		parent = GTK_WINDOW ( g_object_get_data (G_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_PARENT_WINDOW));
 	}
 
 	return parent;
@@ -195,7 +195,7 @@ GtkProgress * gw_progress_bar_box_get_progress_bar	( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		progress_bar =	GTK_PROGRESS ( gtk_object_get_data ( GTK_OBJECT	( w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR));
+		progress_bar =	GTK_PROGRESS ( g_object_get_data (G_OBJECT	( w), GW_REF_PROGRESS_BAR_BOX_PROGRESS_BAR));
 	}
 
 	return progress_bar;
@@ -213,7 +213,7 @@ GtkButton * gw_progress_bar_box_get_ok_cancel_button ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		button =  GTK_BUTTON ( gtk_object_get_data ( GTK_OBJECT	( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON));
+		button =  GTK_BUTTON ( g_object_get_data (G_OBJECT	( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON));
 	}
 
 	return button;
@@ -273,7 +273,7 @@ gchar *	gw_progress_bar_box_get_text ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		if ( (label = GTK_LABEL ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
+		if ( (label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
 		{
 			text = gtk_label_get_text (label);
 		}
@@ -295,7 +295,7 @@ gint gw_progress_bar_box_get_state ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		state = GPOINTER_TO_INT ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON_STATE));
+		state = GPOINTER_TO_INT ( g_object_get_data (G_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON_STATE));
 	}
 
 	return state;
@@ -433,7 +433,7 @@ gint gw_progress_bar_box_set_text ( GtkWindow *w, gchar *file_name)
 
 	if ( w != NULL )
 	{
-		if ( (label = GTK_LABEL ( gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
+		if ( (label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_TEXT_INFO_LABEL))) != NULL )
 		{
 			gtk_label_set_text ( label, file_name);
 		}
@@ -454,7 +454,7 @@ gint gw_progress_bar_box_set_state ( GtkWindow *w, gint state)
 
 	if ( w != NULL )
 	{
-		gtk_object_set_data ( GTK_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON_STATE, GINT_TO_POINTER ( state));
+		g_object_set_data (G_OBJECT ( w), GW_REF_PROGRESS_BAR_BOX_OK_CANCEL_BUTTON_STATE, GINT_TO_POINTER ( state));
 
 		result = 0;
 	}

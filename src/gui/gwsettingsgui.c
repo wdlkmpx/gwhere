@@ -82,7 +82,7 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 	{
 		table_pane = gtk_table_new ( 5, 2, FALSE);
 		gtk_widget_ref ( GTK_WIDGET ( settings));
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_WINDOW, settings, (GDestroyNotify) gtk_widget_unref);
 		gtk_container_set_border_width ( GTK_CONTAINER ( table_pane), 5);
 		gtk_table_set_row_spacings ( GTK_TABLE (table_pane), 5);
 		gtk_table_set_col_spacings ( GTK_TABLE (table_pane), 5);
@@ -90,7 +90,7 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 		/* Adds the autosave GUI properties option. */
 		chk_autosave = gtk_check_button_new_with_label (_( "Save GUI properties on exit"));
 		gtk_widget_ref ( chk_autosave);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK, chk_autosave, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK, chk_autosave, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_autosave,
 		                      _( "Save GUI properties as window position and size."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autosave, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -98,7 +98,7 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 		/* Adds the allowing beep option. */
 		chk_beep = gtk_check_button_new_with_label (_( "Allow beep"));
 		gtk_widget_ref ( chk_beep);
-		gtk_object_set_data_full ( GTK_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK, chk_beep, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK, chk_beep, (GDestroyNotify) gtk_widget_unref);
 		gtk_tooltips_set_tip ( tooltips, chk_beep,
 		                      _( "Allows to emits a short beep on some event."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_beep, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -136,7 +136,7 @@ gint gw_plugin_settings_gui_pane_load ( GtkWidget *pane)
 #endif
 
 		/* Checks autosave option. */
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the autosave GUI option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -161,7 +161,7 @@ gint gw_plugin_settings_gui_pane_load ( GtkWidget *pane)
 		value = 0;
 
 		/* Checks beep option. */
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK))) != NULL)
 		{
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : getting the beep option...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -207,7 +207,7 @@ gint gw_plugin_settings_gui_pane_on_change ( GtkEntry *entry, GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, TRUE);
 
@@ -234,7 +234,7 @@ gint gw_plugin_settings_gui_pane_apply ( GtkWidget *pane)
 
 	if ( pane != NULL )
 	{
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_AUTOSAVE_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_GUI_AUTOSAVE, g_strdup_printf ( "%d", (gint)bool_value));
@@ -242,7 +242,7 @@ gint gw_plugin_settings_gui_pane_apply ( GtkWidget *pane)
 
 		value = NULL;
 
-		if ( (chk = GTK_TOGGLE_BUTTON ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK))) != NULL)
+		if ( (chk = GTK_TOGGLE_BUTTON ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_GUI_BEEP_CHK))) != NULL)
 		{
 			bool_value = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
 			gw_am_set_settings ( GW_VALUE_APP_GUI_BEEP, g_strdup_printf ( "%d", (gint)bool_value));
@@ -250,7 +250,7 @@ gint gw_plugin_settings_gui_pane_apply ( GtkWidget *pane)
 
 		value = NULL;
 
-		if ( (settings = GTK_WINDOW ( gtk_object_get_data ( GTK_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
+		if ( (settings = GTK_WINDOW ( g_object_get_data (G_OBJECT ( pane), GW_PLUGIN_SETTINGS_WINDOW))) != NULL )
 		{
 			gw_settings_window_box_set_modified ( settings, FALSE);
 		}

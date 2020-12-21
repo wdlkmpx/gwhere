@@ -105,7 +105,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 
 		/* Store parent window reference */
 		gtk_widget_ref ( w);
-		gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_PARENT_WINDOW, window, (GtkDestroyNotify) gtk_widget_unref);
+		g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
 
 		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC (gtk_widget_destroyed), &w);
 
@@ -190,7 +190,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		gtk_box_pack_end ( GTK_BOX ( vb_properties), hb_buttons, FALSE, FALSE, 0);
 
 		button = gtk_button_new_with_mnemonic (_("_OK"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb_buttons), button, TRUE, TRUE, 0);
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_DEFAULT);
@@ -218,7 +218,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		}
 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
-		gtk_object_set_user_data ( GTK_OBJECT ( button), w);
+		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb_buttons), button, TRUE, TRUE, 0);
 		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
@@ -333,7 +333,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	entry = gtk_entry_new ( );
 	gtk_entry_set_text ( GTK_ENTRY ( entry), gw_db_catalog_get_name ( catalog));
 	gtk_widget_ref ( entry);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY, entry, (GDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
 	gtk_tooltips_set_tip ( grp_tooltips, entry,
 	                      _( "Enter the name of the catalog."), GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS);
@@ -625,7 +625,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	/* Combo box for categories list */
 	cmb_categories = gw_combo_box_categories_create ( w, _( "Catalog categories : "), catalog);
 	gtk_widget_ref ( GTK_WIDGET ( cmb_categories));
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GDestroyNotify) gtk_widget_unref);
 	gw_combo_box_categories_load ( cmb_categories);
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), GTK_WIDGET ( cmb_categories), FALSE, FALSE, 0);
 
@@ -655,7 +655,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	}
 
 	gtk_widget_ref ( text_area);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT, text_area, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT, text_area, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( scrolled_area), text_area);
 
 	/* Tabbed pane label */
@@ -723,7 +723,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	entry = gtk_entry_new ( );
 	gtk_entry_set_text ( GTK_ENTRY ( entry), gw_db_disk_get_name ( disk));
 	gtk_widget_ref ( entry);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY, entry, (GDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
 	gtk_tooltips_set_tip ( grp_tooltips, entry,
 	                      _( "Enter the name of the disk."), GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS);
@@ -748,7 +748,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	gtk_entry_set_text ( GTK_ENTRY ( entry), text);
 	g_free ( text);
 	gtk_widget_ref ( entry);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY, entry, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY, entry, (GDestroyNotify) gtk_widget_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), entry, FALSE, TRUE, 0);
 	gtk_widget_set_usize ( entry, 40, 20);
 	gtk_tooltips_set_tip ( grp_tooltips, entry, 
@@ -932,7 +932,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	/* Combo box for categories list */
 	cmb_categories = gw_combo_box_categories_create ( w, _( "Category : "), catalog);
 	gtk_widget_ref ( GTK_WIDGET ( cmb_categories));
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GDestroyNotify) gtk_widget_unref);
 	gw_combo_box_categories_load ( cmb_categories);
 	gw_combo_box_categories_set_selected_category ( cmb_categories, gw_db_disk_get_category ( disk));
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), GTK_WIDGET ( cmb_categories), FALSE, FALSE, 0);
@@ -963,7 +963,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	}
 
 	gtk_widget_ref ( text_area);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_DESCRIPTION_TEXT, text_area, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_DESCRIPTION_TEXT, text_area, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( scrolled_area), text_area);
 
 	/* Tabbed pane label */
@@ -1210,7 +1210,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	/* Combo box for categories list */
 	cmb_categories = gw_combo_box_categories_create ( w, _( "Category : "), catalog);
 	gtk_widget_ref ( GTK_WIDGET ( cmb_categories));
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GDestroyNotify) gtk_widget_unref);
 	gw_combo_box_categories_load ( cmb_categories);
 	gw_combo_box_categories_set_selected_category ( cmb_categories, gw_db_file_get_category ( folder));
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), GTK_WIDGET ( cmb_categories), FALSE, FALSE, 0);
@@ -1241,7 +1241,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	}
 
 	gtk_widget_ref ( text_area);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_DESCRIPTION_TEXT, text_area, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_DESCRIPTION_TEXT, text_area, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( scrolled_area), text_area);
 
 	/* Tabbed pane label */
@@ -1496,7 +1496,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	/* Combo box for categories list */
 	cmb_categories = gw_combo_box_categories_create ( w, _( "Category : "), catalog);
 	gtk_widget_ref ( GTK_WIDGET ( cmb_categories));
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GDestroyNotify) gtk_widget_unref);
 	gw_combo_box_categories_load ( cmb_categories);
 	gw_combo_box_categories_set_selected_category ( cmb_categories, gw_db_file_get_category ( file));
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), GTK_WIDGET ( cmb_categories), FALSE, FALSE, 0);
@@ -1527,7 +1527,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	}
 
 	gtk_widget_ref ( text_area);
-	gtk_object_set_data_full ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_DESCRIPTION_TEXT, text_area, (GtkDestroyNotify) gtk_widget_unref);
+	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_DESCRIPTION_TEXT, text_area, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_add ( GTK_CONTAINER ( scrolled_area), text_area);
 
 	/* Tabbed pane label */
@@ -1556,7 +1556,7 @@ gchar * gw_properties_box_get_catalog_name ( GtkWidget *w) {
 #endif
 
 	if ( w != NULL ) {
-		entry = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY);
+		entry = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY);
 
 		if ( entry != NULL ) {
 			g_strdup_from_gtk_text ( gtk_entry_get_text ( entry), catalog_name);
@@ -1579,7 +1579,7 @@ gchar * gw_properties_box_get_catalog_name ( GtkWidget *w) {
 
 	if ( w != NULL )
 	{
-		cmb_box_categories = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX);
+		cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX);
 
 		if ( cmb_box_categories != NULL )
 		{
@@ -1603,7 +1603,7 @@ gchar * gw_properties_box_get_catalog_description ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		text_area = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT);
+		text_area = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT);
 
 		if ( text_area != NULL )
 		{
@@ -1627,7 +1627,7 @@ gchar * gw_properties_box_get_disk_name ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		entry = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY);
+		entry = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY);
 
 		if ( entry != NULL )
 		{
@@ -1651,7 +1651,7 @@ gchar * gw_properties_box_get_disk_num ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		entry = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY);
+		entry = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY);
 
 		if ( entry != NULL )
 		{
@@ -1674,7 +1674,7 @@ GWDBCategoryPK gw_properties_box_get_disk_category_ref ( GtkWidget *w) {
 #endif
 
 	if ( w != NULL ) {
-		if ( (cmb_box_categories = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX)) != NULL) {
+		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX)) != NULL) {
 			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
@@ -1698,7 +1698,7 @@ gchar * gw_properties_box_get_disk_description ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		text_area = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_DESCRIPTION_TEXT);
+		text_area = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_DESCRIPTION_TEXT);
 
 		if ( text_area != NULL )
 		{
@@ -1721,7 +1721,7 @@ GWDBCategoryPK gw_properties_box_get_folder_category_ref ( GtkWidget *w) {
 #endif
 
 	if ( w != NULL ) {
-		if ( (cmb_box_categories = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_CATEGORIES_CMB_BOX)) != NULL ) {
+		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_CATEGORIES_CMB_BOX)) != NULL ) {
 			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
@@ -1745,7 +1745,7 @@ gchar * gw_properties_box_get_folder_description ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		text_area = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_DESCRIPTION_TEXT);
+		text_area = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_DESCRIPTION_TEXT);
 
 		if ( text_area != NULL )
 		{
@@ -1768,7 +1768,7 @@ GWDBCategoryPK gw_properties_box_get_file_category_ref ( GtkWidget *w) {
 #endif
 
 	if ( w != NULL ) {
-		if ( (cmb_box_categories = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_CATEGORIES_CMB_BOX)) != NULL) {
+		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_CATEGORIES_CMB_BOX)) != NULL) {
 			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
@@ -1792,7 +1792,7 @@ gchar * gw_properties_box_get_file_description ( GtkWidget *w)
 
 	if ( w != NULL )
 	{
-		entry = gtk_object_get_data ( GTK_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_DESCRIPTION_TEXT);
+		entry = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_DESCRIPTION_TEXT);
 
 		if ( entry != NULL )
 		{
