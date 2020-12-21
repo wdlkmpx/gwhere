@@ -27,7 +27,7 @@
 #define GW_REF_FILE_SELECTION_BOX_USER_DATA "gw_ref_file_selection_box_user_data"
 
 
-GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSignalFunc ok, GtkSignalFunc cancel)
+GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GCallback ok, GCallback cancel)
 {
 	static GtkWidget *w = NULL;
 	GtkWidget *button;
@@ -54,21 +54,21 @@ GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSig
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), GTK_WINDOW ( window));
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &w);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK ( gtk_widget_destroyed), &w);
 		gtk_button_set_relief ( GTK_BUTTON ( GTK_FILE_SELECTION ( w)->ok_button), GTK_RELIEF_HALF);
 
 		if ( ok != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( GTK_FILE_SELECTION ( w)->ok_button), "clicked", GTK_SIGNAL_FUNC ( ok), w);
+			g_signal_connect (G_OBJECT ( GTK_FILE_SELECTION ( w)->ok_button), "clicked", G_CALLBACK ( ok), w);
 		}
 
 		if ( cancel != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", GTK_SIGNAL_FUNC ( cancel), w);
+			g_signal_connect (G_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", G_CALLBACK ( cancel), w);
 		}
 		else
 		{
-			gtk_signal_connect_object ( GTK_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT ( GTK_FILE_SELECTION ( w)->cancel_button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 	}
 

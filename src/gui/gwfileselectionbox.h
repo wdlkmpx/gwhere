@@ -49,6 +49,6 @@
  * @result	the file selection box.<br>
  *		Returns <i>NULL</i> when an error occured.
  */
-GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GtkSignalFunc ok, GtkSignalFunc cancel);
+GtkWidget * gw_file_selection_box_create ( gchar *title, gchar *filename, GCallback ok, GCallback cancel);
 
 #endif

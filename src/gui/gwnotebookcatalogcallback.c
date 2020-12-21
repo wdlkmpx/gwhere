@@ -593,7 +593,7 @@ gboolean gw_notebook_catalog_clist_button_press_event ( GtkWidget *w, GdkEventBu
 
 			/* Stops the signal during the process. */
 			/* If uncomment this line, the item will not be selected.
-			gtk_signal_emit_stop_by_name ( GTK_OBJECT ( clist_info), "button_press_event");
+			g_signal_stop_emission_by_name (G_OBJECT ( clist_info), "button_press_event");
 			*/
 
 			/* Checks the type of click */
@@ -1040,7 +1040,7 @@ gboolean gw_notebook_catalog_ctree_button_press_event ( GtkWidget *w, GdkEventBu
 		/* Stops the signal during the process, except for single left click in order expand or
 		   collapse node with click on the cross node. */
 		if ( !((event->type == GDK_BUTTON_PRESS) && (event->button == 1)) ) {
-			gtk_signal_emit_stop_by_name ( GTK_OBJECT ( ctree), "button_press_event");
+			g_signal_stop_emission_by_name (G_OBJECT ( ctree), "button_press_event");
 		}
 
 		switch ( event->type) {
@@ -1165,7 +1165,7 @@ gboolean gw_notebook_catalog_ctree_select_row ( GtkCTree *ctree, GtkCTreeNode *n
 	/* Checks if the catalog is loaded and selected node exists */
 	if ( root != NULL && node != NULL) {
 		/* Stop the signal during the process. */
-		gtk_signal_emit_stop_by_name ( GTK_OBJECT ( ctree), "tree_select_row");
+		g_signal_stop_emission_by_name (G_OBJECT ( ctree), "tree_select_row");
 
 		/* Freezes informations table */
 		gtk_clist_freeze ( clist_info);

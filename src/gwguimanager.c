@@ -86,8 +86,8 @@ GtkWindow * gw_gui_manager_main_interface_create ( ) {
 	/* Checking on position and size doesn't support shifted positions of the windows compared to the screen. */
 
 	gtk_window_set_title ( GTK_WINDOW ( main_window), PROJECT_NAME);
-  	gtk_signal_connect ( GTK_OBJECT ( main_window), "delete_event", GTK_SIGNAL_FUNC ( gw_menu_file_exit_click), NULL);
-  	gtk_signal_connect ( GTK_OBJECT ( main_window), "destroy", GTK_SIGNAL_FUNC ( gw_menu_file_exit_click), NULL);
+  	g_signal_connect (G_OBJECT ( main_window), "delete_event", G_CALLBACK ( gw_menu_file_exit_click), NULL);
+  	g_signal_connect (G_OBJECT ( main_window), "destroy", G_CALLBACK ( gw_menu_file_exit_click), NULL);
 	gtk_widget_realize ( main_window);
 
 	/* Vertical box */

@@ -82,7 +82,7 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position (GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 		gtk_widget_set_usize ( w, 400, 300);
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &w);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK ( gtk_widget_destroyed), &w);
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
@@ -178,14 +178,14 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnSend, FALSE, TRUE, 0);
 		gtk_tooltips_set_tip ( tooltips, btnSend,
 		                      _( "Click here to send a mail (with an attached catalog)."), NULL);
-		gtk_signal_connect ( GTK_OBJECT ( btnSend), "clicked", GTK_SIGNAL_FUNC ( gw_mail_window_box_send_click), GTK_WINDOW ( w));
+		g_signal_connect (G_OBJECT ( btnSend), "clicked", G_CALLBACK ( gw_mail_window_box_send_click), GTK_WINDOW ( w));
 
 		btnCancel = gtk_button_new_with_label (_("_Cancel"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnCancel, TRUE, TRUE, 0);
 		GTK_WIDGET_UNSET_FLAGS ( btnCancel, GTK_CAN_FOCUS);
 		gtk_tooltips_set_tip ( tooltips, btnCancel,
 		                      _( "Click here to cancel the send of a mail."), NULL);
-		gtk_signal_connect_object ( GTK_OBJECT ( btnCancel), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+		g_signal_connect_swapped (G_OBJECT ( btnCancel), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

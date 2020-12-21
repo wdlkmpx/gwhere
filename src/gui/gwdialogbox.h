@@ -51,7 +51,7 @@
  * @result	the dialog box window.<br>
  *		Returns <i>NULL</i> when an error occured.
  */
-GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text, GtkSignalFunc ok, GtkSignalFunc no, GtkSignalFunc cancel, gpointer data);
+GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text, GCallback ok, GCallback no, GCallback cancel, gpointer data);
 
 
 /*!

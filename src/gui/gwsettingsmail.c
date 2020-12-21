@@ -160,9 +160,9 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		gw_plugin_settings_mail_pane_load ( table_pane);
 
 		/* Connects signals after loading. */
-		gtk_signal_connect  ( GTK_OBJECT ( ent_email_address), "changed", (GtkSignalFunc)gw_plugin_settings_mail_pane_on_change, table_pane);
-		gtk_signal_connect  ( GTK_OBJECT ( ent_server_address), "changed", (GtkSignalFunc)gw_plugin_settings_mail_pane_on_change, table_pane);
-		gtk_signal_connect  ( GTK_OBJECT ( ent_server_port), "changed", (GtkSignalFunc)gw_plugin_settings_mail_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( ent_email_address), "changed", (GCallback)gw_plugin_settings_mail_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( ent_server_address), "changed", (GCallback)gw_plugin_settings_mail_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( ent_server_port), "changed", (GCallback)gw_plugin_settings_mail_pane_on_change, table_pane);
 
 		result = 0;
 	}

@@ -53,7 +53,7 @@
  * @result	the filled text box.<br>
  * 		Returns <i>NULL</i> when an error occured.
  */
-GtkWidget * gw_text_box_create ( GtkWindow *parent, gchar *title, gchar *subject, gchar *text, GtkSignalFunc ok);
+GtkWidget * gw_text_box_create ( GtkWindow *parent, gchar *title, gchar *subject, gchar *text, GCallback ok);
 
 
 /*!

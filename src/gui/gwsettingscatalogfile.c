@@ -150,7 +150,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 
 		/* Adds the clear history. */
 		btn_history_clear = gtk_button_new_with_label (_( "Clear history"));
-		gtk_signal_connect ( GTK_OBJECT ( btn_history_clear), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_clear_history_click, table_pane);
+		g_signal_connect (G_OBJECT ( btn_history_clear), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_clear_history_click, table_pane);
 		gtk_tooltips_set_tip ( tooltips, btn_history_clear,
 		                      _( "Click here to clear the recents opened files history."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_history_clear, 1, 2, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
@@ -162,7 +162,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_tooltips_set_tip ( tooltips, chk_autoload,
 		                      _( "Autoloads a default catalog when at starting."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoload, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		gtk_signal_connect ( GTK_OBJECT ( chk_autoload), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_autoload_catalog_click, table_pane);
+		g_signal_connect (G_OBJECT ( chk_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_autoload_catalog_click, table_pane);
 
 		/* Create the radio button group for autoload options. */
 		radio_last = gtk_radio_button_new_with_label_from_widget ( NULL, _("Load last opened catalog file."));
@@ -189,7 +189,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		btn_autoload = gtk_button_new_with_label (_( "Select catalog"));
 		gtk_widget_ref ( btn_autoload);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_SELECT_BTN, btn_autoload, (GDestroyNotify) gtk_widget_unref);
-		gtk_signal_connect ( GTK_OBJECT ( btn_autoload), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_select_catalog_click, table_pane);
+		g_signal_connect (G_OBJECT ( btn_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_select_catalog_click, table_pane);
 		gtk_tooltips_set_tip ( tooltips, btn_autoload, _( "Click here to browse and select the catalog file."), NULL);
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_autoload, 1, 2, 6, 7, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_autoload), FALSE);
@@ -200,12 +200,12 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gw_plugin_settings_catalog_file_pane_load ( table_pane);
 
 		/* Connects signals after loading. */
-		gtk_signal_connect ( GTK_OBJECT ( spn_catalog_level_compression), "changed", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( spn_catalog_history_size), "changed", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( chk_autoload), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( radio_last), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( radio_selected), "clicked", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( entry_autoload_filepath), "changed", (GtkSignalFunc)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( spn_catalog_level_compression), "changed", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( spn_catalog_history_size), "changed", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( radio_last), "clicked", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( radio_selected), "clicked", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( entry_autoload_filepath), "changed", (GCallback)gw_plugin_settings_catalog_file_pane_on_change, table_pane);
 
 		result = 0;
 	}
@@ -575,7 +575,7 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, 
 
 	if ( pane != NULL)
 	{
-		gw_file_selection_box_create ( _( "Select autoloaded catalog"), NULL, (GtkSignalFunc)gw_plugin_settings_catalog_file_btn_select_catalog_click_ok, NULL);
+		gw_file_selection_box_create ( _( "Select autoloaded catalog"), NULL, (GCallback)gw_plugin_settings_catalog_file_btn_select_catalog_click_ok, NULL);
 		result = 0;
 	}
 

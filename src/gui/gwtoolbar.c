@@ -66,19 +66,19 @@ GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 	/* Adds all icons to the tool bar */
 	pix_ico_new = gtk_pixmap_new ( PixNew, MskNew);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "New catalog"), NULL, pix_ico_new,  GTK_SIGNAL_FUNC ( gw_menu_file_new_click), w);
+	                         _( "New catalog"), NULL, pix_ico_new,  G_CALLBACK ( gw_menu_file_new_click), w);
 	pix_ico_open = gtk_pixmap_new ( PixOpen, MskOpen);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Open catalog"), NULL, pix_ico_open,  GTK_SIGNAL_FUNC ( gw_menu_file_open_click), w);
+	                         _( "Open catalog"), NULL, pix_ico_open,  G_CALLBACK ( gw_menu_file_open_click), w);
 	pix_ico_save = gtk_pixmap_new ( PixSave, MskSave);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Save catalog"), NULL, pix_ico_save,  GTK_SIGNAL_FUNC ( gw_menu_file_save_click), w);
+	                         _( "Save catalog"), NULL, pix_ico_save,  G_CALLBACK ( gw_menu_file_save_click), w);
 	pix_ico_close = gtk_pixmap_new ( PixClose, MskClose);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Close catalog"), NULL, pix_ico_close,  GTK_SIGNAL_FUNC ( gw_menu_file_close_click), w);
+	                         _( "Close catalog"), NULL, pix_ico_close,  G_CALLBACK ( gw_menu_file_close_click), w);
 	pix_ico_send_mail = gtk_pixmap_new ( PixSendMail, MskSendMail);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Send catalog by mail"), NULL, pix_ico_send_mail,  GTK_SIGNAL_FUNC ( gw_menu_file_send_mail_click), w);
+	                         _( "Send catalog by mail"), NULL, pix_ico_send_mail,  G_CALLBACK ( gw_menu_file_send_mail_click), w);
 
 	return handle_box;
 }

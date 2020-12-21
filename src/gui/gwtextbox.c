@@ -31,7 +31,7 @@
 #define GW_REF_TEXT_DATA_TEXT "gw_ref_text_data_text"
 
 
-GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GtkSignalFunc ok)
+GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GCallback ok)
 {
 	/* This is a single window, this properties may be changed */
 	static GtkWidget *w = NULL;
@@ -56,7 +56,7 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 		gtk_container_border_width ( GTK_CONTAINER ( w), 5);
 
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &w);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK ( gtk_widget_destroyed), &w);
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
@@ -103,17 +103,17 @@ GtkWidget * gw_text_box_create ( GtkWindow *window, gchar *title, gchar *subject
 
 		if ( ok != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( ok), w);
+			g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( ok), w);
 		}
 		else
 		{
-			gtk_signal_connect_object ( GTK_OBJECT (button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
-		gtk_signal_connect_object ( GTK_OBJECT (button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+		g_signal_connect_swapped (G_OBJECT (button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 	}
 
 	if ( !GTK_WIDGET_VISIBLE ( w) )

@@ -51,7 +51,7 @@
  * @result	the capture box window.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GtkSignalFunc ok);
+GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GCallback ok);
 
 
 /*!

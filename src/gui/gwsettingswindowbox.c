@@ -81,8 +81,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_window_set_policy ( GTK_WINDOW ( settings_window_box), TRUE, TRUE, FALSE);
 /*		gtk_widget_set_usize ( settings_window_box, 600, 400);
 		gtk_window_set_default_size ( GTK_WINDOW ( settings_window_box), 600, 400);
-*/		gtk_signal_connect ( GTK_OBJECT ( settings_window_box), "destroy", GTK_SIGNAL_FUNC ( gw_settings_window_box_closed), window);
-		gtk_signal_connect ( GTK_OBJECT ( settings_window_box), "destroy", GTK_SIGNAL_FUNC ( gtk_widget_destroyed), &settings_window_box);
+*/		g_signal_connect (G_OBJECT ( settings_window_box), "destroy", G_CALLBACK ( gw_settings_window_box_closed), window);
+		g_signal_connect (G_OBJECT ( settings_window_box), "destroy", G_CALLBACK ( gtk_widget_destroyed), &settings_window_box);
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
@@ -165,16 +165,16 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_apply), FALSE);
 		GTK_WIDGET_SET_FLAGS ( btn_apply, GTK_CAN_FOCUS);
 
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "change_focus_row_expansion", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_change_focus_row_expansion), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "tree_collapse", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_collapse), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "tree_expand", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_expand), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "tree_move", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_move), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "tree_select_row", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_select_row), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( ctree_settings), "tree_unselect_row", GTK_SIGNAL_FUNC (gw_settings_window_box_tree_unselect_row), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( notebook_settings), "switch_page", GTK_SIGNAL_FUNC (gw_settings_window_box_noteboox_settings_switch_page), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( btn_ok), "clicked", GTK_SIGNAL_FUNC (gw_settings_window_box_btn_ok_clicked), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( btn_cancel), "clicked", GTK_SIGNAL_FUNC (gw_settings_window_box_btn_cancel_clicked), GTK_WINDOW ( settings_window_box));
-		gtk_signal_connect ( GTK_OBJECT ( btn_apply), "clicked", GTK_SIGNAL_FUNC (gw_settings_window_box_btn_apply_clicked), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "change_focus_row_expansion", G_CALLBACK (gw_settings_window_box_tree_change_focus_row_expansion), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "tree_collapse", G_CALLBACK (gw_settings_window_box_tree_collapse), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "tree_expand", G_CALLBACK (gw_settings_window_box_tree_expand), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "tree_move", G_CALLBACK (gw_settings_window_box_tree_move), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "tree_select_row", G_CALLBACK (gw_settings_window_box_tree_select_row), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( ctree_settings), "tree_unselect_row", G_CALLBACK (gw_settings_window_box_tree_unselect_row), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( notebook_settings), "switch_page", G_CALLBACK (gw_settings_window_box_noteboox_settings_switch_page), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( btn_ok), "clicked", G_CALLBACK (gw_settings_window_box_btn_ok_clicked), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( btn_cancel), "clicked", G_CALLBACK (gw_settings_window_box_btn_cancel_clicked), GTK_WINDOW ( settings_window_box));
+		g_signal_connect (G_OBJECT ( btn_apply), "clicked", G_CALLBACK (gw_settings_window_box_btn_apply_clicked), GTK_WINDOW ( settings_window_box));
 
 		gtk_widget_grab_focus ( btn_ok);
 

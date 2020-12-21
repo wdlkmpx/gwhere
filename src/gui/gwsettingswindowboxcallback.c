@@ -86,7 +86,7 @@ void gw_settings_window_box_tree_unselect_row ( GtkCTree *ctree, GList *node, gi
 				g_print ( "*** GW - %s (%d) :: %s() : current settings module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
 #endif
 
-				gw_dialog_box_create ( w, _( "Settings changed"), _( "If you don't apply changes you will lose all changes. Do you want apply changes?"), (GtkSignalFunc)gw_settings_window_box_apply_ok, (GtkSignalFunc)gw_settings_window_box_apply_no, (GtkSignalFunc)gw_settings_window_box_apply_cancel, module);
+				gw_dialog_box_create ( w, _( "Settings changed"), _( "If you don't apply changes you will lose all changes. Do you want apply changes?"), (GCallback)gw_settings_window_box_apply_ok, (GCallback)gw_settings_window_box_apply_no, (GCallback)gw_settings_window_box_apply_cancel, module);
 			}
 			else
 			{

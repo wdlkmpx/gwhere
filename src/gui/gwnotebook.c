@@ -55,7 +55,7 @@ GtkWidget * gw_notebook_create ( GtkWindow *w, GtkWidget *parent)
 		/* Notebook managment */
 		notebook_managment = gw_notebook_managment_create_and_add ( w, GTK_NOTEBOOK ( notebook));
 
-		gtk_signal_connect ( GTK_OBJECT ( notebook), "switch_page", GTK_SIGNAL_FUNC ( gw_notebook_page_switch), w);
+		g_signal_connect (G_OBJECT ( notebook), "switch_page", G_CALLBACK ( gw_notebook_page_switch), w);
 	}
 
 	return notebook;

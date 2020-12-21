@@ -132,8 +132,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 
 	/* Text area to search. */
 	entry_search_string = gtk_entry_new ( );
-	gtk_signal_connect ( GTK_OBJECT ( entry_search_string), "activate", GTK_SIGNAL_FUNC ( gw_notebook_search_search_string_activate), window);
-	gtk_signal_connect ( GTK_OBJECT ( entry_search_string), "activate", GTK_SIGNAL_FUNC ( gw_notebook_search_search_button_click), window);
+	g_signal_connect (G_OBJECT ( entry_search_string), "activate", G_CALLBACK ( gw_notebook_search_search_string_activate), window);
+	g_signal_connect (G_OBJECT ( entry_search_string), "activate", G_CALLBACK ( gw_notebook_search_search_button_click), window);
 
 	/* Store reference to the search string */
 	gtk_widget_ref ( entry_search_string);
@@ -155,7 +155,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_START_SEARCH_BUTTON, bt_search,(GDestroyNotify) gtk_widget_unref);
 	gtk_tooltips_set_tip ( tooltips_group, bt_search,
 	                      _("The search can be case sensitive. The wildcards search supports character \"*\".\nExample : img*.bmp or *.htm\nThe key words search accepts a list of obligatory words."), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( bt_search), "clicked", GTK_SIGNAL_FUNC ( gw_notebook_search_search_button_click), window);
+	g_signal_connect (G_OBJECT ( bt_search), "clicked", G_CALLBACK ( gw_notebook_search_search_button_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( bt_search), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), bt_search, TRUE, TRUE, 0);
 
@@ -166,7 +166,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	gtk_widget_ref ( bt_clear);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CLEAR_BUTTON, bt_clear,(GDestroyNotify) gtk_widget_unref);
 	gtk_tooltips_set_tip ( tooltips_group, bt_clear, _("Clears all search results"), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( bt_clear), "clicked", GTK_SIGNAL_FUNC ( gw_notebook_search_clear_button_click), window);
+	g_signal_connect (G_OBJECT ( bt_clear), "clicked", G_CALLBACK ( gw_notebook_search_clear_button_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( bt_clear), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), bt_clear, TRUE, TRUE, 0);
 
@@ -178,7 +178,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_CHECK_BUTTON, chk_bt_case_sensitive, (GDestroyNotify) gtk_widget_unref);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_bt_case_sensitive), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), chk_bt_case_sensitive, FALSE, FALSE, 0);
-	gtk_signal_connect ( GTK_OBJECT ( chk_bt_case_sensitive), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_use_case_sensitive_click), window);
+	g_signal_connect (G_OBJECT ( chk_bt_case_sensitive), "clicked", G_CALLBACK (gw_notebook_search_option_use_case_sensitive_click), window);
 	gtk_tooltips_set_tip ( tooltips_group, chk_bt_case_sensitive,
 	                      _( "The search can be be or not case sensitive.\nIn case sensitive \"File.txt\" doesn't match with \"file.txt\". But in uncase sensitive it matches."),
 	                      GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_TOOL_TIPS);
@@ -193,7 +193,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	radio_search_type = gtk_radio_button_new_with_label_from_widget ( NULL, _("Key words"));
 	gtk_widget_ref ( radio_search_type);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_RADIO_BUTTON, radio_search_type, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( radio_search_type), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_KEY_WORDS));
+	g_signal_connect (G_OBJECT ( radio_search_type), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_KEY_WORDS));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, radio_search_type,
@@ -203,7 +203,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	radio_search_type2 = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_search_type), _("Wildcards"));
 	gtk_widget_ref ( radio_search_type2);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_RADIO_BUTTON, radio_search_type2, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( radio_search_type2), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_WILDCARDS));
+	g_signal_connect (G_OBJECT ( radio_search_type2), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_WILDCARDS));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type2), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type2, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, radio_search_type2,
@@ -213,7 +213,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	radio_search_type3 = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_search_type2), _("Regular expression"));
 	gtk_widget_ref ( radio_search_type3);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_RADIO_BUTTON, radio_search_type3, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( radio_search_type3), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_REGEX));
+	g_signal_connect (G_OBJECT ( radio_search_type3), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_REGEX));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type3), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type3, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, radio_search_type3, 
@@ -224,7 +224,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	chk_match_file = gtk_check_button_new_with_label (_( "File"));
 	gtk_widget_ref ( chk_match_file);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_CHECK_BUTTON, chk_match_file, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( chk_match_file), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_match_file_click), window);
+	g_signal_connect (G_OBJECT ( chk_match_file), "clicked", G_CALLBACK (gw_notebook_search_option_match_file_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_file), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_file, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, chk_match_file,
@@ -234,7 +234,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	chk_match_folder = gtk_check_button_new_with_label (_( "Folder"));
 	gtk_widget_ref ( chk_match_folder);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_CHECK_BUTTON, chk_match_folder, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( chk_match_folder), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_match_folder_click), window);
+	g_signal_connect (G_OBJECT ( chk_match_folder), "clicked", G_CALLBACK (gw_notebook_search_option_match_folder_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_folder), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_folder, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, chk_match_folder, 
@@ -245,7 +245,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	chk_match_disk = gtk_check_button_new_with_label (_( "Disk"));
 	gtk_widget_ref ( chk_match_disk);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_CHECK_BUTTON, chk_match_disk, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( chk_match_disk), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_match_disk_click), window);
+	g_signal_connect (G_OBJECT ( chk_match_disk), "clicked", G_CALLBACK (gw_notebook_search_option_match_disk_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_disk), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_disk, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, chk_match_disk,
@@ -256,7 +256,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	chk_match_category = gtk_check_button_new_with_label (_( "Category"));
 	gtk_widget_ref ( chk_match_category);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_CHECK_BUTTON, chk_match_category, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( chk_match_category), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_match_category_click), window);
+	g_signal_connect (G_OBJECT ( chk_match_category), "clicked", G_CALLBACK (gw_notebook_search_option_match_category_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_category), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_category, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, chk_match_category,
@@ -267,7 +267,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	chk_match_description = gtk_check_button_new_with_label (_( "Description"));
 	gtk_widget_ref ( chk_match_description);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_CHECK_BUTTON, chk_match_description, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( chk_match_description), "clicked", GTK_SIGNAL_FUNC (gw_notebook_search_option_match_description_click), window);
+	g_signal_connect (G_OBJECT ( chk_match_description), "clicked", G_CALLBACK (gw_notebook_search_option_match_description_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_description), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_description, FALSE, FALSE, 0);
 	gtk_tooltips_set_tip ( tooltips_group, chk_match_description,
@@ -289,9 +289,9 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	/* Store reference to the result search list. */
 	gtk_widget_ref ( clist_search_result);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_SEARCH_CLIST_SEARCH, clist_search_result,(GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( clist_search_result), "resize-column", GTK_SIGNAL_FUNC ( gw_notebook_search_clist_column_resized), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( clist_search_result), "click_column", GTK_SIGNAL_FUNC ( gw_notebook_search_column_sort), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( clist_search_result), "select_row", GTK_SIGNAL_FUNC ( gw_notebook_search_select_row), window);
+	g_signal_connect (G_OBJECT ( clist_search_result), "resize-column", G_CALLBACK ( gw_notebook_search_clist_column_resized), NULL);
+	g_signal_connect (G_OBJECT ( clist_search_result), "click_column", G_CALLBACK ( gw_notebook_search_column_sort), NULL);
+	g_signal_connect (G_OBJECT ( clist_search_result), "select_row", G_CALLBACK ( gw_notebook_search_select_row), window);
 	gtk_container_add ( GTK_CONTAINER ( scrolled_result_list), clist_search_result);
 
 	gtk_clist_column_titles_show ( clist_result);

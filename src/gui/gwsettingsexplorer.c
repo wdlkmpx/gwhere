@@ -132,9 +132,9 @@ gint gw_plugin_settings_explorer_pane_create ( GtkWindow *settings, GtkContainer
 		gw_plugin_settings_explorer_pane_load ( table_pane);
 
 		/* Connects signals after loading. */
-		gtk_signal_connect ( GTK_OBJECT ( chk_sort_case_sensitive), "clicked", (GtkSignalFunc)gw_plugin_settings_explorer_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( chk_sort_group_by), "clicked", (GtkSignalFunc)gw_plugin_settings_explorer_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( chk_autoresize), "clicked", (GtkSignalFunc)gw_plugin_settings_explorer_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_sort_case_sensitive), "clicked", (GCallback)gw_plugin_settings_explorer_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_sort_group_by), "clicked", (GCallback)gw_plugin_settings_explorer_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_autoresize), "clicked", (GCallback)gw_plugin_settings_explorer_pane_on_change, table_pane);
 
 		result = 0;
 	}

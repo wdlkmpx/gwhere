@@ -54,7 +54,7 @@ GtkWidget * gw_menu_options_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget 
 		gw_menu_options_settings = gtk_menu_item_new_with_mnemonic (_("Se_ttings"));
 		gtk_container_add ( GTK_CONTAINER ( menu_options), gw_menu_options_settings);
 		gtk_widget_add_accelerator ( gw_menu_options_settings, "activate", ag, GDK_t, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-		gtk_signal_connect ( GTK_OBJECT ( gw_menu_options_settings), "activate", GTK_SIGNAL_FUNC ( gw_menu_options_settings_click), w);
+		g_signal_connect (G_OBJECT ( gw_menu_options_settings), "activate", G_CALLBACK ( gw_menu_options_settings_click), w);
 	}
 
 	return gw_menu_options_header;

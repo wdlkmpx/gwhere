@@ -67,20 +67,20 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	gw_menu_action_expand_all = gtk_menu_item_new_with_mnemonic (_("_Expand all"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_ALL, gw_menu_action_expand_all);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_all);
-	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_all), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_all_click), w);
+	g_signal_connect (G_OBJECT ( gw_menu_action_expand_all), "activate", G_CALLBACK ( gw_menu_action_expand_all_click), w);
 
 	/* Menu action -> expand disks */
 	gw_menu_action_expand_disks = gtk_menu_item_new_with_mnemonic (_("Expand only _disks"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_EXPAND_DISKS, gw_menu_action_expand_disks);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_expand_disks);
 	gtk_widget_add_accelerator ( gw_menu_action_expand_disks, "activate", ag, GDK_d, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_expand_disks), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_expand_disks_click), w);
+	g_signal_connect (G_OBJECT ( gw_menu_action_expand_disks), "activate", G_CALLBACK ( gw_menu_action_expand_disks_click), w);
 
 	/* Menu action -> collapse */
 	gw_menu_action_collapse_all = gtk_menu_item_new_with_mnemonic (_("C_ollapse all"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_COLLAPSE_ALL, gw_menu_action_collapse_all);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_collapse_all);
-	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_collapse_all), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_collapse_all_click), w);
+	g_signal_connect (G_OBJECT ( gw_menu_action_collapse_all), "activate", G_CALLBACK ( gw_menu_action_collapse_all_click), w);
 
 	/* Menu action -> separator */
 	gw_menu_action_separator = gtk_menu_item_new ( );
@@ -93,7 +93,7 @@ GtkWidget * gw_menu_action_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_ACTION_MENU_EDIT_CATEGORIES, gw_menu_action_edit_categories);
 	gtk_container_add ( GTK_CONTAINER ( menu_action), gw_menu_action_edit_categories);
 	gtk_widget_add_accelerator ( gw_menu_action_edit_categories, "activate", ag, GDK_c, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
-	gtk_signal_connect ( GTK_OBJECT ( gw_menu_action_edit_categories), "activate", GTK_SIGNAL_FUNC ( gw_menu_action_edit_categories_click), w);
+	g_signal_connect (G_OBJECT ( gw_menu_action_edit_categories), "activate", G_CALLBACK ( gw_menu_action_edit_categories_click), w);
 
 	return gw_menu_action_header;
 }

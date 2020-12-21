@@ -27,7 +27,7 @@
 #define GW_REF_DIALOG_BOX_USER_DATA "gw_ref_dialog_box_user_data"
 
 
-GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text, GtkSignalFunc ok, GtkSignalFunc no, GtkSignalFunc cancel, gpointer data)
+GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text, GCallback ok, GCallback no, GCallback cancel, gpointer data)
 {
 	/*static */GtkWidget *w = NULL;
 	GtkWidget *label;
@@ -67,11 +67,11 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 
 		if ( ok != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( ok), w);
+			g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( ok), w);
 		}
 		else
 		{
-			gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
@@ -81,11 +81,11 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 
 		if ( no != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( no), w);
+			g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( no), w);
 		}
 		else
 		{
-			gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);
@@ -94,11 +94,11 @@ GtkWidget * gw_dialog_box_create ( GtkWindow *window, gchar *title, gchar *text,
 
 		if ( cancel != NULL )
 		{
-			gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( cancel), w);
+			g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( cancel), w);
 		}
 		else
 		{
-			gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
 		gtk_box_pack_start ( GTK_BOX ( GTK_DIALOG ( w)->action_area), button, TRUE, TRUE, 0);

@@ -80,7 +80,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 
 		g_object_set_data (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_MAIN_WINDOW, window);
 
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC (gtk_widget_destroyed), &w);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK (gtk_widget_destroyed), &w);
 
 		/* Vertical box */
 		vb = gtk_vbox_new ( FALSE, 10);
@@ -104,8 +104,8 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		gtk_widget_set_usize ( list, 100, 100);
 		/*gtk_widget_ref ( list);*/
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORIES_LIST, list, /*(GDestroyNotify)gtk_widget_unref*/NULL);
-		/*gtk_signal_connect ( GTK_OBJECT ( list), "click_column", GTK_SIGNAL_FUNC ( gw_categories_edit_box_list_click_column), w);*/
-		gtk_signal_connect ( GTK_OBJECT ( list), "select_row", GTK_SIGNAL_FUNC ( gw_categories_edit_box_list_select_row), w);
+		/*g_signal_connect (G_OBJECT ( list), "click_column", G_CALLBACK ( gw_categories_edit_box_list_click_column), w);*/
+		g_signal_connect (G_OBJECT ( list), "select_row", G_CALLBACK ( gw_categories_edit_box_list_select_row), w);
 		gtk_container_add ( GTK_CONTAINER ( scr), list);
 		gtk_clist_set_column_width ( GTK_CLIST ( list), 0, 80);
 		gtk_clist_set_column_width ( GTK_CLIST ( list), 1, 20);
@@ -126,7 +126,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		/* Update button */
 		bt = gtk_button_new_with_mnemonic (_("_Update"));
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON, bt, /*(GDestroyNotify)gtk_widget_unref*/NULL);
-		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_update_click), GTK_WINDOW ( w));
+		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_update_click), GTK_WINDOW ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
 		gtk_tooltips_set_tip ( tips, bt,
@@ -137,7 +137,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		/* Remove button */
 		bt = gtk_button_new_with_mnemonic (_( "_Remove"));
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON, bt, /*(GDestroyNotify) gtk_widget_unref)*/NULL);
-		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_remove_click), GTK_WINDOW ( w));
+		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_remove_click), GTK_WINDOW ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
 		gtk_tooltips_set_tip ( tips, bt,
@@ -161,7 +161,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		ent = gtk_entry_new ( );
 		/*gtk_widget_ref ( ent);*/
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY, ent, /*(GDestroyNotify)gtk_widget_unref*/NULL);
-		gtk_signal_connect ( GTK_OBJECT ( ent), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_name_changed), w);
+		g_signal_connect (G_OBJECT ( ent), "changed", G_CALLBACK ( gw_categories_edit_box_category_name_changed), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), ent, TRUE, TRUE, 5);
 		gtk_tooltips_set_tip ( tips, ent,
 		                       _( "Enter the name of the category."), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS);
@@ -184,7 +184,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		txt = gtk_text_area_new ( );
 		gtk_text_area_set_editable ( GTK_TEXT_AREA ( txt), TRUE);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT, txt, /*(GDestroyNotify)gtk_widget_unref*/NULL);
-		g_signal_connect ( G_OBJECT ( gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( txt))), "changed", GTK_SIGNAL_FUNC ( gw_categories_edit_box_category_description_changed), w);
+		g_signal_connect ( G_OBJECT ( gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( txt))), "changed", G_CALLBACK ( gw_categories_edit_box_category_description_changed), w);
 
 		gtk_container_add ( GTK_CONTAINER ( scr), txt);
 		gtk_tooltips_set_tip ( tips, txt,
@@ -199,7 +199,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		/* Add/Update button */
 		bt = gtk_button_new_with_mnemonic (_( "_Add / Update"));
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON, bt, /*(GDestroyNotify)gtk_widget_unref*/NULL);
-		gtk_signal_connect ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gw_categories_edit_box_add_update_click), w);
+		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_add_update_click), w);
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
 		gtk_tooltips_set_tip ( tips, bt, 
@@ -211,7 +211,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 
 		/* Close button */
 		bt = gtk_button_new_with_mnemonic (_( "_Close"));
-		gtk_signal_connect_object ( GTK_OBJECT ( bt), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+		g_signal_connect_swapped (G_OBJECT ( bt), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
 		gtk_tooltips_set_tip ( tips, bt,

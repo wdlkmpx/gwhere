@@ -247,7 +247,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 #endif
 
 						/* If no catalog is opened */
-						gw_capture_box_create ( window, _("Add new disk"), _("Enter catalog name"), _("New catalog"), GTK_SIGNAL_FUNC ( gw_capture_box_catalog_name_ok));
+						gw_capture_box_create ( window, _("Add new disk"), _("Enter catalog name"), _("New catalog"), G_CALLBACK ( gw_capture_box_catalog_name_ok));
 
 						result = FALSE;
 					} else {
@@ -266,7 +266,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 #endif
 
 							/* If no disk name is filled */
-							gw_capture_box_create ( window, _("Add disk"), _("Enter disk name"), (tmp = gw_helper_db_disk_get_name ( context, _("New disk"))), GTK_SIGNAL_FUNC ( gw_capture_box_disk_name_ok));
+							gw_capture_box_create ( window, _("Add disk"), _("Enter disk name"), (tmp = gw_helper_db_disk_get_name ( context, _("New disk"))), G_CALLBACK ( gw_capture_box_disk_name_ok));
 							g_free ( tmp);
 
 							result = FALSE;

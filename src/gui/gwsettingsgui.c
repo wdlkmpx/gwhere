@@ -109,8 +109,8 @@ gint gw_plugin_settings_gui_pane_create ( GtkWindow *settings, GtkContainer *par
 		gw_plugin_settings_gui_pane_load ( table_pane);
 
 		/* Connects signals after loading. */
-		gtk_signal_connect ( GTK_OBJECT ( chk_autosave), "clicked", (GtkSignalFunc)gw_plugin_settings_gui_pane_on_change, table_pane);
-		gtk_signal_connect ( GTK_OBJECT ( chk_beep), "clicked", (GtkSignalFunc)gw_plugin_settings_gui_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_autosave), "clicked", (GCallback)gw_plugin_settings_gui_pane_on_change, table_pane);
+		g_signal_connect (G_OBJECT ( chk_beep), "clicked", (GCallback)gw_plugin_settings_gui_pane_on_change, table_pane);
 
 		result = 0;
 	}

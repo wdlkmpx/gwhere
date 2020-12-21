@@ -79,9 +79,9 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	ctree_catalog = gtk_ctree_new ( 1, 0);
 	gtk_widget_ref ( ctree_catalog);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_TREE, ctree_catalog, (GDestroyNotify) gtk_widget_unref);
-	gtk_signal_connect ( GTK_OBJECT ( ctree_catalog), "button_press_event", GTK_SIGNAL_FUNC ( gw_notebook_catalog_ctree_button_press_event), NULL);
-//	gtk_signal_connect ( GTK_OBJECT ( ctree_catalog), "tree_select_row", GTK_SIGNAL_FUNC ( gw_notebook_catalog_ctree_select_row), NULL);
-	gtk_signal_connect_after ( GTK_OBJECT ( ctree_catalog), "tree_select_row", GTK_SIGNAL_FUNC ( gw_notebook_catalog_ctree_select_row), NULL);
+	g_signal_connect (G_OBJECT ( ctree_catalog), "button_press_event", G_CALLBACK ( gw_notebook_catalog_ctree_button_press_event), NULL);
+//	g_signal_connect (G_OBJECT ( ctree_catalog), "tree_select_row", G_CALLBACK ( gw_notebook_catalog_ctree_select_row), NULL);
+	g_signal_connect_after (G_OBJECT ( ctree_catalog), "tree_select_row", G_CALLBACK ( gw_notebook_catalog_ctree_select_row), NULL);
 	gtk_clist_set_selection_mode ( GTK_CLIST ( ctree_catalog), GTK_SELECTION_BROWSE);
 	gtk_container_add ( GTK_CONTAINER ( scr_win_ctree), ctree_catalog);
 	gtk_clist_set_column_width ( GTK_CLIST ( ctree_catalog), 0, 80);
@@ -110,9 +110,9 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	clist_info = GTK_CLIST ( clist_info_catalog);
 	gtk_widget_ref ( clist_info_catalog);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_CLIST_EXPLORER, clist_info_catalog,(GDestroyNotify) gtk_widget_unref);
-//	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "resize-column", GTK_SIGNAL_FUNC ( gw_notebook_catalog_clist_column_resized), NULL);
-//	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "click_column", GTK_SIGNAL_FUNC ( gw_notebook_catalog_column_sort), NULL);
-//	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "button_press_event", GTK_SIGNAL_FUNC ( gw_notebook_catalog_clist_button_press_event), NULL);
+//	g_signal_connect (G_OBJECT ( clist_info_catalog), "resize-column", G_CALLBACK ( gw_notebook_catalog_clist_column_resized), NULL);
+//	g_signal_connect (G_OBJECT ( clist_info_catalog), "click_column", G_CALLBACK ( gw_notebook_catalog_column_sort), NULL);
+//	g_signal_connect (G_OBJECT ( clist_info_catalog), "button_press_event", G_CALLBACK ( gw_notebook_catalog_clist_button_press_event), NULL);
 	gtk_clist_set_selection_mode ( clist_info, GTK_SELECTION_BROWSE);
 	gtk_container_add ( GTK_CONTAINER ( scr_win_info_catalog), clist_info_catalog);
 
@@ -171,9 +171,9 @@ GtkWidget * gw_notebook_catalog_create ( GtkWindow * window) {
 	gtk_clist_set_column_widget ( clist_info, 10, lbl_col11);
 
 	gw_notebook_catalog_clist_explorer_set_column_title_disk ( );
-	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "resize-column", GTK_SIGNAL_FUNC ( gw_notebook_catalog_clist_column_resized), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "click_column", GTK_SIGNAL_FUNC ( gw_notebook_catalog_column_sort), NULL);
-	gtk_signal_connect ( GTK_OBJECT ( clist_info_catalog), "button_press_event", GTK_SIGNAL_FUNC ( gw_notebook_catalog_clist_button_press_event), NULL);
+	g_signal_connect (G_OBJECT ( clist_info_catalog), "resize-column", G_CALLBACK ( gw_notebook_catalog_clist_column_resized), NULL);
+	g_signal_connect (G_OBJECT ( clist_info_catalog), "click_column", G_CALLBACK ( gw_notebook_catalog_column_sort), NULL);
+	g_signal_connect (G_OBJECT ( clist_info_catalog), "button_press_event", G_CALLBACK ( gw_notebook_catalog_clist_button_press_event), NULL);
 
 	return hpan_catalog;
 }
@@ -241,7 +241,7 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_file ( void) {
 
 	if ( clist != NULL ) {
 		gtk_clist_freeze ( clist);
-//		gtk_signal_emit_stop_by_name ( GTK_OBJECT ( clist), "resize-column");
+//		g_signal_stop_emission_by_name (G_OBJECT ( clist), "resize-column");
 
 		/* Sets columns width. */
 		if ( (width = gw_am_get_settings_tol ( GW_VALUE_APP_EXPLORER_FILE_COLUMN_NAME_SIZE)) == -1 ) {
@@ -447,7 +447,7 @@ gint gw_notebook_catalog_clist_explorer_set_column_title_disk ( void) {
 
 	if ( clist != NULL ) {
 		gtk_clist_freeze ( clist);
-//		gtk_signal_emit_stop_by_name ( GTK_OBJECT ( clist), "resize-column");
+//		g_signal_stop_emission_by_name (G_OBJECT ( clist), "resize-column");
 
 		/* Sets columns width. */
 		if ( (width = gw_am_get_settings_tol ( GW_VALUE_APP_EXPLORER_DISK_COLUMN_NAME_SIZE)) == -1 ) {

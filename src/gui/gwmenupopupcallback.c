@@ -61,7 +61,7 @@ gboolean gw_menu_popup_catalog_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_capture_box_create ( window, _( "Rename catalog"), _( "Enter new catalog name"), gw_db_catalog_get_name ( catalog), GTK_SIGNAL_FUNC ( gw_menu_popup_catalog_rename_ok));
+			gw_capture_box_create ( window, _( "Rename catalog"), _( "Enter new catalog name"), gw_db_catalog_get_name ( catalog), G_CALLBACK ( gw_menu_popup_catalog_rename_ok));
 
 			gw_db_catalog_free ( catalog);
 
@@ -165,7 +165,7 @@ gboolean gw_menu_popup_catalog_edit_description ( GtkMenuItem *m, GtkCTreeNode *
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Catalog description"), gw_db_catalog_get_description ( catalog), GTK_SIGNAL_FUNC ( gw_menu_popup_catalog_edit_description_ok));
+			gw_text_box_create ( window, _( "Edit description"), _( "Catalog description"), gw_db_catalog_get_description ( catalog), G_CALLBACK ( gw_menu_popup_catalog_edit_description_ok));
 
 			gw_db_catalog_free ( catalog);
 
@@ -314,7 +314,7 @@ gboolean gw_menu_popup_disk_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_capture_box_create ( window, _( "Rename disk"), _( "Enter new disk name"), gw_db_disk_get_name ( disk), GTK_SIGNAL_FUNC ( gw_menu_popup_disk_rename_ok));
+			gw_capture_box_create ( window, _( "Rename disk"), _( "Enter new disk name"), gw_db_disk_get_name ( disk), G_CALLBACK ( gw_menu_popup_disk_rename_ok));
 			gw_db_disk_free ( disk);
 
 			result = TRUE;
@@ -443,7 +443,7 @@ gboolean gw_menu_popup_disk_change_volume_label ( GtkMenuItem *m, GtkCTreeNode *
 			disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_capture_box_create ( window, _( "Change volume label"), _( "Enter new disk volume label"), gw_db_disk_get_volume ( disk), GTK_SIGNAL_FUNC ( gw_menu_popup_disk_change_volume_label_ok));
+			gw_capture_box_create ( window, _( "Change volume label"), _( "Enter new disk volume label"), gw_db_disk_get_volume ( disk), G_CALLBACK ( gw_menu_popup_disk_change_volume_label_ok));
 			gw_db_disk_free ( disk);
 
 			result = TRUE;
@@ -518,7 +518,7 @@ gboolean gw_menu_popup_disk_edit_description ( GtkMenuItem *m, GtkCTreeNode *nod
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Disk description"), gw_db_disk_get_description ( disk), GTK_SIGNAL_FUNC ( gw_menu_popup_disk_edit_description_ok));
+			gw_text_box_create ( window, _( "Edit description"), _( "Disk description"), gw_db_disk_get_description ( disk), G_CALLBACK ( gw_menu_popup_disk_edit_description_ok));
 
 			gw_db_disk_free ( disk);
 
@@ -642,7 +642,7 @@ gboolean gw_menu_popup_folder_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			file = plugin->gw_db_catalog_get_db_file ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_capture_box_create ( window, _( "Rename folder"), _( "Enter new folder name"), gw_db_file_get_name ( file), GTK_SIGNAL_FUNC ( gw_menu_popup_folder_rename_ok));
+			gw_capture_box_create ( window, _( "Rename folder"), _( "Enter new folder name"), gw_db_file_get_name ( file), G_CALLBACK ( gw_menu_popup_folder_rename_ok));
 			gw_db_file_free ( file);
 
 			result = TRUE;
@@ -734,7 +734,7 @@ gboolean gw_menu_popup_folder_edit_description ( GtkMenuItem *m, GtkCTreeNode *n
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Folder description"), gw_db_file_get_description ( file), GTK_SIGNAL_FUNC ( gw_menu_popup_folder_edit_description_ok));
+			gw_text_box_create ( window, _( "Edit description"), _( "Folder description"), gw_db_file_get_description ( file), G_CALLBACK ( gw_menu_popup_folder_edit_description_ok));
 
 			gw_db_file_free ( file);
 
@@ -905,7 +905,7 @@ gboolean gw_menu_popup_file_rename ( GtkMenuItem *m, gpointer row) {
 		/* Gets file informations. */
 		files_gw_menu_popup_callback = (GWDBFile*)gtk_clist_get_row_data ( GTK_CLIST ( clist_info), GPOINTER_TO_INT ( row));
 
-		gw_capture_box_create ( window, _( "Rename file"), _( "Enter new file name"), name, GTK_SIGNAL_FUNC ( gw_menu_popup_file_rename_ok));
+		gw_capture_box_create ( window, _( "Rename file"), _( "Enter new file name"), name, G_CALLBACK ( gw_menu_popup_file_rename_ok));
 
 		result = TRUE;
 	}
@@ -1003,7 +1003,7 @@ gboolean gw_menu_popup_file_edit_description ( GtkMenuItem *m, gpointer row) {
 		files_gw_menu_popup_callback = (GWDBFile*)gtk_clist_get_row_data ( GTK_CLIST ( clist_info), GPOINTER_TO_INT ( row));
 
 		node_gw_menu_popup_callback = selection;
-		gw_text_box_create ( window, _( "Edit description"), _( "File description"), gw_db_file_get_description ( files_gw_menu_popup_callback), GTK_SIGNAL_FUNC ( gw_menu_popup_file_edit_description_ok));
+		gw_text_box_create ( window, _( "Edit description"), _( "File description"), gw_db_file_get_description ( files_gw_menu_popup_callback), G_CALLBACK ( gw_menu_popup_file_edit_description_ok));
 
 		result = TRUE;
 	}

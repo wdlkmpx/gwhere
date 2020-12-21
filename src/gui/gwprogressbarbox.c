@@ -73,8 +73,8 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 #endif
 
 			/* These signals do nothing. In	this way the window cannot be destroyed. What must be done when	stop is	NULL? */
-			gtk_signal_connect ( GTK_OBJECT	( w), "delete_event", GTK_SIGNAL_FUNC (	gw_progress_bar_box_signal_do_nothing), NULL);
-			gtk_signal_connect ( GTK_OBJECT	( w), "destroy", GTK_SIGNAL_FUNC ( gw_progress_bar_box_signal_do_nothing),	NULL);
+			g_signal_connect (G_OBJECT	( w), "delete_event", G_CALLBACK (	gw_progress_bar_box_signal_do_nothing), NULL);
+			g_signal_connect (G_OBJECT	( w), "destroy", G_CALLBACK ( gw_progress_bar_box_signal_do_nothing),	NULL);
 		}
 
 		frame =	gtk_frame_new (subject);
@@ -133,7 +133,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 			g_print	( "*** GW - %s (%d) :: %s() : connect custom callback on ok/cancel button\n", __FILE__,	__LINE__, __PRETTY_FUNCTION__);
 #endif
 
-			gtk_signal_connect ( GTK_OBJECT	( button), "clicked", GTK_SIGNAL_FUNC (	stop), p);
+			g_signal_connect (G_OBJECT	( button), "clicked", G_CALLBACK (	stop), p);
 		}
 		else
 		{
@@ -141,7 +141,7 @@ GtkWindow * gw_progress_bar_box_create ( GtkWindow *window, gchar *title, gchar 
 			g_print	( "*** GW - %s (%d) :: %s() : connect standard callback	on ok/cancel button\n",	__FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-			gtk_signal_connect ( GTK_OBJECT	( button), "clicked", GTK_SIGNAL_FUNC (	gw_progress_bar_box_ok_cancel_click), w);
+			g_signal_connect (G_OBJECT	( button), "clicked", G_CALLBACK (	gw_progress_bar_box_ok_cancel_click), w);
 		}
 	}
 

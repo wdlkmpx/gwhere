@@ -31,7 +31,7 @@
 #define GW_REF_GW_CAPTURE_BOX_ACCEL_GROUP "gw_ref_gw_capture_box_accel_group"
 
 
-GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GtkSignalFunc ok)
+GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subject, gchar *text, GCallback ok)
 {
 	/* This window must be single, this property may be changed */
 	static GtkWidget *w = NULL;
@@ -57,8 +57,8 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		gtk_window_set_transient_for ( GTK_WINDOW ( w), window);
 		gtk_window_set_position ( GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
 
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC ( gw_capture_box_destroy), &w);
-		gtk_signal_connect ( GTK_OBJECT ( w), "delete-event", GTK_SIGNAL_FUNC ( gtk_widget_destroy), NULL);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK ( gw_capture_box_destroy), &w);
+		g_signal_connect (G_OBJECT ( w), "delete-event", G_CALLBACK ( gtk_widget_destroy), NULL);
 
 		/* Store parent window reference */
 		gtk_widget_ref ( GTK_WIDGET ( window));
@@ -72,7 +72,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 		gtk_container_set_border_width ( GTK_CONTAINER ( vbox), 10);
 
 		entry_data_capture = gtk_entry_new_with_max_length ( DATA_GW_CAPTURE_MAX_SIZE);
-		gtk_signal_connect ( GTK_OBJECT ( entry_data_capture), "activate", GTK_SIGNAL_FUNC ( ok), w);
+		g_signal_connect (G_OBJECT ( entry_data_capture), "activate", G_CALLBACK ( ok), w);
 
 		/* Store data capture reference */
 		gtk_widget_ref ( entry_data_capture);
@@ -96,7 +96,7 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 			g_print ( "*** GW - %s (%d) :: %s() : connecting the ok callback function...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-			gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( ok), w);
+			g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( ok), w);
 		}
 		else
 		{
@@ -104,13 +104,13 @@ GtkWidget * gw_capture_box_create ( GtkWindow *window, gchar *title, gchar *subj
 			g_print ( "*** GW - %s (%d) :: %s() : ok callback function is null\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-			gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+			g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		}
 
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hbox), button, TRUE, TRUE, 0);
-		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+		g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 
 	}
 

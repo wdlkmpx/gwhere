@@ -139,9 +139,9 @@ gint gw_plugin_settings_explorer_disk_pane_create ( GtkWindow *settings, GtkCont
 		g_print ( "*** GW - %s (%d) :: %s() : connecting all callbacks to signals...\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-		gtk_signal_connect  ( GTK_OBJECT ( hbox), "destroy", (GtkSignalFunc)gw_plugin_settings_explorer_disk_destroy, NULL);
-		gtk_signal_connect  ( GTK_OBJECT ( btn_hidden), "clicked", (GtkSignalFunc)gw_plugin_settings_explorer_disk_btn_hide_click, hbox);
-		gtk_signal_connect  ( GTK_OBJECT ( btn_show), "clicked", (GtkSignalFunc)gw_plugin_settings_explorer_disk_btn_show_click, hbox);
+		g_signal_connect (G_OBJECT ( hbox), "destroy", (GCallback)gw_plugin_settings_explorer_disk_destroy, NULL);
+		g_signal_connect (G_OBJECT ( btn_hidden), "clicked", (GCallback)gw_plugin_settings_explorer_disk_btn_hide_click, hbox);
+		g_signal_connect (G_OBJECT ( btn_show), "clicked", (GCallback)gw_plugin_settings_explorer_disk_btn_show_click, hbox);
 
 		result = 0;
 	}

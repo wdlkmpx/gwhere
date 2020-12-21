@@ -107,7 +107,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		gtk_widget_ref ( w);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_PARENT_WINDOW, window, (GDestroyNotify) gtk_widget_unref);
 
-		gtk_signal_connect ( GTK_OBJECT ( w), "destroy", GTK_SIGNAL_FUNC (gtk_widget_destroyed), &w);
+		g_signal_connect (G_OBJECT ( w), "destroy", G_CALLBACK (gtk_widget_destroyed), &w);
 
 		vb_properties = gtk_vbox_new ( FALSE, 0);
 		gtk_container_add ( GTK_CONTAINER ( w), vb_properties);
@@ -198,19 +198,19 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 
 		switch ( what)
 		{
-			case GW_PROPERTIES_TYPE_CATALOG :	gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gw_properties_box_catalog_ok), w);
+			case GW_PROPERTIES_TYPE_CATALOG :	g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( gw_properties_box_catalog_ok), w);
 
 							break;
 
-			case GW_PROPERTIES_TYPE_DISK :		gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gw_properties_box_disk_ok), w);
+			case GW_PROPERTIES_TYPE_DISK :		g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( gw_properties_box_disk_ok), w);
 
 							break;
 
-			case GW_PROPERTIES_TYPE_FOLDER :	gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gw_properties_box_folder_ok), w);
+			case GW_PROPERTIES_TYPE_FOLDER :	g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( gw_properties_box_folder_ok), w);
 
 							break;
 
-			case GW_PROPERTIES_TYPE_FILE :		gtk_signal_connect ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gw_properties_box_file_ok), w);
+			case GW_PROPERTIES_TYPE_FILE :		g_signal_connect (G_OBJECT ( button), "clicked", G_CALLBACK ( gw_properties_box_file_ok), w);
 
 							break;
 
@@ -220,7 +220,7 @@ GtkWidget * gw_properties_box_create ( GtkWindow *window, GtkCTree *ctree, GtkCT
 		button = gtk_button_new_with_mnemonic (_("_Cancel"));
 		g_object_set_data (G_OBJECT ( button), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb_buttons), button, TRUE, TRUE, 0);
-		gtk_signal_connect_object ( GTK_OBJECT ( button), "clicked", GTK_SIGNAL_FUNC ( gtk_widget_destroy), GTK_OBJECT ( w));
+		g_signal_connect_swapped (G_OBJECT ( button), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		GTK_WIDGET_SET_FLAGS ( button, GTK_CAN_FOCUS);
 
 		gw_db_catalog_free ( catalog);
