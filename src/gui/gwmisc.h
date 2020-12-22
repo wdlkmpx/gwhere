@@ -46,7 +46,6 @@
  * @param	w	main window
  * @param	title	the window title
  * @param	msg	the message to display
- * @result	the message box.<br>
  */
 void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
 
@@ -61,5 +60,20 @@ void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
  * @param	cancel		the function which will be call when user clicks on cancel button
  */
 void gw_file_chooser_box_create (gchar *title, gchar *filename, GCallback ok, GCallback cancel);
+
+
+/*!
+ * @function	gw_input_box
+ * @abstract	Creates a capture window box.
+ * @discussion	This function creates an input box. If the validate callback function
+ *		is <i>NULL</i>, the window is destroyed when the user clicks validate the capture box.
+ * @param	w		the parent window
+ * @param	title		the window box title
+ * @param	subject		the text which is displayed in the capture box
+ * @param	text		the answer which is displayed in the field text
+ * @param	ok		the function which will be call when user validate the capture box
+ */
+void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
+                   gchar *text, gpointer ok);
 
 #endif

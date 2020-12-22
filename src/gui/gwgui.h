@@ -38,7 +38,6 @@
 
 #include <gtk/gtk.h>
 
-#include "gwcapturebox.h"
 #include "gwcategorieseditbox.h"
 #include "gwcomboboxcategories.h"
 #include "gwdialogbox.h"
@@ -50,7 +49,6 @@
 #include "gwmenufilecallback.h"
 #include "gwmenupopup.h"
 #include "gwmenupopupcallback.h"
-#include "gwmisc.h"
 #include "gwnotebook.h"
 #include "gwnotebookcallback.h"
 #include "gwnotebookcatalog.h"

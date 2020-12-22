@@ -29,9 +29,8 @@
 
 #include "gwcomboboxcategories.h"
 #include "gwnotebookmanagment.h"
-#include "gwcapturebox.h"
-#include "gwprogressbarbox.h"
 #include "gwmisc.h"
+#include "gwprogressbarbox.h"
 
 #include "../gwapplicationmanager.h"
 #include "../gwguimanager.h"
@@ -247,7 +246,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 #endif
 
 						/* If no catalog is opened */
-						gw_capture_box_create ( window, _("Add new disk"), _("Enter catalog name"), _("New catalog"), G_CALLBACK ( gw_capture_box_catalog_name_ok));
+						gw_input_box ( window, _("Add new disk"), _("Enter catalog name"), _("New catalog"), G_CALLBACK ( gw_capture_box_catalog_name_ok));
 
 						result = FALSE;
 					} else {
@@ -266,7 +265,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 #endif
 
 							/* If no disk name is filled */
-							gw_capture_box_create ( window, _("Add disk"), _("Enter disk name"), (tmp = gw_helper_db_disk_get_name ( context, _("New disk"))), G_CALLBACK ( gw_capture_box_disk_name_ok));
+							gw_input_box ( window, _("Add disk"), _("Enter disk name"), (tmp = gw_helper_db_disk_get_name ( context, _("New disk"))), G_CALLBACK ( gw_capture_box_disk_name_ok));
 							g_free ( tmp);
 
 							result = FALSE;
@@ -644,78 +643,55 @@ gint gw_notebook_managment_set_current_statment ( gpointer w, gfloat current) {
 
 
 
-gint gw_capture_box_catalog_name_ok ( GtkWidget *w, gpointer data) {
-	gchar *name = NULL;
+gint gw_capture_box_catalog_name_ok ( GtkWidget *w, gpointer data)
+{
+	gchar *name = (char *) data;
 	GtkWindow *window = NULL;
 	GtkCTree *tree = NULL;
 	GtkCTreeNode *root = NULL;
-	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( data != NULL ) {
-		name = gw_capture_box_get_text ( data);
+	/* If catalog name is filled : update catalog informations */
+	window = gw_gui_manager_main_interface_get_main_window ( );
+	tree = gw_gui_manager_main_interface_get_tree ( );
+	root = gw_gui_manager_main_interface_get_tree_root ( );
 
-		if ( name != NULL && ( strlen ( name) > 0) ) {
-			/* If catalog name is filled : update catalog informations */
-			window = gw_gui_manager_main_interface_get_main_window ( );
-			tree = gw_gui_manager_main_interface_get_tree ( );
-			root = gw_gui_manager_main_interface_get_tree_root ( );
+	if (window){
+		gw_am_new_catalog ( name);
 
-			if ( window != NULL ) {
-				gw_am_new_catalog ( name);
+		/* relaunch the scan */
+		gw_notebook_managment_scan_click ( NULL,  window);
 
-				/* Destroys the capture box and relaunches the scan */
-				gtk_widget_destroy ( data);
-				gw_notebook_managment_scan_click ( NULL,  window);
-
-				result = 0;
-			}
-		} else {
-			gw_msg_box_create ( window, _( "Add disk"), _( "Please select a catalog name\n"));
-
-			result = -1;
-		}
-
-		if ( name != NULL ) {
-			g_free ( name);
-		}
+		return 0;
 	}
-
-	return result;
+	return -1;
 }
 
 
-gint gw_capture_box_disk_name_ok ( GtkWidget *w, gpointer data) {
-	gchar *disk_name;
+gint gw_capture_box_disk_name_ok ( GtkWidget *w, gpointer data)
+{
+	char *disk_name = (char *) data;
 	GtkWindow *window = NULL;
-	gint result = -1;
-
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( data != NULL ) {
-		window = gw_gui_manager_main_interface_get_main_window ( );
+	window = gw_gui_manager_main_interface_get_main_window ( );
 
-		if ( window != NULL ) {
-			disk_name = gw_capture_box_get_text ( data);
-			gw_notebook_managment_set_device_name ( window, disk_name);
-			g_free ( disk_name);
+	if (window) {
+		gw_notebook_managment_set_device_name ( window, disk_name);
 
-			/* Destroys the capture box and relaunches the scan */
-			gtk_widget_destroy ( data);
-			gw_notebook_managment_scan_click ( NULL, window);
+		/* relaun the scan */
+		gw_notebook_managment_scan_click ( NULL, window);
 
-			result = 0;
-		}
+		return 0;
 	}
 
-	return result;
+	return -1;
 }
 
 

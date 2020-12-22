@@ -167,7 +167,7 @@ gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileChooser *fs);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_new_file_ok ( GtkWidget *bt, GtkWindow *w);
+gboolean gw_menu_file_new_file_ok ( GtkWidget *bt, gpointer data);
 
 
 /*!

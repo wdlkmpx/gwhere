@@ -27,12 +27,9 @@
 
 #include "gwpropertiesbox.h"
 #include "gwstatusbar.h"
-#include "gwcapturebox.h"
+#include "gwmisc.h"
 #include "gwwindowboxmail.h"
-#include "gwmisc.h"
 #include "gwdialogbox.h"
-#include "gwmisc.h"
-#include "gwmisc.h"
 #include "gwnotebookmanagmentcallback.h"
 #include "gwnotebookcatalog.h"
 
@@ -72,7 +69,7 @@ gboolean gw_menu_file_new_click ( GtkMenuItem *mi, GtkWindow *w) {
 			gw_db_catalog_free ( catalog);
 		} else {
 			/* Else ask the new catalog name */
-			gw_capture_box_create ( w, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+			gw_input_box ( w, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
 		}
 	}
 
@@ -532,43 +529,31 @@ gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileChooser *fs) {
 }
 
 
-gboolean gw_menu_file_new_file_ok ( GtkWidget *bt, GtkWindow *w) {
-	gchar *name = NULL;
+gboolean gw_menu_file_new_file_ok ( GtkWidget *bt, gpointer data)
+{
+	char * name = (char *) data;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	name = gw_capture_box_get_text ( w);
-
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s() : catalog name = %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, name);
 #endif
 
-	if ( name != NULL && (strlen ( name) > 0) ) {
-		/* Checks if a catalog is allready opened */
-		if ( gw_am_get_current_catalog_context ( ) != NULL ) {
-			/* If is opened, closes it */
+	/* Checks if a catalog is allready opened */
+	if ( gw_am_get_current_catalog_context ( ) != NULL ) {
+		/* If is opened, closes it */
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : a catalog is already opened\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+		g_print ( "*** GW - %s (%d) :: %s() : a catalog is already opened\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-			gw_am_close_catalog ( FALSE);
-		} else {
-		}
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-		g_print ( "*** GW - %s (%d) :: %s() : initializes the catalog data structure\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-		gw_am_new_catalog ( name);
-
-		gtk_widget_destroy ( GTK_WIDGET ( w));
+		gw_am_close_catalog ( FALSE);
 	}
 
-	if ( name != NULL) {
-		g_free ( name);
-	}
+#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
+	g_print ( "*** GW - %s (%d) :: %s() : initializes the catalog data structure\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+#endif
+	gw_am_new_catalog ( name);
 
 #ifdef GW_DEBUG_MODE
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "new catalog created ==> memory status : ");
@@ -599,7 +584,7 @@ gboolean gw_menu_file_new_save_file_ok ( GtkWidget *bt, GtkWindow *dg) {
 	} else {
 		/* Else save it directly and displays a fill box of new catalog */
 		gw_menu_file_save_click ( NULL, NULL);
-		gw_capture_box_create ( window, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+		gw_input_box ( window, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
 	}
 
 	return TRUE;
@@ -617,7 +602,7 @@ gboolean gw_menu_file_new_save_file_no ( GtkWidget *bt, GtkWindow *dg) {
 
 	if ( dg != NULL ) {
 		gtk_widget_destroy ( GTK_WIDGET ( dg));
-		gw_capture_box_create ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+		gw_input_box ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
 
 		result = TRUE;
 	}
@@ -661,7 +646,7 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChoos
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 		g_free (filexname);
 		window = gw_gui_manager_main_interface_get_main_window ( );
-		gw_capture_box_create ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+		gw_input_box ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
 
 		result = TRUE;
 	}

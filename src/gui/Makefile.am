@@ -11,7 +11,6 @@ noinst_LIBRARIES = libgwgui.a
 libgwgui_a_SOURCES = \
 	gwgui.h gwreferences.h \
 	gtktextarea.c gtktextarea.h \
-	gwcapturebox.c gwcapturebox.h \
 	gwwindowboxmail.c gwwindowboxmail.h \
 	gwwindowboxmailcallback.c gwwindowboxmailcallback.h \
 	gwsettingsinterface.c gwsettingsinterface.h \

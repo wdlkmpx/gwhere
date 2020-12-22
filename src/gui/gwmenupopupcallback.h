@@ -61,7 +61,7 @@ gboolean gw_menu_popup_catalog_rename ( GtkMenuItem *m, GtkCTreeNode *node);
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_catalog_rename_ok ( GtkWidget *w, GtkWidget *data);
+gboolean gw_menu_popup_catalog_rename_ok ( GtkWidget *w, gpointer data);
 
 
 /*!
@@ -166,7 +166,7 @@ gboolean gw_menu_popup_disk_rename ( GtkMenuItem *m, GtkCTreeNode *node);
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_disk_rename_ok ( GtkWidget *w, GtkWidget *data);
+gboolean gw_menu_popup_disk_rename_ok ( GtkWidget *w, gpointer data);
 
 
 /*!
@@ -205,7 +205,7 @@ gboolean gw_menu_popup_disk_change_volume_label ( GtkMenuItem *m, GtkCTreeNode *
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_disk_change_volume_label_ok ( GtkWidget *w, GtkWidget *data);
+gboolean gw_menu_popup_disk_change_volume_label_ok ( GtkWidget *w, gpointer data);
 
 
 /*!
@@ -283,7 +283,7 @@ gboolean gw_menu_popup_folder_rename ( GtkMenuItem *m, GtkCTreeNode *node);
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_folder_rename_ok ( GtkWidget *w, GtkWidget *data);
+gboolean gw_menu_popup_folder_rename_ok ( GtkWidget *w, gpointer data);
 
 
 /*!
@@ -361,7 +361,7 @@ gboolean gw_menu_popup_file_rename ( GtkMenuItem *m, gpointer row);
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_file_rename_ok ( GtkWidget *b, GtkWidget *w);
+gboolean gw_menu_popup_file_rename_ok ( GtkWidget *b, gpointer data);
 
 
 /*!
@@ -387,7 +387,7 @@ gboolean gw_menu_popup_file_edit_description ( GtkMenuItem *m, gpointer row);
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_file_edit_description_ok ( GtkWidget *b, GtkWidget *w);
+gboolean gw_menu_popup_file_edit_description_ok ( GtkWidget *b, gpointer data);
 
 
 /*!
