@@ -39,8 +39,6 @@
 #define GW_REF_PROPERTIES_BOX_PARENT_WINDOW "gw_ref_gw_properties_box_parent_window"
 /*! @define	GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY	The catalog name entry */
 #define GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY "gw_ref_gw_properties_box_catalog_name_entry"
-/*! @define	GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX	The catalog categories combo box */
-#define GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX "gw_ref_gw_properties_box_catalog_categories_cmb_box"
 /*! @define	GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT	The catalog description text */
 #define GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT "gw_ref_gw_properties_box_catalog_description_text"
 /*! @define	GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY	The disk name entry */
@@ -613,8 +611,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 
 	/* Combo box for categories list */
 	cmb_categories = gw_combo_box_categories_create ( w, _( "Catalog categories : "), catalog);
-	g_object_ref ( GTK_WIDGET ( cmb_categories));
-	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX, GTK_WIDGET ( cmb_categories), (GDestroyNotify) g_object_unref);
 	gw_combo_box_categories_load ( cmb_categories);
 	gtk_box_pack_start ( GTK_BOX ( vb_tabbed_pane), GTK_WIDGET ( cmb_categories), FALSE, FALSE, 0);
 
@@ -1539,30 +1535,6 @@ gchar * gw_properties_box_get_catalog_name ( GtkWidget *w) {
 
 	return catalog_name;
 }
-
-
-/*GWDBCategory * gw_properties_box_get_catalog_category ( GtkWidget *w)
-{
-	GtkWidget *cmb_box_categories = NULL;
-	GWDBCategory *category = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX);
-
-		if ( cmb_box_categories != NULL )
-		{
-			category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories));
-		}
-	}
-
-	return category;
-}*/
 
 
 gchar * gw_properties_box_get_catalog_description ( GtkWidget *w)
