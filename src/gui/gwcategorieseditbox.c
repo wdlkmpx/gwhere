@@ -32,42 +32,25 @@
 #define GW_REF_CATEGORIES_EDIT_BOX_MAIN_WINDOW "gw_ref_gw_categories_edit_box_main_window"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY	The category name */
 #define GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY "gw_ref_gw_categories_edit_box_category_name_entry"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS	The category name tooltips */
-#define GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS "gw_ref_gw_categories_edit_box_category_name_entry_tooltips"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT	The category description */
 #define GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT "gw_ref_gw_categories_edit_box_category_description_text"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS	The category description tooltips */
-#define GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS "gw_ref_gw_categories_edit_box_category_description_text_tooltips"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON_TOOLTIPS	The update button tooltips */
-#define GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON_TOOLTIPS "gw_ref_gw_categories_edit_box_update_button_tooltips"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON	The update button */
 #define GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON "gw_ref_gw_categories_edit_box_update_button"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON	The remove button */
 #define GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON "gw_ref_gw_categories_edit_box_remove_button"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON	The add/update button */
 #define GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON "gw_ref_gw_categories_edit_box_add_update_button"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON_TOOLTIPS	The add/update button tooltips */
-#define GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON_TOOLTIPS "gw_ref_gw_categories_edit_box_add_update_button_tooltips"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON_TOOLTIPS	The remove button tooltips */
-#define GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON_TOOLTIPS "gw_ref_gw_categories_edit_box_remove_button_tooltips"
 /*! @define	GW_REF_CATEGORIES_EDIT_BOX_CATEGORIES_LIST	The list of categories */
 #define GW_REF_CATEGORIES_EDIT_BOX_CATEGORIES_LIST "gw_ref_gw_categories_edit_box_categories_list"
-/*! @define	GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS	The close button tooltipd */
-#define GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS "gw_ref_gw_categories_edit_box_close_button_toltips"
-
 
 GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *catalog) {
 	/* This window must be single, this property may be changed */
 	static GtkWidget *w = NULL;
 	GtkWidget *vb, *hb, *scr, *list, *bt, *hsp, *ent, *lbl, *frm, *txt;
-	GtkTooltips *tips;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Init tooltips */
-	tips = gtk_tooltips_new ( );
 
 	if ( !w ) {
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
@@ -129,9 +112,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_update_click), GTK_WINDOW ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
-		gtk_tooltips_set_tip ( tips, bt,
-		                       _( "Allows to update category properties of the selected category. Clicks on Add / Update button to save updates."),
-		                       GW_REF_CATEGORIES_EDIT_BOX_UPDATE_BUTTON_TOOLTIPS);
+		gtk_widget_set_tooltip_text (bt, _("Allows to update category properties of the selected category. Clicks on Add / Update button to save updates."));
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 
 		/* Remove button */
@@ -140,9 +121,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_remove_click), GTK_WINDOW ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, FALSE, TRUE, 5);
-		gtk_tooltips_set_tip ( tips, bt,
-		                       _( "Remove the selected category from categories list. This categories may removed only if there's not any item which uses this category."),
-		                       GW_REF_CATEGORIES_EDIT_BOX_REMOVE_BUTTON_TOOLTIPS);
+		gtk_widget_set_tooltip_text (bt, _( "Remove the selected category from categories list. This categories may removed only if there's not any item which uses this category."));
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 
 		/* 1st horizontal separator */
@@ -163,8 +142,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY, ent, /*(GDestroyNotify)g_object_unref*/NULL);
 		g_signal_connect (G_OBJECT ( ent), "changed", G_CALLBACK ( gw_categories_edit_box_category_name_changed), w);
 		gtk_box_pack_start ( GTK_BOX ( hb), ent, TRUE, TRUE, 5);
-		gtk_tooltips_set_tip ( tips, ent,
-		                       _( "Enter the name of the category."), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_NAME_ENTRY_TOOLTIPS);
+		gtk_widget_set_tooltip_text (ent, _( "Enter the name of the category."));
 
 		/* Frame category description */
 		frm = gtk_frame_new (_( "Description : "));
@@ -187,8 +165,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect ( G_OBJECT ( gtk_text_view_get_buffer ( GTK_TEXT_VIEW ( txt))), "changed", G_CALLBACK ( gw_categories_edit_box_category_description_changed), w);
 
 		gtk_container_add ( GTK_CONTAINER ( scr), txt);
-		gtk_tooltips_set_tip ( tips, txt,
-		                       _( "Enter the description of the category."), GW_REF_CATEGORIES_EDIT_BOX_CATEGORY_DESCRIPTION_TEXT_TOOLTIPS);
+		gtk_widget_set_tooltip_text (txt, _( "Enter the description of the category."));
 
 		/* The Add/Update/Close button area */
 		hb = gtk_hbutton_box_new ( );
@@ -202,8 +179,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect (G_OBJECT ( bt), "clicked", G_CALLBACK ( gw_categories_edit_box_add_update_click), w);
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
-		gtk_tooltips_set_tip ( tips, bt, 
-		                       _( "Save properties changes of category."), GW_REF_CATEGORIES_EDIT_BOX_ADD_UPDATE_BUTTON_TOOLTIPS);
+		gtk_widget_set_tooltip_text (bt, _("Save properties changes of category."));
 		gtk_widget_set_sensitive ( GTK_WIDGET ( bt), FALSE);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_FOCUS);
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_DEFAULT);
@@ -214,8 +190,7 @@ GtkWindow * gw_categories_edit_box_create ( GtkWindow *window, GWDBCatalog *cata
 		g_signal_connect_swapped (G_OBJECT ( bt), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 		g_object_set_data (G_OBJECT ( bt), "userdata", w);
 		gtk_box_pack_start ( GTK_BOX ( hb), bt, TRUE, TRUE, 5);
-		gtk_tooltips_set_tip ( tips, bt,
-		                      _( "Close the categories properties edit window."), GW_REF_CATEGORIES_EDIT_BOX_CLOSE_BUTTON_TOOLTIPS);
+		gtk_widget_set_tooltip_text (bt, _( "Close the categories properties edit window."));
 		GTK_WIDGET_SET_FLAGS ( bt, GTK_CAN_FOCUS);
 	}
 

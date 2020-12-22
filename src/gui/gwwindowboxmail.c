@@ -62,20 +62,16 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 	GtkWidget *hbSendMailControl;
 	GtkWidget *btnCancel;
 	GtkWidget *btnSend;
-	GtkTooltips *tooltips;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	/* Inits the tooltips group. */
-	tooltips = gtk_tooltips_new ( );
-
 	if ( !w )
 	{
 		w = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
-		gtk_tooltips_set_tip ( tooltips, GTK_WIDGET ( w),
-		                      _( "This window box allows you to send a catalog by mail to one (or more) of yours contacts."), NULL);
+		gtk_widget_set_tooltip_text (GTK_WIDGET ( w),
+		                             _( "This window box allows you to send a catalog by mail to one (or more) of yours contacts."));
 		gtk_window_set_title ( GTK_WINDOW ( w), _( "Send mail"));
 
 		gtk_window_set_modal ( GTK_WINDOW ( w), TRUE);
@@ -118,28 +114,28 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		g_object_ref ( entTo);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_TO_ENTRY, entTo,(GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entTo, 1, 2, 0, 1,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, entTo,
-		                      _( "Enter here the email address of your(s) contact(s)."), NULL);
+		gtk_widget_set_tooltip_text (entTo,
+		                             _( "Enter here the email address of your(s) contact(s)."));
 
 		entCC = gtk_entry_new ( );
 		g_object_ref ( entCC);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_CC_ENTRY, entCC,(GDestroyNotify) g_object_unref);
 		gtk_table_attach (GTK_TABLE (tblSendOptions), entCC, 1, 2, 1, 2,(GtkAttachOptions) (GTK_EXPAND | GTK_FILL),(GtkAttachOptions) ( 0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, entCC,
-		                      _( "Enter here the email address of the copied mail contacts."), NULL);
+		gtk_widget_set_tooltip_text (entCC,
+		                             _( "Enter here the email address of the copied mail contacts."));
 
 		entBCC = gtk_entry_new ( );
 		g_object_ref ( entBCC);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_BCC_ENTRY, entBCC, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entBCC, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, entBCC,
-		                      _( "Enter here the email address of the hidden copied mail contacts."), NULL);
+		gtk_widget_set_tooltip_text (entBCC,
+		                             _( "Enter here the email address of the hidden copied mail contacts."));
 
 		entObject = gtk_entry_new ( );
 		g_object_ref ( entObject);
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_OBJECT_ENTRY, entObject, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), entObject, 1, 2, 3, 4, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, entObject, _( "Enter here the object of your mail."), NULL);
+		gtk_widget_set_tooltip_text (entObject, _( "Enter here the object of your mail."));
 
 		lblAttachedFile = gtk_label_new ( _( "Attached file :"));
 		gtk_table_attach ( GTK_TABLE ( tblSendOptions), lblAttachedFile, 0, 1, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
@@ -151,8 +147,8 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 			g_object_ref ( chkBtnAttachedFile);
 			g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_ATTACH_FILE_CHK, chkBtnAttachedFile, (GDestroyNotify) g_object_unref);
 			gtk_table_attach ( GTK_TABLE ( tblSendOptions), chkBtnAttachedFile, 1, 2, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) ( 0), 0, 0);
-			gtk_tooltips_set_tip ( tooltips, chkBtnAttachedFile,
-			                      _( "Choose to attach or no the catalog file."), NULL);
+			gtk_widget_set_tooltip_text (chkBtnAttachedFile,
+			                             _( "Choose to attach or no the catalog file."));
 			gtk_toggle_button_set_active ( GTK_TOGGLE_BUTTON ( chkBtnAttachedFile), TRUE);
 		}
 
@@ -165,8 +161,8 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 		g_object_set_data_full (G_OBJECT ( w), GW_REF_MAIL_WINDOW_BOX_MESSAGE_TEXT_AREA, txtMail, (GDestroyNotify) g_object_unref);
 		gtk_text_area_set_editable ( GTK_TEXT_AREA ( txtMail), TRUE);
 		gtk_container_add ( GTK_CONTAINER ( scrTextMail), txtMail);
-		gtk_tooltips_set_tip ( tooltips, txtMail,
-		                      _( "Type here the text for the mail message."), NULL);
+		gtk_widget_set_tooltip_text (txtMail,
+		                             _( "Type here the text for the mail message."));
 
 		/* The Send/Cancel button area */
 		hbSendMailControl = gtk_hbutton_box_new ( );
@@ -176,15 +172,15 @@ GtkWindow * gw_mail_window_box_create ( GtkWindow *window, gchar *file_name)
 
 		btnSend = gtk_button_new_with_mnemonic (_("_Send"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnSend, FALSE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips, btnSend,
-		                      _( "Click here to send a mail (with an attached catalog)."), NULL);
+		gtk_widget_set_tooltip_text (btnSend,
+		                             _( "Click here to send a mail (with an attached catalog)."));
 		g_signal_connect (G_OBJECT ( btnSend), "clicked", G_CALLBACK ( gw_mail_window_box_send_click), GTK_WINDOW ( w));
 
 		btnCancel = gtk_button_new_with_label (_("_Cancel"));
 		gtk_box_pack_start ( GTK_BOX ( hbSendMailControl), btnCancel, TRUE, TRUE, 0);
 		GTK_WIDGET_UNSET_FLAGS ( btnCancel, GTK_CAN_FOCUS);
-		gtk_tooltips_set_tip ( tooltips, btnCancel,
-		                      _( "Click here to cancel the send of a mail."), NULL);
+		gtk_widget_set_tooltip_text (btnCancel,
+		                             _( "Click here to cancel the send of a mail."));
 		g_signal_connect_swapped (G_OBJECT ( btnCancel), "clicked", G_CALLBACK ( gtk_widget_destroy), GTK_OBJECT ( w));
 	}
 

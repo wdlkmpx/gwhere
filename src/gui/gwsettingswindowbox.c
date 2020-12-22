@@ -60,19 +60,17 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 	GtkWidget *btn_ok;
 	GtkWidget *btn_cancel;
 	GtkWidget *btn_apply;
-	GtkTooltips *tooltips;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	tooltips = gtk_tooltips_new ( );
 
 	if ( !settings_window_box )
 	{
 		settings_window_box = gtk_window_new ( GTK_WINDOW_TOPLEVEL);
-		gtk_tooltips_set_tip ( tooltips, settings_window_box,
-		                      _( "This Settings box allows to configure some functionnalities and properties of the program."), NULL);
+		gtk_widget_set_tooltip_text (settings_window_box,
+		                             _( "This Settings box allows to configure some functionnalities and properties of the program."));
 
 		gtk_window_set_title ( GTK_WINDOW ( settings_window_box), _( "Settings"));
 		gtk_window_set_modal ( GTK_WINDOW ( settings_window_box), TRUE);
@@ -103,7 +101,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CTREE, ctree_settings, (GDestroyNotify) g_object_unref);
 		gtk_paned_pack1 ( GTK_PANED ( hp_settings), ctree_settings, FALSE, TRUE);
 		gtk_container_set_border_width ( GTK_CONTAINER ( ctree_settings), 5);
-		gtk_tooltips_set_tip ( tooltips, ctree_settings, _( "Select the section to configure."), NULL);
+		gtk_widget_set_tooltip_text (ctree_settings, _( "Select the section to configure."));
 
 		lbl_settings = gtk_label_new (_( "Settings"));
 		gtk_clist_set_column_widget ( GTK_CLIST ( ctree_settings), 0, lbl_settings);
@@ -113,8 +111,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_NOTEBOOK, notebook_settings, (GDestroyNotify) g_object_unref);
 		gtk_paned_pack2 ( GTK_PANED ( hp_settings), notebook_settings, TRUE, TRUE);
 		GTK_WIDGET_UNSET_FLAGS ( notebook_settings, GTK_CAN_FOCUS);
-		gtk_tooltips_set_tip ( tooltips, notebook_settings,
-		                      _( "Change in this pane all availables properties in order to configure the program as you want."), NULL);
+		gtk_widget_set_tooltip_text (notebook_settings,
+		                             _( "Change in this pane all availables properties in order to configure the program as you want."));
 		gtk_notebook_set_show_tabs ( GTK_NOTEBOOK ( notebook_settings), FALSE);
 		gtk_notebook_set_show_border ( GTK_NOTEBOOK ( notebook_settings), FALSE);
 		gtk_notebook_set_scrollable ( GTK_NOTEBOOK ( notebook_settings), TRUE);
@@ -142,8 +140,8 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		g_object_ref ( btn_ok);
 		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_OK_BTN, btn_ok, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_ok, TRUE, TRUE, 10);
-		gtk_tooltips_set_tip ( tooltips, btn_ok,
-		                      _( "Click on OK button to apply changes and close the Settings box."), NULL);
+		gtk_widget_set_tooltip_text (btn_ok,
+		                             _( "Click on OK button to apply changes and close the Settings box."));
 		GTK_WIDGET_SET_FLAGS ( btn_ok, GTK_CAN_FOCUS);
 		GTK_WIDGET_SET_FLAGS ( btn_ok, GTK_CAN_DEFAULT);
 		gtk_widget_grab_default ( btn_ok);
@@ -152,16 +150,16 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 		g_object_ref ( btn_cancel);
 		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN, btn_cancel, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_cancel, TRUE, TRUE, 10);
-		gtk_tooltips_set_tip ( tooltips, btn_cancel,
-		                      _( "Click on Cancel button to cancel changes and close the Settings box."), NULL);
+		gtk_widget_set_tooltip_text (btn_cancel,
+		                             _( "Click on Cancel button to cancel changes and close the Settings box."));
 		GTK_WIDGET_SET_FLAGS ( btn_cancel, GTK_CAN_FOCUS);
 
 		btn_apply = gtk_button_new_with_mnemonic (_("_Apply"));
 		g_object_ref ( btn_apply);
 		g_object_set_data_full (G_OBJECT ( settings_window_box), GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN, btn_apply, (GDestroyNotify) g_object_unref);
 		gtk_box_pack_start ( GTK_BOX ( hb_settings_controls), btn_apply, TRUE, TRUE, 10);
-		gtk_tooltips_set_tip ( tooltips, btn_apply,
-		                      _( "Click on Apply button to apply changes (without close the Settings box)."), NULL);
+		gtk_widget_set_tooltip_text (btn_apply,
+		                             _( "Click on Apply button to apply changes (without close the Settings box)."));
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_apply), FALSE);
 		GTK_WIDGET_SET_FLAGS ( btn_apply, GTK_CAN_FOCUS);
 

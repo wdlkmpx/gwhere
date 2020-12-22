@@ -103,13 +103,11 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 	GtkWidget *ent_email_address;
 	GtkWidget *ent_server_address;
 	GtkWidget *ent_server_port;
-	GtkTooltips *tooltips;
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	tooltips = gtk_tooltips_new ( );
 
 	if ( settings != NULL && parent != NULL )
 	{
@@ -129,7 +127,7 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		g_object_ref ( ent_email_address);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EMAIL_ADDRESS_ENTRY, ent_email_address, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_email_address, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, ent_email_address, _( "Enter your email address."), NULL);
+		gtk_widget_set_tooltip_text (ent_email_address, _( "Enter your email address."));
 
 		/* Server address. */
 		lbl_server_address = gtk_label_new (_( "Out going mail server :"));
@@ -140,8 +138,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		g_object_ref ( ent_server_address);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_ADDRESS_ENTRY, ent_server_address, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_address, 1, 2, 1, 2, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, ent_server_address,
-		                      _( "Enter your out going mail server. Usualy this address is mail.yourdomain.com"), NULL);
+		gtk_widget_set_tooltip_text (ent_server_address,
+		                             _( "Enter your out going mail server. Usualy this address is mail.yourdomain.com"));
 
 		/* Server port. */
 		lbl_server_port = gtk_label_new (_( "Server port :"));
@@ -152,8 +150,8 @@ gint gw_plugin_settings_mail_pane_create ( GtkWindow *settings, GtkContainer *pa
 		g_object_ref ( ent_server_port);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_SERVER_PORT_ENTRY, ent_server_port, (GDestroyNotify) g_object_unref);
 		gtk_table_attach ( GTK_TABLE ( table_pane), ent_server_port, 1, 2, 2, 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-		gtk_tooltips_set_tip ( tooltips, ent_server_port,
-		                      _( "Enter the out going mail server port (the most common value is 25)."), NULL);
+		gtk_widget_set_tooltip_text (ent_server_port,
+		                             _( "Enter the out going mail server port (the most common value is 25)."));
 
 		*pane = table_pane;
 

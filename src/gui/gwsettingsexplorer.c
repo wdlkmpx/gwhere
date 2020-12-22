@@ -85,13 +85,11 @@ gint gw_plugin_settings_explorer_pane_create ( GtkWindow *settings, GtkContainer
 	GtkWidget *chk_sort_group_by;
 	GtkWidget *chk_sort_case_sensitive;
 	GtkWidget *chk_autoresize;
-	GtkTooltips *tooltips;
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	tooltips = gtk_tooltips_new ( );
 
 	if ( settings != NULL && parent != NULL )
 	{
@@ -106,24 +104,24 @@ gint gw_plugin_settings_explorer_pane_create ( GtkWindow *settings, GtkContainer
 		chk_sort_case_sensitive = gtk_check_button_new_with_label (_( "Case sensitive sort."));
 		g_object_ref ( chk_sort_case_sensitive);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_SORT_CASE_SENSITIVE_CHK, chk_sort_case_sensitive, (GDestroyNotify) g_object_unref);
-		gtk_tooltips_set_tip ( tooltips, chk_sort_case_sensitive,
-		                      _( "The result sort in explorer is case sensitive."), NULL);
+		gtk_widget_set_tooltip_text (chk_sort_case_sensitive,
+		                             _( "The result sort in explorer is case sensitive."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_case_sensitive, 0, 1, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the sort group by type option. */
 		chk_sort_group_by = gtk_check_button_new_with_label (_( "Result sort group by folder/file."));
 		g_object_ref ( chk_sort_group_by);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_SORT_GROUP_BY_FOLDER_CHK, chk_sort_group_by, (GDestroyNotify) g_object_unref);
-		gtk_tooltips_set_tip ( tooltips, chk_sort_group_by,
-		                      _( "The result sort in explorer can be grouped by item type. If this option is checked all item will be grouped by folders or files."), NULL);
+		gtk_widget_set_tooltip_text (chk_sort_group_by,
+		                             _( "The result sort in explorer can be grouped by item type. If this option is checked all item will be grouped by folders or files."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_sort_group_by, 0, 1, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autoload catalog option. */
 		chk_autoresize = gtk_check_button_new_with_label (_( "Autoresize columns"));
 		g_object_ref ( chk_autoresize);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_EXPLORER_AUTORESIZE_COLUMN_CHK, chk_autoresize, (GDestroyNotify) g_object_unref);
-		gtk_tooltips_set_tip ( tooltips, chk_autoresize,
-		                      _( "Autoresize all explorer column."), NULL);
+		gtk_widget_set_tooltip_text (chk_autoresize,
+		                             _( "Autoresize all explorer column."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoresize, 0, 1, 2, 3, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		*pane = table_pane;

@@ -37,40 +37,22 @@
 #define GW_REF_NOTEBOOK_CLEAR_BUTTON "gw_notebook_clear_button"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_CHECK_BUTTON		The use case or uncase sensitive check button */
 #define GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_CHECK_BUTTON "gw_ref_gw_notebook_search_use_case_sensitive_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_TOOL_TIPS		The use case or uncase sensitive tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_TOOL_TIPS "gw_ref_gw_notebook_search_use_case_sensitive_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_RADIO_BUTTON		The use or not key words radio button */
 #define GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_RADIO_BUTTON "gw_ref_gw_notebook_search_use_key_words_radio_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_TOOL_TIPS		The use or not key words radio button */
-#define GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_TOOL_TIPS "gw_ref_gw_notebook_search_use_key_words_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_RADIO_BUTTON		The use or not wildcards radio button */
 #define GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_RADIO_BUTTON "gw_ref_gw_notebook_search_use_wildcards_radio_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_TOOL_TIPS		The use or not wildcards radio button */
-#define GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_TOOL_TIPS "gw_ref_gw_notebook_search_use_wildcards_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_RADIO_BUTTON		The use or not regular expression radio button */
 #define GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_RADIO_BUTTON "gw_ref_gw_notebook_search_use_regular_expression_radio_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_TOOL_TIPS		The use or not regular expression radio button */
-#define GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_TOOL_TIPS "gw_ref_gw_notebook_search_use_regular_expression_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_CHECK_BUTTON		The match file check button */
 #define GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_CHECK_BUTTON "gw_ref_gw_notebook_search_match_file_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_TOOL_TIPS		The match file tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_TOOL_TIPS "gw_ref_gw_notebook_search_match_file_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_CHECK_BUTTON		The match folder check button */
 #define GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_CHECK_BUTTON "gw_ref_gw_notebook_search_match_folder_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_TOOL_TIPS		The match folder tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_TOOL_TIPS "gw_ref_gw_notebook_search_match_folder_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_CHECK_BUTTON		The match disk check button */
 #define GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_CHECK_BUTTON "gw_ref_gw_notebook_search_match_disk_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_TOOL_TIPS		The match disk tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_TOOL_TIPS "gw_ref_gw_notebook_search_match_disk_tool_tis"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_CHECK_BUTTON		The match category check button */
 #define GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_CHECK_BUTTON "gw_ref_gw_notebook_search_match_category_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_TOOL_TIPS		The match category tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_TOOL_TIPS "gw_ref_gw_notebook_search_match_category_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_CHECK_BUTTON		The match description check button */
 #define GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_CHECK_BUTTON "gw_ref_gw_notebook_search_match_description_check_button"
-/*! @define	GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_TOOL_TIPS		The match description tooltips */
-#define GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_TOOL_TIPS "gw_ref_gw_notebook_search_match_description_tool_tips"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_CLIST_SEARCH		The result list of search */
 #define GW_REF_NOTEBOOK_SEARCH_CLIST_SEARCH "gw_ref_gw_notebook_search_clist_search"
 
@@ -94,7 +76,6 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	GtkWidget *scrolled_result_list;
 	GtkWidget *clist_search_result;
 	GtkWidget *lbl_title_col;
-	GtkTooltips *tooltips_group;
 	GtkWidget *radio_search_type,*radio_search_type2,*radio_search_type3,*frm_search_type,*vb_search_type;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -102,7 +83,6 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 #endif
 
 	/* Inits the accel group for keystroke shortcuts. */
-	tooltips_group = gtk_tooltips_new ( );
 
 	/* Vertical box of the search tabbed pane. */
 	vb_tabbed_pane = gtk_vbox_new ( FALSE, 0);
@@ -153,8 +133,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	/* Store reference to the start search button. */
 	g_object_ref ( bt_search);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_START_SEARCH_BUTTON, bt_search,(GDestroyNotify) g_object_unref);
-	gtk_tooltips_set_tip ( tooltips_group, bt_search,
-	                      _("The search can be case sensitive. The wildcards search supports character \"*\".\nExample : img*.bmp or *.htm\nThe key words search accepts a list of obligatory words."), NULL);
+	gtk_widget_set_tooltip_text (bt_search,
+	                             _("The search can be case sensitive. The wildcards search supports character \"*\".\nExample : img*.bmp or *.htm\nThe key words search accepts a list of obligatory words."));
 	g_signal_connect (G_OBJECT ( bt_search), "clicked", G_CALLBACK ( gw_notebook_search_search_button_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( bt_search), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), bt_search, TRUE, TRUE, 0);
@@ -165,7 +145,7 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	/* Store reference to the clear results button. */
 	g_object_ref ( bt_clear);
 	g_object_set_data_full (G_OBJECT ( window), GW_REF_NOTEBOOK_CLEAR_BUTTON, bt_clear,(GDestroyNotify) g_object_unref);
-	gtk_tooltips_set_tip ( tooltips_group, bt_clear, _("Clears all search results"), NULL);
+	gtk_widget_set_tooltip_text (bt_clear, _("Clears all search results"));
 	g_signal_connect (G_OBJECT ( bt_clear), "clicked", G_CALLBACK ( gw_notebook_search_clear_button_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( bt_clear), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), bt_clear, TRUE, TRUE, 0);
@@ -179,9 +159,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_bt_case_sensitive), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options1_bis), chk_bt_case_sensitive, FALSE, FALSE, 0);
 	g_signal_connect (G_OBJECT ( chk_bt_case_sensitive), "clicked", G_CALLBACK (gw_notebook_search_option_use_case_sensitive_click), window);
-	gtk_tooltips_set_tip ( tooltips_group, chk_bt_case_sensitive,
-	                      _( "The search can be be or not case sensitive.\nIn case sensitive \"File.txt\" doesn't match with \"file.txt\". But in uncase sensitive it matches."),
-	                      GW_REF_NOTEBOOK_SEARCH_USE_CASE_SENSITIVE_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_bt_case_sensitive,
+	                             _( "The search can be be or not case sensitive.\nIn case sensitive \"File.txt\" doesn't match with \"file.txt\". But in uncase sensitive it matches."));
 
 	/* Create the radio button group for search type. */
 	frm_search_type = gtk_frame_new (_( "Search type"));
@@ -196,9 +175,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( radio_search_type), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_KEY_WORDS));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, radio_search_type,
-	                      _( "Enter a list of key words which all must be containted is the matched files."),
-	                      GW_REF_NOTEBOOK_SEARCH_USE_KEY_WORDS_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (radio_search_type,
+	                             _( "Enter a list of key words which all must be containted is the matched files."));
 
 	radio_search_type2 = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_search_type), _("Wildcards"));
 	g_object_ref ( radio_search_type2);
@@ -206,9 +184,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( radio_search_type2), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_WILDCARDS));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type2), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type2, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, radio_search_type2,
-	                      _( "Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" caracters."),
-	                      GW_REF_NOTEBOOK_SEARCH_USE_WILDCARDS_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (radio_search_type2,
+	                             _( "Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" caracters."));
 
 	radio_search_type3 = gtk_radio_button_new_with_label_from_widget ( GTK_RADIO_BUTTON ( radio_search_type2), _("Regular expression"));
 	g_object_ref ( radio_search_type3);
@@ -216,9 +193,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( radio_search_type3), "clicked", G_CALLBACK (gw_notebook_search_option_search_type_click), GINT_TO_POINTER ( SEARCH_TYPE_REGEX));
 	gtk_container_set_border_width ( GTK_CONTAINER ( radio_search_type3), 5);
 	gtk_box_pack_start ( GTK_BOX ( vb_search_type), radio_search_type3, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, radio_search_type3, 
-	                      _( "Can use regular expression. See documentation for more information."),
-	                      GW_REF_NOTEBOOK_SEARCH_USE_REGULAR_EXPRESSION_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (radio_search_type3, 
+	                             _( "Can use regular expression. See documentation for more information."));
 
 	/* Match file check buton. */
 	chk_match_file = gtk_check_button_new_with_label (_( "File"));
@@ -227,8 +203,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( chk_match_file), "clicked", G_CALLBACK (gw_notebook_search_option_match_file_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_file), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_file, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, chk_match_file,
-	                      _( "The search matches with files name."), GW_REF_NOTEBOOK_SEARCH_MATCH_FILE_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_match_file,
+	                             _( "The search matches with files name."));
 
 	/* Match folder check buton. */
 	chk_match_folder = gtk_check_button_new_with_label (_( "Folder"));
@@ -237,9 +213,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( chk_match_folder), "clicked", G_CALLBACK (gw_notebook_search_option_match_folder_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_folder), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_folder, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, chk_match_folder, 
-	                      _( "The search matches with folders name."),
-	                      GW_REF_NOTEBOOK_SEARCH_MATCH_FOLDER_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_match_folder, 
+	                             _( "The search matches with folders name."));
 
 	/* Match disk check buton. */
 	chk_match_disk = gtk_check_button_new_with_label (_( "Disk"));
@@ -248,9 +223,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( chk_match_disk), "clicked", G_CALLBACK (gw_notebook_search_option_match_disk_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_disk), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_disk, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, chk_match_disk,
-	                      _( "The search matches with disks name."),
-	                      GW_REF_NOTEBOOK_SEARCH_MATCH_DISK_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_match_disk,
+	                             _( "The search matches with disks name."));
 
 	/* Match category check buton. */
 	chk_match_category = gtk_check_button_new_with_label (_( "Category"));
@@ -259,9 +233,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( chk_match_category), "clicked", G_CALLBACK (gw_notebook_search_option_match_category_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_category), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_category, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, chk_match_category,
-	                      _( "The search matches with categories name."),
-	                      GW_REF_NOTEBOOK_SEARCH_MATCH_CATEGORY_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_match_category,
+	                             _( "The search matches with categories name."));
 
 	/* Match description check buton. */
 	chk_match_description = gtk_check_button_new_with_label (_( "Description"));
@@ -270,9 +243,8 @@ GtkWidget * gw_notebook_search_create ( GtkWindow * window)
 	g_signal_connect (G_OBJECT ( chk_match_description), "clicked", G_CALLBACK (gw_notebook_search_option_match_description_click), window);
 	gtk_container_set_border_width ( GTK_CONTAINER ( chk_match_description), 5);
 	gtk_box_pack_start ( GTK_BOX ( hb_options2), chk_match_description, FALSE, FALSE, 0);
-	gtk_tooltips_set_tip ( tooltips_group, chk_match_description,
-	                      _( "The search matches with descriptions."),
-	                      GW_REF_NOTEBOOK_SEARCH_MATCH_DESCRIPTION_TOOL_TIPS);
+	gtk_widget_set_tooltip_text (chk_match_description,
+	                             _( "The search matches with descriptions."));
 
 	/* Horizontal box to display search result. */
 	hb_search_result = gtk_hbox_new ( FALSE, 0);

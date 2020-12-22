@@ -95,7 +95,6 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 	GtkWidget *btn_autoload;
 	gfloat level = GW_VALUE_APP_CATALOG_COMPRESSION_LEVEL_DEFAULT;
 	gfloat size = GW_VALUE_APP_RECENT_SIZE_DEFAULT;
-	GtkTooltips *tooltips;
 	GtkWidget *radio_last = NULL;
 	GtkWidget *radio_selected = NULL;
 
@@ -104,7 +103,6 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	tooltips = gtk_tooltips_new ( );
 
 	if ( settings != NULL && parent != NULL )
 	{
@@ -126,8 +124,8 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_COMPRESSION_LEVEL_ENTRY, spn_catalog_level_compression, (GDestroyNotify) g_object_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_level_compression), TRUE);
-		gtk_tooltips_set_tip ( tooltips, spn_catalog_level_compression,
-		                      _( "Select the catalog compression level. The default value is 3, it's a good value between high performance and small size."), NULL);
+		gtk_widget_set_tooltip_text (spn_catalog_level_compression,
+		                             _( "Select the catalog compression level. The default value is 3, it's a good value between high performance and small size."));
 
 		gtk_table_attach ( GTK_TABLE ( table_pane), spn_catalog_level_compression, 1, 2, 0, 1, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
@@ -143,24 +141,24 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_HISTORY_SIZE_ENTRY, spn_catalog_history_size, (GDestroyNotify) g_object_unref);
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
-		gtk_tooltips_set_tip ( tooltips, spn_catalog_history_size,
-		                      _( "Select the size of recents opened catalogs history. The default value is 5."), NULL);
+		gtk_widget_set_tooltip_text (spn_catalog_history_size,
+		                             _( "Select the size of recents opened catalogs history. The default value is 5."));
 
 		gtk_table_attach ( GTK_TABLE ( table_pane), spn_catalog_history_size, 1, 2, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the clear history. */
 		btn_history_clear = gtk_button_new_with_label (_( "Clear history"));
 		g_signal_connect (G_OBJECT ( btn_history_clear), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_clear_history_click, table_pane);
-		gtk_tooltips_set_tip ( tooltips, btn_history_clear,
-		                      _( "Click here to clear the recents opened files history."), NULL);
+		gtk_widget_set_tooltip_text (btn_history_clear,
+		                             _( "Click here to clear the recents opened files history."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_history_clear, 1, 2, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autload catalog option. */
 		chk_autoload = gtk_check_button_new_with_label (_( "Autoload catalog"));
 		g_object_ref ( chk_autoload);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_CHK, chk_autoload, (GDestroyNotify) g_object_unref);
-		gtk_tooltips_set_tip ( tooltips, chk_autoload,
-		                      _( "Autoloads a default catalog when at starting."), NULL);
+		gtk_widget_set_tooltip_text (chk_autoload,
+		                             _( "Autoloads a default catalog when at starting."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoload, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		g_signal_connect (G_OBJECT ( chk_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_autoload_catalog_click, table_pane);
 
@@ -180,8 +178,8 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		entry_autoload_filepath = gtk_entry_new ( );
 		g_object_ref ( entry_autoload_filepath);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_ENTRY, entry_autoload_filepath, (GDestroyNotify) g_object_unref);
-		gtk_tooltips_set_tip ( tooltips, entry_autoload_filepath,
-		                      _( "Enter the full catalog file path to load."), NULL);
+		gtk_widget_set_tooltip_text (entry_autoload_filepath,
+		                             _( "Enter the full catalog file path to load."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), entry_autoload_filepath, 1, 2, 5, 6, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( entry_autoload_filepath), FALSE);
 
@@ -190,7 +188,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		g_object_ref ( btn_autoload);
 		g_object_set_data_full (G_OBJECT ( table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_SELECT_BTN, btn_autoload, (GDestroyNotify) g_object_unref);
 		g_signal_connect (G_OBJECT ( btn_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_select_catalog_click, table_pane);
-		gtk_tooltips_set_tip ( tooltips, btn_autoload, _( "Click here to browse and select the catalog file."), NULL);
+		gtk_widget_set_tooltip_text (btn_autoload, _( "Click here to browse and select the catalog file."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_autoload, 1, 2, 6, 7, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_autoload), FALSE);
 

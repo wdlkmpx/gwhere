@@ -39,20 +39,14 @@
 #define GW_REF_PROPERTIES_BOX_PARENT_WINDOW "gw_ref_gw_properties_box_parent_window"
 /*! @define	GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY	The catalog name entry */
 #define GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY "gw_ref_gw_properties_box_catalog_name_entry"
-/*! @define	GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS	The catalog name tooltips */
-#define GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS "gw_ref_gw_properties_box_catalog_name_tooltips"
 /*! @define	GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX	The catalog categories combo box */
 #define GW_REF_PROPERTIES_BOX_CATALOG_CATEGORIES_CMB_BOX "gw_ref_gw_properties_box_catalog_categories_cmb_box"
 /*! @define	GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT	The catalog description text */
 #define GW_REF_PROPERTIES_BOX_CATALOG_DESCRIPTION_TEXT "gw_ref_gw_properties_box_catalog_description_text"
 /*! @define	GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY	The disk name entry */
 #define GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY "gw_ref_gw_properties_box_disk_name_entry"
-/*! @define	GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS	The disk name tooltips */
-#define GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS "gw_ref_gw_properties_box_disk_name_tooltips"
 /*! @define	GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY	The disk number archive entry */
 #define GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY "gw_ref_gw_properties_box_disk_number_archive_entry"
-/*! @define	GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_TOOLTIPS	The disk number archive tooltips */
-#define GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_TOOLTIPS "gw_ref_gw_properties_box_disk_number_archive_tooltips"
 /*! @define	GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX	The disk categories combo box */
 #define GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX "gw_ref_gw_properties_box_disk_categories_cmb_box"
 /*! @define	GW_REF_PROPERTIES_BOX_DISK_DESCRIPTION_TEXT	The disk description text */
@@ -304,16 +298,12 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
 	GtkHBox *cmb_categories;	/* Categories combo box */
-	GtkTooltips *grp_tooltips;
 	gchar *text = NULL;
 	gchar *tempstr = NULL;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Inits tooltips group */
-	grp_tooltips = gtk_tooltips_new ( );
 
 	/* Vertical box of the tabbed pane */
 	vb_tabbed_pane = gtk_vbox_new ( FALSE, 5);
@@ -335,8 +325,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	g_object_ref ( entry);
 	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_CATALOG_NAME_ENTRY, entry, (GDestroyNotify) g_object_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
-	gtk_tooltips_set_tip ( grp_tooltips, entry,
-	                      _( "Enter the name of the catalog."), GW_REF_PROPERTIES_BOX_CATALOG_NAME_TOOLTIPS);
+	gtk_widget_set_tooltip_text (entry, _( "Enter the name of the catalog."));
 
 	/* Empty horizontal box */
 	hb_empty = gtk_hbox_new ( FALSE, 0);
@@ -688,7 +677,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
 	GtkHBox *cmb_categories;	/* Categories combo box */
-	GtkTooltips *grp_tooltips;
 	gchar *text;
 	GdkPixmap *pix;
 	GdkBitmap *msk;
@@ -701,9 +689,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 //	disk = gtk_ctree_node_get_row_data ( ctree, node);
 	pix = gw_helper_db_disk_get_pixmap ( disk);
 	msk = gw_helper_db_disk_get_bitmap ( disk);
-
-	/* Inits tooltips groups */
-	grp_tooltips = gtk_tooltips_new ( );
 
 	/* Vertical box of the tabbed pane */
 	vb_tabbed_pane = gtk_vbox_new ( FALSE, 5);
@@ -725,8 +710,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	g_object_ref ( entry);
 	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NAME_ENTRY, entry, (GDestroyNotify) g_object_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_1), entry, FALSE, TRUE, 0);
-	gtk_tooltips_set_tip ( grp_tooltips, entry,
-	                      _( "Enter the name of the disk."), GW_REF_PROPERTIES_BOX_DISK_NAME_TOOLTIPS);
+	gtk_widget_set_tooltip_text (entry, _( "Enter the name of the disk."));
 
 	/* Empty horizontal box */
 	hb_empty = gtk_hbox_new ( FALSE, 0);
@@ -751,9 +735,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	g_object_set_data_full (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_ENTRY, entry, (GDestroyNotify) g_object_unref);
 	gtk_box_pack_start ( GTK_BOX ( hb_empty), entry, FALSE, TRUE, 0);
 	gtk_widget_set_size_request ( entry, 40, 20);
-	gtk_tooltips_set_tip ( grp_tooltips, entry, 
-	                      _( "Enter the archive number of the disk."),
-	                      GW_REF_PROPERTIES_BOX_DISK_NUMBER_ARCHIVE_TOOLTIPS);
+	gtk_widget_set_tooltip_text (entry, _( "Enter the archive number of the disk."));
 
 	/* Separator */
 	hseparator = gtk_hseparator_new ( );
@@ -996,7 +978,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
 	GtkHBox *cmb_categories;	/* Categories combo box */
-	GtkTooltips *grp_tooltips;
 	gchar *text;
 	gchar *tempstr = NULL;
 
@@ -1004,9 +985,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Inits tooltips group */
-	grp_tooltips = gtk_tooltips_new ( );
 
 	/* Vertical box of the tabbed pane */
 	vb_tabbed_pane = gtk_vbox_new ( FALSE, 5);
@@ -1273,7 +1251,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
 	GtkHBox *cmb_categories;	/* Categories combo box */
-	GtkTooltips *grp_tooltips;
 	gchar *text;
 	gchar *tempstr = NULL;
 	gchar *tmp = NULL;
@@ -1283,9 +1260,6 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
-	/* Inits tooltips group */
-	grp_tooltips = gtk_tooltips_new ( );
 
 	/* Vertical box of the tabbed pane */
 	vb_tabbed_pane = gtk_vbox_new ( FALSE, 5);

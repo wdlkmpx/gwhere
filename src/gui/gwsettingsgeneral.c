@@ -58,14 +58,12 @@ gint gw_plugin_settings_general_pane_create ( GtkWindow *settings, GtkContainer 
 {
 	gint result = -1;
 	GtkWidget *table_pane;
-	GtkTooltips *tooltips;
 
 
 #ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	tooltips = gtk_tooltips_new ( );
 
 	if ( settings != NULL && parent != NULL )
 	{

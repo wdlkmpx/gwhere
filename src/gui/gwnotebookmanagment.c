@@ -130,7 +130,6 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	GtkWidget *chk_use_disk_label;
 	GtkWidget *chk_use_pattern;
 	GtkWidget *bt_start_device_scan;
-	GtkTooltips *tooltips_group;
 	GtkCTree *tree = NULL;
 	GtkCTreeNode *root = NULL;
 
@@ -144,9 +143,6 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		tree = gw_gui_manager_main_interface_get_tree ( );
 		root = gw_gui_manager_main_interface_get_tree_root ( );
 
-		/* Inits tooltips group */
-		tooltips_group = gtk_tooltips_new ( );
-	
 		/* Vertical box of the managment tabbed pane. */
 		vb_tabbed_pane = gtk_vbox_new ( FALSE, 0);
 
@@ -167,8 +163,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_disk_selection = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_disk_selection), 10);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_disk_selection, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_disk_selection,
-		                      _( "Select the media that will be added as disk to your catalog."), NULL);
+		gtk_widget_set_tooltip_text (hb_disk_selection,
+		                             _("Select the media that will be added as disk to your catalog."));
 	
 		/* Label for media selection */
 		lbl_disk_selection = gtk_label_new (_( "Select media : "));
@@ -203,8 +199,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_number_archive = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_number_archive), 10);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_number_archive, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_number_archive,
-		                      _( "Enter the number of the new disk. This number can help you with the history of your catalog."), NULL);
+		gtk_widget_set_tooltip_text (hb_number_archive,
+		                             _( "Enter the number of the new disk. This number can help you with the history of your catalog."));
 	
 		/* Label for number archive */
 		lbl_number_archive = gtk_label_new (_( "Archive N# : "));
@@ -220,8 +216,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_disk_name = gtk_hbox_new ( FALSE, 0);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_disk_name, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_disk_name), 10);
-		gtk_tooltips_set_tip ( tooltips_group, hb_disk_name,
-		                      _( "Enter the name of the new disk. This name will be appear in your catalog."), NULL);
+		gtk_widget_set_tooltip_text (hb_disk_name,
+		                             _( "Enter the name of the new disk. This name will be appear in your catalog."));
 	
 		/* Label for disk name */
 		lbl_disk_name = gtk_label_new (_( "Name : "));
@@ -246,8 +242,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gw_combo_box_categories_load ( cmb_categories);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), GTK_WIDGET ( cmb_categories), TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( cmb_categories), 10);
-		gtk_tooltips_set_tip ( tooltips_group, GTK_WIDGET ( cmb_categories),
-		                      _( "Select the category to apply to the disk which will be added (even if the option is checked)."), NULL);
+		gtk_widget_set_tooltip_text (GTK_WIDGET ( cmb_categories),
+		                             _( "Select the category to apply to the disk which will be added (even if the option is checked)."));
 	
 		/* Horizontal separator */
 		hseparator = gtk_hseparator_new ( );
@@ -257,8 +253,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_file = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_file), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_file, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_file,
-		                      _( "Give the device file of the selected media."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_file,
+		                             _( "Give the device file of the selected media."));
 	
 		/* Device file information label */
 		lbl_device_file = gtk_label_new (_( "Info : "));
@@ -271,8 +267,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gtk_widget_show ( hb_device_type);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_type, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_type), 5);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_type,
-		                      _( "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_type,
+		                             _( "Give the type of the selected media (ex : ext2, ext3, vfat, ntfs, ...)."));
 	
 		/* Device type information label */
 		lbl_device_type = gtk_label_new (_( "Type : "));
@@ -285,8 +281,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_ismounted = gtk_hbox_new ( FALSE, 0);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_ismounted, TRUE, TRUE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_ismounted), 5);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_ismounted,
-		                      _( "Display if the selected media is mounted or no."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_ismounted,
+		                             _( "Display if the selected media is mounted or no."));
 	
 		/* Media mount state information label */
 		lbl_device_ismounted = gtk_label_new (_( "Mounted : "));
@@ -299,8 +295,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_volume_name = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_volume_name), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_volume_name, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_volume_name,
-		                      _( "Give the volume name of the selected media (only if is mounted)."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_volume_name,
+		                             _( "Give the volume name of the selected media (only if is mounted)."));
 	
 		/* Media volume information label */
 		lbl_device_volume_name = gtk_label_new (_( "Volume : "));
@@ -312,8 +308,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_serial_number = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_serial_number), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_serial_number, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_serial_number,
-		                      _( "Give the serial number of the selected media (only if is mounted). This number is a manufacture number."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_serial_number,
+		                             _( "Give the serial number of the selected media (only if is mounted). This number is a manufacture number."));
 	
 		/* Media serial number information label */
 		lbl_device_serial_number = gtk_label_new (_( "Serial N# : "));
@@ -325,8 +321,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_capacity = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_capacity), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_capacity, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_capacity,
-		                      _( "Give the full space of the selected media (only if is mounted)."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_capacity,
+		                             _( "Give the full space of the selected media (only if is mounted)."));
 	
 		/* Media capacity information label */
 		lbl_device_capacity = gtk_label_new (_( "Capacity : "));
@@ -338,8 +334,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		hb_device_free_space = gtk_hbox_new ( FALSE, 0);
 		gtk_container_set_border_width ( GTK_CONTAINER ( hb_device_free_space), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hb_device_free_space, TRUE, TRUE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, hb_device_free_space,
-		                      _( "Give the free space of the selected media (only if is mounted)."), NULL);
+		gtk_widget_set_tooltip_text (hb_device_free_space,
+		                             _( "Give the free space of the selected media (only if is mounted)."));
 	
 		/* Media free space information label */
 		lbl_device_free_space = gtk_label_new (_( "Free space : "));
@@ -363,8 +359,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_display_device_info), "clicked", G_CALLBACK ( gw_notebook_managment_refresh_info), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_display_device_info), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_display_device_info, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_display_device_info,
-		                      _( "Displays selected media informations as path, capacity, free space, label,..."), NULL);
+		gtk_widget_set_tooltip_text (chk_display_device_info,
+		                             _( "Displays selected media informations as path, capacity, free space, label,..."));
 
 #ifdef HAVE_MOUNT_SYSTEM
 		/* Check button for the automount */
@@ -374,8 +370,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_automount_device), "clicked", G_CALLBACK (gw_notebook_managment_option_automount_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_automount_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_automount_device, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_automount_device,
-		                      _( "Mount the media if it wasn't mounted. And unmount after the media even if it was mounted before the scan."), NULL);
+		gtk_widget_set_tooltip_text (chk_automount_device,
+		                             _( "Mount the media if it wasn't mounted. And unmount after the media even if it was mounted before the scan."));
 #endif
 	
 		/* Check button for the exploring of tree structure */
@@ -385,8 +381,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_explore_tree_structure), "clicked", G_CALLBACK (gw_notebook_managment_option_explore_tree_structure_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_tree_structure), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_tree_structure, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_explore_tree_structure,
-		                      _( "Keep this option checked to scan all folders and files informations."), NULL);
+		gtk_widget_set_tooltip_text (chk_explore_tree_structure,
+		                             _( "Keep this option checked to scan all folders and files informations."));
 
 		/* Check button for the exploring of archive files */
 		chk_explore_archive_files = gtk_check_button_new_with_label (_( "Explore archive files (.tar, .gz, .zip, ...)"));
@@ -395,8 +391,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_explore_archive_files), "clicked", G_CALLBACK (gw_notebook_managment_option_explore_archive_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_explore_archive_files), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_explore_archive_files, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_explore_archive_files,
-		                      _( "Not yet implemented!!\nExplore all archives, as it was a directory. Archives are tarred or gzipped files."), NULL);
+		gtk_widget_set_tooltip_text (chk_explore_archive_files,
+		                             _( "Not yet implemented!!\nExplore all archives, as it was a directory. Archives are tarred or gzipped files."));
 	
 		/* Check button for the auto eject */
 		chk_auto_eject_device = gtk_check_button_new_with_label (_( "Eject media if possible"));
@@ -405,8 +401,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_auto_eject_device), "clicked", G_CALLBACK (gw_notebook_managment_option_eject_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_eject_device), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_eject_device, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_auto_eject_device,
-		                      _( "Eject the media if possible (CD-ROM...), even if the tray was closed. This is enable only if automount is enable!!"), NULL);
+		gtk_widget_set_tooltip_text (chk_auto_eject_device,
+		                             _( "Eject the media if possible (CD-ROM...), even if the tray was closed. This is enable only if automount is enable!!"));
 	
 		/* Check button for setting category recursively */
 		chk_category_recursively = gtk_check_button_new_with_label (_( "Sets category recursive"));
@@ -415,8 +411,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_category_recursively), "clicked", G_CALLBACK (gw_notebook_managment_option_category_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_category_recursively), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_category_recursively, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_category_recursively,
-		                      _( "Apply selected category to all items in the disk to add (disk, folders and files)."), NULL);
+		gtk_widget_set_tooltip_text (chk_category_recursively,
+		                             _( "Apply selected category to all items in the disk to add (disk, folders and files)."));
 	
 		/* Check button for the auto make description */
 		chk_auto_make_description = gtk_check_button_new_with_label (_( "Auto make description"));
@@ -425,8 +421,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_auto_make_description), "clicked", G_CALLBACK (gw_notebook_managment_option_description_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_auto_make_description), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_auto_make_description, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_auto_make_description,
-		                      _( "Make auto description of file (file format description, image size for xmp or jpg, etc...)."), NULL);
+		gtk_widget_set_tooltip_text (chk_auto_make_description,
+		                             _( "Make auto description of file (file format description, image size for xmp or jpg, etc...)."));
 	
 		/* Check button for the using a pattern to generate disk name */
 		chk_use_pattern = gtk_check_button_new_with_label (_( "Use an advanced pattern to generate disk name"));
@@ -435,8 +431,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_use_pattern), "clicked", G_CALLBACK (gw_notebook_managment_option_use_pattern_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_pattern), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_pattern, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_use_pattern,
-		                      _( "You can fill extra tags to generate a disk name with disk information :\n- %% : %\n- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, 0002, 0003, ..., 0091, ...\n- %l : media volume label\n- %t : media type\n- %s : serial number"), NULL);
+		gtk_widget_set_tooltip_text (chk_use_pattern,
+		                             _( "You can fill extra tags to generate a disk name with disk information :\n- %% : %\n- %n : number archive (can use prefix to prefixed by 0 : %.4n give 0001, 0002, 0003, ..., 0091, ...\n- %l : media volume label\n- %t : media type\n- %s : serial number"));
 
 		/* Check button for the using media label */
 		chk_use_disk_label = gtk_check_button_new_with_label (_( "Use media volume name as disk name (only when disk name is empty)"));
@@ -445,8 +441,8 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		g_signal_connect (G_OBJECT ( chk_use_disk_label), "clicked", G_CALLBACK (gw_notebook_managment_option_use_disk_label_click), window);
 		gtk_container_set_border_width ( GTK_CONTAINER ( chk_use_disk_label), 5);
 		gtk_box_pack_start ( GTK_BOX ( vb_options), chk_use_disk_label, FALSE, FALSE, 0);
-		gtk_tooltips_set_tip ( tooltips_group, chk_use_disk_label,
-		                      _( "If you didn't enter disk name and if your selected media has a volume name, the media volume name will be applied as disk name."), NULL);
+		gtk_widget_set_tooltip_text (chk_use_disk_label,
+		                             _( "If you didn't enter disk name and if your selected media has a volume name, the media volume name will be applied as disk name."));
 
 		/* The add disk button to start the media scanning */
 		bt_start_device_scan = gtk_button_new_with_label (_( "Add disk"));
