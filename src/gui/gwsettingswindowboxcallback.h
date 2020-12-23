@@ -178,7 +178,7 @@ void gw_settings_window_box_btn_apply_clicked ( GtkButton *button, GtkWindow *w)
  * @param	button	the invoker button
  * @param	w	the settings window box
  */
-void gw_settings_window_box_apply_ok ( GtkButton *button, GtkWindow *w);
+void gw_settings_window_box_apply_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -188,7 +188,7 @@ void gw_settings_window_box_apply_ok ( GtkButton *button, GtkWindow *w);
  * @param	button	the invoker button
  * @param	w	the settings window box
  */
-void gw_settings_window_box_apply_no ( GtkButton *button, GtkWindow *w);
+void gw_settings_window_box_apply_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -198,7 +198,7 @@ void gw_settings_window_box_apply_no ( GtkButton *button, GtkWindow *w);
  * @param	button	the invoker button
  * @param	w	the settings window box
  */
-void gw_settings_window_box_apply_cancel ( GtkButton *button, GtkWindow *w);
+void gw_settings_window_box_apply_cancel (GtkWidget *w, gpointer data);
 
 
 /*!

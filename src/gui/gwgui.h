@@ -40,7 +40,6 @@
 
 #include "gwcategorieseditbox.h"
 #include "gwcomboboxcategories.h"
-#include "gwdialogbox.h"
 #include "gwmisc.h"
 #include "gwmenu.h"
 #include "gwmenuaction.h"

@@ -22,7 +22,7 @@
 
 #include "gwsettingswindowbox.h"
 #include "gwsettingsinterface.h"
-#include "gwdialogbox.h"
+#include "gwmisc.h"
 #include "gwguimanager.h"
 
 
@@ -86,7 +86,11 @@ void gw_settings_window_box_tree_unselect_row ( GtkCTree *ctree, GList *node, gi
 				g_print ( "*** GW - %s (%d) :: %s() : current settings module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
 #endif
 
-				gw_dialog_box_create ( w, _( "Settings changed"), _( "If you don't apply changes you will lose all changes. Do you want apply changes?"), (GCallback)gw_settings_window_box_apply_ok, (GCallback)gw_settings_window_box_apply_no, (GCallback)gw_settings_window_box_apply_cancel, module);
+				gw_oknocancel_box (w, _( "Settings changed"), _( "If you don't apply changes you will lose all changes. Do you want apply changes?"),
+				                   gw_settings_window_box_apply_ok,
+				                   gw_settings_window_box_apply_no,
+				                   gw_settings_window_box_apply_cancel,
+				                   module);
 			}
 			else
 			{
@@ -257,107 +261,87 @@ void gw_settings_window_box_btn_apply_clicked ( GtkButton *button, GtkWindow *w)
 }
 
 
-void gw_settings_window_box_apply_ok ( GtkButton *button, GtkWindow *w)
+void gw_settings_window_box_apply_ok (GtkWidget *w, gpointer data)
 {
-	GWSettingsModule *module = NULL;
-
+	GWSettingsModule *module = (GWSettingsModule *) data;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( w != NULL )
+	if (module)
 	{
-		if ( (module = gw_dialog_box_get_user_data ( w)) != NULL )
-		{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
+		g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
 #endif
 
-			module->apply ( module->pane);
-		}
-		else
-		{
+		module->apply ( module->pane);
+	}
+	else
+	{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+		g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-		}
-
-		gtk_widget_destroy ( GTK_WIDGET ( w));
 	}
 
 	return;
 }
 
 
-void gw_settings_window_box_apply_no ( GtkButton *button, GtkWindow *w)
+void gw_settings_window_box_apply_no (GtkWidget * w, gpointer data)
 {
-	GWSettingsModule *module = NULL;
-
+	GWSettingsModule *module = (GWSettingsModule *) data;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( w != NULL )
+	if (module)
 	{
-		if ( (module = gw_dialog_box_get_user_data ( w)) != NULL )
-		{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
+		g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
 #endif
-
-			module->load ( module->pane);
-
-			/* BUG : it will be better to stop the "changed" signal in all load() functions. */
-			gw_settings_window_box_set_modified ( module->settings_window, FALSE);
-		}
-		else
-		{
+		module->load ( module->pane);
+		/* BUG : it will be better to stop the "changed" signal in all load() functions. */
+		gw_settings_window_box_set_modified ( module->settings_window, FALSE);
+	}
+	else
+	{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+		g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-		}
-
-		gtk_widget_destroy ( GTK_WIDGET ( w));
 	}
 
 	return;
 }
 
 
-void gw_settings_window_box_apply_cancel ( GtkButton *button, GtkWindow *w)
+void gw_settings_window_box_apply_cancel (GtkWidget *w, gpointer data)
 {
 	GtkNotebook *notebook_settings = NULL;
-	GWSettingsModule *module = NULL;
-
+	GWSettingsModule *module = (GWSettingsModule *) data;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( w != NULL )
+	if (module)
 	{
-		if ( (module = gw_dialog_box_get_user_data ( w)) != NULL )
-		{
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
+		g_print ( "*** GW - %s (%d) :: %s() : current module is %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, module->name);
 #endif
 
-			if ( (notebook_settings = gw_settings_window_box_get_notebook ( module->settings_window)) != NULL )
-			{
-				/* Switches to the selected setting page. */
-				gtk_notebook_set_current_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
-			}
-		}
-		else
+		if ( (notebook_settings = gw_settings_window_box_get_notebook ( module->settings_window)) != NULL )
 		{
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+			/* Switches to the selected setting page. */
+			gtk_notebook_set_current_page ( notebook_settings, gtk_notebook_page_num ( notebook_settings, GTK_WIDGET ( module->page)));
 		}
-
-		gtk_widget_destroy ( GTK_WIDGET ( w));
+	}
+	else
+	{
+#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
+		g_print ( "*** GW - %s (%d) :: %s() : no current module selected\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+#endif
 	}
 
 	return;

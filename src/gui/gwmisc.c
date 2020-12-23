@@ -13,7 +13,11 @@ typedef struct gw_box_data
    GtkWidget * dialog;
    GtkWidget * entry;
    void (*ok_func) (void *,void *);
+   void (*no_func) (void *,void *);
+   void (*cancel_func) (void *,void *);
+   gpointer data;
 } gw_box_data;
+
 
 // input_box
 static void input_box_response_cb (GtkDialog * dlg, int response, gpointer user_data);
@@ -170,3 +174,61 @@ void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
 
    gtk_widget_show_all (w);
 }
+
+
+/***********************************************
+ *            Yes / No / Cancel Box
+ */
+
+static void yesno_box_response_cb (GtkDialog * dlg, int response, gpointer user_data)
+{
+   gw_box_data * ddata = (gw_box_data *) user_data;
+   gtk_widget_destroy (GTK_WIDGET (dlg));
+   if (response == GTK_RESPONSE_OK && ddata->ok_func) {
+      ddata->ok_func (dlg, ddata->data);
+   }
+   else if (response == GTK_RESPONSE_NO && ddata->no_func) {
+      ddata->no_func (dlg, ddata->data);
+   }
+   else if (response == GTK_RESPONSE_CANCEL && ddata->cancel_func) {
+      ddata->cancel_func (dlg, ddata->data);
+   }
+   g_free (ddata);
+}
+
+void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
+                           gpointer ok, gpointer no,
+                           gpointer cancel, gpointer data)
+{
+   GtkWidget * w, * vbox, * label, * button;
+   gw_box_data * ddata = g_malloc0 (sizeof (gw_box_data));
+
+   w = gtk_dialog_new ();
+
+   if (window) {
+      gtk_window_set_modal (GTK_WINDOW (w), TRUE);
+      gtk_window_set_transient_for (GTK_WINDOW (w), GTK_WINDOW (window));
+   }
+
+   gtk_container_set_border_width (GTK_CONTAINER (w), 10);
+   gtk_window_set_policy (GTK_WINDOW (w), FALSE, FALSE, TRUE);
+   gtk_window_set_title (GTK_WINDOW (w), title);
+
+   vbox = gtk_dialog_get_content_area (GTK_DIALOG (w));
+   label = gtk_label_new (text);
+   gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 10);
+
+   ddata->dialog  = w;
+   ddata->ok_func = ok;
+   ddata->no_func = no;
+   ddata->cancel_func = cancel;
+   ddata->data = data;
+
+   button = gtk_dialog_add_button (GTK_DIALOG (w), _("_OK"), GTK_RESPONSE_OK);
+   button = gtk_dialog_add_button (GTK_DIALOG (w), _("_No"), GTK_RESPONSE_NO);
+   button = gtk_dialog_add_button (GTK_DIALOG (w), _("_Cancel"), GTK_RESPONSE_CANCEL);
+
+   g_signal_connect (w, "response", G_CALLBACK (yesno_box_response_cb), ddata);
+   gtk_widget_show_all (w);
+}
+

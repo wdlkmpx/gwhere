@@ -27,7 +27,6 @@ libgwgui_a_SOURCES = \
 	gwsettingsmail.c gwsettingsmail.h \
 	gwcategorieseditbox.c gwcategorieseditbox.h \
 	gwcomboboxcategories.c gwcomboboxcategories.h \
-	gwdialogbox.c gwdialogbox.h \
 	gwmenu.c gwmenu.h \
 	gwmenufile.c gwmenufile.h \
 	gwmenufilecallback.c gwmenufilecallback.h \

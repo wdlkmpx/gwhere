@@ -163,7 +163,7 @@ gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileChooser *fs);
  * @abstract	Creates a new catalog.
  * @discussion	This function creates a new catalog
  * @param	bt	button invoker
- * @param	w	the capture box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
@@ -175,11 +175,11 @@ gboolean gw_menu_file_new_file_ok ( GtkWidget *bt, gpointer data);
  * @abstract	Saves the opened catalog and creates a new one.
  * @discussion	This function saves the opened catalog and creates a new one
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	dg	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_new_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_new_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -187,11 +187,11 @@ gboolean gw_menu_file_new_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
  * @abstract	Creates a new catalog without save the opened one.
  * @discussion	This function creates a new catalog without save the opened one
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_new_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_new_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -211,11 +211,11 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChoos
  * @abstract	Saves the opened catalog and opens one.
  * @discussion	This function saves the opened catalog and opens one
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_open_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -223,11 +223,11 @@ gboolean gw_menu_file_open_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
  * @abstract	Opens a catalog without save the opened one.
  * @discussion	This function opens a catalog without save the opened one
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_open_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -247,11 +247,11 @@ gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChoo
  * @abstract	Saves the opened catalog and opens one recent.
  * @discussion	This function saves the opened catalog and opens one recent.
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_recents_files_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_open_recents_files_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -259,11 +259,11 @@ gboolean gw_menu_file_open_recents_files_save_file_ok ( GtkWidget *bt, GtkWindow
  * @abstract	Opens a catalog without save the opened one recent.
  * @discussion	This function opens a catalog without save the opened one recent.
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_recents_files_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_open_recents_files_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -283,7 +283,7 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *b
  * @abstract	Saves the opened catalog.
  * @discussion	This function saves the opened catalog
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
@@ -319,11 +319,11 @@ gboolean gw_menu_file_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *
  * @abstract	Saves the opened catalog and close it.
  * @discussion	This function saves the opened catalog and close it
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_close_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_close_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -331,11 +331,11 @@ gboolean gw_menu_file_close_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
  * @abstract	Closes a catalog without save it.
  * @discussion	This function closes a catalog without save it
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_close_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_close_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -355,11 +355,11 @@ gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileCho
  * @abstract	Saves the opened catalog and sends it by mail.
  * @discussion	This function saves the opened catalog and sends it by mail
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_send_mail_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_send_mail_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -367,11 +367,11 @@ gboolean gw_menu_file_send_mail_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
  * @abstract	Sends a catalog by mail without save it.
  * @discussion	This function sends a catalog by mail without save it
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_send_mail_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_send_mail_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -390,11 +390,11 @@ gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFil
  * @abstract	Saves the opened catalog and exits program.
  * @discussion	This function saves the opened catalog and exits program
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_exit_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_exit_save_file_ok (GtkWidget *w, gpointer data);
 
 
 /*!
@@ -402,11 +402,11 @@ gboolean gw_menu_file_exit_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
  * @abstract	Exits program without save the opened catalog.
  * @discussion	This function exits program without save the opened catalog
  * @param	bt	button invoker
- * @param	dg	the dialog box
+ * @param	data	user data
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_exit_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_exit_save_file_no (GtkWidget *w, gpointer data);
 
 
 /*!
