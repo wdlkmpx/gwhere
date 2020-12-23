@@ -60,7 +60,8 @@ gboolean gw_menu_popup_catalog_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_input_box ( window, _( "Rename catalog"), _( "Enter new catalog name"), gw_db_catalog_get_name ( catalog), G_CALLBACK ( gw_menu_popup_catalog_rename_ok));
+			gw_input_box (window, _( "Rename catalog"), _( "Enter new catalog name"), gw_db_catalog_get_name ( catalog), 
+			              gw_menu_popup_catalog_rename_ok);
 
 			gw_db_catalog_free ( catalog);
 
@@ -304,7 +305,8 @@ gboolean gw_menu_popup_disk_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_input_box ( window, _( "Rename disk"), _( "Enter new disk name"), gw_db_disk_get_name ( disk), G_CALLBACK ( gw_menu_popup_disk_rename_ok));
+			gw_input_box (window, _( "Rename disk"), _( "Enter new disk name"), gw_db_disk_get_name ( disk),
+			              gw_menu_popup_disk_rename_ok);
 			gw_db_disk_free ( disk);
 
 			result = TRUE;
@@ -432,7 +434,8 @@ gboolean gw_menu_popup_disk_change_volume_label ( GtkMenuItem *m, GtkCTreeNode *
 			disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_input_box ( window, _( "Change volume label"), _( "Enter new disk volume label"), gw_db_disk_get_volume ( disk), G_CALLBACK ( gw_menu_popup_disk_change_volume_label_ok));
+			gw_input_box (window, _( "Change volume label"), _( "Enter new disk volume label"), gw_db_disk_get_volume ( disk),
+			              gw_menu_popup_disk_change_volume_label_ok);
 			gw_db_disk_free ( disk);
 
 			result = TRUE;
@@ -627,7 +630,8 @@ gboolean gw_menu_popup_folder_rename ( GtkMenuItem *m, GtkCTreeNode *node) {
 			file = plugin->gw_db_catalog_get_db_file ( context, gtk_ctree_node_get_row_data ( tree, node));
 			node_gw_menu_popup_callback = node;
 
-			gw_input_box ( window, _( "Rename folder"), _( "Enter new folder name"), gw_db_file_get_name ( file), G_CALLBACK ( gw_menu_popup_folder_rename_ok));
+			gw_input_box (window, _( "Rename folder"), _( "Enter new folder name"), gw_db_file_get_name ( file),
+			              gw_menu_popup_folder_rename_ok);
 			gw_db_file_free ( file);
 
 			result = TRUE;
@@ -886,7 +890,8 @@ gboolean gw_menu_popup_file_rename ( GtkMenuItem *m, gpointer row) {
 		/* Gets file informations. */
 		files_gw_menu_popup_callback = (GWDBFile*)gtk_clist_get_row_data ( GTK_CLIST ( clist_info), GPOINTER_TO_INT ( row));
 
-		gw_input_box ( window, _( "Rename file"), _( "Enter new file name"), name, G_CALLBACK ( gw_menu_popup_file_rename_ok));
+		gw_input_box (window, _( "Rename file"), _( "Enter new file name"), name,
+		              gw_menu_popup_file_rename_ok);
 
 		result = TRUE;
 	}

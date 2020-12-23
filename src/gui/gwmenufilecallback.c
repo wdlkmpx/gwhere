@@ -71,7 +71,8 @@ gboolean gw_menu_file_new_click ( GtkMenuItem *mi, GtkWindow *w) {
 			gw_db_catalog_free ( catalog);
 		} else {
 			/* Else ask the new catalog name */
-			gw_input_box ( w, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+			gw_input_box (w, _( "New catalog"), _( "Enter catalog name"), "",
+			              gw_menu_file_new_file_ok);
 		}
 	}
 
@@ -565,7 +566,8 @@ gboolean gw_menu_file_new_save_file_ok (GtkWidget *w, gpointer data)
 	} else {
 		/* Else save it directly and displays a fill box of new catalog */
 		gw_menu_file_save_click ( NULL, NULL);
-		gw_input_box ( window, _( "New catalog"), _( "Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+		gw_input_box (window, _( "New catalog"), _( "Enter catalog name"), "",
+		              gw_menu_file_new_file_ok);
 	}
 
 	return TRUE;
@@ -578,8 +580,8 @@ gboolean gw_menu_file_new_save_file_no (GtkWidget *bt, gpointer data)
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-	//xxx O_O this line is to be verified
-	gw_input_box ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+	gw_input_box (window, _("New catalog"), _("Enter catalog name"), "",
+	              gw_menu_file_new_file_ok);
 	return TRUE;
 }
 
@@ -619,7 +621,8 @@ gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChoos
 		gtk_widget_destroy ( GTK_WIDGET ( fs));
 		g_free (filexname);
 		window = gw_gui_manager_main_interface_get_main_window ( );
-		gw_input_box ( window, _("New catalog"), _("Enter catalog name"), "", G_CALLBACK ( gw_menu_file_new_file_ok));
+		gw_input_box (window, _("New catalog"), _("Enter catalog name"), "",
+		              gw_menu_file_new_file_ok);
 
 		result = TRUE;
 	}
