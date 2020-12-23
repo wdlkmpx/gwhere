@@ -1,8 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT([gwhere],[0.2.3],[https://github.com/wdlkmpx/gwhere])
-AM_INIT_AUTOMAKE([1.11 -Wall foreign no-dist-gzip dist-xz])
-AM_SILENT_RULES([yes])
+AM_INIT_AUTOMAKE([1.11 -Wall foreign])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+m4_ifdef([AM_MAINTAINER_MODE], [AM_MAINTAINER_MODE])
 
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -22,12 +23,7 @@ AC_SUBST(PROJECT_NAME)
 AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
 AC_PROG_CXX
-AC_PROG_MAKE_SET
-AC_PROG_GCC_TRADITIONAL
-AC_PROG_LN_S
-AC_PROG_AWK
 AM_PROG_CC_STDC
-AC_HEADER_STDC
 
 CFLAGS="$CFLAGS -fno-strict-aliasing"
 
@@ -49,8 +45,7 @@ AC_CHECK_LIB([z], [zlibVersion], , AC_MSG_ERROR(Cannot find zlib))
 dnl Checks functions
 dnl ==============
 AC_FUNC_FNMATCH
-AC_PROG_GCC_TRADITIONAL
-AC_CHECK_FUNCS(dup2 getmntent getwd hasmntopt memset regcomp strerror strstr mempcpy mkdir getfsent strftime strptime)
+AC_CHECK_FUNCS(dup2 getmntent getwd hasmntopt memset regcomp strerror mempcpy getfsent strftime strptime)
 
 
 dnl Checks headers
