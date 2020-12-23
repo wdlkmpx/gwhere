@@ -57,7 +57,7 @@ gint gw_plugin_settings_catalog_file_pane_apply ( GtkWidget *pane);
 gint gw_plugin_settings_catalog_file_btn_clear_history_click ( GtkButton *btn, GtkWidget *pane);
 gint gw_plugin_settings_catalog_file_btn_autoload_catalog_click ( GtkButton *btn, GtkWidget *pane);
 gint gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, GtkWidget *pane);
-gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok (GtkWidget *w, char * filename);
 
 
 gint gw_plugin_settings_catalog_file_init ( GWSettingsModule **module)
@@ -573,7 +573,8 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, 
 
 	if ( pane != NULL)
 	{
-		gw_file_chooser_box_create ( _( "Select autoloaded catalog"), NULL, (GCallback)gw_plugin_settings_catalog_file_btn_select_catalog_click_ok, NULL);
+		gw_file_chooser_box ( _( "Select autoloaded catalog"), NULL,
+		                            gw_plugin_settings_catalog_file_btn_select_catalog_click_ok, NULL);
 		result = 0;
 	}
 
@@ -581,32 +582,15 @@ gint gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, 
 }
 
 
-gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok ( GtkWidget *bt, GtkFileChooser *fs)
+gint gw_plugin_settings_catalog_file_btn_select_catalog_click_ok (GtkWidget *w, char * filename)
 {
 	gint result = -1;
 	GtkEntry *entry_autoload_filepath = NULL;
-	gchar * filexname;
 
-#ifdef GW_DEBUG_PLUGIN_SETTINGS_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( fs != NULL)
+	if ((entry_autoload_filepath = GTK_ENTRY ( g_object_get_data (G_OBJECT ( pane_settings_catalog_file), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_ENTRY))) != NULL)
 	{
-		filexname = gtk_file_chooser_get_filename (fs);
-
-		if (filexname)
-		{
-			if ( (entry_autoload_filepath = GTK_ENTRY ( g_object_get_data (G_OBJECT ( pane_settings_catalog_file), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_ENTRY))) != NULL)
-			{
-				gtk_entry_set_text ( entry_autoload_filepath, filexname);
-				result = 0;
-			}
-			g_free (filexname);
-		}
-
-		gtk_widget_destroy ( GTK_WIDGET ( fs));
+		gtk_entry_set_text (entry_autoload_filepath, filename);
 	}
 
-	return result;
+	return TRUE;
 }

@@ -51,7 +51,7 @@ void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
 
 
 /*!
- * @function	gw_file_chooser_box_create
+ * @function	gw_file_chooser_box
  * @abstract	Creates and shows a file selection window box.
  * @discussion	This function creates and shows a file selection box.
  * @param	title		the file selection box title
@@ -59,7 +59,8 @@ void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
  * @param	ok		the function which will be call when user clicks on ok button
  * @param	cancel		the function which will be call when user clicks on cancel button
  */
-void gw_file_chooser_box_create (gchar *title, gchar *filename, GCallback ok, GCallback cancel);
+void gw_file_chooser_box (gchar *title, gchar *filename,
+                          gpointer ok_func, gpointer cancel_func);
 
 
 /*!
@@ -74,7 +75,7 @@ void gw_file_chooser_box_create (gchar *title, gchar *filename, GCallback ok, GC
  * @param	ok		the function which will be call when user validate the capture box
  */
 void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
-                   gchar *text, gpointer ok);
+                   gchar *text, gpointer ok_func);
 
 
 /*!
@@ -90,7 +91,9 @@ void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
  * @param	data	user data (usefull for callback function)
  */
 void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
-                           gpointer ok, gpointer no,
-                           gpointer cancel, gpointer data);
+                        gpointer ok_func,
+                        gpointer no_func,
+                        gpointer cancel_func,
+                        gpointer data);
 
 #endif

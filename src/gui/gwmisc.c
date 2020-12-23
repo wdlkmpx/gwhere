@@ -38,16 +38,39 @@ void gw_msg_box_create (GtkWindow *window, gchar *title, gchar *subject)
 }
 
 
+/***********************************************
+ *            File Chooser
+ */
 
-void gw_file_chooser_box_create (gchar *title, gchar *filename,
-                                 GCallback ok, GCallback cancel)
+void file_chooser_response_cb (GtkDialog * dlg, int response, gpointer user_data)
+{
+   gw_box_data * ddata = (gw_box_data *) user_data;
+   if (response == GTK_RESPONSE_OK && ddata->ok_func)
+   {
+     char * filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dlg));
+     if (!filename) {
+         g_signal_stop_emission_by_name (dlg, "response");
+         return;
+     }
+     gtk_widget_destroy (GTK_WIDGET (dlg));
+     ddata->ok_func (dlg, filename);
+     g_free (filename);
+   }
+   else if (response == GTK_RESPONSE_CANCEL && ddata->cancel_func) {
+     ddata->cancel_func (dlg, dlg);
+   }
+   g_free (ddata);
+}
+
+void gw_file_chooser_box (gchar *title, gchar *filename,
+                          gpointer ok_func, gpointer cancel_func)
 {
    GtkWidget * w;
    GtkWindow * parent_window;
-   GtkWidget * button_ok, * button_c;
    GtkFileChooserAction action;
    char current_dir[256];
    getcwd (current_dir, sizeof(current_dir));
+   gw_box_data * ddata = g_malloc0 (sizeof (gw_box_data));
 
    parent_window = gw_gui_manager_main_interface_get_main_window ( );
 
@@ -70,17 +93,14 @@ void gw_file_chooser_box_create (gchar *title, gchar *filename,
       gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (w), filename);
    }
 
-   button_ok = gtk_dialog_add_button (GTK_DIALOG (w), "gtk-ok", GTK_RESPONSE_OK);
-   button_c  = gtk_dialog_add_button (GTK_DIALOG (w), "gtk-cancel", GTK_RESPONSE_CANCEL);
-   if (ok) {
-      g_signal_connect (button_ok, "clicked", G_CALLBACK (ok), w);
-   }
-   if (cancel) {
-      g_signal_connect (button_c, "clicked", G_CALLBACK (cancel), w);
-   } else {
-      g_signal_connect_swapped (button_c, "clicked", G_CALLBACK (gtk_widget_destroy), w);
-   }
+   gtk_dialog_add_button (GTK_DIALOG (w), "gtk-ok", GTK_RESPONSE_OK);
+   gtk_dialog_add_button (GTK_DIALOG (w), "gtk-cancel", GTK_RESPONSE_CANCEL);
 
+   ddata->dialog = w;
+   ddata->ok_func = ok_func;
+   ddata->cancel_func = cancel_func;
+
+   g_signal_connect (w, "response", G_CALLBACK (file_chooser_response_cb), ddata);
    gtk_widget_show (w);
 }
 
@@ -128,7 +148,7 @@ static void input_box_entry_activate_cb (GtkEntry * entry, gpointer user_data)
 
 
 void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
-                   gchar *text, gpointer ok)
+                   gchar *text, gpointer ok_func)
 {
    GtkWidget * w = NULL;
    GtkWidget * vbox, * frame, * text_entry;
@@ -166,7 +186,7 @@ void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
 
    ddata->dialog  = w;
    ddata->entry   = text_entry;
-   ddata->ok_func = ok;
+   ddata->ok_func = ok_func;
 
    g_signal_connect (w, "response", G_CALLBACK (input_box_response_cb), ddata);
    g_signal_connect (text_entry, "activate",
@@ -177,10 +197,10 @@ void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
 
 
 /***********************************************
- *            Yes / No / Cancel Box
+ *            OK / No / Cancel Box
  */
 
-static void yesno_box_response_cb (GtkDialog * dlg, int response, gpointer user_data)
+static void oknocancel_box_response_cb (GtkDialog * dlg, int response, gpointer user_data)
 {
    gw_box_data * ddata = (gw_box_data *) user_data;
    gtk_widget_destroy (GTK_WIDGET (dlg));
@@ -197,8 +217,10 @@ static void yesno_box_response_cb (GtkDialog * dlg, int response, gpointer user_
 }
 
 void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
-                           gpointer ok, gpointer no,
-                           gpointer cancel, gpointer data)
+                        gpointer ok_func,
+                        gpointer no_func,
+                        gpointer cancel_func,
+                        gpointer data)
 {
    GtkWidget * w, * vbox, * label, * button;
    gw_box_data * ddata = g_malloc0 (sizeof (gw_box_data));
@@ -219,16 +241,16 @@ void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
    gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 10);
 
    ddata->dialog  = w;
-   ddata->ok_func = ok;
-   ddata->no_func = no;
-   ddata->cancel_func = cancel;
+   ddata->ok_func = ok_func;
+   ddata->no_func = no_func;
+   ddata->cancel_func = cancel_func;
    ddata->data = data;
 
    button = gtk_dialog_add_button (GTK_DIALOG (w), _("_OK"), GTK_RESPONSE_OK);
    button = gtk_dialog_add_button (GTK_DIALOG (w), _("_No"), GTK_RESPONSE_NO);
    button = gtk_dialog_add_button (GTK_DIALOG (w), _("_Cancel"), GTK_RESPONSE_CANCEL);
 
-   g_signal_connect (w, "response", G_CALLBACK (yesno_box_response_cb), ddata);
+   g_signal_connect (w, "response", G_CALLBACK (oknocancel_box_response_cb), ddata);
    gtk_widget_show_all (w);
 }
 

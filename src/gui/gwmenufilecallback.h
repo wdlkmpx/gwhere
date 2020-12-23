@@ -143,19 +143,7 @@ gboolean gw_menu_file_exit_click ( GtkMenuItem *mi, GtkWindow *w);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_file_ok ( GtkObject *ob, GtkFileChooser *fs);
-
-
-/*!
- * @function	gw_menu_file_open_file_cancel
- * @abstract	Closes the file selection box.
- * @discussion	This function is call when the user click on Cancel button in the file selection box. This function closes the file selection box
- * @param	ob	gtk object invoker
- * @param	fs	the file selection box
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_open_file_cancel ( GtkObject *ob, GtkFileChooser *fs);
+gboolean gw_menu_file_open_file_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -203,7 +191,7 @@ gboolean gw_menu_file_new_save_file_no (GtkWidget *w, gpointer data);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_new_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_new_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -239,7 +227,7 @@ gboolean gw_menu_file_open_save_file_no (GtkWidget *w, gpointer data);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_open_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -275,31 +263,7 @@ gboolean gw_menu_file_open_recents_files_save_file_no (GtkWidget *w, gpointer da
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
-
-
-/*!
- * @function	gw_menu_file_save_file_ok
- * @abstract	Saves the opened catalog.
- * @discussion	This function saves the opened catalog
- * @param	bt	button invoker
- * @param	data	user data
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_save_file_ok ( GtkWidget *bt, GtkWindow *dg);
-
-
-/*!
- * @function	gw_menu_file_save_file_no
- * @abstract	Doesn't save the opened catalog.
- * @discussion	This function doesn't save the opened catalog
- * @param	bt	button invoker
- * @param	dg	the dialog box
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_save_file_no ( GtkWidget *bt, GtkWindow *dg);
+gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -311,7 +275,7 @@ gboolean gw_menu_file_save_file_no ( GtkWidget *bt, GtkWindow *dg);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -347,7 +311,7 @@ gboolean gw_menu_file_close_save_file_no (GtkWidget *w, gpointer data);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_close_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_close_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
@@ -383,7 +347,7 @@ gboolean gw_menu_file_send_mail_save_file_no (GtkWidget *w, gpointer data);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_send_mail_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_send_mail_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 /*!
  * @function	gw_menu_file_exit_save_file_ok
@@ -418,7 +382,7 @@ gboolean gw_menu_file_exit_save_file_no (GtkWidget *w, gpointer data);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_exit_saveas_file_selection_ok ( GtkWidget *bt, GtkFileChooser *fs);
+gboolean gw_menu_file_exit_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 
 /*!
