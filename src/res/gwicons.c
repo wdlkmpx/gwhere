@@ -20,17 +20,13 @@
 
 #include "catalog.xpm"
 #include "cdrom.xpm"
-#include "close.xpm"
 #include "file.xpm"
 #include "floppy.xpm"
 #include "folder.xpm"
 #include "hard_disk.xpm"
 #include "locked_folder.xpm"
-#include "new.xpm"
-#include "open.xpm"
 #include "open_folder.xpm"
 #include "parent_folder.xpm"
-#include "save.xpm"
 #include "zip_disk.xpm"
 
 
@@ -52,24 +48,6 @@ gint icons_load_catalog ( GtkWindow *w)
 		PixFile = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskFile, &transparent, file_xpm);
 		PixCatalog = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskCatalog, &transparent, catalog_xpm);
 
-		return 0;
-	}
-
-	return -1;
-}
-
-
-gint icons_load_toolbar ( GtkWindow *w)
-{
-	GdkColor transparent = { 0 };
-
-
-	if ( w != NULL )
-	{
-		PixNew = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskNew, &transparent, New_xpm);
-		PixOpen = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskOpen, &transparent, Open_xpm);
-		PixSave = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskSave, &transparent, Save_xpm);
-		PixClose = gdk_pixmap_create_from_xpm_d ( GTK_WIDGET ( w)->window, &MskClose, &transparent, Close_xpm);
 		return 0;
 	}
 

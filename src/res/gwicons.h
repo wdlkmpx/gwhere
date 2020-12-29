@@ -203,70 +203,6 @@ GdkBitmap *MskFile;
 
 
 /*!
-* @var         PixNew
-* @abstract    New file icon.
-* @discussion  The new file icon pixmap for toolbar.<br>
-*/
-GdkPixmap *PixNew;
-
-
-/*!
-* @var         MskNew
-* @abstract    New file icon.
-* @discussion  The new file icon bitmap for toolbar.<br>
-*/
-GdkBitmap *MskNew;
-
-
-/*!
-* @var         PixOpen
-* @abstract    Open file icon.
-* @discussion  The open file icon pixmap for toolbar.<br>
-*/
-GdkPixmap *PixOpen;
-
-
-/*!
-* @var         MskOpen
-* @abstract    Open file icon.
-* @discussion  The open file icon bitmap for toolbar.<br>
-*/
-GdkBitmap *MskOpen;
-
-
-/*!
-* @var         PixSave
-* @abstract    Save file icon.
-* @discussion  The save file icon pixmap for toolbar.<br>
-*/
-GdkPixmap *PixSave;
-
-
-/*!
-* @var         MskSave
-* @abstract    Save file icon.
-* @discussion  The save file icon bitmap for toolbar.<br>
-*/
-GdkBitmap *MskSave;
-
-
-/*!
-* @var         PixClose
-* @abstract    Close file icon.
-* @discussion  The close file icon pixmap for toolbar.<br>
-*/
-GdkPixmap *PixClose;
-
-
-/*!
-* @var         MskClose
-* @abstract    Close file icon.
-* @discussion  The close file icon bitmap for toolbar.<br>
-*/
-GdkBitmap *MskClose;
-
-
-/*!
  * @function	icons_load_catalog
  * @abstract	Loads icons for catalog.
  * @discussion	This function loads icons for catalog representation (catalog/disk/folder/file icons...).<br>
@@ -276,18 +212,5 @@ GdkBitmap *MskClose;
  *		Returns <i>-1</i> when an error occured.<br>
  */
 gint icons_load_catalog ( GtkWindow *w);
-
-
-/*!
- * @function	icons_load_toolbar
- * @abstract	Loads icons for catalog.
- * @discussion	This function loads icons for toolbar (catalog/disk/folder/file icons...).<br>
- * @param	w	the main application window to load icons
- * @result	an error code.<br>
- *		Returns <i>0</i> when it's done.<br>
- *		Returns <i>-1</i> when an error occured.<br>
- */
-gint icons_load_toolbar ( GtkWindow *w);
-
 
 #endif
