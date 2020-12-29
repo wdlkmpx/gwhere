@@ -25,57 +25,55 @@
 #include "gwmenufilecallback.h"
 
 
-/*! @define	GW_REF_HANDLE_TOOL_BAR	The handle tool bar reference */
-#define GW_REF_HANDLE_TOOL_BAR "gw_handle_tool_bar"
-/*! @define	GW_REF_TOOL_BAR	The tool bar reference */
-#define GW_REF_TOOL_BAR "gw_tool_bar"
-
-
 GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 {
-	GtkWidget *handle_box = NULL;
-	GtkWidget *tool_bar;
+	GtkWidget *toolbar, * hbox, * button;
 	GtkWidget *pix_ico_new;
 	GtkWidget *pix_ico_open;
 	GtkWidget *pix_ico_save;
 	GtkWidget *pix_ico_close;
 
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+	toolbar = gtk_handle_box_new ( );
+	gtk_handle_box_set_shadow_type ( GTK_HANDLE_BOX ( toolbar), GTK_SHADOW_OUT);
 
-	handle_box = gtk_handle_box_new ( );
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_container_add (GTK_CONTAINER (toolbar), hbox);
 
-	/* Stores the handle box reference */
-	g_object_ref ( handle_box);
-	g_object_set_data_full (G_OBJECT ( w), GW_REF_HANDLE_TOOL_BAR, handle_box, (GDestroyNotify) g_object_unref);
-	gtk_handle_box_set_shadow_type ( GTK_HANDLE_BOX ( handle_box), GTK_SHADOW_OUT);
+	pix_ico_new   = gtk_image_new_from_stock (GTK_STOCK_NEW,   GTK_ICON_SIZE_SMALL_TOOLBAR);
+	pix_ico_open  = gtk_image_new_from_stock (GTK_STOCK_OPEN,  GTK_ICON_SIZE_SMALL_TOOLBAR);
+	pix_ico_save  = gtk_image_new_from_stock (GTK_STOCK_SAVE,  GTK_ICON_SIZE_SMALL_TOOLBAR);
+	pix_ico_close = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_SMALL_TOOLBAR);
 
-	/* Should put defined ( __MINGW32__) because gtk_toolbar_new(void) is undefined?! */
-	tool_bar = gtk_toolbar_new ( );
+	button = gtk_button_new ();
+	gtk_button_set_image (GTK_BUTTON (button), pix_ico_new);
+	g_signal_connect (button, "clicked", G_CALLBACK (gw_menu_file_new_click), w);
+	gtk_widget_set_tooltip_text (button, _("New catalog"));
+	gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+	gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
 
-	/* Stores the tool bar box reference */
-	g_object_ref ( tool_bar);
-	g_object_set_data_full (G_OBJECT ( w), GW_REF_TOOL_BAR, tool_bar, (GDestroyNotify) g_object_unref);
-	gtk_container_add ( GTK_CONTAINER ( handle_box), tool_bar);
+	button = gtk_button_new ();
+	gtk_button_set_image (GTK_BUTTON (button), pix_ico_open);
+	g_signal_connect (button, "clicked", G_CALLBACK (gw_menu_file_open_click), w);
+	gtk_widget_set_tooltip_text (button, _( "Open catalog"));
+	gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+	gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
 
-	/* Loads icons for tool bar */
-	icons_load_toolbar ( w);
+	button = gtk_button_new ();
+	gtk_button_set_image (GTK_BUTTON (button), pix_ico_save);
+	g_signal_connect (button, "clicked", G_CALLBACK (gw_menu_file_save_click), w);
+	gtk_widget_set_tooltip_text (button, _( "Save catalog"));
+	gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+	gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
 
-	/* Adds all icons to the tool bar */
-	pix_ico_new = gtk_pixmap_new ( PixNew, MskNew);
-	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "New catalog"), NULL, pix_ico_new,  G_CALLBACK ( gw_menu_file_new_click), w);
-	pix_ico_open = gtk_pixmap_new ( PixOpen, MskOpen);
-	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Open catalog"), NULL, pix_ico_open,  G_CALLBACK ( gw_menu_file_open_click), w);
-	pix_ico_save = gtk_pixmap_new ( PixSave, MskSave);
-	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Save catalog"), NULL, pix_ico_save,  G_CALLBACK ( gw_menu_file_save_click), w);
-	pix_ico_close = gtk_pixmap_new ( PixClose, MskClose);
-	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Close catalog"), NULL, pix_ico_close,  G_CALLBACK ( gw_menu_file_close_click), w);
-	return handle_box;
+	button = gtk_button_new ();
+	gtk_button_set_image (GTK_BUTTON (button), pix_ico_close);
+	g_signal_connect (button, "clicked", G_CALLBACK (gw_menu_file_close_click), w);
+	gtk_widget_set_tooltip_text (button, _( "Close catalog"));
+	gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+	gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+
+	return toolbar;
 }
 
 
