@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = debian slackware doc po src win32
+SUBDIRS = slackware doc po src win32
 
 ACLOCAL_AMFLAGS = -I m4
 

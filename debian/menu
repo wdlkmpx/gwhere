@@ -1,7 +1,0 @@
-?package(gwhere):\
-  needs=X11\
-  section=Apps/Tools\
-  title="GWhere"\
-  longtitle="GWhere: Catalog manager"\
-  command="/usr/bin/gwhere"\
-  icon="gwhere.xpm"
