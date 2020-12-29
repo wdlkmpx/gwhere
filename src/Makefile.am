@@ -9,8 +9,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/src/db \
 	-I$(top_srcdir)/src/data \
 	-I$(top_srcdir)/src/gui \
-	@GTK_CFLAGS@ \
-	-D${HOST_OS}
+	@GTK_CFLAGS@
 
 bin_PROGRAMS = gwhere
 

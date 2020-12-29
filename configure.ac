@@ -33,10 +33,6 @@ dnl ===================
 gtk_modules="gtk+-2.0 >= 2.14.0
 gmodule-2.0 >= 2.14.0"
 PKG_CHECK_MODULES(GTK, [$gtk_modules])
-AC_DEFINE([HAVE_GTK20], [1], [GTK2])
-AC_SUBST(HAVE_GTK20)
-GTK_VERSION=2
-
 
 dnl Checks for libraries.
 dnl =====================
@@ -61,54 +57,6 @@ dnl =============================================================
 AC_C_CONST
 AC_STRUCT_TM
 AC_TYPE_UID_T
-
-# Check for host OS
-dnl =================
-HOST_OS=""
-HOST_OS_FULLNAME=""
-case "$host" in
-  *-*-windows*)
-    HOST_OS="OS_WINDOWS"
-    HOST_OS_FULLNAME="MS Windows"
-  ;;
-  *-*-cygwin*)
-    HOST_OS="OS_CYGWIN"
-    HOST_OS_FULLNAME="GNU/Cygwin"
-  ;;
-  *-*-linux*)
-    HOST_OS="OS_LINUX"
-    HOST_OS_FULLNAME="GNU/Linux"
-  ;;
-  *-*-freebsd*)
-    HOST_OS="OS_FREEBSD"
-    HOST_OS_FULLNAME="FreeBSD"
-  ;;
-  *-*-openbsd*)
-    HOST_OS="OS_OPENBSD"
-    HOST_OS_FULLNAME="OpenBSD"
-  ;;
-  *-*-netbsd*)
-    HOST_OS="OS_NETBSD"
-    HOST_OS_FULLNAME="NetBSD"
-  ;;
-  *-*-macosx*)
-    HOST_OS="OS_MACOSX"
-    HOST_OS_FULLNAME="MacOS X"
-  ;;
-  *-*-macos*)
-    HOST_OS="OS_MACOS"
-    HOST_OS_FULLNAME="MacOS"
-  ;;
-  *-*-darwin*)
-    HOST_OS="OS_DARWIN"
-    HOST_OS_FULLNAME="Darwin"
-  ;;
-  *)
-    HOST_OS="OS_UNKNOWN"
-    HOST_OS_FULLNAME="Unknown"
-esac
-AC_SUBST(HOST_OS)
-echo "checking for host... $HOST_OS_FULLNAME"
 
 
 dnl Set PACKAGE_LOCALE_DIR in config.h
@@ -351,8 +299,6 @@ echo ""
 echo "***************************************************"
 echo "*          Configuring GWhere-$VERSION              *"
 echo "***************************************************"
-echo "*"
-echo "*   Host OS : $HOST_OS_FULLNAME"
 echo "*"
 echo "*   GTK+ : $GTK_VERSION"
 echo "*"
