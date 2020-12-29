@@ -34,11 +34,11 @@
  */
 
 
-#include <gtk/gtk.h>
-
 #ifndef GW_SUPPORT_H
 #define GW_SUPPORT_H
 
+#include <gtk/gtk.h>
+#include "gtkcompat.h"
 
 #ifdef HAVE_CONFIG_H
 	#if defined ( OS_WIN32)
