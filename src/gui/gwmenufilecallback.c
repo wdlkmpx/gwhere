@@ -37,7 +37,6 @@
 #include "../gwapplicationmanager.h"
 #include "../gwguimanager.h"
 
-
 gboolean gw_menu_file_new_click ( GtkMenuItem *mi, GtkWindow *w) {
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
@@ -762,10 +761,12 @@ gboolean gw_menu_file_close_saveas_file_selection_ok (GtkWidget *w, char * filen
 
 gboolean gw_menu_file_exit_save_file_ok (GtkWidget *w, gpointer data)
 {
-	GWDBCatalog *catalog = NULL;
+	GWDBContext   * context = gw_am_get_current_catalog_context ();
+	GWCatalogPlugin *plugin = (GWCatalogPlugin*) gw_db_context_get_plugin (context);
+	GWDBCatalog   * catalog = plugin->gw_db_catalog_get_db_catalog (context);
 
 	/* Checks if it's a new catalog (in this case his full name is "./[catalog_full_name]"). */
-	if ( gw_helper_db_catalog_is_new ( catalog)) {
+	if (gw_helper_db_catalog_is_new (catalog)) {
 		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
 		                            gw_menu_file_exit_saveas_file_selection_ok, NULL);
 	} else {
