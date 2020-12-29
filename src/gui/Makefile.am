@@ -38,7 +38,6 @@ libgwgui_a_SOURCES = \
 	gwmenupopupcallback.c gwmenupopupcallback.h \
 	gwtoolbar.c toolbar.h \
 	gwnotebook.c gwnotebook.h \
-	gwnotebookcallback.c gwnotebookcallback.h \
 	gwnotebookcatalog.c gwnotebookcatalog.h \
 	gwnotebookcatalogcallback.c gwnotebookcatalogcallback.h \
 	gwnotebooksearch.c gwnotebooksearch.h \

@@ -49,7 +49,6 @@
 #include "gwmenupopup.h"
 #include "gwmenupopupcallback.h"
 #include "gwnotebook.h"
-#include "gwnotebookcallback.h"
 #include "gwnotebookcatalog.h"
 #include "gwnotebookcatalogcallback.h"
 #include "gwnotebookmanagment.h"
