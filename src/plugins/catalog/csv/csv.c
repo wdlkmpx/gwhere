@@ -15,7 +15,7 @@
 #define CSV_DATE_FORMAT "%Y-%m-%d %H:%M:%S"
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#define CSV_LINE_DISK "%s;%d;%s;%s;%s;%s;%"##G_GUINT64_FORMAT##";%"##G_GUINT64_FORMAT##";%s;%s;%s;%s\n"
 	#define CSV_LINE_FILE "%s;%s;%s;%s;%s;%s;%ld;%"##G_GUINT64_FORMAT##";%s;%s;%s;%s;%s\n"
 #else

@@ -34,7 +34,7 @@
 /* To mount partition */
 #include <sys/stat.h>
 
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 	/* To get informations about a file system */
 	#include <sys/vfs.h>
 
@@ -43,7 +43,7 @@
 	#include <sys/mtio.h>
 #endif
 
-#if defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 	/* To eject a CD */
 	#include <sys/ioctl.h>
 	#include <sys/mtio.h>
@@ -52,48 +52,48 @@
 #endif
 
 /* To eject a CD. */
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN_DEPRECATED)
+#if defined ( __MINGW32__) || defined ( __CYGWIN___DEPRECATED)
 	#include <windows.h>
  	#include <winioctl.h>
 #endif
 
 /* Must be after gwsupport.h!! */
-#if defined ( OS_LINUX)
+#if defined ( __linux__)
 	/* #include <linux/fs.h> */
 	#include <linux/cdrom.h>
 #endif
 
-#if defined ( OS_LINUX)
+#if defined ( __linux__)
 	#include <mntent.h>
 	#include <sys/mount.h>
 #endif
 
-#if defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	#include <sys/param.h>
 	#include <sys/mount.h>
 	#include <fstab.h>
 #endif
-#if defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	#include <sys/ucred.h>
 #endif
 
-#if defined ( OS_CYGWIN)
+#if defined ( __CYGWIN__)
 	#include <sys/cygwin.h> /* cygwin_conv_to_full_win32_path */
 #endif
 
-#if defined ( OS_CYGWIN) || defined ( OS_WIN32)
+#if defined ( __CYGWIN__) || defined ( __MINGW32__)
 	#include <sys/types.h> /* opendir */
 	#include <dirent.h> /* opendir */
 #endif
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
     #include <io.h>
     #include <sys/stat.h>
     #include <windows.h> /* GetLogicalDriveStrings*/
     #include <ctype.h> /* toupper */
 	#include <stdio.h>
 	#include <winioctl.h>
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#include <tchar.h>
 #endif
 
@@ -116,8 +116,8 @@
 
 GList * gw_get_drives_list ( GList *g)
 {
-#if defined ( HAVE_MOUNT_SYSTEM) && !defined (OS_LINUX) && !defined (OS_FREEBSD) && !defined (OS_OPENBSD) && !defined (OS_NETBSD)
-#if defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( HAVE_MOUNT_SYSTEM) && !defined (__linux__) && !defined (__FreeBSD__) && !defined (__OpenBSD__) && !defined (__NetBSD__)
+#if defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct fstab *partition = NULL;
 	gchar *fsname = NULL;
 	gint status = -1;
@@ -179,7 +179,7 @@ GList * gw_get_drives_list ( GList *g)
 	g_print ( "%d mount points are listed in /etc/fstab\n",i);
 #endif
 #endif
-#elif defined ( HAVE_MOUNT_SYSTEM) && !defined (OS_FREEBSD) && !defined (OS_OPENBSD) && !defined (OS_NETBSD)
+#elif defined ( HAVE_MOUNT_SYSTEM) && !defined (__FreeBSD__) && !defined (__OpenBSD__) && !defined (__NetBSD__)
 	FILE *fstab = NULL;
 	struct mntent *partition = NULL;
 	gchar *fsname = NULL;
@@ -230,7 +230,7 @@ GList * gw_get_drives_list ( GList *g)
 		/* Closes the /etc/mtab file. */
 		endmntent ( fstab);
 	}
-#elif defined ( HAVE_MOUNT_SYSTEM) && (defined (OS_FREEBSD) || defined (OS_OPENBSD) || defined (OS_NETBSD))
+#elif defined ( HAVE_MOUNT_SYSTEM) && (defined (__FreeBSD__) || defined (__OpenBSD__) || defined (__NetBSD__))
 	struct fstab *partition = NULL;
 	gchar *fsname = NULL;
 
@@ -256,7 +256,7 @@ GList * gw_get_drives_list ( GList *g)
 
 	/* Closes the /etc/mtab file. */
 	endfsent( );
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 	/* Floppy drive A: and B: are listed at the end of list because
 	   cannot fix bug on GtkCombo when user click on the button and
 	   the first item of the list is selected.
@@ -323,7 +323,7 @@ GList * gw_get_drives_list ( GList *g)
 
 gboolean gw_drive_eject ( const gchar *drive_path) {
 	gboolean l_result = FALSE;
-#if defined ( HAVE_MOUNT_SYSTEM) && !defined (OS_FREEBSD) && !defined (OS_OPENBSD) && !defined (OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if defined ( HAVE_MOUNT_SYSTEM) && !defined (__FreeBSD__) && !defined (__OpenBSD__) && !defined (__NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *fstab = NULL;
 	struct mntent *pm = NULL;
 	gint fd = 0;
@@ -355,7 +355,7 @@ gboolean gw_drive_eject ( const gchar *drive_path) {
 				}
 
 				if ( fd >= 0 ) {
-#if defined ( OS_FREEBSD_DEPRECATED) || defined ( OS_OPENBSD_DEPRECATED) || defined ( OS_NETBSD_DEPRECATED) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __FreeBSD___DEPRECATED) || defined ( __OpenBSD___DEPRECATED) || defined ( __NetBSD___DEPRECATED) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 					ioctl ( fd, CDIOCALLOW);
 #endif
 					status = ioctl ( fd, CDROMEJECT);
@@ -370,7 +370,7 @@ gboolean gw_drive_eject ( const gchar *drive_path) {
 		/* Closes the /etc/fstab file. */
 		endmntent ( fstab);
 	}
-#elif defined ( HAVE_MOUNT_SYSTEM) && (defined ( OS_FREEBSD) || defined ( OS_FREEBSD) || defined ( OS_FREEBSD))
+#elif defined ( HAVE_MOUNT_SYSTEM) && (defined ( __FreeBSD__) || defined ( __FreeBSD__) || defined ( __FreeBSD__))
 	struct fstab* partition = NULL;
 	gint fd = 0;
 	gint status;
@@ -402,7 +402,7 @@ gboolean gw_drive_eject ( const gchar *drive_path) {
 	/* Closes the /etc/fstab file. */
  	endfsent ( );
 
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN_DEPRECATED)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN___DEPRECATED)
 	HANDLE hdl_file = NULL;
 	DWORD lp_bytes_returned;
 	gchar *device_name = NULL;
@@ -506,7 +506,7 @@ gboolean gw_drive_eject ( const gchar *drive_path) {
 gint gw_drive_mount ( const gchar *drive_path)
 {
 	gint l_result = -1;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	static gchar *filesystemtype[] = {"iso9660", "fat", "ext2", "vfat", "msdos", "minix", "ext"};
 	FILE *fstab = NULL;
 	struct mntent *pm = NULL;
@@ -692,7 +692,7 @@ gint gw_drive_mount ( const gchar *drive_path)
 		/* Closes the /ect/fstab file. */
 		endmntent ( fstab);
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct fstab* pm = NULL;
 
 
@@ -789,7 +789,7 @@ gint gw_drive_mount ( const gchar *drive_path)
 gboolean gw_drive_umount ( const gchar *drive_path)
 {
 	gboolean l_result = FALSE;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *fstab = NULL;
 	struct mntent *pm = NULL;
 
@@ -815,7 +815,7 @@ gboolean gw_drive_umount ( const gchar *drive_path)
 		/* Closes the /etc/fstab file. */
 		endmntent ( fstab);
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct fstab* pm = NULL;
 
 
@@ -848,7 +848,7 @@ gboolean gw_drive_umount ( const gchar *drive_path)
 
 gchar * gw_drive_get_device_type ( const gchar *drive_path) {
 	gchar *device_type = NULL;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *mtab = NULL;
  	FILE *fstab = NULL;
 	struct mntent *partition = NULL;
@@ -991,7 +991,7 @@ gchar * gw_drive_get_device_type ( const gchar *drive_path) {
 			endmntent ( fstab);
 		}
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct fstab* partition = NULL;
 
 
@@ -1028,7 +1028,7 @@ gchar * gw_drive_get_device_type ( const gchar *drive_path) {
 
 gchar * gw_drive_get_device_name ( const gchar *drive_path) {
 	gchar * device_name = NULL;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *tab = NULL;
 	struct mntent *partition = NULL;
 	gchar **fs_device = NULL;
@@ -1077,7 +1077,7 @@ gchar * gw_drive_get_device_name ( const gchar *drive_path) {
 		/* Closes the /etc/mtab file. */
 		endmntent ( tab);
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct statfs* pstats = NULL;
 
 
@@ -1103,7 +1103,7 @@ gchar * gw_drive_get_device_name ( const gchar *drive_path) {
 gboolean gw_drive_is_mounted ( const gchar *drive_path)
 {
 	gboolean l_result = FALSE;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *tab = NULL;
 	struct mntent *partition = NULL;
 
@@ -1127,7 +1127,7 @@ gboolean gw_drive_is_mounted ( const gchar *drive_path)
 		/* Closes the /etc/mtab file. */
 		endmntent ( tab);
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct statfs* pstats = NULL;
 
 
@@ -1155,7 +1155,7 @@ gboolean gw_drive_is_mounted ( const gchar *drive_path)
 gboolean gw_drive_is_mountable ( const gchar *drive_path)
 {
 	gboolean l_result = FALSE;
-#if !defined ( OS_FREEBSD) && !defined ( OS_OPENBSD) && !defined ( OS_NETBSD) && !defined ( OS_MACOS) && !defined ( OS_MACOSX) && !defined ( OS_DARWIN)
+#if !defined ( __FreeBSD__) && !defined ( __OpenBSD__) && !defined ( __NetBSD__) && !defined ( Macintosh) && !defined ( __APPLE__) && !defined ( OS_DARWIN)
 	FILE *tab = NULL;
 	struct mntent *partition = NULL;
 	gchar **options = NULL;
@@ -1204,7 +1204,7 @@ gboolean gw_drive_is_mountable ( const gchar *drive_path)
 		/* Closes the /etc/fstab file. */
 		endmntent ( tab);
 	}
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct fstab* pm = NULL;
 	gchar **options = NULL;
 	gint i;
@@ -1258,7 +1258,7 @@ gboolean gw_drive_is_mountable ( const gchar *drive_path)
 #endif
 
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 /*!
  * @function	gw_drive_get_space_stats
  * @abstract	Gets the space stats of the drive.
@@ -1405,7 +1405,7 @@ int gw_drive_get_space_stats ( const gchar drive_path[], unsigned long *avail_kb
 gulong gw_drive_get_capacity ( const gchar *drive_path)
 {
 	gulong l_result = 0;
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN_DEPRECATED) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __CYGWIN___DEPRECATED) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct statfs sts;
 
 
@@ -1418,7 +1418,7 @@ gulong gw_drive_get_capacity ( const gchar *drive_path)
 	{
 		l_result = sts.f_bsize * sts.f_blocks;
 	}
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 	long total_kb = 0, avail_kb = 0, free_kb = 0;
 
 
@@ -1439,7 +1439,7 @@ gulong gw_drive_get_capacity ( const gchar *drive_path)
 gulong gw_drive_get_free_space ( const gchar *drive_path)
 {
 	gulong l_result = 0;
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN_DEPRECATED) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __CYGWIN___DEPRECATED) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	struct statfs sts;
 
 
@@ -1452,7 +1452,7 @@ gulong gw_drive_get_free_space ( const gchar *drive_path)
 	{
 		l_result = sts.f_bsize * sts.f_bfree;
 	}
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 	long total_kb = 0, avail_kb = 0, free_kb = 0;
 
 

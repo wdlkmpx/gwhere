@@ -27,7 +27,7 @@
 #include <string.h> /* strlen strncmp */
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#define S_IFLNK 0120000
 	#define S_IFSOCK 0140000
 	#define S_ISUID 0004000
@@ -412,7 +412,7 @@ gchar* gw_db_file_get_rights_to_gchar ( GWDBFile *file) {
 
 	if ( file != NULL ) {
 		rigths = g_strdup ( "----------");
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 		if ( S_ISLNK ( file->rights) ) {
 			rigths[0] = 'l';
 		} else {
@@ -436,7 +436,7 @@ gchar* gw_db_file_get_rights_to_gchar ( GWDBFile *file) {
 				case S_IFSOCK:	rigths[0] = 's';
 								break;
 			}
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 		}
 #endif
 

@@ -30,7 +30,7 @@
 gint gw_fs_get_type ( const gchar *fs, gchar **fs_type)
 {
 	gint result = -1;
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 	guint errmode;
 	char type_buf[1024];
 	DWORD max_file_len;
@@ -48,7 +48,7 @@ gint gw_fs_get_type ( const gchar *fs, gchar **fs_type)
 
 	if ( fs != NULL)
 	{
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 		if ( (GetVersion ( ) >= 0x80000000) && (strncmp ( fs, "\\\\.\\", 4) == 0) )
 		{
 			fs_port = &fs[4];
@@ -103,7 +103,7 @@ gint gw_fs_get_type ( const gchar *fs, gchar **fs_type)
 gint gw_fs_get_volume_name ( const gchar *fs, gchar **fs_volume_name)
 {
 	gint result = -1;
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 	guint errmode;
 	char vol_buf[1024];
 	DWORD max_file_len;
@@ -120,7 +120,7 @@ gint gw_fs_get_volume_name ( const gchar *fs, gchar **fs_volume_name)
 
 	if ( fs != NULL)
 	{
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 		if ( (GetVersion ( ) >= 0x80000000) && (strncmp ( fs, "\\\\.\\", 4) == 0) )
 		{
 			fs_port = &fs[4];
@@ -176,7 +176,7 @@ gint gw_fs_get_volume_name ( const gchar *fs, gchar **fs_volume_name)
 gint gw_fs_get_serial_number ( const gchar *fs, gchar **fs_serial_number)
 {
 	gint result = -1;
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 	guint errmode;
 	char vol_buf[1024];
 	DWORD serial_number;
@@ -195,7 +195,7 @@ gint gw_fs_get_serial_number ( const gchar *fs, gchar **fs_serial_number)
 
 	if ( fs != NULL)
 	{
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 		if ( (GetVersion ( ) >= 0x80000000) && (strncmp ( fs, "\\\\.\\", 4) == 0) )
 		{
 			fs_port = &fs[4];

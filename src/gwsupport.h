@@ -41,7 +41,7 @@
 #include "gtkcompat.h"
 
 #ifdef HAVE_CONFIG_H
-	#if defined ( OS_WIN32)
+	#if defined ( __MINGW32__)
 		#include "../win32/config.h"
 	#else
 		#include <config.h>
@@ -49,7 +49,7 @@
 #endif
 
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 	#include <windows.h>
 #endif
 
@@ -64,7 +64,7 @@
 /*! @define	g_strdup_from_gtk_text	decode string from UTF-8 */
 #define g_strdup_from_gtk_text(str,text) if(str!=NULL){text=g_locale_from_utf8(str,-1,NULL,NULL,NULL);}else{text=g_strdup("");}
 
-#if defined ( OS_LINUX) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	/*! @define	HAVE_MOUNT_SYSTEM	Define system with mount system */
 	#define HAVE_MOUNT_SYSTEM
 #endif
@@ -75,7 +75,7 @@
 
 
 /* Defines plugin file extension*/
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#define G_MODULE_SUFFIX "dll"
 #else
 	#define G_MODULE_SUFFIX "so"
@@ -139,14 +139,14 @@ GtkWidget * create_pixmap ( GtkWidget *widget, const gchar *filename);
 
 
 /* This is used in of Win9x where they aren't home folder. */
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#define GW_HOME_DIR "C:\\Windows\\LocalSettings"
 #else
 	#define GW_HOME_DIR "/home"
 #endif
 
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 /*!
  * @function	gw_win32_get_version
  * @abstract	Gets the system version number and service pack number.

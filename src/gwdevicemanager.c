@@ -34,14 +34,14 @@
 /* To mount device */
 #include <sys/stat.h> /* stat */
 
-#if defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	#include <sys/wait.h>
 	#include <sys/param.h>
 	#include <sys/mount.h>
 #endif
 
 
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 	#include <mntent.h> /* setmntent getmntent endmntent */
 	#include <sys/mount.h> /* mount umount */
 	#include <sys/wait.h>
@@ -53,18 +53,18 @@
 #endif
 
 /* To get information on the file system */
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 	#include <sys/vfs.h> /* statfs */
 #endif
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 	#include <io.h>
 	#include <sys/stat.h>
 	#include <windows.h> /* GetLogicalDriveStrings*/
 	#include <ctype.h> /* toupper */
 	#include <stdio.h>
  	#include <winioctl.h>
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#include <tchar.h>
 #endif
 
@@ -100,7 +100,7 @@ gint gw_dm_device_load_to_vfs_stats ( struct vfs_stats *p, gchar *dir)
 	   his full path name (stored in the parameter "dir") as "/mnt/cdrom".
 	   Theses information are stored in a structure called vfs_stats.
 	*/
-#if defined ( OS_CYGWIN) || defined ( OS_WIN32)
+#if defined ( __CYGWIN__) || defined ( __MINGW32__)
 	gchar *device_name = NULL;
 	gchar *volume_name = NULL;
 	gchar *serial_number = NULL;
@@ -134,7 +134,7 @@ gint gw_dm_device_load_to_vfs_stats ( struct vfs_stats *p, gchar *dir)
 		return -1;
 	}
 
-#if defined ( OS_LINUX)
+#if defined ( __linux__)
 	/* Checks if the device is in the mounted device table (/etc/mtab) */
 	if ( gw_dm_search_disk_in_tab_file_to_vfs_stats ( p, "/etc/mtab", dir) == 0 )
 	{
@@ -146,7 +146,7 @@ gint gw_dm_device_load_to_vfs_stats ( struct vfs_stats *p, gchar *dir)
 	{
 		return 0;
 	}
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 	errmode = SetErrorMode ( SEM_FAILCRITICALERRORS );
 
 	device_name = g_strdup_printf ( "\\\\.\\%s", dir);
@@ -347,7 +347,7 @@ gint gw_dm_search_disk_in_tab_file_to_vfs_stats ( struct vfs_stats *p, const gch
 	   "dir") as "/mnt/cdrom" in the designed "mount table"
 	   (stored in the parameter "file_tab").
 	*/
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__)
 	FILE *tab = NULL;
 	struct mntent *partition = NULL;
 	struct statfs sts;
@@ -491,7 +491,7 @@ gint gw_dm_search_disk_in_tab_file_to_vfs_stats ( struct vfs_stats *p, const gch
 
 gboolean gw_dm_disk_mount_from_vfs_stats ( struct vfs_stats *p) {
 	/* This function mount a file system with the external program "mount". */
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	int pid;		/* pid number		*/
 	int status;		/* process status	*/
 	int fd[2];		/* pipe descriptor	*/
@@ -560,7 +560,7 @@ gboolean gw_dm_disk_mount_from_vfs_stats ( struct vfs_stats *p) {
 
 
 gboolean gw_dm_disk_umount_from_vfs_stats ( struct vfs_stats *p) {
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	/* This function try to unmount the file system with the externalm program "umount". */
 	gint pid;		/* pid number		*/
 	gint status;		/* process status	*/
@@ -702,7 +702,7 @@ gboolean gw_dm_disk_is_mounted_from_vfs_stats ( struct vfs_stats *p)
 {
 	/* This function checks if the file system is already mounted. */
 	gboolean success = FALSE;
-#if defined ( OS_LINUX) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	gchar *type = NULL;
 #endif
 
@@ -713,7 +713,7 @@ gboolean gw_dm_disk_is_mounted_from_vfs_stats ( struct vfs_stats *p)
 
 	if ( p != NULL )
 	{
-#if defined ( OS_LINUX) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 		type = vfs_stats_get_type ( p);
 
 		/* If the supermount is activated under Mandrake system or submount is activated under SuSe,
@@ -727,7 +727,7 @@ gboolean gw_dm_disk_is_mounted_from_vfs_stats ( struct vfs_stats *p)
 
 			success = vfs_stats_get_ismounted ( p);
 		}
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 		success = gw_dm_is_disk_in_drive ( vfs_stats_get_dir ( p));
 #endif
 	}
@@ -768,13 +768,13 @@ gboolean gw_dm_is_disk_in_drive ( const gchar *drive_path)
 	   "drive_path").
 	*/
 	gboolean result = FALSE;
-#if defined ( OS_LINUX) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD) || defined ( OS_MACOS) || defined ( OS_MACOSX) || defined ( OS_DARWIN)
+#if defined ( __linux__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__) || defined ( Macintosh) || defined ( __APPLE__) || defined ( OS_DARWIN)
 	FILE *tab = NULL;
 	struct mntent *partition = NULL;
 	gchar *device_path = NULL;
 	struct stat statbuf;
 	guint fic;
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 	guint errmode;
 	DWORD max_file_len;
 	DWORD system_flags;
@@ -788,7 +788,7 @@ gboolean gw_dm_is_disk_in_drive ( const gchar *drive_path)
 	if ( drive_path != NULL )
 	{
 /* How to detect if a disk is present in a drive under BSD system? */
-#if defined ( OS_LINUX) /*|| defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)*/
+#if defined ( __linux__) /*|| defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)*/
 
 		/* Opens the device table file */
 		if ( (tab = setmntent ( "/etc/mtab", "r")) != NULL )
@@ -849,7 +849,7 @@ gboolean gw_dm_is_disk_in_drive ( const gchar *drive_path)
 			g_free ( device_path);
 		}
 
-#elif defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#elif defined ( __MINGW32__) || defined ( __CYGWIN__)
 		errmode = SetErrorMode ( SEM_FAILCRITICALERRORS);
 		result = GetVolumeInformation ( drive_path, NULL, 0, NULL, &max_file_len, &system_flags, NULL, 0);
 		SetErrorMode ( errmode);

@@ -51,7 +51,7 @@ GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 	g_object_set_data_full (G_OBJECT ( w), GW_REF_HANDLE_TOOL_BAR, handle_box, (GDestroyNotify) g_object_unref);
 	gtk_handle_box_set_shadow_type ( GTK_HANDLE_BOX ( handle_box), GTK_SHADOW_OUT);
 
-	/* Should put defined ( OS_WIN32) because gtk_toolbar_new(void) is undefined?! */
+	/* Should put defined ( __MINGW32__) because gtk_toolbar_new(void) is undefined?! */
 	tool_bar = gtk_toolbar_new ( );
 
 	/* Stores the tool bar box reference */

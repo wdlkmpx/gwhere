@@ -20,10 +20,10 @@
 #include "gwsupport.h"
 #include "gwcatalogmanager.h"
 
-#if defined ( OS_CYGWIN) || defined ( OS_WIN32)
+#if defined ( __CYGWIN__) || defined ( __MINGW32__)
 	/* A port for Cygwin OS, the GLib should be define this macro, but it doesn't work on my Cygwin OS */
 	#define NAME_MAX 255
-#elif defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#elif defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 	/* For NAME_MAX and PATH_MAX */
 	#include <sys/syslimits.h>
 #endif
@@ -34,10 +34,10 @@
 #include <dirent.h> /* opendir */
 
 /* Notes that exist win32 implementation of these librairies. */
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
     #include <pwd.h>
     #include <grp.h>
-#elif defined ( OS_WIN32)
+#elif defined ( __MINGW32__)
 /*  Should be used later with an external library (YAPL)
     #include <pwd.h>
 */
@@ -403,14 +403,14 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 	DIR *dir;
 	struct dirent *f;
 	struct stat f_info;
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 	struct passwd *f_proprio;
 	struct group *f_group;
 #endif
 	guint ret;
 	GWDBFile *file = NULL;
 	gchar *info_description = NULL;
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 	gchar buf[1024];
 #endif
 	gchar /**name = NULL,*/ *error_msg = NULL;
@@ -478,7 +478,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 
 							return -1;
 
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 			case ELOOP:		error_msg = g_strconcat ( _( "The disk hasn't been added\n"), g_strdup_printf ( _( "Too many symbolic links were encountered in resolving following path : %s."), directory), NULL);
 							scan_disk_info_set_error_msg ( scan_disk, error_msg);
 
@@ -567,7 +567,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 
 
 	while ( (f = readdir ( dir)) != NULL ) {
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 		/* Skips this system folder. It's an unscanable folder. */
 		if ( (parent == NULL) && ( (strcmp ( f->d_name, "System Volume Information") == 0) || (strcmp ( f->d_name, "RECYCLER") == 0) ) ) {
 #ifdef GW_DEBUG_MODE
@@ -577,7 +577,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 		}
 #endif
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 		if ( (ret = stat ( f->d_name, &f_info)) == -1 ) {
 #else
 		if ( (ret = lstat ( f->d_name, &f_info)) == -1 ) {
@@ -597,7 +597,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 			gw_db_file_set_rights ( file, f_info.st_mode);
 
 			switch ( S_IFMT & f_info.st_mode ) {
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 				case S_IFLNK:	memset ( buf, '\0', 1024);
 #ifdef GW_DEBUG_MODE
 								gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "current link is %s/%s", directory, f->d_name);
@@ -620,7 +620,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 				default:		break;
 			}
 
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 			/* Owner file */
 			f_proprio = getpwuid ( f_info.st_uid);
 			if ( f_proprio != NULL ) {
@@ -628,7 +628,7 @@ gint gw_cm_add_dir ( struct scan_disk_info *scan_disk, gchar *directory, GWDBDis
 			}
 #endif
 
-#if defined ( OS_LINUX) || defined ( OS_CYGWIN) || defined ( OS_FREEBSD) || defined ( OS_OPENBSD) || defined ( OS_NETBSD)
+#if defined ( __linux__) || defined ( __CYGWIN__) || defined ( __FreeBSD__) || defined ( __OpenBSD__) || defined ( __NetBSD__)
 			/* Owner group file */
 			f_group = getgrgid ( f_info.st_gid);
 			if ( f_group != NULL ) {

@@ -23,7 +23,7 @@
 #include <stdio.h> /* perror */
 #include <sys/types.h> /* mkdir */
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 #include <sys/stat.h> /* open */
 #endif
 
@@ -557,7 +557,7 @@ int gw_file_mkdir ( const gchar *pathname)
 		}
 		else
 		{
-#if defined (OS_WIN32)
+#if defined (__MINGW32__)
 			if ( mkdir ( pathname) == 0 )
 #else
 			if ( mkdir ( pathname, S_IRUSR|S_IWUSR|S_IXUSR) == 0 )
@@ -606,7 +606,7 @@ int gw_file_mkdirs ( const gchar *pathname)
 		}
 		else
 		{
-#if defined (OS_WIN32)
+#if defined (__MINGW32__)
 			if ( mkdir ( pathname) == 0 )
 #else
 			if ( mkdir ( pathname, S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP) == 0 )

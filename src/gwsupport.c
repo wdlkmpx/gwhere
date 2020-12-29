@@ -21,14 +21,14 @@
 
 /*
 #ifdef HAVE_CONFIG_H
-    #if defined ( OS_LINUX) || defined ( OS_CYGWIN )
+    #if defined ( __linux__) || defined ( __CYGWIN__ )
         #include <config.h>
-    #elif defined ( OS_WIN32)
+    #elif defined ( __MINGW32__)
         #include "../config_win32.h"
     #endif
 #endif
 */
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#include <winreg.h>
 #endif
 
@@ -169,7 +169,7 @@ gchar* check_file_exists ( const gchar *directory, const gchar *filename) {
 }
 
 
-#if defined ( OS_WIN32) || defined ( OS_CYGWIN)
+#if defined ( __MINGW32__) || defined ( __CYGWIN__)
 
 
 int gw_win32_get_version ( int *sys_type, int *version_major, int *version_minor, int *service_pack)
@@ -278,7 +278,7 @@ int gw_win32_get_version ( int *sys_type, int *version_major, int *version_minor
 int gw_os_get_version_str ( gchar **version)
 {
 	gchar *os_version = NULL;
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	int sys_type;
 	int version_major;
 	int version_minor;
@@ -286,17 +286,17 @@ int gw_os_get_version_str ( gchar **version)
 #endif
 
 
-	#if defined ( OS_LINUX)
+	#if defined ( __linux__)
 	os_version = g_strdup ( "GNU/Linux");
-	#elif defined ( OS_CYGWIN)
+	#elif defined ( __CYGWIN__)
 	os_version = g_strdup ( "Cygwin");
-	#elif defined ( OS_FREEBSD)
+	#elif defined ( __FreeBSD__)
 	os_version = g_strdup ( "FreeBSD");
-	#elif defined ( OS_OPENBSD)
+	#elif defined ( __OpenBSD__)
 	os_version = g_strdup ( "OpenBSD");
-	#elif defined ( OS_NETBSD)
+	#elif defined ( __NetBSD__)
 	os_version = g_strdup ( "NetBSD");
-	#elif defined ( OS_WIN32)
+	#elif defined ( __MINGW32__)
 	if ( gw_win32_get_version ( &sys_type, &version_major, &version_minor, &service_pack) == 0 )
 	{
 		switch ( sys_type )
@@ -362,7 +362,7 @@ int gw_os_get_version_str ( gchar **version)
 }
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 char * gw_package_get_dir ( char *subdir) {
 	char *dir = NULL;
 	HKEY hkey = 0;
@@ -404,7 +404,7 @@ char * gw_package_get_locale_dir ( void) {
 	char *locale_dir = NULL;
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	locale_dir = gw_package_get_dir ( PACKAGE_LOCALE_DIR);
 #else
 	locale_dir = g_strdup ( PACKAGE_LOCALE_DIR);
@@ -422,7 +422,7 @@ char * gw_package_get_plugins_description_dir ( void) {
 	char *plugins_dir = NULL;
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	plugins_dir = gw_package_get_dir ( PACKAGE_PLUGINS_DESCRIPTION_DIR);
 #else
 	plugins_dir = g_strdup ( PACKAGE_PLUGINS_DESCRIPTION_DIR);
@@ -436,7 +436,7 @@ char * gw_package_get_plugins_catalog_dir ( void) {
 	char *plugins_dir = NULL;
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	plugins_dir = gw_package_get_dir ( PACKAGE_PLUGINS_CATALOG_DIR);
 #else
 	plugins_dir = g_strdup ( PACKAGE_PLUGINS_CATALOG_DIR);
@@ -450,7 +450,7 @@ char * gw_package_get_plugins_dir ( void) {
 	char *plugins_dir = NULL;
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	plugins_dir = gw_package_get_dir ( PACKAGE_PLUGINS_DIR);
 #else
 	plugins_dir = g_strdup ( PACKAGE_PLUGINS_DIR);

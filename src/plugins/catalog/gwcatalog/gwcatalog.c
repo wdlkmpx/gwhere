@@ -12,7 +12,7 @@
 #define PROJECT_NAME "GWhere"
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#define FORMAT1_DISK_SHORT "//\n%s:%d:%s:%s:%"##G_GUINT64_FORMAT##":%"##G_GUINT64_FORMAT##":%ld:%s:"
 	#define FORMAT1_DISK_LONG "//\n%s:%d:%s:%s:%"##G_GUINT64_FORMAT##":%"##G_GUINT64_FORMAT##":%ld:%s:%s\n"
 	#define FORMAT1_FILE_SHORT  "%s:%s:%s:%s:%ld:%"##G_GUINT64_FORMAT##":%ld:%ld:%ld:"

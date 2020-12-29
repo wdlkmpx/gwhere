@@ -25,7 +25,7 @@
 
 #include <stdlib.h>
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#include <windows.h>
 #endif
 

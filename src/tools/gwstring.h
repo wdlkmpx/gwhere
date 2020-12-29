@@ -63,7 +63,7 @@ char * strsep ( char **stringp, const char *delim);
 #endif  /* strsep */
 
 
-#if defined ( OS_WIN32)
+#if defined ( __MINGW32__)
 	#include <winsock2.h>
 #else
 	#ifndef ntohl
