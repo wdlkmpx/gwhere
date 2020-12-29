@@ -7,11 +7,13 @@
 #include "../gwsupport.h"
 #include "gwmisc.h"
 #include "../gwguimanager.h"
+#include "gtktextarea.h"
 
 typedef struct gw_box_data
 {
    GtkWidget * dialog;
    GtkWidget * entry;
+   GtkWidget * textview;
    void (*ok_func) (void *,void *);
    void (*no_func) (void *,void *);
    void (*cancel_func) (void *,void *);
@@ -84,7 +86,6 @@ void gw_file_chooser_box (gchar *title, gchar *filename,
                                     parent_window,
                                     action,
                                     NULL, NULL);
-   gtk_window_set_position (GTK_WINDOW ( w), GTK_WIN_POS_CENTER);
    gtk_widget_set_size_request (GTK_WIDGET (w), 640, 480);
    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (w), TRUE);
    gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (w), current_dir);
@@ -161,7 +162,6 @@ void gw_input_box (GtkWindow *window, gchar *title, gchar *subject,
 
    gtk_window_set_modal (GTK_WINDOW (w),TRUE);
    gtk_window_set_transient_for (GTK_WINDOW (w), window);
-   gtk_window_set_position (GTK_WINDOW (w), GTK_WIN_POS_CENTER);
 
    vbox = gtk_dialog_get_content_area (GTK_DIALOG (w));
    gtk_box_set_spacing (GTK_BOX (vbox), 6);
@@ -254,3 +254,70 @@ void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
    gtk_widget_show_all (w);
 }
 
+
+/***********************************************
+ *            Text Box
+ */
+
+static void text_box_response (GtkDialog * dlg, int response, gpointer user_data)
+{
+   gw_box_data * ddata = (gw_box_data *) user_data;
+   if (response == GTK_RESPONSE_OK && ddata->ok_func) {
+      GtkTextArea *text_area = GTK_TEXT_AREA (ddata->textview);
+      char * text = gtk_text_area_get_text (GTK_TEXT_AREA (text_area));
+      gtk_widget_destroy (GTK_WIDGET (dlg));
+      ddata->ok_func (dlg, text);
+      g_free (text);
+   } else {
+      gtk_widget_destroy (GTK_WIDGET (dlg));
+   }
+   g_free (ddata);
+}
+
+void gw_text_box (GtkWindow *window, gchar *title,
+                  gchar *subject, gchar *text,
+                  gpointer ok_func)
+{
+   GtkWidget * w, * slabel, * vbox;
+   GtkWidget * scroll_zone, * txt_area;
+   gw_box_data * ddata = g_malloc0 (sizeof (gw_box_data));
+
+   w = gtk_dialog_new ();
+   gtk_window_set_policy (GTK_WINDOW (w), FALSE, FALSE, TRUE);
+   gtk_window_set_title (GTK_WINDOW (w), title);
+   gtk_window_set_modal (GTK_WINDOW (w),TRUE);
+   gtk_window_set_transient_for (GTK_WINDOW (w), window);
+   gtk_container_set_border_width (GTK_CONTAINER (w), 5);
+   vbox = gtk_dialog_get_content_area (GTK_DIALOG (w));
+
+   if (subject) {
+      slabel = gtk_label_new (subject);
+      gtk_box_pack_start (GTK_BOX (vbox), slabel, FALSE, FALSE, 0);
+   }
+
+   /* Creates the text srollbar */
+   scroll_zone = gtk_scrolled_window_new (NULL, NULL);
+   gtk_box_pack_start (GTK_BOX (vbox), scroll_zone, TRUE, TRUE, 0);
+   gtk_container_set_border_width (GTK_CONTAINER ( scroll_zone), 5);
+   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scroll_zone), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+
+   /* Creates text area */
+   txt_area = gtk_text_area_new ( );
+   gtk_text_area_set_editable (GTK_TEXT_AREA ( txt_area), TRUE);
+   gtk_widget_set_size_request (txt_area, 400, 300);
+   gtk_container_add (GTK_CONTAINER (scroll_zone), txt_area);
+
+   if (text) { // default text value
+      gtk_text_area_insert (GTK_TEXT_AREA (txt_area), text);
+   }
+
+   gtk_dialog_add_button (GTK_DIALOG (w), "gtk-ok", GTK_RESPONSE_OK);
+   gtk_dialog_add_button (GTK_DIALOG (w), "gtk-cancel", GTK_RESPONSE_CANCEL);
+
+   ddata->dialog   = w;
+   ddata->textview = txt_area;
+   ddata->ok_func  = ok_func;
+
+   g_signal_connect (w, "response", G_CALLBACK (text_box_response), ddata);
+   gtk_widget_show_all	(w);
+}

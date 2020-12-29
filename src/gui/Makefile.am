@@ -50,8 +50,7 @@ libgwgui_a_SOURCES = \
 	gwpropertiesbox.c gwpropertiesbox.h \
 	gwpropertiesboxcallback.c gwpropertiesboxcallback.h \
 	gwstatusbar.c gwstatusbar.h \
-	gwstatusbarcallback.c gwstatusbarcallback.h \
-	gwtextbox.c gwtextbox.h
+	gwstatusbarcallback.c gwstatusbarcallback.h
 
 EXTRA_DIST = $(SOURCES)
 

@@ -28,7 +28,6 @@
 #include "gwcategorieseditbox.h"
 #include "gwpropertiesbox.h"
 #include "gwmisc.h"
-#include "gwtextbox.h"
 
 #include "../gwguimanager.h"
 #include "../gwapplicationmanager.h"
@@ -155,7 +154,8 @@ gboolean gw_menu_popup_catalog_edit_description ( GtkMenuItem *m, GtkCTreeNode *
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Catalog description"), gw_db_catalog_get_description ( catalog), G_CALLBACK ( gw_menu_popup_catalog_edit_description_ok));
+			gw_text_box (window, _( "Edit description"), _( "Catalog description"), gw_db_catalog_get_description ( catalog),
+			             gw_menu_popup_catalog_edit_description_ok);
 
 			gw_db_catalog_free ( catalog);
 
@@ -167,7 +167,7 @@ gboolean gw_menu_popup_catalog_edit_description ( GtkMenuItem *m, GtkCTreeNode *
 }
 
 
-gboolean gw_menu_popup_catalog_edit_description_ok ( GtkWidget *b, GtkWidget *w)
+gboolean gw_menu_popup_catalog_edit_description_ok (GtkWidget *w, char * text)
 {
 	gboolean result = FALSE;
 	GtkCTree *tree = NULL;
@@ -175,37 +175,27 @@ gboolean gw_menu_popup_catalog_edit_description_ok ( GtkWidget *b, GtkWidget *w)
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCatalog *catalog = NULL;
-	gchar *tmp_description = NULL;
+	gchar *tmp_description = text;
 
+	if (context != NULL )
+	{
+		if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL )
+		{
+			catalog = plugin->gw_db_catalog_get_db_catalog ( context);
+			tree = gw_gui_manager_main_interface_get_tree ( );
+			selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
 
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+			gw_db_catalog_set_description ( catalog, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
+			plugin->gw_db_catalog_update ( context, catalog);
+			gw_db_catalog_free ( catalog);
 
-	if ( w != NULL && context != NULL ) {
-		if ( (tmp_description = gw_text_box_get_text ( w)) != NULL) {
-			if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL ) {
-				catalog = plugin->gw_db_catalog_get_db_catalog ( context);
-				tree = gw_gui_manager_main_interface_get_tree ( );
-				selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
+			/* Selects the selected item in the exploration tree to refresh the list of files. */
+			gtk_ctree_select ( tree, selection);
 
-				gw_db_catalog_set_description ( catalog, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
-				plugin->gw_db_catalog_update ( context, catalog);
-				gw_db_catalog_free ( catalog);
-
-				/* Selects the selected item in the exploration tree to refresh the list of files. */
-				gtk_ctree_select ( tree, selection);
-
-				result = TRUE;
-			}
-
-			g_free ( tmp_description);
+			result = TRUE;
 		}
-
-		gtk_widget_destroy ( w);
 		node_gw_menu_popup_callback = NULL;
 	}
-
 	return result;
 }
 
@@ -506,7 +496,8 @@ gboolean gw_menu_popup_disk_edit_description ( GtkMenuItem *m, GtkCTreeNode *nod
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Disk description"), gw_db_disk_get_description ( disk), G_CALLBACK ( gw_menu_popup_disk_edit_description_ok));
+			gw_text_box (window, _( "Edit description"), _( "Disk description"), gw_db_disk_get_description ( disk),
+			             gw_menu_popup_disk_edit_description_ok);
 
 			gw_db_disk_free ( disk);
 
@@ -518,44 +509,35 @@ gboolean gw_menu_popup_disk_edit_description ( GtkMenuItem *m, GtkCTreeNode *nod
 }
 
 
-gboolean gw_menu_popup_disk_edit_description_ok ( GtkWidget *b, GtkWidget *w) {
+gboolean gw_menu_popup_disk_edit_description_ok (GtkWidget *w, char * text)
+{
 	gboolean result = FALSE;
 	GtkCTree *tree = NULL;
 	GtkCTreeNode *selection = NULL;
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBDisk *disk = NULL;
-	gchar *tmp_description = NULL;
+	gchar *tmp_description = text;
 
+	if (context != NULL )
+	{
+		if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL ) {
+			tree = gw_gui_manager_main_interface_get_tree ( );
+			disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node_gw_menu_popup_callback));
+			selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
 
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+			gw_db_disk_set_description ( disk, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
+			plugin->gw_db_disk_update ( context, disk);
+			gw_db_disk_free ( disk);
 
-	if (context != NULL ) {
-		if ( (tmp_description = gw_text_box_get_text ( w)) != NULL) {
-			if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL ) {
-				tree = gw_gui_manager_main_interface_get_tree ( );
-				disk = plugin->gw_db_catalog_get_db_disk ( context, gtk_ctree_node_get_row_data ( tree, node_gw_menu_popup_callback));
-				selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
+			/* Selects the selected item in the exploration tree to refresh the list of files. */
+			gtk_ctree_select ( tree, selection);
 
-				gw_db_disk_set_description ( disk, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
-				plugin->gw_db_disk_update ( context, disk);
-				gw_db_disk_free ( disk);
-
-				/* Selects the selected item in the exploration tree to refresh the list of files. */
-				gtk_ctree_select ( tree, selection);
-
-				result = TRUE;
-			}
-
-			g_free ( tmp_description);
+			result = TRUE;
 		}
-
-		gtk_widget_destroy ( w);
-		node_gw_menu_popup_callback = NULL;
 	}
 
+	node_gw_menu_popup_callback = NULL;
 	return result;
 }
 
@@ -718,7 +700,8 @@ gboolean gw_menu_popup_folder_edit_description ( GtkMenuItem *m, GtkCTreeNode *n
 			window = gw_gui_manager_main_interface_get_main_window ( );
 			node_gw_menu_popup_callback = node;
 
-			gw_text_box_create ( window, _( "Edit description"), _( "Folder description"), gw_db_file_get_description ( file), G_CALLBACK ( gw_menu_popup_folder_edit_description_ok));
+			gw_text_box (window, _( "Edit description"), _( "Folder description"), gw_db_file_get_description ( file),
+			             gw_menu_popup_folder_edit_description_ok);
 
 			gw_db_file_free ( file);
 
@@ -730,7 +713,7 @@ gboolean gw_menu_popup_folder_edit_description ( GtkMenuItem *m, GtkCTreeNode *n
 }
 
 
-gboolean gw_menu_popup_folder_edit_description_ok ( GtkWidget *b, GtkWidget *w)
+gboolean gw_menu_popup_folder_edit_description_ok (GtkWidget *w, char * text)
 {
 	gboolean result = FALSE;
 	GtkCTree *tree = NULL;
@@ -738,37 +721,26 @@ gboolean gw_menu_popup_folder_edit_description_ok ( GtkWidget *b, GtkWidget *w)
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBFile *file = NULL;
-	gchar *tmp_description = NULL;
+	gchar *tmp_description = text;
 
+	if (context != NULL)
+	{
+		if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL ) {
+			tree = gw_gui_manager_main_interface_get_tree ( );
+			file = plugin->gw_db_catalog_get_db_file ( context, gtk_ctree_node_get_row_data ( tree, node_gw_menu_popup_callback));
+			selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
 
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+			gw_db_file_set_description ( file, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
+			plugin->gw_db_file_update ( context, file);
+			gw_db_file_free ( file);
 
-	if ( w != NULL && context != NULL ) {
-		if ( (tmp_description = gw_text_box_get_text ( w)) != NULL) {
-			if ( (plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context)) != NULL ) {
-				tree = gw_gui_manager_main_interface_get_tree ( );
-				file = plugin->gw_db_catalog_get_db_file ( context, gtk_ctree_node_get_row_data ( tree, node_gw_menu_popup_callback));
-				selection = GTK_CTREE_NODE ( GTK_CLIST ( tree)->selection->data);
+			/* Selects the selected item in the exploration tree to refresh the list of files. */
+			gtk_ctree_select ( tree, selection);
 
-				gw_db_file_set_description ( file, strlen(tmp_description)>0?g_strdup(tmp_description):NULL);
-				plugin->gw_db_file_update ( context, file);
-				gw_db_file_free ( file);
-
-				/* Selects the selected item in the exploration tree to refresh the list of files. */
-				gtk_ctree_select ( tree, selection);
-
-				result = TRUE;
-			}
-
-			g_free ( tmp_description);
+			result = TRUE;
 		}
-
-		gtk_widget_destroy ( w);
-		node_gw_menu_popup_callback = NULL;
 	}
-
+	node_gw_menu_popup_callback = NULL;
 	return result;
 }
 
@@ -983,7 +955,8 @@ gboolean gw_menu_popup_file_edit_description ( GtkMenuItem *m, gpointer row) {
 		files_gw_menu_popup_callback = (GWDBFile*)gtk_clist_get_row_data ( GTK_CLIST ( clist_info), GPOINTER_TO_INT ( row));
 
 		node_gw_menu_popup_callback = selection;
-		gw_text_box_create ( window, _( "Edit description"), _( "File description"), gw_db_file_get_description ( files_gw_menu_popup_callback), G_CALLBACK ( gw_menu_popup_file_edit_description_ok));
+		gw_text_box (window, _( "Edit description"), _( "File description"), gw_db_file_get_description ( files_gw_menu_popup_callback),
+		             gw_menu_popup_file_edit_description_ok);
 
 		result = TRUE;
 	}

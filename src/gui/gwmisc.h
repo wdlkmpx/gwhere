@@ -96,4 +96,21 @@ void gw_oknocancel_box (GtkWindow *window, gchar *title, gchar *text,
                         gpointer cancel_func,
                         gpointer data);
 
+/*!
+ * @function	gw_text_box
+ * @abstract	Creates a filled text box.
+ * @discussion	This function creates a filled text box. If the
+ *		ok callback function is <i>NULL</i> the filled
+ *		text box is destroy when the user clicks on
+ *		ok button.
+ * @param	w		refence to the parent window
+ * @param	title		window title
+ * @param	subject		frame title
+ * @param	text		default text value
+ * @param	ok		ok callback function
+ */
+void gw_text_box (GtkWindow *window, gchar *title,
+                  gchar *subject, gchar *text,
+                  gpointer ok_func);
+
 #endif

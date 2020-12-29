@@ -96,12 +96,12 @@ gboolean gw_menu_popup_catalog_edit_description ( GtkMenuItem *m, GtkCTreeNode *
  * @abstract	Validates the description edition of a catalog.
  * @discussion	This function validates the description edition of a catalog.
  * @param	b	button invoker
- * @param	w	the text box
+ * @param	text	the new text
  * @result	is the event submited correctly.<br>
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_catalog_edit_description_ok ( GtkWidget *b, GtkWidget *w);
+gboolean gw_menu_popup_catalog_edit_description_ok (GtkWidget *w, char * text);
 
 
 /*!
@@ -226,12 +226,12 @@ gboolean gw_menu_popup_disk_edit_description ( GtkMenuItem *m, GtkCTreeNode *nod
  * @abstract	Validates the description edition of a disk.
  * @discussion	This function validates the description edition of a disk.
  * @param	b	button invoker
- * @param	w	the text box
+ * @param	text	the new text
  * @result	is the event submited correctly.<br>
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_disk_edit_description_ok ( GtkWidget *b, GtkWidget *w);
+gboolean gw_menu_popup_disk_edit_description_ok (GtkWidget *w, char * text);
 
 
 /*!
@@ -304,12 +304,12 @@ gboolean gw_menu_popup_folder_edit_description ( GtkMenuItem *m, GtkCTreeNode *n
  * @abstract	Validates the description edition of a folder.
  * @discussion	This function validates the description edition of a folder.
  * @param	b	button invoker
- * @param	w	the text box
+ * @param	text	the new text
  * @result	is the event submited correctly.<br>
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_popup_folder_edit_description_ok ( GtkWidget *b, GtkWidget *w);
+gboolean gw_menu_popup_folder_edit_description_ok (GtkWidget *w, char * text);
 
 
 /*!
