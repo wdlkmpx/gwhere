@@ -280,7 +280,6 @@ src/plugins/catalog/Makefile
 src/plugins/catalog/gwcatalog/Makefile
 src/plugins/catalog/csv/Makefile
 src/Makefile
-slackware/Makefile
 doc/Doxyfile
 doc/Makefile
 doc/license/Makefile
