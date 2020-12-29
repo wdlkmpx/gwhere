@@ -55,7 +55,7 @@
 ;--------------------------------
 ;Pages
 
-  !define MUI_WELCOMEFINISHPAGE_BITMAP "${MUI_BUILD_DIR}\@PACKAGE@_install.bmp"
+;  !define MUI_WELCOMEFINISHPAGE_BITMAP "${MUI_BUILD_DIR}\@PACKAGE@_install.bmp"
   !insertmacro MUI_PAGE_WELCOME
   !insertmacro MUI_PAGE_LICENSE "$(URL_License)"
   !insertmacro MUI_PAGE_COMPONENTS
