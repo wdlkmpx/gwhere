@@ -39,7 +39,6 @@
 #include "gwencode.h"
 #include "gwfile.h"
 #include "gwfilesystem.h"
-#include "gwmail.h"
 #include "gwpropertiesfile.h"
 #include "gwstring.h"
 

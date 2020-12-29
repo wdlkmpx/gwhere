@@ -68,19 +68,6 @@ typedef struct gw_application_settings {
 } GWApplicationSettings;
 
 
-typedef struct gw_mail_s
-{
-/*	gchar *server_name;
-	int server_port;
-	gchar *from;
-*/	gchar *to;
-	gchar *cc;
-	gchar *bcc;
-	gchar *subject;
-	gchar *message;
-	gchar *file_path;
-}GWMail;
-
 
 /*! @define	GW_VALUE_APP_CATALOG_LAST	The variable name for the last opened catalog */
 #define GW_VALUE_APP_CATALOG_LAST "GWhere.application.catalog.last"
@@ -142,14 +129,6 @@ typedef struct gw_mail_s
 #define GW_VALUE_APP_CATALOG_COMPRESSION_LEVEL_MIN 0
 /*! @define	GW_VALUE_APP_CATALOG_COMPRESSION_LEVEL_MAX	The maximun catalog compression ratio */
 #define GW_VALUE_APP_CATALOG_COMPRESSION_LEVEL_MAX 9
-/*! @define	GW_VALUE_APP_MAIL_EMAIL_ADDRESS	The variable name for email adress */
-#define GW_VALUE_APP_MAIL_EMAIL_ADDRESS "GWhere.application.mail.email.address"
-/*! @define	GW_VALUE_APP_MAIL_SERVER_ADDRESS	The variable name for outgoing mail server name */
-#define GW_VALUE_APP_MAIL_SERVER_ADDRESS "GWhere.application.mail.server.address"
-/*! @define	GW_VALUE_APP_MAIL_SERVER_PORT	The variable name for outgoing mail server port */
-#define GW_VALUE_APP_MAIL_SERVER_PORT "GWhere.application.mail.server.port"
-/*! @define	GW_VALUE_APP_MAIL_SERVER_PORT_DEFAULT	The default outgoing mail server port */
-#define GW_VALUE_APP_MAIL_SERVER_PORT_DEFAULT "25"
 /*! @define	GW_VALUE_APP_SEARCH_STRING	The variable name for search string */
 #define GW_VALUE_APP_SEARCH_STRING "GWhere.application.search.string"
 /*! @define	GW_VALUE_APP_SEARCH_CASE_SENSITIVE	The variable name for search case sensitive status */
@@ -652,19 +631,6 @@ gint gw_am_load_default_settings ( );
 
 
 /*!
- * @function	gw_am_can_send_mail
- * @abstract	Checks if can send mails.
- * @discussion	This function checks if can send mails. To
- *		send mails, the user must configure mail
- *		options in the settings.
- * @result	Returns <i>TRUE</i> if can send mails.<br>
- *		Returns <i>FALSE</i> if cannot send mails or
- *		when an error occured.
- */
-gboolean gw_am_can_send_mail ( );
-
-
-/*!
  * @function	gw_am_get_settings_tod
  * @abstract	Gets the gfloat value of a setting.
  * @discussion	This function gets the gfloat value of a setting.
@@ -761,17 +727,6 @@ struct catalog_file_info * gw_am_get_current_catalog ( void);
  *		Returns <i>-1</i> when an error occured.
  */
 gint gw_am_exit ( );
-
-
-/*!
- * @function	gw_am_send_mail
- * @abstract	Sends an mail from the application.
- * @discussion	This function sends an mail from the application.
- * @result	an error code.<br>
- *		Returns <i>0</i> when it's done.<br>
- *		Returns <i>-1</i> when an error occured.
- */
-gint gw_am_send_mail ( GWMail *mail);
 
 
 /*!

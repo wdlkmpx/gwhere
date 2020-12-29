@@ -39,7 +39,6 @@ GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 	GtkWidget *pix_ico_open;
 	GtkWidget *pix_ico_save;
 	GtkWidget *pix_ico_close;
-	GtkWidget *pix_ico_send_mail;
 
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -76,10 +75,6 @@ GtkWidget * gw_tool_bar_create ( GtkWindow *w)
 	pix_ico_close = gtk_pixmap_new ( PixClose, MskClose);
 	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
 	                         _( "Close catalog"), NULL, pix_ico_close,  G_CALLBACK ( gw_menu_file_close_click), w);
-	pix_ico_send_mail = gtk_pixmap_new ( PixSendMail, MskSendMail);
-	gtk_toolbar_append_item ( GTK_TOOLBAR ( tool_bar), NULL,
-	                         _( "Send catalog by mail"), NULL, pix_ico_send_mail,  G_CALLBACK ( gw_menu_file_send_mail_click), w);
-
 	return handle_box;
 }
 

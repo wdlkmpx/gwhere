@@ -10,8 +10,6 @@ noinst_LIBRARIES = libgwgui.a
 libgwgui_a_SOURCES = \
 	gwgui.h gwreferences.h \
 	gtktextarea.c gtktextarea.h \
-	gwwindowboxmail.c gwwindowboxmail.h \
-	gwwindowboxmailcallback.c gwwindowboxmailcallback.h \
 	gwsettingsinterface.c gwsettingsinterface.h \
 	gwsettingswindowbox.c gwsettingswindowbox.h \
 	gwsettingswindowboxcallback.c gwsettingswindowboxcallback.h \
@@ -23,7 +21,6 @@ libgwgui_a_SOURCES = \
 	gwsettingsexplorerfile.c gwsettingsexplorerfile.h \
 	gwsettingssearch.c gwsettingssearch.h \
 	gwsettingsquicksearch.c gwsettingsquicksearch.h \
-	gwsettingsmail.c gwsettingsmail.h \
 	gwcategorieseditbox.c gwcategorieseditbox.h \
 	gwcomboboxcategories.c gwcomboboxcategories.h \
 	gwmenu.c gwmenu.h \

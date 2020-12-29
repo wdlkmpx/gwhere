@@ -163,26 +163,6 @@ gint gw_am_load_default_settings ( ) {
 }
 
 
-gboolean gw_am_can_send_mail ( ) {
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_MODE
-	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
-#endif
-
-	if ( gw_am_get_settings ( GW_VALUE_APP_MAIL_EMAIL_ADDRESS) != NULL ) {
-		if ( gw_am_get_settings ( GW_VALUE_APP_MAIL_SERVER_ADDRESS) != NULL ) {
-			if ( gw_am_get_settings ( GW_VALUE_APP_MAIL_SERVER_PORT) != NULL ) {
-				result = TRUE;
-			}
-		}
-	}
-
-	return result;
-}
-
-
 gchar * gw_am_get_settings ( const gchar *name) {
 	gchar *value = NULL;
 
@@ -393,55 +373,6 @@ gint gw_am_exit ( ) {
 	if ( my_application_settings.user_gwhere_settings_file != NULL ) {
 		g_free ( my_application_settings.user_gwhere_settings_file);
 		my_application_settings.user_gwhere_settings_file = NULL;
-	}
-
-	return result;
-}
-
-
-gint gw_am_send_mail ( GWMail *mail) {
-	gint result = -1;
-	gboolean good = TRUE;
-	gint server_port = 0;
-
-
-#ifdef GW_DEBUG_MODE
-	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
-#endif
-
-	if ( mail != NULL ) {
-		/* Checks if can send a mail. */
-		if ( gw_am_can_send_mail ( ) ) {
-			/* To do more and more checking tests. */
-			good = good && gw_mail_check_email_list ( gw_am_get_settings ( GW_VALUE_APP_MAIL_EMAIL_ADDRESS));
-			good = good && gw_mail_check_email_list ( mail->to);
-			good = good && gw_mail_check_email_list ( mail->cc);
-			good = good && gw_mail_check_email_list ( mail->bcc);
-
-			if ( good ) {
-				server_port = gw_am_get_settings_tol ( GW_VALUE_APP_MAIL_SERVER_PORT);
-
-				if ( (server_port == INT_MIN) || ( server_port == INT_MAX) ) {
-					switch ( errno) {
-						case ERANGE :	perror ( "strtol");
-								break;
-
-						default :	perror ( "strtol");
-								break;
-					}
-				}
-
-				result = gw_mail_send_mail ( gw_am_get_settings ( GW_VALUE_APP_MAIL_SERVER_ADDRESS),
-						server_port,
-						gw_am_get_settings ( GW_VALUE_APP_MAIL_EMAIL_ADDRESS),
-						mail->to,
-						mail->cc,
-						mail->bcc,
-						mail->subject,
-						mail->message,
-						mail->file_path);
-			}
-		}
 	}
 
 	return result;

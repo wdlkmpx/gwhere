@@ -4,7 +4,7 @@
 CC = gcc.exe
 WINDRES = windres.exe
 RES = 
-OBJ = gwfile.o gwfilesystem.o gwstring.o gwmail.o gwpropertiesfile.o gwencode.o $(RES)
+OBJ = gwfile.o gwfilesystem.o gwstring.o gwpropertiesfile.o gwencode.o $(RES)
 INCS = $(GWINCS) $(GTKINCS) -IC:/MINGW/include -IC:/MINGW/mingw_extra/include -IC:/GTK/include
 GTKINCS = -IC:/GTK/include/gtk-2.0 -IC:/GTK/lib/gtk-2.0/include -IC:/GTK/include/atk-1.0 -IC:/GTK/include/pango-1.0 -IC:/GTK/include/glib-2.0 -IC:/GTK/lib/glib-2.0/include
 GWINCS = -I..

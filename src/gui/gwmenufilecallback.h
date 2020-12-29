@@ -99,18 +99,6 @@ gboolean gw_menu_file_close_click ( GtkMenuItem *mi, GtkWindow *w);
 
 
 /*!
- * @function	gw_menu_file_send_mail_click
- * @abstract	Launches from menu file : send catalog by mail.
- * @discussion	This function launches from the menu file the functionality : send catalog by mail.
- * @param	m	menu item invoker
- * @param	w	reference to the main window
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_send_mail_click ( GtkMenuItem *mi, GtkWindow *w);
-
-
-/*!
  * @function	gw_menu_file_properties_click
  * @abstract	Launches from menu file : catalog properties.
  * @discussion	This function launches from the menu file the functionality : catalog properties.
@@ -313,41 +301,6 @@ gboolean gw_menu_file_close_save_file_no (GtkWidget *w, gpointer data);
  */
 gboolean gw_menu_file_close_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
-
-/*!
- * @function	gw_menu_file_send_mail_save_file_ok
- * @abstract	Saves the opened catalog and sends it by mail.
- * @discussion	This function saves the opened catalog and sends it by mail
- * @param	bt	button invoker
- * @param	data	user data
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_send_mail_save_file_ok (GtkWidget *w, gpointer data);
-
-
-/*!
- * @function	gw_menu_file_send_mail_save_file_no
- * @abstract	Sends a catalog by mail without save it.
- * @discussion	This function sends a catalog by mail without save it
- * @param	bt	button invoker
- * @param	data	user data
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_send_mail_save_file_no (GtkWidget *w, gpointer data);
-
-
-/*!
- * @function	gw_menu_file_send_mail_saveas_file_selection_ok
- * @abstract	Saves as file name the opened catalog and sends it by mail.
- * @discussion	This function saves as file name the opened catalog and sends it by mail
- * @param	bt	button invoker
- * @param	fs	the file selection box
- * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_menu_file_send_mail_saveas_file_selection_ok (GtkWidget *w, char * filename);
 
 /*!
  * @function	gw_menu_file_exit_save_file_ok

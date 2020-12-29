@@ -65,13 +65,10 @@
 #include "gwsettingsgeneral.h"
 #include "gwsettingsgui.h"
 #include "gwsettingsinterface.h"
-#include "gwsettingsmail.h"
 #include "gwsettingswindowbox.h"
 #include "gwsettingswindowboxcallback.h"
 #include "gwstatusbar.h"
 #include "gwstatusbarcallback.h"
 #include "gwtoolbar.h"
-#include "gwwindowboxmail.h"
-#include "gwwindowboxmailcallback.h"
 
 #endif

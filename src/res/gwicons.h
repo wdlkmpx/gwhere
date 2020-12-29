@@ -251,22 +251,6 @@ GdkBitmap *MskSave;
 
 
 /*!
-* @var         PixSendMail
-* @abstract    Send ail icon.
-* @discussion  The close file icon pixmap for toolbar.<br>
-*/
-GdkPixmap *PixSendMail;
-
-
-/*!
-* @var         MskSendMail
-* @abstract    Send mail icon.
-* @discussion  The close file icon bitmap for toolbar.<br>
-*/
-GdkBitmap *MskSendMail;
-
-
-/*!
 * @var         PixClose
 * @abstract    Close file icon.
 * @discussion  The close file icon pixmap for toolbar.<br>

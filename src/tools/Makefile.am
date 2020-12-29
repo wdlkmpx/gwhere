@@ -13,7 +13,6 @@ libgwtools_a_SOURCES = \
 	gwencode.c gwencode.h \
 	gwfile.c gwfile.h \
 	gwpropertiesfile.c gwpropertiesfile.h \
-	gwfilesystem.c gwfilesystem.h \
-	gwmail.c gwmail.h
+	gwfilesystem.c gwfilesystem.h
 
 EXTRA_DIST = $(SOURCES)

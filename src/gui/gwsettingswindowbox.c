@@ -27,7 +27,6 @@
 #include "gwsettingscatalogfile.h"
 #include "gwsettingsexplorer.h"
 #include "gwsettingssearch.h"
-#include "gwsettingsmail.h"
 
 #include "../gwapplicationmanager.h"
 
@@ -231,10 +230,8 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 		gw_plugin_settings_explorer_init ( &modules[3]);
 		/* Search. */
 		gw_plugin_settings_search_init ( &modules[4]);
-		/* Mail. */
-		gw_plugin_settings_mail_init ( &modules[5]);
 
-		for ( i = 0; i < 6; i++)
+		for ( i = 0; i < 5; i++)
 		{
 			if ( gw_settings_module_check ( modules[i]) == FALSE )
 			{
@@ -252,7 +249,7 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 
 		gtk_clist_freeze ( GTK_CLIST ( settings_ctree));
 
-		for ( i = 0; i < 6; i++)
+		for ( i = 0; i < 5; i++)
 		{
 			if ( modules[i] != NULL )
 			{
