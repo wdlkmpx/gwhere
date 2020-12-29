@@ -28,17 +28,13 @@
 /*! @define	GW_REF_CMB_BOX_CATEGORIES_CMB	The real combo */
 #define GW_REF_CMB_BOX_CATEGORIES_CMB "gw_ref_cmb_box_categories_cmb"
 
-
-GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog) {
-	GtkWidget *hb, *lbl, *cmb;
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog)
+{
+	GtkWidget *hb, *lbl, *cmb, * combo_entry;
 
 	/* Vertical box for categories */
 	hb = gtk_hbox_new ( FALSE, 0);
-	gtk_container_set_border_width ( GTK_CONTAINER ( hb), 2);
+	gtk_container_set_border_width (GTK_CONTAINER ( hb), 2);
 
 	/* Title label for categories */
 	if ( title != NULL ) {
@@ -47,73 +43,59 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
 	}
 
 	/* Combo box for categories */
-	cmb = gtk_combo_new ( );
-	g_object_ref ( cmb);
-	gtk_combo_set_use_arrows_always ( GTK_COMBO ( cmb), TRUE);
-	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) g_object_unref);
-	gtk_editable_set_editable (GTK_EDITABLE ( GTK_COMBO ( cmb)->entry), FALSE);
+	cmb = gtk_combo_box_text_new_with_entry ();
+	combo_entry = gtk_bin_get_child (GTK_BIN (cmb));
+	gtk_editable_set_editable (GTK_EDITABLE (combo_entry), FALSE);
+
 	gtk_box_pack_start ( GTK_BOX ( hb), cmb, TRUE, TRUE, 0);
+	g_object_ref ( cmb);
+	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) g_object_unref);
 
 	return GTK_HBOX ( hb);
 }
 
 
-gint gw_combo_box_categories_load ( GtkHBox *cbc) {
+gint gw_combo_box_categories_load ( GtkHBox *cbc)
+{
 	GList *categories = NULL;
-	GList *glist = NULL;
-	GtkCombo *cmb = NULL;
+	GList *glist = NULL, * gl;
+	GtkComboBoxText * cmb;
 	gint result = -1;
 	gint i = 0;
+	char *name;
 
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+	cmb = gw_combo_box_categories_get_combo (cbc);
+	glist = gw_combo_box_categories_get_categories (cbc);
 
-	if ( (cmb = gw_combo_box_categories_get_combo ( cbc)) != NULL ) {
-		if ( (glist = gw_combo_box_categories_get_categories ( cbc)) == NULL ) {
-			glist = g_list_append ( glist, "");
-			gtk_combo_set_popdown_strings ( cmb, glist);
-
-			result = -1;
-		} else {
-			glist = g_list_first ( glist);
-
-			while ( glist != g_list_last ( glist)) {
-				categories = g_list_append ( categories, gw_db_category_get_name ( (GWDBCategory*)glist->data));
-				glist = g_list_next ( glist);
-			}
-
-			categories = g_list_append ( categories, gw_db_category_get_name ( glist->data));
-
-			if ( categories != NULL ) {
-				gtk_combo_set_popdown_strings ( cmb, categories);
-			}
-
-			if ( categories != NULL ) {
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), g_list_first (categories)->data);
-
-				result = 0;
-			} else {
-				/*gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), _("none"));*/
-				result = -1;
-			}
-
-			glist = g_list_first ( glist);
-			for ( i = 0; i < g_list_length ( glist); i++) {
-				gw_db_category_free ( g_list_nth_data ( glist, i));
-			}
-			g_list_free ( glist);
-			g_list_free ( categories);
-		}
+	if (!glist) {
+		return -1;
+	} else {
+		result = 0;
 	}
+
+	GtkTreeModel * model = gtk_combo_box_get_model (GTK_COMBO_BOX (cmb));
+	gtk_list_store_clear (GTK_LIST_STORE (model));
+
+	for (gl = glist; gl; gl = gl->next)
+	{
+		name = gw_db_category_get_name ((GWDBCategory*)gl->data);
+		categories = g_list_append (categories, name);
+		gtk_combo_box_text_append_text (cmb, name);
+	}
+
+	for (gl = glist; gl; gl = gl->next) {
+		gw_db_category_free (gl->data);
+	}
+	g_list_free ( glist);
+	g_list_free ( categories);
 
 	return result;
 }
 
 
-gint category_ref_cmp ( gpointer src, gpointer dst) {
+gint category_ref_cmp ( gpointer src, gpointer dst)
+{
 	GWDBCategory *category = src;
-
 
 	if (src != NULL && gw_db_category_get_ref ( category) == dst) {
 		return 0;
@@ -123,24 +105,23 @@ gint category_ref_cmp ( gpointer src, gpointer dst) {
 }
 
 
-gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryPK ref) {
+gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryPK ref)
+{
 	GList *categories = NULL;
 	GList *selection = NULL;
-	GtkCombo *cmb;
+	GtkComboBoxText * cmb;
+	GtkEntry * entry;
 	gint result = -1;
 	gint i = 0;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (cbc != NULL) && (ref != NULL) ) {
+	if (ref != NULL)
+	{
 		if ( (categories = gw_combo_box_categories_get_categories ( cbc)) != NULL ) {
 			if ( (selection = g_list_find_custom ( categories, ref, (GCompareFunc)category_ref_cmp)) != NULL ) {
 				cmb = gw_combo_box_categories_get_combo ( cbc);
-				gtk_entry_set_text (GTK_ENTRY (cmb->entry), gw_db_category_get_name (selection->data));
-
+				char * cat_name = gw_db_category_get_name (selection->data);
+				entry = GTK_ENTRY (gtk_bin_get_child (GTK_BIN (cmb)));
+				gtk_entry_set_text (entry, cat_name);
 				result = 0;
 			}
 
@@ -154,11 +135,10 @@ gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryP
 	return result;
 }
 
-
-gint category_name_cmp ( gpointer src, gpointer dst) {
+gint category_name_cmp ( gpointer src, gpointer dst)
+{
 	GWDBCategory *category = src;
 	gchar *name = dst;
-
 
 	if ( dst != NULL && src != NULL && strcmp ( name, gw_db_category_get_name ( category)) == 0 ) {
 		return 0;
@@ -167,24 +147,25 @@ gint category_name_cmp ( gpointer src, gpointer dst) {
 	}
 }
 
-
-gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *name) {
+gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *name)
+{
 	GList *categories = NULL;
 	GList *selection = NULL;
-	GtkCombo *cmb;
+	GtkComboBoxText * cmb;
+	GtkEntry * entry;
 	gint result = -1;
 	gint i = 0;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (cbc != NULL) && (name != NULL) ) {
-		if ( (categories = gw_combo_box_categories_get_categories ( cbc)) != NULL ) {
-			if ( (selection = g_list_find_custom ( categories, name, (GCompareFunc)category_name_cmp)) != NULL ) {
+	if (name)
+	{
+		categories = gw_combo_box_categories_get_categories (cbc);
+		if (categories)
+		{
+			if ((selection = g_list_find_custom (categories, name, (GCompareFunc)category_name_cmp)) != NULL ) {
 				cmb = gw_combo_box_categories_get_combo ( cbc);
-				gtk_entry_set_text (GTK_ENTRY (cmb->entry), g_list_first (selection)->data);
+				char * cat_name = gw_db_category_get_name (selection->data);
+				entry = GTK_ENTRY (gtk_bin_get_child (GTK_BIN (cmb)));
+				gtk_entry_set_text (entry, cat_name);
 
 				result = 0;
 			}
@@ -200,18 +181,15 @@ gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *n
 }
 
 
-GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc) {
+GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc)
+{
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	gchar *name;
 	GWDBCategory *category = NULL;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( cbc != NULL && context != NULL ) {
+	if (context)
+	{
 		name = gw_combo_box_categories_get_selected_category_name ( cbc);
 
 		if ( name != NULL ) {
@@ -225,54 +203,36 @@ GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc) {
 }
 
 
-gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc) {
-	GtkCombo *cmb = NULL;
+gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc)
+{
+	GtkComboBoxText * cmb;
 	gchar *category_name = NULL;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( cbc != NULL ) {
-		if ( (cmb = g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB)) != NULL) {
-			g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( cmb->entry)), category_name);
-		}
-	}
+	cmb = g_object_get_data (G_OBJECT (cbc), GW_REF_CMB_BOX_CATEGORIES_CMB);
+	category_name = gtk_combo_box_text_get_active_text (cmb);
 
 	return category_name;
 }
 
 
-GtkCombo * gw_combo_box_categories_get_combo ( GtkHBox *cbc) {
-	GtkCombo *combo = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( cbc != NULL ) {
-		combo = GTK_COMBO ( g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB));
-	}
-
+GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc)
+{
+	GtkComboBoxText *combo = NULL;
+	combo = GTK_COMBO_BOX_TEXT (g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB));
 	return combo;
 }
 
 
-GList * gw_combo_box_categories_get_categories ( GtkHBox *cbc) {
+/* this does not require a combo */
+GList * gw_combo_box_categories_get_categories ( GtkHBox *cbc)
+{
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCategory **categories = NULL;
 	GList *result = NULL;
 	gint i = 0;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( cbc != NULL && context != NULL) {
+	if (context != NULL) {
 		plugin = (GWCatalogPlugin*)gw_db_context_get_plugin ( context);
 		if ( (categories = plugin->gw_db_catalog_get_db_categories ( context)) != NULL ) {
 			for ( i = 0; categories[i]!=NULL; i++) {

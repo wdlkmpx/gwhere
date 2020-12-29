@@ -126,7 +126,7 @@ gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc);
  * @result	pointer to the combo.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GtkCombo * gw_combo_box_categories_get_combo ( GtkHBox *cbc);
+GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc);
 
 
 /*!
