@@ -25,7 +25,6 @@
 
 #include "data/gwdata.h"
 #include "tools/gwtools.h"
-#include "res/gwres.h"
 
 #include "gwcomboboxcategories.h"
 #include "gwnotebookmanagment.h"
@@ -545,51 +544,25 @@ gint gw_notebook_managment_select_device (GtkComboBoxText *cmb, GtkWindow *w)
 }
 
 
-gint gw_notebook_managment_refresh_info ( GtkWidget *chk, GtkWindow *w) {
+gint gw_notebook_managment_refresh_info ( GtkWidget *chk, GtkWindow *w)
+{
 	GtkComboBoxText *cmb = NULL;
-	gint result = -1;
+	int result;
 
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL ) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_DISPLAY_INFO, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-	}
-
-	if ( w != NULL ) {
-		if ( (cmb = gw_notebook_managment_get_combo_box_device ( w)) != NULL) {
-			result = gw_notebook_managment_select_device (cmb, w);
-		}
-	}
-
+	gw_am_set_settings ( GW_VALUE_APP_DISK_DISPLAY_INFO, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	cmb = gw_notebook_managment_get_combo_box_device (w);
+	result = gw_notebook_managment_select_device (cmb, w);
 	return result;
 }
 
 
-gint gw_notebook_managment_refresh_categories ( GtkWindow *w) {
+gint gw_notebook_managment_refresh_categories ( GtkWindow *w)
+{
 	GtkHBox *cmb;
-	GtkCTree *tree = NULL;
-	GtkCTreeNode *root = NULL;
-	gint result = -1;
 
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL ) {
-		tree = gw_gui_manager_main_interface_get_tree ( );
-		root = gw_gui_manager_main_interface_get_tree_root ( );
-
-		cmb = gw_notebook_managment_get_combo_box_categories ( w);
-		gw_combo_box_categories_load ( cmb);
-
-		result = 0;
-	}
-
-	return result;
+	cmb = gw_notebook_managment_get_combo_box_categories ( w);
+	gw_combo_box_categories_load ( cmb);
+	return 0;
 }
 
 
@@ -629,22 +602,11 @@ gboolean gw_notebook_managment_stop_scan_disk ( GtkObject *obj, gpointer data) {
 }
 
 
-gint gw_notebook_managment_set_current_statment ( gpointer w, gfloat current) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL ) {
-		gw_progress_bar_box_add_value ( (GtkWindow*)w, current);
-		gw_gui_manager_main_interface_refresh ( );
-
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_set_current_statment ( gpointer w, gfloat current)
+{
+	gw_progress_bar_box_add_value ( (GtkWindow*)w, current);
+	gw_gui_manager_main_interface_refresh ( );
+	return 0;
 }
 
 
@@ -653,27 +615,15 @@ gint gw_capture_box_catalog_name_ok ( GtkWidget *w, gpointer data)
 {
 	gchar *name = (char *) data;
 	GtkWindow *window = NULL;
-	GtkCTree *tree = NULL;
-	GtkCTreeNode *root = NULL;
 
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
+	gw_am_new_catalog ( name);
 
 	/* If catalog name is filled : update catalog informations */
-	window = gw_gui_manager_main_interface_get_main_window ( );
-	tree = gw_gui_manager_main_interface_get_tree ( );
-	root = gw_gui_manager_main_interface_get_tree_root ( );
+	window = gw_gui_manager_main_interface_get_main_window ();
+	/* relaunch the scan */
+	gw_notebook_managment_scan_click (NULL,  window);
 
-	if (window){
-		gw_am_new_catalog ( name);
-
-		/* relaunch the scan */
-		gw_notebook_managment_scan_click ( NULL,  window);
-
-		return 0;
-	}
-	return -1;
+	return 0;
 }
 
 
@@ -682,163 +632,71 @@ gint gw_capture_box_disk_name_ok ( GtkWidget *w, gpointer data)
 	char *disk_name = (char *) data;
 	GtkWindow *window = NULL;
 
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
 	window = gw_gui_manager_main_interface_get_main_window ( );
-
-	if (window) {
-		gw_notebook_managment_set_device_name ( window, disk_name);
-
-		/* relaun the scan */
-		gw_notebook_managment_scan_click ( NULL, window);
-
-		return 0;
-	}
-
-	return -1;
+	gw_notebook_managment_set_device_name ( window, disk_name);
+	/* relaun the scan */
+	gw_notebook_managment_scan_click ( NULL, window);
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_explore_tree_structure_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_EXPLORE_TREE_STRUCTURE, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_explore_tree_structure_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_EXPLORE_TREE_STRUCTURE, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_explore_archive_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_EXPLORE_ARCHIVE, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_explore_archive_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_EXPLORE_ARCHIVE, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_category_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_CATEGORY, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_category_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_CATEGORY, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_description_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_DESCRIPTION, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_description_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_DESCRIPTION, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_use_disk_label_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_LABEL, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_use_disk_label_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_LABEL, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_use_pattern_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
+gint gw_notebook_managment_option_use_pattern_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_USE_PATTERN, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
 
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_SCAN_USE_PATTERN, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-
-		if ( gw_am_get_settings_tol ( GW_VALUE_APP_DISK_SCAN_USE_PATTERN) == 1) {
-			gw_notebook_managment_set_device_name ( w, gw_am_get_settings ( GW_VALUE_APP_DISK_SCAN_PATTERN));
-		} else {
-			gw_notebook_managment_set_device_name ( w, "");
-		}
-
-		result = 0;
+	if ( gw_am_get_settings_tol ( GW_VALUE_APP_DISK_SCAN_USE_PATTERN) == 1) {
+		gw_notebook_managment_set_device_name ( w, gw_am_get_settings ( GW_VALUE_APP_DISK_SCAN_PATTERN));
+	} else {
+		gw_notebook_managment_set_device_name ( w, "");
 	}
-
-	return result;
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_automount_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_AUTOMOUNT, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_automount_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_AUTOMOUNT, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }
 
 
-gint gw_notebook_managment_option_eject_click ( GtkToggleButton *chk, GtkWindow *w) {
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( chk != NULL) {
-		gw_am_set_settings ( GW_VALUE_APP_DISK_EJECT, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
-		result = 0;
-	}
-
-	return result;
+gint gw_notebook_managment_option_eject_click ( GtkToggleButton *chk, GtkWindow *w)
+{
+	gw_am_set_settings ( GW_VALUE_APP_DISK_EJECT, g_strdup_printf ( "%d", gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk))));
+	return 0;
 }

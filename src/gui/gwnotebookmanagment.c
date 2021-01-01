@@ -508,19 +508,11 @@ gint gw_notebook_managment_set_device_name ( GtkWindow *w, gchar *device_name)
 	GtkEntry *ent = NULL;
 	gint result = -1;
 
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (w != NULL) && (device_name != NULL) )
-	{
-		if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME)) != NULL)
-		{
-			gtk_entry_set_text ( ent, device_name);
-			result = 0;
-		}
+	if (device_name != NULL) {
+		ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME);
+		gtk_entry_set_text ( ent, device_name);
+		result = 0;
 	}
-
 	return result;
 }
 
@@ -530,19 +522,11 @@ gint gw_notebook_managment_set_device_number ( GtkWindow *w, gchar *device_numbe
 	GtkEntry *ent = NULL;
 	gint result = -1;
 
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (w != NULL) && (device_number != NULL) )
-	{
-		if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE)) != NULL)
-		{
-			gtk_entry_set_text ( ent, device_number);
-			result = 0;
-		}
+	if (device_number != NULL) {
+		ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE);
+		gtk_entry_set_text ( ent, device_number);
+		result = 0;
 	}
-
 	return result;
 }
 
@@ -552,23 +536,11 @@ gint gw_notebook_managment_set_device_category ( GtkWindow *w, gchar *device_cat
 	GtkHBox *cmb;
 	gint result = -1;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (w != NULL) && (device_category != NULL) )
-	{
-		if ( (cmb = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_CATEGORY)) != NULL )
-		{
-			/* Doesn't encode to UTF-8, one should not!! */
-			gw_combo_box_categories_set_selected_category_name ( cmb, device_category);
-
-			result = 0;
-		}
-	
+	if (device_category != NULL) {
+		cmb = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_CATEGORY);
+		gw_combo_box_categories_set_selected_category_name (cmb, device_category);
+		result = 0;
 	}
-
 	return result;
 }
 
@@ -576,216 +548,81 @@ gint gw_notebook_managment_set_device_category ( GtkWindow *w, gchar *device_cat
 gint gw_notebook_managment_set_option_display_info ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_automount ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_eject ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_category_recursive ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_explore_tree_structure ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_explore_archive ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_make_description ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_use_pattern ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN);
+	gtk_toggle_button_set_active (chk, b);
+	return 0;
 }
 
 
 gint gw_notebook_managment_set_option_use_disk_label ( GtkWindow *w, gboolean b)
 {
 	GtkToggleButton *chk = NULL;
-	gint result = -1;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL)) != NULL )
-		{
-			gtk_toggle_button_set_active ( chk, b);
-
-			result = 0;
-		}
-	}
-
-	return result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL);
+	gtk_toggle_button_set_active ( chk, b);
+	return 0;
 }
 
 
@@ -804,24 +641,8 @@ gchar * gw_notebook_managment_get_device_name ( GtkWindow *w)
 {
 	GtkEntry *ent = NULL;
 	gchar *device_name = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME)) != NULL)
-		{
-			g_strdup_from_gtk_text ( gtk_entry_get_text ( ent), device_name);
-		}
-	}
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s() : device_name=%s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, device_name);
-#endif
-
+	ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME);
+	device_name = g_strdup (gtk_entry_get_text (ent));
 	return device_name;
 }
 
@@ -830,21 +651,8 @@ gchar * gw_notebook_managment_get_device_number ( GtkWindow *w)
 {
 	GtkEntry *ent = NULL;
 	gchar * device_number = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE)) != NULL)
-	{
-		g_strdup_from_gtk_text ( gtk_entry_get_text ( ent), device_number);
-	}
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s() : device_number=%s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, device_number);
-#endif
-
+	ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE);
+	device_number = g_strdup (gtk_entry_get_text (ent));
 	return device_number;
 }
 
@@ -853,24 +661,8 @@ gchar * gw_notebook_managment_get_device_category ( GtkWindow *w)
 {
 	GtkEntry *ent = NULL;
 	gchar * device_category = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_CATEGORY)) != NULL)
-		{
-			g_strdup_from_gtk_text ( gtk_entry_get_text ( ent), device_category);
-		}
-	}
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s() : device_category=%s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, device_category);
-#endif
-
+	ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_CATEGORY);
+	g_strdup_from_gtk_text ( gtk_entry_get_text ( ent), device_category);
 	return device_category;
 }
 
@@ -878,219 +670,97 @@ gchar * gw_notebook_managment_get_device_category ( GtkWindow *w)
 gboolean gw_notebook_managment_get_option_display_info ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_DISPLAY_INFO);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_automount ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_AUTO_MOUNT);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_eject ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-			g_print ( "*** GW - %s (%d) :: %s() : eject option is %d\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, result);
-#endif
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EJECT);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_category_recursive ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_CATEGORY_RECURSIVE);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_explore_tree_structure ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_TREE_STRUCTURE);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_explore_archive ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_EXPLORE_ARCHIVE);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_make_description ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_MAKE_DESCRIPTION);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_use_pattern ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_PATTERN);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 gboolean gw_notebook_managment_get_option_use_disk_label ( GtkWindow *w)
 {
 	GtkToggleButton *chk = NULL;
-	gboolean result = FALSE;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL)) != NULL )
-		{
-			result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
-		}
-	}
-
-	return result;
+	gboolean result;
+	chk = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_CHECK_USE_DISK_LABEL);
+	result = gtk_toggle_button_get_active ( GTK_TOGGLE_BUTTON ( chk));
+	return TRUE;
 }
 
 
 GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w)
 {
 	GtkHBox *hbox = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		hbox = GTK_HBOX ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY));
-	}
-
+	hbox = GTK_HBOX ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY));
 	return hbox;
 }
 
@@ -1098,17 +768,7 @@ GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w)
 GtkComboBoxText * gw_notebook_managment_get_combo_box_device ( GtkWindow *w)
 {
 	GtkComboBoxText *cmb_device = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		cmb_device = GTK_COMBO_BOX_TEXT ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE));
-	}
-
+	cmb_device = GTK_COMBO_BOX_TEXT ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE));
 	return cmb_device;
 }
 
@@ -1116,17 +776,7 @@ GtkComboBoxText * gw_notebook_managment_get_combo_box_device ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_info ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_INFO));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_INFO));
 	return label;
 }
 
@@ -1134,17 +784,7 @@ GtkLabel * gw_notebook_managment_get_label_device_info ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_type ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_TYPE));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_TYPE));
 	return label;
 }
 
@@ -1152,17 +792,7 @@ GtkLabel * gw_notebook_managment_get_label_device_type ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_mounted ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_MOUNTED));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_MOUNTED));
 	return label;
 }
 
@@ -1170,17 +800,7 @@ GtkLabel * gw_notebook_managment_get_label_device_mounted ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_volume ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_VOLUME));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_VOLUME));
 	return label;
 }
 
@@ -1188,17 +808,7 @@ GtkLabel * gw_notebook_managment_get_label_device_volume ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_serial_number ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_SERIAL_NUMBER));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_SERIAL_NUMBER));
 	return label;
 }
 
@@ -1206,17 +816,7 @@ GtkLabel * gw_notebook_managment_get_label_device_serial_number ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_capacity ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_CAPACITY));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_CAPACITY));
 	return label;
 }
 
@@ -1224,16 +824,6 @@ GtkLabel * gw_notebook_managment_get_label_device_capacity ( GtkWindow *w)
 GtkLabel * gw_notebook_managment_get_label_device_free_space ( GtkWindow *w)
 {
 	GtkLabel *label = NULL;
-
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_FREE_SPACE));
-	}
-
+	label = GTK_LABEL ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_LABEL_DISPLAY_INFO_FREE_SPACE));
 	return label;
 }
