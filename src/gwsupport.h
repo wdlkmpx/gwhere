@@ -37,6 +37,10 @@
 #ifndef GW_SUPPORT_H
 #define GW_SUPPORT_H
 
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
 #include <gtk/gtk.h>
 #include "gtkcompat.h"
 

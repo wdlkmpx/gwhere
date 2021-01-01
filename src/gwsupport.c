@@ -19,15 +19,6 @@
 
 #include "gwsupport.h"
 
-/*
-#ifdef HAVE_CONFIG_H
-    #if defined ( __linux__) || defined ( __CYGWIN__ )
-        #include <config.h>
-    #elif defined ( __MINGW32__)
-        #include "../config_win32.h"
-    #endif
-#endif
-*/
 #if defined ( __MINGW32__)
 	#include <winreg.h>
 #endif
@@ -38,7 +29,6 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
-
 
 /* This is an internally used function to check if a pixmap file exists. */
 static gchar* check_file_exists ( const gchar *directory, const gchar *filename);
