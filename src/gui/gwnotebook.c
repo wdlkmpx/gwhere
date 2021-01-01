@@ -74,7 +74,7 @@ gboolean gw_notebook_page_switch (GtkNotebook *notebook,
 	GtkCList *clist = NULL;
 	gboolean result = FALSE;
 	static gboolean first_load = TRUE;
-	GtkCombo *cmb = NULL;
+	GtkComboBoxText *cmb = NULL;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
@@ -104,8 +104,7 @@ gboolean gw_notebook_page_switch (GtkNotebook *notebook,
 					first_load = FALSE;
 					if ( (cmb = gw_notebook_managment_get_combo_box_device ( w)) != NULL)
 					{
-						gtk_widget_grab_focus ( GTK_WIDGET ( GTK_OBJECT ( GTK_ENTRY ( GTK_COMBO ( cmb)->entry))));
-						gw_notebook_managment_select_device ( GTK_WIDGET ( GTK_OBJECT ( GTK_ENTRY ( GTK_COMBO ( cmb)->entry))), w);
+						gw_notebook_managment_select_device (cmb, w);
 					}
 				}
 				result = TRUE;

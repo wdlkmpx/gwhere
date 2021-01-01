@@ -77,7 +77,7 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *w);
  *		Returns <i>0</i> when it's done.<br>
  *		Returns <i>-1</i> when an error occured.
  */
-gint gw_notebook_managment_select_device ( GtkWidget *cmb, GtkWindow *w);
+gint gw_notebook_managment_select_device (GtkComboBoxText *cmb, GtkWindow *w);
 
 
 /*!

@@ -36,8 +36,6 @@
 
 /*! @define	GW_REF_NOTEBOOK_MANAGMENT_TABBED_PANE_LABEL	The pabbed pane title */
 #define GW_REF_NOTEBOOK_MANAGMENT_TABBED_PANE_LABEL "gw_ref_gw_notebook_managment_tabbed_pane_label"
-/*! @define	REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR	The combo box entry for device directory */
-#define REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR "ref_gw_gui_gw_notebook_managment_combo_box_entry_device_dir"
 /*! @define	REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME	The entry for device name*/
 #define REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NAME "ref_gw_gui_gw_notebook_managment_entry_device_name"
 /*! @define	REF_GW_GUI_NOTEBOOK_MANAGMENT_ENTRY_DEVICE_NUMBER_ARCHIVE	The entry for number archive */
@@ -91,7 +89,6 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	GtkWidget *hb_disk_selection;
 	GtkWidget *lbl_disk_selection;
 	GtkWidget *cmb_disk_selection;
-	GtkWidget *entry_cmb_disk_selection;
 	GtkWidget *hseparator;
 	GtkWidget *hb_number_archive;
 	GtkWidget *lbl_number_archive;
@@ -171,11 +168,10 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		gtk_box_pack_start ( GTK_BOX ( hb_disk_selection), lbl_disk_selection, FALSE, FALSE, 0);
 	
 		/* ComboBox to select media */
-		cmb_disk_selection = gtk_combo_new ( );
+		cmb_disk_selection = gtk_combo_box_text_new_with_entry ( );
 		g_object_ref ( cmb_disk_selection);
 		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE, cmb_disk_selection, (GDestroyNotify) g_object_unref);
-		gtk_combo_set_use_arrows_always ( GTK_COMBO ( cmb_disk_selection), TRUE);
-		gtk_editable_set_editable (GTK_EDITABLE ( GTK_COMBO ( cmb_disk_selection)->entry), FALSE);
+		gtk_editable_set_editable (GTK_EDITABLE (gtk_bin_get_child (GTK_BIN (cmb_disk_selection))), FALSE);
 
 		/* Loads the list of devices */
 		gw_notebook_managment_load_device_list ( window);
@@ -183,14 +179,9 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 		/* To fix : when user click on combo's button, the first item of the list is selected
 		   automaticaly. This emits the "changed" event!!
 		*/
-		g_signal_connect_after (G_OBJECT ( GTK_ENTRY ( GTK_COMBO ( cmb_disk_selection)->entry)), "changed", G_CALLBACK ( gw_notebook_managment_select_device), GTK_WINDOW ( window));
+		g_signal_connect_after (cmb_disk_selection, "changed", G_CALLBACK ( gw_notebook_managment_select_device), GTK_WINDOW (window));
 		gtk_box_pack_start ( GTK_BOX ( hb_disk_selection), cmb_disk_selection, TRUE, TRUE, 0);
 	
-		/* Entry of ComboBox to select disk */
-		entry_cmb_disk_selection = GTK_COMBO ( cmb_disk_selection)->entry;
-		g_object_ref ( entry_cmb_disk_selection);
-		g_object_set_data_full (G_OBJECT ( window), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR, entry_cmb_disk_selection, (GDestroyNotify) g_object_unref);
-
 		/* Horizontal separator */
 		hseparator = gtk_hseparator_new ( );
 		gtk_box_pack_start ( GTK_BOX ( vb_new_disk_control), hseparator, TRUE, TRUE, 0);
@@ -800,26 +791,11 @@ gint gw_notebook_managment_set_option_use_disk_label ( GtkWindow *w, gboolean b)
 
 gchar * gw_notebook_managment_get_device_dir ( GtkWindow *w)
 {
-	GtkEntry *ent = NULL;
+	GtkComboBoxText *cmb = NULL;
 	gchar *device_dir = NULL;
 
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-	if ( w != NULL )
-	{
-		if ( (ent = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_ENTRY_DEVICE_DIR)) != NULL)
-		{
-			g_strdup_from_gtk_text ( gtk_entry_get_text ( ent), device_dir);
-		}
-	}
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s() : device_dir=%s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, device_dir);
-#endif
-
+	cmb = g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE);
+	device_dir = gtk_combo_box_text_get_active_text (cmb);
 	return device_dir;
 }
 
@@ -1119,9 +1095,9 @@ GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w)
 }
 
 
-GtkCombo * gw_notebook_managment_get_combo_box_device ( GtkWindow *w)
+GtkComboBoxText * gw_notebook_managment_get_combo_box_device ( GtkWindow *w)
 {
-	GtkCombo *cmb_device = NULL;
+	GtkComboBoxText *cmb_device = NULL;
 
 
 #ifdef GW_DEBUG_GUI_COMPONENT
@@ -1130,7 +1106,7 @@ GtkCombo * gw_notebook_managment_get_combo_box_device ( GtkWindow *w)
 
 	if ( w != NULL )
 	{
-		cmb_device = GTK_COMBO ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE));
+		cmb_device = GTK_COMBO_BOX_TEXT ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_DEVICE));
 	}
 
 	return cmb_device;

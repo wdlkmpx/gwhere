@@ -41,8 +41,8 @@
 
 
 gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
-	GList *devices = NULL, *tmp = NULL;
-	GtkCombo *cmb = NULL;
+	GList *devices = NULL, *tmp = NULL, *gl;
+	GtkComboBoxText *cmb = NULL;
 	gint result = -1;
 	gchar *selected_device = NULL;
 
@@ -57,7 +57,10 @@ gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
 			cmb = gw_notebook_managment_get_combo_box_device ( w);
 
 			if ( cmb != NULL ) {
-				gtk_combo_set_popdown_strings ( cmb, devices);
+				for (gl = devices; gl; gl = gl->next)
+				{
+					gtk_combo_box_text_append_text (cmb, (char*) gl->data);
+				}
 
 				/* Selects default device : mnt/cdrom */
 				if ( (selected_device = gw_am_get_settings ( GW_VALUE_APP_DISK_SELECTED)) == NULL ) {
@@ -72,7 +75,7 @@ gint gw_notebook_managment_load_device_list ( GtkWindow *w) {
 					tmp = g_list_first ( devices);
 				} else {}
 
-				gtk_entry_set_text ( GTK_ENTRY ( cmb->entry), tmp->data);
+				gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (cmb))), tmp->data); /* GtkComboBoxText */
 
 				if ( devices != NULL ) {
 					g_list_foreach ( devices, (GFunc)g_free, NULL);
@@ -385,7 +388,8 @@ gboolean gw_notebook_managment_scan_click ( GtkWidget *bt, GtkWindow *window) {
 }
 
 
-gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
+gint gw_notebook_managment_select_device (GtkComboBoxText *cmb, GtkWindow *w)
+{
 	GtkLabel *l;
 	gchar *text, *msg;
 #ifdef HAVE_MOUNT_SYSTEM
@@ -395,17 +399,16 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 	struct vfs_stats *vfs = NULL;
 	gint result = -1;
 	gchar *selected_device = NULL;
-	GtkCombo *cmb = NULL;
 	char *tempstr = NULL;
 
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( (entry != NULL) && (w != NULL) ) {
+	if (w != NULL) {
 		cmb = gw_notebook_managment_get_combo_box_device ( w);
 
-		if ( !gw_notebook_managment_get_option_display_info ( w) || !gtk_widget_has_focus ( entry)) {
+		if (!gw_notebook_managment_get_option_display_info ( w)) {
 #ifdef GW_DEBUG_GUI_CALLBACK_COMPONENT
 			g_print ( "*** GW - %s (%d) :: %s() : no display device informations\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
@@ -441,8 +444,9 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 
 			vfs = vfs_stats_new ( );
 
-			if ( vfs != NULL ) {
-				g_strdup_from_gtk_text ( gtk_entry_get_text ( GTK_ENTRY ( entry)), selected_device);
+			if ( vfs != NULL )
+			{
+				selected_device = gtk_combo_box_text_get_active_text (cmb);
 
 #if defined ( HAVE_MOUNT_SYSTEM)
 				gw_dm_device_load_to_vfs_stats ( vfs, selected_device);
@@ -542,7 +546,7 @@ gint gw_notebook_managment_select_device ( GtkWidget *entry, GtkWindow *w) {
 
 
 gint gw_notebook_managment_refresh_info ( GtkWidget *chk, GtkWindow *w) {
-	GtkCombo *cmb = NULL;
+	GtkComboBoxText *cmb = NULL;
 	gint result = -1;
 
 
@@ -556,7 +560,7 @@ gint gw_notebook_managment_refresh_info ( GtkWidget *chk, GtkWindow *w) {
 
 	if ( w != NULL ) {
 		if ( (cmb = gw_notebook_managment_get_combo_box_device ( w)) != NULL) {
-			result = gw_notebook_managment_select_device ( GTK_WIDGET ( GTK_OBJECT ( GTK_ENTRY ( GTK_COMBO ( cmb)->entry))), w);
+			result = gw_notebook_managment_select_device (cmb, w);
 		}
 	}
 

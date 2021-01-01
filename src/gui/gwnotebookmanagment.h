@@ -394,7 +394,7 @@ GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w);
  * @result	the combo devices list.<br>
  *		Returns <i>NULL</i> when an error occured.
  */
-GtkCombo * gw_notebook_managment_get_combo_box_device ( GtkWindow *w);
+GtkComboBoxText * gw_notebook_managment_get_combo_box_device ( GtkWindow *w);
 
 
 /*!
