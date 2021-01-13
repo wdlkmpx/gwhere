@@ -268,7 +268,6 @@ AM_GLIB_GNU_GETTEXT
 
 AC_CONFIG_FILES([
 Makefile
-gwhere.spec
 src/db/Makefile
 src/data/Makefile
 src/tools/Makefile
