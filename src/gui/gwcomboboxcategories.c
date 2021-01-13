@@ -28,7 +28,7 @@
 /*! @define	GW_REF_CMB_BOX_CATEGORIES_CMB	The real combo */
 #define GW_REF_CMB_BOX_CATEGORIES_CMB "gw_ref_cmb_box_categories_cmb"
 
-GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog)
+GtkBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog)
 {
 	GtkWidget *hb, *lbl, *cmb, * combo_entry;
 
@@ -51,11 +51,11 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
 	g_object_ref ( cmb);
 	g_object_set_data_full (G_OBJECT ( hb), GW_REF_CMB_BOX_CATEGORIES_CMB, cmb, (GDestroyNotify) g_object_unref);
 
-	return GTK_HBOX ( hb);
+	return GTK_BOX ( hb);
 }
 
 
-gint gw_combo_box_categories_load ( GtkHBox *cbc)
+gint gw_combo_box_categories_load ( GtkBox *cbc)
 {
 	GList *categories = NULL;
 	GList *glist = NULL, * gl;
@@ -105,7 +105,7 @@ gint category_ref_cmp ( gpointer src, gpointer dst)
 }
 
 
-gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryPK ref)
+gint gw_combo_box_categories_set_selected_category ( GtkBox *cbc, GWDBCategoryPK ref)
 {
 	GList *categories = NULL;
 	GList *selection = NULL;
@@ -147,7 +147,7 @@ gint category_name_cmp ( gpointer src, gpointer dst)
 	}
 }
 
-gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *name)
+gint gw_combo_box_categories_set_selected_category_name ( GtkBox *cbc, gchar *name)
 {
 	GList *categories = NULL;
 	GList *selection = NULL;
@@ -181,7 +181,7 @@ gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *n
 }
 
 
-GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc)
+GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkBox *cbc)
 {
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
@@ -203,7 +203,7 @@ GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc)
 }
 
 
-gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc)
+gchar * gw_combo_box_categories_get_selected_category_name ( GtkBox *cbc)
 {
 	GtkComboBoxText * cmb;
 	gchar *category_name = NULL;
@@ -215,7 +215,7 @@ gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc)
 }
 
 
-GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc)
+GtkComboBoxText * gw_combo_box_categories_get_combo (GtkBox *cbc)
 {
 	GtkComboBoxText *combo = NULL;
 	combo = GTK_COMBO_BOX_TEXT (g_object_get_data (G_OBJECT ( cbc), GW_REF_CMB_BOX_CATEGORIES_CMB));
@@ -224,7 +224,7 @@ GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc)
 
 
 /* this does not require a combo */
-GList * gw_combo_box_categories_get_categories ( GtkHBox *cbc)
+GList * gw_combo_box_categories_get_categories ( GtkBox *cbc)
 {
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );

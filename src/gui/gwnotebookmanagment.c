@@ -96,7 +96,7 @@ GtkWidget * gw_notebook_managment_create ( GtkWindow * window)
 	GtkWidget *hb_disk_name;
 	GtkWidget *lbl_disk_name;
 	GtkWidget *entry_disk_name;
-	GtkHBox *cmb_categories;
+	GtkBox *cmb_categories;
 	GtkWidget *hb_device_file;
 	GtkWidget *lbl_device_file;
 	GtkWidget *hb_device_type;
@@ -533,7 +533,7 @@ gint gw_notebook_managment_set_device_number ( GtkWindow *w, gchar *device_numbe
 
 gint gw_notebook_managment_set_device_category ( GtkWindow *w, gchar *device_category)
 {
-	GtkHBox *cmb;
+	GtkBox *cmb;
 	gint result = -1;
 
 	if (device_category != NULL) {
@@ -757,10 +757,10 @@ gboolean gw_notebook_managment_get_option_use_disk_label ( GtkWindow *w)
 }
 
 
-GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w)
+GtkBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w)
 {
-	GtkHBox *hbox = NULL;
-	hbox = GTK_HBOX ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY));
+	GtkBox *hbox = NULL;
+	hbox = GTK_BOX ( g_object_get_data (G_OBJECT ( w), REF_GW_GUI_NOTEBOOK_MANAGMENT_COMBO_BOX_CATEGORY));
 	return hbox;
 }
 

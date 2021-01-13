@@ -295,7 +295,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_catalog_info ( GtkWindow *
 	GtkWidget *hseparator; /* horizontal separator */
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
-	GtkHBox *cmb_categories;	/* Categories combo box */
+	GtkBox *cmb_categories;	/* Categories combo box */
 	gchar *text = NULL;
 	gchar *tempstr = NULL;
 
@@ -672,7 +672,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_disk_info ( GtkWindow *w, 
 	GtkWidget *hseparator; /* horizontal separator */
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
-	GtkHBox *cmb_categories;	/* Categories combo box */
+	GtkBox *cmb_categories;	/* Categories combo box */
 	gchar *text;
 	GdkPixmap *pix;
 	GdkBitmap *msk;
@@ -973,7 +973,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_folder_info ( GtkWindow *w
 	GtkWidget *hseparator; /* horizontal separator */
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
-	GtkHBox *cmb_categories;	/* Categories combo box */
+	GtkBox *cmb_categories;	/* Categories combo box */
 	gchar *text;
 	gchar *tempstr = NULL;
 
@@ -1246,7 +1246,7 @@ GtkNotebook * gw_properties_box_create_notebook_panel_file_info ( GtkWindow *w, 
 	GtkWidget *hseparator; /* horizontal separator */
 	GtkWidget *scrolled_area; /* scrolled window for text area */
 	GtkWidget *text_area; /* text area */
-	GtkHBox *cmb_categories;	/* Categories combo box */
+	GtkBox *cmb_categories;	/* Categories combo box */
 	gchar *text;
 	gchar *tempstr = NULL;
 	gchar *tmp = NULL;
@@ -1621,7 +1621,7 @@ GWDBCategoryPK gw_properties_box_get_disk_category_ref ( GtkWidget *w) {
 
 	if ( w != NULL ) {
 		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_DISK_CATEGORIES_CMB_BOX)) != NULL) {
-			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
+			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_BOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
 			}
@@ -1668,7 +1668,7 @@ GWDBCategoryPK gw_properties_box_get_folder_category_ref ( GtkWidget *w) {
 
 	if ( w != NULL ) {
 		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FOLDER_CATEGORIES_CMB_BOX)) != NULL ) {
-			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
+			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_BOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
 			}
@@ -1715,7 +1715,7 @@ GWDBCategoryPK gw_properties_box_get_file_category_ref ( GtkWidget *w) {
 
 	if ( w != NULL ) {
 		if ( (cmb_box_categories = g_object_get_data (G_OBJECT ( w), GW_REF_PROPERTIES_BOX_FILE_CATEGORIES_CMB_BOX)) != NULL) {
-			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_HBOX ( cmb_box_categories))) != NULL ) {
+			if ( (category = gw_combo_box_categories_get_selected_category ( GTK_BOX ( cmb_box_categories))) != NULL ) {
 				ref = gw_db_category_get_ref ( category);
 				gw_db_category_free ( category);
 			}

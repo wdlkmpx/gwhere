@@ -383,7 +383,7 @@ gboolean gw_notebook_managment_get_option_use_disk_label ( GtkWindow *w);
  * @result	the combo box categories.<br>
  *		Returns <i>NULL</i> when an error occured.
  */
-GtkHBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w);
+GtkBox * gw_notebook_managment_get_combo_box_categories ( GtkWindow *w);
 
 
 /*!

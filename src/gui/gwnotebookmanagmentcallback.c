@@ -558,7 +558,7 @@ gint gw_notebook_managment_refresh_info ( GtkWidget *chk, GtkWindow *w)
 
 gint gw_notebook_managment_refresh_categories ( GtkWindow *w)
 {
-	GtkHBox *cmb;
+	GtkBox *cmb;
 
 	cmb = gw_notebook_managment_get_combo_box_categories ( w);
 	gw_combo_box_categories_load ( cmb);

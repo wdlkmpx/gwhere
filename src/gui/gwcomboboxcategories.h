@@ -54,7 +54,7 @@
  * @result	a pointer to this combo box.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog);
+GtkBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatalog *catalog);
 
 
 /*!
@@ -66,7 +66,7 @@ GtkHBox * gw_combo_box_categories_create ( GtkWindow *w, gchar *title, GWDBCatal
  *		Returns <i>0</i> when it's done.<br>
  *		Returns <i>-1</i> when an error occured.<br>
  */
-gint gw_combo_box_categories_load ( GtkHBox *cbc);
+gint gw_combo_box_categories_load ( GtkBox *cbc);
 
 
 /*!
@@ -79,7 +79,7 @@ gint gw_combo_box_categories_load ( GtkHBox *cbc);
  * 		Returns <i>0</i> when it's done.<br>
  * 		Returns <i>-1</i> when an error occured.<br>
  */
-gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryPK ref);
+gint gw_combo_box_categories_set_selected_category ( GtkBox *cbc, GWDBCategoryPK ref);
 
 
 /*!
@@ -92,7 +92,7 @@ gint gw_combo_box_categories_set_selected_category ( GtkHBox *cbc, GWDBCategoryP
  * 		Returns <i>0</i> when it's done.<br>
  * 		Returns <i>-1</i> when an error occured.<br>
  */
-gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *name);
+gint gw_combo_box_categories_set_selected_category_name ( GtkBox *cbc, gchar *name);
 
 
 /*!
@@ -103,7 +103,7 @@ gint gw_combo_box_categories_set_selected_category_name ( GtkHBox *cbc, gchar *n
  * @result	pointer to data structure of the selected category.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc);
+GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkBox *cbc);
 
 
 /*!
@@ -115,7 +115,7 @@ GWDBCategory * gw_combo_box_categories_get_selected_category ( GtkHBox *cbc);
  * @result	the name of the selected category.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc);
+gchar * gw_combo_box_categories_get_selected_category_name ( GtkBox *cbc);
 
 
 /*!
@@ -126,7 +126,7 @@ gchar * gw_combo_box_categories_get_selected_category_name ( GtkHBox *cbc);
  * @result	pointer to the combo.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc);
+GtkComboBoxText * gw_combo_box_categories_get_combo (GtkBox *cbc);
 
 
 /*!
@@ -137,7 +137,7 @@ GtkComboBoxText * gw_combo_box_categories_get_combo (GtkHBox *cbc);
  * @result	pointer to categories list.<br>
  *		Returns <i>NULL</i> when an error occured.<br>
  */
-GList * gw_combo_box_categories_get_categories ( GtkHBox *cbc);
+GList * gw_combo_box_categories_get_categories ( GtkBox *cbc);
 
 
 #endif
