@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([gwhere],[0.2.3],[https://github.com/wdlkmpx/gwhere])
+AC_INIT([gwhere],[0.3.W.alpha],[https://github.com/wdlkmpx/gwhere])
 AC_CONFIG_AUX_DIR([autoconf])
 AC_CONFIG_MACRO_DIR([autoconf-m4])
 AM_INIT_AUTOMAKE([-Wall foreign])

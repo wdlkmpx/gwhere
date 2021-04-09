@@ -1,4 +1,11 @@
-GWhere 0.2.3
+GWhere 0.3.W.alpha
+
+GWhere 0.3.W.alpha:
+	- Updated build system 
+	- Removed GTK1 support
+	- Removed email stuff
+	- A number of extensive cleanups and GTK UI updates
+	- Should compile fine with GTK >= 2.14
 
 0.2.3:
 	- Fix some "strict-aliasing" warnings. [Sébastien LECACHEUR]
