@@ -22,7 +22,6 @@ LangString UninstBefore ${CURLANG} "Вы должны деинсталирова
 LangString InstAlready ${CURLANG} "Инсталяция уже запущена"
 LangString InstTypeFull ${CURLANG} "Полный"
 LangString InstTypeCompact ${CURLANG} "Сжатый"
-LicenseLangString URL_License ${CURLANG} "${MUI_BUILD_DIR}\..\doc\license\license.en"
 LangString TITLE_SecAllUsersUI ${CURLANG} "Настройки инсталятора"
 LangString SUBTITLE_SecAllUsersUI ${CURLANG} "Какие пользователи могут запускать $(^NameDA) ?"
 LangString SUBSUBTITLE_SecAllUsersUI ${CURLANG} "$(^NameDA) установит права доступа"

@@ -22,7 +22,6 @@ LangString UninstBefore ${CURLANG} "Debes desinstalar tu ultima version de $(^Na
 LangString InstAlready ${CURLANG} "Instalador ya funcionando"
 LangString InstTypeFull ${CURLANG} "Completo/a"
 LangString InstTypeCompact ${CURLANG} "Compacto/a"
-LicenseLangString URL_License ${CURLANG} "${MUI_BUILD_DIR}\..\doc\license\license.es"
 LangString TITLE_SecAllUsersUI ${CURLANG} "Opciones de Instalacion"
 LangString SUBTITLE_SecAllUsersUI ${CURLANG} "Que usuarios pueden ejecutar $(^NameDA) ?"
 LangString SUBSUBTITLE_SecAllUsersUI ${CURLANG} "$(^NameDA) instalar derechos de acceso"

@@ -1,4 +1,4 @@
-SUBDIRS = license man
+SUBDIRS = man
 
 DOXYGEN = doxygen
 

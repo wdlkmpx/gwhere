@@ -22,7 +22,6 @@ LangString UninstBefore ${CURLANG} "Morate deinstalirati prethodnu verziju $(^Na
 LangString InstAlready ${CURLANG} "Instaler je vec startovan"
 LangString InstTypeFull ${CURLANG} "Cela instalacija"
 LangString InstTypeCompact ${CURLANG} "Kompaktna instalacija"
-LicenseLangString URL_License ${CURLANG} "${MUI_BUILD_DIR}\..\doc\license\license.en"
 LangString TITLE_SecAllUsersUI ${CURLANG} "Opcije instalacije"
 LangString SUBTITLE_SecAllUsersUI ${CURLANG} "Koji korisnici mogu pokretati $(^NameDA) ?"
 LangString SUBSUBTITLE_SecAllUsersUI ${CURLANG} "$(^NameDA) instalacija prava pristupa"

@@ -22,7 +22,6 @@ LangString UninstBefore ${CURLANG} "Sie müssen die vorherige Version von $(^Name
 LangString InstAlready ${CURLANG} "Installationsprogramm bereits aktiv"
 LangString InstTypeFull ${CURLANG} "Voll"
 LangString InstTypeCompact ${CURLANG} "Kompakt"
-LicenseLangString URL_License ${CURLANG} "${MUI_BUILD_DIR}\..\doc\license\license.de"
 LangString TITLE_SecAllUsersUI ${CURLANG} "Installations-Optionen"
 LangString SUBTITLE_SecAllUsersUI ${CURLANG} "Welche Benutzer können $(^NameDA) starten ?"
 LangString SUBSUBTITLE_SecAllUsersUI ${CURLANG} "$(^NameDA) Installation der Zugriffsrechte"

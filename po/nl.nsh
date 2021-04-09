@@ -22,7 +22,6 @@ LangString UninstBefore ${CURLANG} "Je moet je laatste versie van $(^NameDA) ver
 LangString InstAlready ${CURLANG} "Installeren is al bezig"
 LangString InstTypeFull ${CURLANG} "Volledig"
 LangString InstTypeCompact ${CURLANG} "Compact"
-LicenseLangString URL_License ${CURLANG} "${MUI_BUILD_DIR}\..\doc\license\license.en"
 LangString TITLE_SecAllUsersUI ${CURLANG} "Installatie opties"
 LangString SUBTITLE_SecAllUsersUI ${CURLANG} "Welke gebruiker kunnen $(^NameDA) starten ?"
 LangString SUBSUBTITLE_SecAllUsersUI ${CURLANG} "Installatie toegangsrechten voor $(^NameDA)"
