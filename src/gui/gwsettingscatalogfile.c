@@ -511,7 +511,7 @@ gint gw_plugin_settings_catalog_file_btn_clear_history_click ( GtkButton *btn, G
 
 	if ( pane != NULL)
 	{
-		gw_am_set_settings ( GW_VALUE_APP_RECENTS_FILES, g_strdup ( ""));
+		gw_am_set_settings ( GW_VALUE_APP_RECENT_FILES, g_strdup ( ""));
 		gw_gui_manager_main_interface_update_all ( );
 		result = 0;
 	}

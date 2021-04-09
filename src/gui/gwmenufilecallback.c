@@ -461,13 +461,13 @@ gboolean gw_menu_file_open_recents_files_save_file_ok (GtkWidget *w, gpointer da
 			gw_menu_file_save_click ( NULL, NULL);
 
 			/* Warning use a gint value instead of a gpointer value!! */
-			result = gw_am_load_catalog_from_recents_files ( GPOINTER_TO_UINT ( file_index));
+			result = gw_am_load_catalog_from_recent_files ( GPOINTER_TO_UINT ( file_index));
 		}
 
 		gw_db_catalog_free ( catalog);
 	} else {
 		/* Warning use a gint value instead of a gpointer value!! */
-		result = gw_am_load_catalog_from_recents_files ( GPOINTER_TO_UINT ( file_index));
+		result = gw_am_load_catalog_from_recent_files ( GPOINTER_TO_UINT ( file_index));
 	}
 
 	return result;
@@ -486,7 +486,7 @@ gboolean gw_menu_file_open_recents_files_save_file_no (GtkWidget *w, gpointer da
 		gw_am_close_catalog ( FALSE);
 
 		/* Warning use a gint value instead of a gpointer value!! */
-		result = gw_am_load_catalog_from_recents_files ( GPOINTER_TO_UINT ( file_index));
+		result = gw_am_load_catalog_from_recent_files ( GPOINTER_TO_UINT ( file_index));
 
 		result = TRUE;
 	}
@@ -518,7 +518,7 @@ gboolean gw_menu_file_open_recents_files_saveas_file_selection_ok (GtkWidget *w,
 	gchar *catalog_path_name = NULL;
 
 	/* Warning use a gint value instead of a gpointer value!! */
-	catalog_path_name = gw_am_get_catalog_path_name_from_recents_files ( GPOINTER_TO_UINT ( file_index));
+	catalog_path_name = gw_am_get_catalog_path_name_from_recent_files ( GPOINTER_TO_UINT ( file_index));
 
 	/* Save the catalog. */
 	switch (gw_am_save_catalog (filename)) {
@@ -760,7 +760,7 @@ gboolean gw_menu_file_export_item_click ( GtkMenuItem *m, gpointer data) {
 }
 
 
-gboolean gw_menu_file_recents_files_item_click ( GtkMenuItem *m, gpointer data) {
+gboolean gw_menu_file_recent_files_item_click ( GtkMenuItem *m, gpointer data) {
 	GWCatalogPlugin *plugin = NULL;
 	GWDBContext *context = gw_am_get_current_catalog_context ( );
 	GWDBCatalog *catalog = NULL;
@@ -795,13 +795,13 @@ gboolean gw_menu_file_recents_files_item_click ( GtkMenuItem *m, gpointer data) 
 				gw_am_close_catalog ( FALSE);
 
 				/* Warning use a gint value instead of a gpointer value!! */
-				result = gw_am_load_catalog_from_recents_files ( GPOINTER_TO_UINT ( data));
+				result = gw_am_load_catalog_from_recent_files ( GPOINTER_TO_UINT ( data));
 			}
 
 			gw_db_catalog_free ( catalog);
 		} else {
 			/* Warning use a gint value instead of a gpointer value!! */
-			result = gw_am_load_catalog_from_recents_files ( GPOINTER_TO_UINT ( data));
+			result = gw_am_load_catalog_from_recent_files ( GPOINTER_TO_UINT ( data));
 		}
 	}
 

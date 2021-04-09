@@ -219,7 +219,7 @@ gboolean gw_menu_file_open_saveas_file_selection_ok (GtkWidget *w, char * filena
 
 
 /*!
- * @function	gw_menu_file_open_recents_files_save_file_ok
+ * @function	gw_menu_file_open_recent_files_save_file_ok
  * @abstract	Saves the opened catalog and opens one recent.
  * @discussion	This function saves the opened catalog and opens one recent.
  * @param	bt	button invoker
@@ -347,7 +347,7 @@ void gw_menu_file_exit ( void);
 
 
 /*!
- * @function	gw_menu_file_recents_files_item_click
+ * @function	gw_menu_file_recent_files_item_click
  * @abstract	Loads the selected recent file.
  * @discussion	This function loads the selected recent file.
  * @param	m	menu item invoker
@@ -355,7 +355,7 @@ void gw_menu_file_exit ( void);
  * @result	Returns <i>TRUE</i> is the event submited correctly.<br>
  *		Returns <i>FALSE</i> when an error occured.
  */
-gboolean gw_menu_file_recents_files_item_click ( GtkMenuItem *m, gpointer data);
+gboolean gw_menu_file_recent_files_item_click ( GtkMenuItem *m, gpointer data);
 
 
 gboolean gw_menu_file_import_item_click ( GtkMenuItem *m, gpointer data);

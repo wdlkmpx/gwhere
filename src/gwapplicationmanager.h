@@ -71,15 +71,15 @@ typedef struct gw_application_settings {
 
 /*! @define	GW_VALUE_APP_CATALOG_LAST	The variable name for the last opened catalog */
 #define GW_VALUE_APP_CATALOG_LAST "GWhere.application.catalog.last"
-/*! @define	GW_VALUE_APP_RECENTS_FILES	The variable name for recents opened files */
-#define GW_VALUE_APP_RECENTS_FILES "GWhere.application.recents.files"
-/*! @define	GW_VALUE_APP_RECENT_SIZE	The variable name for the size of recents opened files list */
-#define GW_VALUE_APP_RECENT_SIZE "GWhere.application.recents.size"
-/*! @define	GW_VALUE_APP_RECENT_SIZE_DEFAULT	The default size of recents opened file list */
+/*! @define	GW_VALUE_APP_RECENT_FILES	The variable name for recently opened files */
+#define GW_VALUE_APP_RECENT_FILES "GWhere.application.recents.files"
+/*! @define	GW_VALUE_APP_RECENT_SIZE	The variable name for the size of recent opened files list */
+#define GW_VALUE_APP_RECENT_SIZE "GWhere.application.recent.size"
+/*! @define	GW_VALUE_APP_RECENT_SIZE_DEFAULT	The default size of recent opened file list */
 #define GW_VALUE_APP_RECENT_SIZE_DEFAULT 5
-/*! @define	GW_VALUE_APP_RECENT_SIZE_MIN	The minimum size of recents opened file list */
+/*! @define	GW_VALUE_APP_RECENT_SIZE_MIN	The minimum size of recent opened file list */
 #define GW_VALUE_APP_RECENT_SIZE_MIN 0
-/*! @define	GW_VALUE_APP_RECENT_SIZE_MAX	The maximum size of recents opened file list */
+/*! @define	GW_VALUE_APP_RECENT_SIZE_MAX	The maximum size of recent opened file list */
 #define GW_VALUE_APP_RECENT_SIZE_MAX 20
 /*! @define	GW_VALUE_APP_GUI_RC_FILE	The variable name for the GTK+ ressource file properties */
 #define GW_VALUE_APP_GUI_RC_FILE "GWhere.application.gui.rc"
@@ -767,8 +767,8 @@ gint gw_am_close_catalog ( gboolean save);
 
 /*!
  * @function	gw_am_add_recent_file
- * @abstract	Adds an entry to the recents opened catalog files list.
- * @discussion	This function adds an entry to the recents opened catalog files list.
+ * @abstract	Adds an entry to the recently opened catalog files list.
+ * @discussion	This function adds an entry to the recently opened catalog files list.
  * @param	filepath	file path to add
  * @result	an error code.<br>
  *		Returns <i>0</i> when it's done.<br>
@@ -778,28 +778,28 @@ gint gw_am_add_recent_file ( const gchar *filepath);
 
 
 /*!
- * @function	gw_am_load_catalog_from_recents_files
- * @abstract	Loads a catalog in the application from the recents files list.
- * @discussion	This function loads a catalog in the application from the recents files list.
- * @param	index	position in the recents files list (start at <i>0</i>)
+ * @function	gw_am_load_catalog_from_recent_files
+ * @abstract	Loads a catalog in the application from the recent files list.
+ * @discussion	This function loads a catalog in the application from the recent files list.
+ * @param	index	position in the recent files list (start at <i>0</i>)
  * @result	an error code.<br>
  *		Returns <i>0</i> when it's done.<br>
  *		Returns <i>-1</i> when an error occured.
  */
-gint gw_am_load_catalog_from_recents_files ( const guint index);
+gint gw_am_load_catalog_from_recent_files ( const guint index);
 
 
 /*!
- * @function	gw_am_get_catalog_path_name_from_recents_files
- * @abstract	Gets the catalog path name in the application from the recents files list.
+ * @function	gw_am_get_catalog_path_name_from_recent_files
+ * @abstract	Gets the catalog path name in the application from the recent files list.
  * @discussion	This function gets the catalog path name in the application from
- *		the recents files list. It is a new allocated string (must be freed
+ *		the recent files list. It is a new allocated string (must be freed
  *		with g_free()).
- * @param	index	position in the recents files list (start at <i>0</i>)
+ * @param	index	position in the recent files list (start at <i>0</i>)
  * @result	the catalog path name.<br>
  *		Returns <i>NULL</i> when an error occured.
  */
-gchar * gw_am_get_catalog_path_name_from_recents_files ( const guint index);
+gchar * gw_am_get_catalog_path_name_from_recent_files ( const guint index);
 
 
 /*!

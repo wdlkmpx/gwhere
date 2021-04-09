@@ -415,7 +415,7 @@ gint gw_am_load_catalog ( const char *filepath) {
 			gw_cm_load ( context);
 
 #if GW_DEBUG_MODE
-			gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "Adding the current catalogs in the recents files list...");
+			gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "Adding the current catalogs in the recent files list...");
 #endif
 
 			gw_am_add_recent_file ( filepath);
@@ -594,13 +594,13 @@ gint gw_am_close_catalog ( gboolean save) {
 
 gint gw_am_add_recent_file ( const gchar *filepath) {
 	gint result = -1;
-	gchar *recents_files = NULL;
+	gchar *recent_files = NULL;
 	gint max_nb_files = -1;
-	gchar **recents_files_list = NULL;
+	gchar **recent_files_list = NULL;
 	gint i = 0;
 	gboolean already_exist = FALSE;
-	gchar *recents_files_tmp = NULL;
-	gchar *recents_file = NULL;
+	gchar *recent_files_tmp = NULL;
+	gchar *recent_file = NULL;
 
 
 #if GW_DEBUG_MODE
@@ -608,32 +608,32 @@ gint gw_am_add_recent_file ( const gchar *filepath) {
 #endif
 
 	if ( filepath != NULL ) {
-		/* Stores in the recents opened files list. */
-		recents_files = gw_am_get_settings ( GW_VALUE_APP_RECENTS_FILES);
+		/* Stores in the recent opened files list. */
+		recent_files = gw_am_get_settings ( GW_VALUE_APP_RECENT_FILES);
 		max_nb_files = gw_am_get_settings_tol ( GW_VALUE_APP_RECENT_SIZE);
 
-		if ( recents_files != NULL ) {
-			recents_files_list = g_strsplit ( recents_files, G_SEARCHPATH_SEPARATOR_S, -1);
+		if ( recent_files != NULL ) {
+			recent_files_list = g_strsplit ( recent_files, G_SEARCHPATH_SEPARATOR_S, -1);
 
-			/* Gets the number of recents opened files and checks if the file doesn't already exists. */
-			for ( i = 0; (recents_files_list[i] != NULL); i++) {
+			/* Gets the number of recently opened files and checks if the file doesn't already exists. */
+			for ( i = 0; (recent_files_list[i] != NULL); i++) {
 				/* Checks if the file doesn't already exist in the files that will be kept. */
-				if ( (strcmp ( filepath, recents_files_list[i]) == 0) && (i < max_nb_files) ) {
+				if ( (strcmp ( filepath, recent_files_list[i]) == 0) && (i < max_nb_files) ) {
 #if GW_DEBUG_MODE
-					gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "the file %s is already in the recents opened catalog file at position %d.", filepath, i+1);
+					gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "the file %s is already in the recently opened catalog file at position %d.", filepath, i+1);
 #endif
 
 					already_exist = TRUE;
 				}
 			}
 
-			/* Removes all over stored recents opened files. */
+			/* Removes all stored recently opened files. */
 			while ( ((i >= (max_nb_files - 1)) && ( i >= 0) && (already_exist == FALSE)) || ((i >= (max_nb_files)) && ( i >= 0) && (already_exist == TRUE))) {
 #if GW_DEBUG_MODE
-				gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "remove %s at %d.", recents_files_list[i]!=NULL?recents_files_list[i]:"(null)", i+1);
+				gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "remove %s at %d.", recent_files_list[i]!=NULL?recent_files_list[i]:"(null)", i+1);
 #endif
-				g_free ( recents_files_list[i]);
-				recents_files_list[i] = NULL;
+				g_free ( recent_files_list[i]);
+				recent_files_list[i] = NULL;
 				i--;
 			}
 
@@ -643,39 +643,39 @@ gint gw_am_add_recent_file ( const gchar *filepath) {
 				gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "must remove one entry for the new entry", NULL);
 #endif
 
-				g_free ( recents_files_list[i]);
-				recents_files_list[i] = NULL;
+				g_free ( recent_files_list[i]);
+				recent_files_list[i] = NULL;
 				i--;
 			}
 
-			/* Builds the new recents opened files string. */
-			if ( recents_files_list != NULL ) {
-				recents_files_tmp = g_strjoinv ( G_SEARCHPATH_SEPARATOR_S, recents_files_list);
+			/* Builds the new recently opened files string. */
+			if ( recent_files_list != NULL ) {
+				recent_files_tmp = g_strjoinv ( G_SEARCHPATH_SEPARATOR_S, recent_files_list);
 			}
 
 			if ( (already_exist == FALSE) ) {
-				if ( recents_files_tmp != NULL ) {
-					recents_file = g_strconcat ( filepath, G_SEARCHPATH_SEPARATOR_S, recents_files_tmp, NULL);
+				if ( recent_files_tmp != NULL ) {
+					recent_file = g_strconcat ( filepath, G_SEARCHPATH_SEPARATOR_S, recent_files_tmp, NULL);
 				} else {
-					recents_file = g_strdup ( filepath);
+					recent_file = g_strdup ( filepath);
 				}
 			} else {
-				if ( recents_files_tmp != NULL ) {
-					recents_file = g_strdup ( recents_files_tmp);
+				if ( recent_files_tmp != NULL ) {
+					recent_file = g_strdup ( recent_files_tmp);
 				} else {
-					recents_file = NULL;
+					recent_file = NULL;
 				}
 			}
 
-			if ( recents_files_tmp != NULL ) {
-				g_free ( recents_files_tmp);
+			if ( recent_files_tmp != NULL ) {
+				g_free ( recent_files_tmp);
 			}
 
-			gw_am_set_settings ( GW_VALUE_APP_RECENTS_FILES, recents_file);
+			gw_am_set_settings ( GW_VALUE_APP_RECENT_FILES, recent_file);
 
-			g_strfreev ( recents_files_list);
+			g_strfreev ( recent_files_list);
 		} else {
-			gw_am_set_settings ( GW_VALUE_APP_RECENTS_FILES, g_strdup ( filepath));
+			gw_am_set_settings ( GW_VALUE_APP_RECENT_FILES, g_strdup ( filepath));
 		}
 	}
 
@@ -683,7 +683,7 @@ gint gw_am_add_recent_file ( const gchar *filepath) {
 }
 
 
-gint gw_am_load_catalog_from_recents_files ( const guint index) {
+gint gw_am_load_catalog_from_recent_files ( const guint index) {
 	gint result = -1;
 	gchar *files = NULL;
 	gchar **files_list = NULL;
@@ -695,7 +695,7 @@ gint gw_am_load_catalog_from_recents_files ( const guint index) {
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "opening recent file number %d.", index);
 #endif
 
-	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENTS_FILES)) != NULL) {
+	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENT_FILES)) != NULL) {
 		files_list = g_strsplit ( files, G_SEARCHPATH_SEPARATOR_S, -1);
 
 		i = 0;
@@ -720,7 +720,7 @@ gint gw_am_load_catalog_from_recents_files ( const guint index) {
 }
 
 
-gchar * gw_am_get_catalog_path_name_from_recents_files ( const guint index) {
+gchar * gw_am_get_catalog_path_name_from_recent_files ( const guint index) {
 	gchar *files = NULL;
 	gchar **files_list = NULL;
 	gchar *result = NULL;
@@ -729,10 +729,10 @@ gchar * gw_am_get_catalog_path_name_from_recents_files ( const guint index) {
 
 #if GW_DEBUG_MODE
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
-	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "getting catalog path name in recents files list at %d.", index);
+	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, "getting catalog path name in recent files list at %d.", index);
 #endif
 
-	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENTS_FILES)) != NULL) {
+	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENT_FILES)) != NULL) {
 		files_list = g_strsplit ( files, G_SEARCHPATH_SEPARATOR_S, -1);
 
 		i = 0;

@@ -267,7 +267,7 @@ msgid "_Properties"
 msgstr ""
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr ""
 
 #: src/gui/gwmenufile.c:266
@@ -288,17 +288,9 @@ msgstr ""
 msgid "There is no available catalog plugin"
 msgstr ""
 
-#. if ( gw_db_catalog_get_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_db_name ( catalog))>0 ) {
-#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_db_name ( catalog), "\n", NULL);
-#. } else {
-#. msg[1] = g_strconcat ( _( "Would you want save catalog :\n\n"), gw_db_catalog_get_name ( catalog), "\n", NULL);
-#. }
-#. If has been modified, ask to save it before open another catalog
-#: src/gui/gwmenufilecallback.c:69 src/gui/gwmenufilecallback.c:102
-#: src/gui/gwmenufilecallback.c:138 src/gui/gwmenufilecallback.c:180
-#: src/gui/gwmenufilecallback.c:461 src/gui/gwmenufilecallback.c:1367
+#: src/gui/gwmenufilecallback.c:69
 msgid ""
-"Would you want save catalog :\n"
+"Do you want to save catalog:\n"
 "\n"
 msgstr ""
 
@@ -317,6 +309,20 @@ msgstr ""
 #: src/gui/gwmenufilecallback.c:702 src/gui/gwmenufilecallback.c:719
 #: src/gui/gwmenufilecallback.c:829 src/gui/gwtoolbar.c:81
 msgid "Open catalog"
+msgstr ""
+
+#. if ( gw_db_catalog_get_db_name ( catalog)!=NULL && strlen ( gw_db_catalog_get_db_name ( catalog))>0 ) {
+#. msg[1] = g_strconcat ( _( "Do you want to save catalog :\n\n"), gw_db_catalog_get_db_name ( catalog), "\n", NULL);
+#. } else {
+#. msg[1] = g_strconcat ( _( "Do you want to save catalog :\n\n"), gw_db_catalog_get_name ( catalog), "\n", NULL);
+#. }
+#. If has been modified, ask to save it before open another catalog
+#: src/gui/gwmenufilecallback.c:102 src/gui/gwmenufilecallback.c:138
+#: src/gui/gwmenufilecallback.c:180 src/gui/gwmenufilecallback.c:461
+#: src/gui/gwmenufilecallback.c:1367
+msgid ""
+"Do you want to save catalog :\n"
+"\n"
 msgstr ""
 
 #: src/gui/gwmenufilecallback.c:103 src/gui/gwmenufilecallback.c:1357
@@ -618,7 +624,7 @@ msgid "New disk"
 msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:173
-msgid "Select the media that will be added as disk to your catalog."
+msgid "Select the media that will be added as a disk to your catalog."
 msgstr ""
 
 #. Label for media selection
@@ -639,8 +645,7 @@ msgid "Archive N# : "
 msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:232
-msgid ""
-"Enter the name of the new disk. This name will be appear in your catalog."
+msgid "Enter the name of the new disk to identify it in your catalog."
 msgstr ""
 
 #. Label for disk name
@@ -659,7 +664,7 @@ msgstr ""
 #: src/gui/gwnotebookmanagment.c:261
 msgid ""
 "Select the category to apply to the disk which will be added (even if the "
-"option is checked)."
+"option is selected)."
 msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:273
@@ -744,7 +749,8 @@ msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:404
 msgid ""
-"Displays selected media informations as path, capacity, free space, label,..."
+"Display information about the selected media, such as path, capacity, free "
+"space, label,..."
 msgstr ""
 
 #. Check button for the automount
@@ -754,8 +760,8 @@ msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:418
 msgid ""
-"Mount the media if it wasn't mounted. And unmount after the media even if it "
-"was mounted before the scan."
+"Mount the media if it isn't already mounted. And unmount after scanning the "
+"media, even if it was mounted before the scan."
 msgstr ""
 
 #. Check button for the exploring of tree structure
@@ -764,7 +770,7 @@ msgid "Explore tree structure of the media."
 msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:432
-msgid "Keep this option checked to scan all folders and files informations."
+msgid "Keep this option selected to scan all folders and files informations."
 msgstr ""
 
 #. Check button for the exploring of archive files
@@ -775,7 +781,7 @@ msgstr ""
 #: src/gui/gwnotebookmanagment.c:445
 msgid ""
 "Not yet implemented!!\n"
-"Explore all archives, as it was a directory. Archives are tarred or gzipped "
+"Explore archives as if they were directories. Archives are tarred or gzipped "
 "files."
 msgstr ""
 
@@ -787,7 +793,7 @@ msgstr ""
 #: src/gui/gwnotebookmanagment.c:458
 msgid ""
 "Eject the media if possible (CD-ROM...), even if the tray was closed. This "
-"is enable only if automount is enable!!"
+"is possible only if automount is enabled!!"
 msgstr ""
 
 #. Check button for setting category recursively
@@ -797,8 +803,7 @@ msgstr ""
 
 #: src/gui/gwnotebookmanagment.c:471
 msgid ""
-"Apply selected category to all items in the disk to add (disk, folders and "
-"files)."
+"Apply selected category to all items in the disk (disk, folders and files)."
 msgstr ""
 
 #. Check button for the auto make description
@@ -947,11 +952,7 @@ msgid "Search"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:160
-msgid ""
-"The search can be case sensitive. The wildcards search supports character \"*"
-"\".\n"
-"Example : img*.bmp or *.htm\n"
-"The key words search accepts a list of obligatory words."
+msgid "Run the search"
 msgstr ""
 
 #. Clear results button.
@@ -960,7 +961,7 @@ msgid "Clear"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:175
-msgid "Clears all search results"
+msgid "Clear all search results"
 msgstr ""
 
 #. Case/uncase sensitive check buton.
@@ -970,9 +971,8 @@ msgstr ""
 
 #: src/gui/gwnotebooksearch.c:193
 msgid ""
-"The search can be be or not case sensitive.\n"
-"In case sensitive \"File.txt\" doesn't match with \"file.txt\". But in "
-"uncase sensitive it matches."
+"In a case sensitive search \"File.txt\" doesn't match with \"file.txt\". But "
+"in a case insensitive search it does match."
 msgstr ""
 
 #. Create the radio button group for search type.
@@ -986,7 +986,9 @@ msgstr ""
 
 #: src/gui/gwnotebooksearch.c:214
 msgid ""
-"Enter a list of key words which all must be containted is the matched files."
+"Search for files which contain all or some of the entered words.\n"
+"The behaviour is controlled by \"Options>Settings>Search>All key words must "
+"match\"."
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:218
@@ -995,8 +997,8 @@ msgstr ""
 
 #: src/gui/gwnotebooksearch.c:226
 msgid ""
-"Enter the full wildcards pattern. This pattern can contains \"?\" and \"*\" "
-"caracters."
+"Search for a pattern using wildcard \"?\" and \"*\" characters.\n"
+"Example : img*.bmp or *.htm"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:230
@@ -1004,7 +1006,7 @@ msgid "Regular expression"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:238
-msgid "Can use regular expression. See documentation for more information."
+msgid "Use a regular expression. See documentation for more information."
 msgstr ""
 
 #. Match file check buton.
@@ -1013,7 +1015,7 @@ msgid "File"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:251
-msgid "The search matches with files name."
+msgid "Search in file names."
 msgstr ""
 
 #. Match folder check buton.
@@ -1022,7 +1024,7 @@ msgid "Folder"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:264
-msgid "The search matches with folders name."
+msgid "Search in folder names."
 msgstr ""
 
 #. Match disk check buton.
@@ -1032,7 +1034,7 @@ msgid "Disk"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:277
-msgid "The search matches with disks name."
+msgid "Search in disk names."
 msgstr ""
 
 #. Match category check buton.
@@ -1045,11 +1047,11 @@ msgid "Category"
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:290
-msgid "The search matches with categories name."
+msgid "Search in categories."
 msgstr ""
 
 #: src/gui/gwnotebooksearch.c:303
-msgid "The search matches with descriptions."
+msgid "Search in descriptions."
 msgstr ""
 
 #: src/gui/gwnotebooksearchcallback.c:324
@@ -1438,17 +1440,16 @@ msgstr ""
 #: src/gui/gwsettingscatalogfile.c:135
 msgid ""
 "Select the catalog compression level. The default value is 3, it's a good "
-"value between high performance and small size."
+"compromise between high performance and small size."
 msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:143
-msgid "Recents opened catalogs :"
+msgid "Recently opened catalogs :"
 msgstr ""
 
 #: src/gui/gwsettingscatalogfile.c:158
-msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+msgid "Select the number of recently opened catalogs to remember."
 msgstr ""
 
 #. Adds the clear history.
@@ -1457,7 +1458,7 @@ msgid "Clear history"
 msgstr ""
 
 #: src/gui/gwsettingscatalogfile.c:169
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the list of recently opened files."
 msgstr ""
 
 #. Adds the autload catalog option.
@@ -1466,7 +1467,7 @@ msgid "Autoload catalog"
 msgstr ""
 
 #: src/gui/gwsettingscatalogfile.c:180
-msgid "Autoloads a default catalog when at starting."
+msgid "Autoloads a default catalog when Gwhere starts."
 msgstr ""
 
 #. Create the radio button group for autoload options.
@@ -1479,7 +1480,7 @@ msgid "Load selected catalog file."
 msgstr ""
 
 #: src/gui/gwsettingscatalogfile.c:205
-msgid "Enter the full catalog file path to load."
+msgid "Enter the full path to the catalog file."
 msgstr ""
 
 #. Adds the select catalog file.
@@ -1504,19 +1505,20 @@ msgstr ""
 msgid "Case sensitive sort."
 msgstr ""
 
-#: src/gui/gwsettingsexplorer.c:113
-msgid "The result sort in explorer is case sensitive."
+#: src/gui/gwsettingsexplorer.c:113 src/gui/gwsettingssearch.c:115
+msgid ""
+"If this option is selected sorting in the explorer will be case sensitive."
 msgstr ""
 
 #. Adds the sort group by type option.
 #: src/gui/gwsettingsexplorer.c:119
-msgid "Result sort group by folder/file."
+msgid "Group folders and files separately."
 msgstr ""
 
 #: src/gui/gwsettingsexplorer.c:124
 msgid ""
-"The result sort in explorer can be grouped by item type. If this option is "
-"checked all item will be grouped by folders or files."
+"If this option is selected folders and files will be grouped separately in "
+"the explorer."
 msgstr ""
 
 #. Adds the autoload catalog option.
@@ -1525,8 +1527,8 @@ msgstr ""
 msgid "Autoresize columns"
 msgstr ""
 
-#: src/gui/gwsettingsexplorer.c:135 src/gui/gwsettingssearch.c:137
-msgid "Autoresize all explorer column."
+#: src/gui/gwsettingsexplorer.c:135
+msgid "Autoresize columns in explorer."
 msgstr ""
 
 #: src/gui/gwsettingsexplorerdisk.c:54
@@ -1557,19 +1559,19 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: src/gui/gwsettingssearch.c:115
-msgid "The result sort in search is case sensitive."
-msgstr ""
-
 #. Adds the sort group by type option.
 #: src/gui/gwsettingssearch.c:121
-msgid "Result sort group by type."
+msgid "Group by type."
 msgstr ""
 
 #: src/gui/gwsettingssearch.c:126
 msgid ""
-"The result sort in search can be grouped by item type. If this option is "
-"checked all item will be grouped by catalogs, disks, folders and files."
+"If this option is selected, search results will be grouped by type: "
+"catalogs, disks, folders and files."
+msgstr ""
+
+#: src/gui/gwsettingssearch.c:137
+msgid "Autoresize columns in search results."
 msgstr ""
 
 #. Adds the key words mode option.
@@ -1579,8 +1581,9 @@ msgstr ""
 
 #: src/gui/gwsettingssearch.c:148
 msgid ""
-"Choose if all key words or only one of all key words must match with item in "
-"order to be in the search result."
+"If this option is selected a key words search will only find files which "
+"contain all the key words.  If it is not selected a simple search will find "
+"files which contain any of the key words."
 msgstr ""
 
 #: src/gui/gwsettingsquicksearch.c:60
@@ -1588,7 +1591,7 @@ msgid "Quick"
 msgstr ""
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr ""
 
 #: src/gui/gwsettingsgui.c:54
@@ -1601,7 +1604,7 @@ msgid "Save GUI properties on exit"
 msgstr ""
 
 #: src/gui/gwsettingsgui.c:98
-msgid "Save GUI properties as window position and size."
+msgid "Save the window position and size."
 msgstr ""
 
 #. Adds the allowing beep option.
@@ -1610,7 +1613,7 @@ msgid "Allow beep"
 msgstr ""
 
 #: src/gui/gwsettingsgui.c:109
-msgid "Allows to emits a short beep on some event."
+msgid "Emit an audible beep after some events."
 msgstr ""
 
 #: src/gui/gwsettingsmail.c:83
@@ -1633,7 +1636,7 @@ msgstr ""
 
 #: src/gui/gwsettingsmail.c:151
 msgid ""
-"Enter your out going mail server. Usualy this address is mail.yourdomain.com"
+"Enter your outgoing mail server. Usually this address is mail@yourdomain.com"
 msgstr ""
 
 #. Server port.
@@ -1642,13 +1645,13 @@ msgid "Server port :"
 msgstr ""
 
 #: src/gui/gwsettingsmail.c:166
-msgid "Enter the out going mail server port (the most common value is 25)."
+msgid "Enter the outgoing mail server port (the most common value is 25)."
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:82
 msgid ""
-"This Settings box allows to configure some functionnalities and properties "
-"of the program."
+"This Settings window allows you to configure the program to work the way you "
+"want."
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:85 src/gui/gwsettingswindowbox.c:124
@@ -1656,19 +1659,17 @@ msgid "Settings"
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:120
-msgid "Select the section to configure."
+msgid "Select in this pane a category of settings to configure."
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:134
-msgid ""
-"Change in this pane all availables properties in order to configure the "
-"program as you want."
+msgid "Change settings in this pane to configure the program as you want."
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:145
 msgid ""
-"This settings windows box allows to configure the program. Some properties "
-"may be modified here."
+"This settings window allows you to configure the program to work the way you "
+"want."
 msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:170
@@ -1685,7 +1686,7 @@ msgstr ""
 
 #: src/gui/gwsettingswindowbox.c:198
 msgid ""
-"Click on Apply button to apply changes (without close the Settings box)."
+"Click on Apply button to apply changes without closing the Settings box."
 msgstr ""
 
 #: src/gui/gwsettingswindowboxcallback.c:89
@@ -1766,7 +1767,7 @@ msgstr ""
 #: src/gui/gwwindowboxabout.c:152
 msgid ""
 "\n"
-"Removable media catalog managment\n"
+"Removable media catalog management\n"
 "By Sebastien LECACHEUR\n"
 "\n"
 "zero@gwhere.org\n"
@@ -1775,10 +1776,10 @@ msgstr ""
 
 #: src/gui/gwwindowboxabout.c:153
 msgid ""
-"GWhere allows to manage a database of yours CDs and others removable media "
+"GWhere allows you to manage a database of your CDs and other removable media "
 "(hard disks, floppy drive, Zip drive, CD- ROM, etc...). With GWhere it's "
-"easy to browse yours CDs or to make quick search without need to insert "
-"yours CDs in the drive at each once."
+"easy to browse your CDs or to make a quick search without needing to insert "
+"all of your CDs in the drive and search them one by one."
 msgstr ""
 
 #: src/gui/gwwindowboxabout.c:154
@@ -1791,7 +1792,7 @@ msgstr ""
 #: src/gui/gwwindowboxmail.c:85
 msgid ""
 "This window box allows you to send a catalog by mail to one (or more) of "
-"yours contacts."
+"your contacts."
 msgstr ""
 
 #: src/gui/gwwindowboxmail.c:88 src/gui/gwwindowboxmailcallback.c:57

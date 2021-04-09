@@ -259,7 +259,7 @@ void gw_gui_manager_main_interface_update_menus ( void) {
 	gw_am_log_msg ( 0, __FILE__, __LINE__, __PRETTY_FUNCTION__, NULL);
 #endif
 
-	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENTS_FILES)) != NULL) {
+	if ( (files = gw_am_get_settings ( GW_VALUE_APP_RECENT_FILES)) != NULL) {
 		if ( (max_nb_files = gw_am_get_settings_tol ( GW_VALUE_APP_RECENT_SIZE)) == -1 ) {
 			max_nb_files = GW_VALUE_APP_RECENT_SIZE_DEFAULT;
 		}
@@ -267,7 +267,7 @@ void gw_gui_manager_main_interface_update_menus ( void) {
 		files_list = g_strsplit ( files, G_SEARCHPATH_SEPARATOR_S, -1);
 
 
-		/* Gets the number of recents opened files. */
+		/* Gets the number of recently opened files. */
 		for ( i = 0; files_list[i] != NULL; i++) { }
 
 		size = i;
@@ -294,7 +294,7 @@ void gw_gui_manager_main_interface_update_menus ( void) {
 			}
 		}
 
-		gw_menu_file_set_recents_files ( window, files_list);
+		gw_menu_file_set_recent_files ( window, files_list);
 		g_strfreev ( files_list);
 	}
 }

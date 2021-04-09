@@ -41,7 +41,7 @@ gint gw_plugin_settings_general_init ( GWSettingsModule **module)
 
 	if ( (*module = gw_settings_module_new ( )) != NULL )
 	{
-		(*module)->name = g_strdup ( _( "Generals options"));
+		(*module)->name = g_strdup ( _( "General options"));
 		(*module)->create = &gw_plugin_settings_general_pane_create;
 		(*module)->load = &gw_plugin_settings_general_pane_load;
 		(*module)->on_change = &gw_plugin_settings_general_pane_on_change;

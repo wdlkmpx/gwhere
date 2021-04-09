@@ -27,7 +27,7 @@
 #include "gwnotebooksearchcallback.h"
 
 
-/*! @define	GW_REF_NOTEBOOK_SEARCH_TABBED_PANE_LABEL	The pabbed pane title */
+/*! @define	GW_REF_NOTEBOOK_SEARCH_TABBED_PANE_LABEL	The tabbed pane title */
 #define GW_REF_NOTEBOOK_SEARCH_TABBED_PANE_LABEL "gw_ref_gw_notebook_search_tabbed_pane_label"
 /*! @define	GW_REF_NOTEBOOK_SEARCH_ENTRY		The search text entry */
 #define GW_REF_NOTEBOOK_SEARCH_ENTRY "gw_notebook_search_entry"

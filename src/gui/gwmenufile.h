@@ -52,16 +52,16 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 
 
 /*!
- * @function	gw_menu_file_set_recents_files
- * @abstract	Sets the list of recents opened files.
- * @discussion	This function sets the list of recents opened files.
+ * @function	gw_menu_file_set_recent_files
+ * @abstract	Sets the list of recently opened files.
+ * @discussion	This function sets the list of recently opened files.
  * @param	w	refence to the main window
  * @param	files	list of files
  * @result	an error code.<br>
  *		Returns <i>TRUE</i> when it's done.<br>
  *		Returns <i>FALSE</i> when an error occured.<br>
  */
-gboolean gw_menu_file_set_recents_files ( GtkWindow *w, gchar **files);
+gboolean gw_menu_file_set_recent_files ( GtkWindow *w, gchar **files);
 
 
 gboolean gw_menu_file_set_import ( GtkWindow *w, gchar **plugins);
