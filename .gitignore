@@ -38,3 +38,6 @@ win32/gwhere.nsi
 src/gwhere
 *.lo
 *.la
+build-aux
+autoconf
+autoconf-m4

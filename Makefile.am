@@ -2,7 +2,7 @@
 
 SUBDIRS = doc po src win32
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I autoconf-m4
 
 pixdir = $(datadir)/pixmaps
 pix_DATA = gwhere.xpm
