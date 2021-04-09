@@ -1,1 +1,0 @@
-man_MANS = gwhere.1

@@ -282,7 +282,6 @@ src/plugins/catalog/csv/Makefile
 src/Makefile
 doc/Doxyfile
 doc/Makefile
-doc/man/Makefile
 po/Makefile.in
 win32/Makefile
 win32/config.h
