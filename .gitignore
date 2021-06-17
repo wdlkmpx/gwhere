@@ -15,7 +15,6 @@ config.status
 configure
 m4/*.m4
 po/*.gmo
-po/Makefile.in.in
 po/POTFILES
 po/stamp-po
 stamp-h1

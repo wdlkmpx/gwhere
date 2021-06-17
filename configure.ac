@@ -12,9 +12,6 @@ AM_GNU_GETTEXT([external])
 AM_PROG_AR
 LT_INIT
 
-# Init intltool
-IT_PROG_INTLTOOL
-
 dnl ================================================
 AC_DEFINE([PROJECT_NAME], "GWhere", [Project name])
 AC_SUBST(PACKAGE)
@@ -23,8 +20,6 @@ AC_SUBST(PROJECT_NAME)
 
 AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
-AC_PROG_CXX
-AM_PROG_CC_STDC
 
 CFLAGS="$CFLAGS -fno-strict-aliasing"
 
@@ -261,11 +256,10 @@ if test "x$GW_PROG_PATH_UMOUNT" != "x" ; then
   AC_DEFINE_UNQUOTED([GW_PROG_PATH_UMOUNT], "$GW_PROG_PATH_UMOUNT", [umount path])
 fi
 
-
 GETTEXT_PACKAGE=gwhere
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
-AM_GLIB_GNU_GETTEXT
+
 
 AC_CONFIG_FILES([
 Makefile
