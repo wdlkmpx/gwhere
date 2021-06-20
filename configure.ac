@@ -276,7 +276,7 @@ src/plugins/catalog/csv/Makefile
 src/Makefile
 doc/Doxyfile
 doc/Makefile
-po/Makefile.in
+po/Makefile
 win32/Makefile
 win32/config.h
 win32/gwhere.nsi
