@@ -41,9 +41,8 @@
 #define GW_APPLICATION_SETTINGS_FILE "gwhere.cfg"
 #define GW_APPLICATION_SETTINGS_FILE_SAVE_EXTENSION "bak"
 
-
 GWApplicationSettings my_application_settings;
-
+GWDBContext * current_catalog_context;
 
 gint gw_am_init ( gint argc, gchar *argv[]) {
 	gint result = -1;

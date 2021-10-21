@@ -29,6 +29,26 @@
 #include "parent_folder.xpm"
 #include "zip_disk.xpm"
 
+GdkPixmap *PixCatalog;
+GdkBitmap *MskCatalog;
+GdkPixmap *PixCDRomDisk;
+GdkBitmap *MskCDRomDisk;
+GdkPixmap *PixFloppyDisk;
+GdkBitmap *MskFloppyDisk;
+GdkPixmap *PixHardDriveDisk;
+GdkBitmap *MskHardDriveDisk;
+GdkPixmap *PixZipDisk;
+GdkBitmap *MskZipDisk;
+GdkPixmap *PixFolder;
+GdkBitmap *MskFolder;
+GdkPixmap *PixOpenFolder;
+GdkBitmap *MskOpenFolder;
+GdkPixmap *PixParentFolder;
+GdkBitmap *MskParentFolder;
+GdkPixmap *PixLockedFolder;
+GdkBitmap *MskLockedFolder;
+GdkPixmap *PixFile;
+GdkBitmap *MskFile;
 
 gint icons_load_catalog ( GtkWindow *w)
 {

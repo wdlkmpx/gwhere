@@ -48,7 +48,7 @@
 #include "gwpluginsmanager.h"
 
 
-GWDBContext * current_catalog_context;
+extern GWDBContext * current_catalog_context;
 
 
 gint gw_cm_load ( /*GWCatalogPlugin *plugin,*/ GWDBContext *context);

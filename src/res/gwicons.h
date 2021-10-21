@@ -41,13 +41,12 @@
 
 #include <gtk/gtk.h>
 
-
 /*!
 * @var         PixCatalog
 * @abstract    Catalog icon.
 * @discussion  The catalog icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixCatalog;
+extern GdkPixmap *PixCatalog;
 
 
 /*!
@@ -55,7 +54,7 @@ GdkPixmap *PixCatalog;
 * @abstract    Catalog icon.
 * @discussion  The catalog icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskCatalog;
+extern GdkBitmap *MskCatalog;
 
 
 /*!
@@ -63,7 +62,7 @@ GdkBitmap *MskCatalog;
 * @abstract    CD-Rom disk icon.
 * @discussion  The CD-Rom disk icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixCDRomDisk;
+extern GdkPixmap *PixCDRomDisk;
 
 
 /*!
@@ -71,7 +70,7 @@ GdkPixmap *PixCDRomDisk;
 * @abstract    CD-Rom disk icon.
 * @discussion  The CD-Rom disk icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskCDRomDisk;
+extern GdkBitmap *MskCDRomDisk;
 
 
 /*!
@@ -79,7 +78,7 @@ GdkBitmap *MskCDRomDisk;
 * @abstract    Floppy disk icon.
 * @discussion  The floppy disk icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixFloppyDisk;
+extern GdkPixmap *PixFloppyDisk;
 
 
 /*!
@@ -87,7 +86,7 @@ GdkPixmap *PixFloppyDisk;
 * @abstract    Floppy disk icon.
 * @discussion  The floppy disk icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskFloppyDisk;
+extern GdkBitmap *MskFloppyDisk;
 
 
 /*!
@@ -95,7 +94,7 @@ GdkBitmap *MskFloppyDisk;
 * @abstract    Hard Drive disk icon.
 * @discussion  The hard drive disk icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixHardDriveDisk;
+extern GdkPixmap *PixHardDriveDisk;
 
 
 /*!
@@ -103,7 +102,7 @@ GdkPixmap *PixHardDriveDisk;
 * @abstract    Hard drive disk icon.
 * @discussion  The hard drive disk icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskHardDriveDisk;
+extern GdkBitmap *MskHardDriveDisk;
 
 
 /*!
@@ -111,7 +110,7 @@ GdkBitmap *MskHardDriveDisk;
 * @abstract    Zip disk icon.
 * @discussion  The zip disk icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixZipDisk;
+extern GdkPixmap *PixZipDisk;
 
 
 /*!
@@ -119,7 +118,7 @@ GdkPixmap *PixZipDisk;
 * @abstract    Zip drive disk icon.
 * @discussion  The zip disk icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskZipDisk;
+extern GdkBitmap *MskZipDisk;
 
 
 /*!
@@ -127,7 +126,7 @@ GdkBitmap *MskZipDisk;
 * @abstract    Folder icon.
 * @discussion  The folder icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixFolder;
+extern GdkPixmap *PixFolder;
 
 
 /*!
@@ -135,7 +134,7 @@ GdkPixmap *PixFolder;
 * @abstract    Folder icon.
 * @discussion  The folder icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskFolder;
+extern GdkBitmap *MskFolder;
 
 
 /*!
@@ -143,7 +142,7 @@ GdkBitmap *MskFolder;
 * @abstract    Open folder icon.
 * @discussion  The open folder icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixOpenFolder;
+extern GdkPixmap *PixOpenFolder;
 
 
 /*!
@@ -151,7 +150,7 @@ GdkPixmap *PixOpenFolder;
 * @abstract    Open folder icon.
 * @discussion  The open folder icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskOpenFolder;
+extern GdkBitmap *MskOpenFolder;
 
 
 /*!
@@ -159,7 +158,7 @@ GdkBitmap *MskOpenFolder;
 * @abstract    Parent folder icon.
 * @discussion  The parent folder icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixParentFolder;
+extern GdkPixmap *PixParentFolder;
 
 
 /*!
@@ -167,7 +166,7 @@ GdkPixmap *PixParentFolder;
 * @abstract    Parent folder icon.
 * @discussion  The parent folder icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskParentFolder;
+extern GdkBitmap *MskParentFolder;
 
 
 /*!
@@ -175,7 +174,7 @@ GdkBitmap *MskParentFolder;
 * @abstract    Locked folder icon.
 * @discussion  The locked folder icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixLockedFolder;
+extern GdkPixmap *PixLockedFolder;
 
 
 /*!
@@ -183,7 +182,7 @@ GdkPixmap *PixLockedFolder;
 * @abstract    Locked folder icon.
 * @discussion  The locked folder icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskLockedFolder;
+extern GdkBitmap *MskLockedFolder;
 
 
 /*!
@@ -191,7 +190,7 @@ GdkBitmap *MskLockedFolder;
 * @abstract    File icon.
 * @discussion  The file icon pixmap for catalog representation.<br>
 */
-GdkPixmap *PixFile;
+extern GdkPixmap *PixFile;
 
 
 /*!
@@ -199,7 +198,7 @@ GdkPixmap *PixFile;
 * @abstract    File icon.
 * @discussion  The file icon bitmap for catalog representation.<br>
 */
-GdkBitmap *MskFile;
+extern GdkBitmap *MskFile;
 
 
 /*!
