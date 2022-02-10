@@ -2,56 +2,54 @@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
-@SET_MAKE@
-
 prefix = @prefix@
 exec_prefix = @exec_prefix@
 datarootdir = @datarootdir@
 datadir = @datadir@
 localedir = @localedir@
 
-INSTALL = @INSTALL@
-INSTALL_DATA = @INSTALL_DATA@
-
-GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@
-#MSGFMT_OPTS = -c
 XGETTEXT = @XGETTEXT@
 MSGMERGE = msgmerge
 
-MOFILES = ar.mo cs.mo de.mo el.mo es.mo fr.mo hu.mo it.mo nl.mo pl.mo pt.mo ru.mo sr.mo
 LINGUAS = ar cs de el es fr hu it nl pl pt ru sr
 POTFILES = ../src/gui/gwcategorieseditbox.c ../src/gui/gwmenuaction.c ../src/gui/gwmenuactioncallback.c ../src/gui/gwmenufile.c ../src/gui/gwmenufilecallback.c ../src/gui/gwmenuhelp.c ../src/gui/gwmenuoptions.c ../src/gui/gwmenupopup.c ../src/gui/gwmenupopupcallback.c ../src/gui/gwmisc.c ../src/gui/gwnotebookcatalog.c ../src/gui/gwnotebookcatalogcallback.c ../src/gui/gwnotebookmanagment.c ../src/gui/gwnotebookmanagmentcallback.c ../src/gui/gwnotebooksearch.c ../src/gui/gwnotebooksearchcallback.c ../src/gui/gwprogressbarbox.c ../src/gui/gwpropertiesbox.c ../src/gui/gwsettingscatalogfile.c ../src/gui/gwsettingsexplorer.c ../src/gui/gwsettingsexplorerdisk.c ../src/gui/gwsettingsexplorerfile.c ../src/gui/gwsettingsgeneral.c ../src/gui/gwsettingsgui.c ../src/gui/gwsettingsquicksearch.c ../src/gui/gwsettingssearch.c ../src/gui/gwsettingswindowbox.c ../src/gui/gwsettingswindowboxcallback.c ../src/gui/gwstatusbarcallback.c ../src/gui/gwtoolbar.c ../src/gwapplicationmanager.c ../src/gwapplicationmanager.h ../src/gwcatalogmanager.c ../src/gwsupport.c ../src/gwsupport.h ../src/plugins/catalog/csv/csv.c ../src/plugins/catalog/gwcatalog/gwcatalog.c ../src/tools/gwstring.c
 
-#.SUFFIXES: .po .gmo .mo
-#.po.mo:
-#	$(GMSGFMT) $(MSGFMT_OPTS) -o `echo $* | sed "s,.*/,,"`.mo $<
-
 all: all-@USE_NLS@
-all-yes: $(MOFILES)
+all-yes:
+	@catalogs="$(LINGUAS)"; \
+	for i in $${catalogs} ; do \
+		if ! test -f $${i}.mo ; then \
+			echo "$(MSGFMT) -o $${i}.mo $${i}.po"; \
+			$(MSGFMT) -o $${i}.mo $${i}.po || exit 1; \
+		fi; \
+	done \
+
 all-no:
 
-$(GETTEXT_PACKAGE).pot: $(POTFILES)
+update-pot:
 	$(XGETTEXT) --default-domain=$(GETTEXT_PACKAGE) \
-	--add-comments --keyword=_ --keyword=N_ --from-code=UTF-8 \
-	-o $(GETTEXT_PACKAGE).pot $(POTFILES)
+		--add-comments --keyword=_ --keyword=N_ --from-code=UTF-8 \
+		-o $(GETTEXT_PACKAGE).pot $(POTFILES)
+
+$(GETTEXT_PACKAGE).pot: update-pot
 
 install: install-data-@USE_NLS@
 install-data-no: all
 install-data-yes: all
-	catalogs="$(LINGUAS)"; \
-	for cat in $$catalogs; do \
-	  dir=$(DESTDIR)$(localedir)/$$cat/LC_MESSAGES; \
-	  mkdir -p $$dir; \
-	  $(INSTALL_DATA) $$cat.mo $$dir/$(GETTEXT_PACKAGE).mo; \
-	  echo "installing $$cat.mo as $$dir/$(GETTEXT_PACKAGE).mo"; \
+	@catalogs="$(LINGUAS)"; \
+	for cat in $${catalogs}; do \
+		dir=$(DESTDIR)$(localedir)/$${cat}/LC_MESSAGES; \
+		mkdir -p $${dir}; \
+		echo "install -c -m 644 $${cat}.mo $${dir}/$(GETTEXT_PACKAGE).mo"; \
+		install -c -m 644 $${cat}.mo $${dir}/$(GETTEXT_PACKAGE).mo; \
 	done
 
 uninstall:
-	catalogs="$(LINGUAS)"; \
-	for cat in $$catalogs; do \
-	  echo "rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo"; \
-	  rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
+	@catalogs="$(LINGUAS)"; \
+	for cat in $${catalogs}; do \
+		echo "rm -f $(DESTDIR)$(localedir)/$${cat}/LC_MESSAGES/$(GETTEXT_PACKAGE).mo"; \
+		rm -f $(DESTDIR)$(localedir)/$${cat}/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
 	done
 
 mostlyclean:
@@ -62,43 +60,15 @@ clean: mostlyclean
 distclean: clean
 	rm -f Makefile POTFILES
 
-update-po: Makefile
-	rm -f $(GETTEXT_PACKAGE).pot
-	$(MAKE) $(GETTEXT_PACKAGE).pot
-	catalogs="$(LINGUAS)"; \
-	for lang in $$catalogs; do \
-	  printf " %s " "$$lang"; \
-	  if $(MSGMERGE) $$lang.po $(GETTEXT_PACKAGE).pot -o $$lang.new.po; then \
-	    mv -f $$lang.new.po $$lang.po || exit 1; \
-	  else \
-	    echo "msgmerge for $$lang failed!"; \
-	    rm -f $$lang.new.po; \
-	  fi; \
+update-po: update-pot
+	@catalogs="$(LINGUAS)"; \
+	for lang in $${catalogs}; do \
+		printf " %s " "$${lang}"; \
+		if $(MSGMERGE) $${lang}.po $(GETTEXT_PACKAGE).pot -o $${lang}.new.po; then \
+			mv -f $${lang}.new.po $${lang}.po || exit 1; \
+		else \
+			echo "msgmerge for $${lang} failed!"; \
+			rm -f $${lang}.new.po; \
+		fi; \
 	done
 
-ar.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o ar.mo ar.po
-cs.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o cs.mo cs.po
-de.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o de.mo de.po
-el.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o el.mo el.po
-es.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o es.mo es.po
-fr.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o fr.mo fr.po
-hu.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o hu.mo hu.po
-it.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o it.mo it.po
-nl.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o nl.mo nl.po
-pl.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o pl.mo pl.po
-pt.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o pt.mo pt.po
-ru.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o ru.mo ru.po
-sr.mo:
-	$(GMSGFMT) $(MSGFMT_OPTS) -o sr.mo sr.po
