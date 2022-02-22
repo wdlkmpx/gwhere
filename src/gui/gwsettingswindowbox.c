@@ -30,7 +30,6 @@
 
 #include "../gwapplicationmanager.h"
 
-
 /*! @define	GW_REF_SETTINGS_WINDOW_BOX_PARENT_WINDOW	The parent window */
 #define GW_REF_SETTINGS_WINDOW_BOX_PARENT_WINDOW "gw_ref_settings_window_box_parent_window"
 /*! @define	GW_REF_SETTINGS_WINDOW_BOX_CTREE	The settings ctree */
@@ -43,6 +42,8 @@
 #define GW_REF_SETTINGS_WINDOW_BOX_CANCEL_BTN "gw_ref_settings_window_box_cancel_btn"
 /*! @define	GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN	The apply button */
 #define GW_REF_SETTINGS_WINDOW_BOX_APPLY_BTN "gw_ref_settings_window_box_apply_btn"
+
+static gboolean gw_settings_window_box_load_sections ( GtkWindow *settings);
 
 
 GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
@@ -62,7 +63,6 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
 
 	if ( !settings_window_box )
 	{
@@ -164,7 +164,6 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 #ifdef GW_DEBUG_GUI_COMPONENT
 	g_print ( "*** GW - %s (%d) :: %s() : destroy the window\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
-
 		gtk_widget_destroy ( settings_window_box);
 	}
 
@@ -172,7 +171,7 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 }
 
 
-gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
+static gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 {
 	gboolean result = FALSE;
 	GtkCTree *settings_ctree = NULL;
@@ -191,121 +190,110 @@ gboolean gw_settings_window_box_load_sections ( GtkWindow *settings)
 	g_print ( "*** GW - %s (%d) :: %s()\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 
-	if ( settings != NULL )
+	/* General options. */
+	gw_plugin_settings_general_init ( &modules[0]);
+	/* General options. */
+	gw_plugin_settings_gui_init ( &modules[1]);
+	/* Catalog file. */
+	gw_plugin_settings_catalog_file_init ( &modules[2]);
+	/* Explorer. */
+	gw_plugin_settings_explorer_init ( &modules[3]);
+	/* Search. */
+	gw_plugin_settings_search_init ( &modules[4]);
+
+	for ( i = 0; i < 5; i++)
 	{
-		/* General options. */
-		gw_plugin_settings_general_init ( &modules[0]);
-		/* General options. */
-		gw_plugin_settings_gui_init ( &modules[1]);
-		/* Catalog file. */
-		gw_plugin_settings_catalog_file_init ( &modules[2]);
-		/* Explorer. */
-		gw_plugin_settings_explorer_init ( &modules[3]);
-		/* Search. */
-		gw_plugin_settings_search_init ( &modules[4]);
-
-		for ( i = 0; i < 5; i++)
+		if ( gw_settings_module_check ( modules[i]) == FALSE )
 		{
-			if ( gw_settings_module_check ( modules[i]) == FALSE )
-			{
 #ifdef GW_DEBUG_GUI_COMPONENT
-				g_print ( "*** GW - %s (%d) :: %s() : invalid settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->name);
+			g_print ( "*** GW - %s (%d) :: %s() : invalid settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->name);
 #endif
-
-				gw_settings_module_free ( modules[i]);
-				modules[i] = NULL;
-			}
+			gw_settings_module_free ( modules[i]);
+			modules[i] = NULL;
 		}
+	}
 
-		settings_ctree = gw_settings_window_box_get_ctree ( settings);
-		notebook_settings = gw_settings_window_box_get_notebook ( settings);
+	settings_ctree = gw_settings_window_box_get_ctree ( settings);
+	notebook_settings = gw_settings_window_box_get_notebook ( settings);
 
-		gtk_clist_freeze ( GTK_CLIST ( settings_ctree));
+	gtk_clist_freeze ( GTK_CLIST ( settings_ctree));
 
-		for ( i = 0; i < 5; i++)
+	for ( i = 0; i < 5; i++)
+	{
+		if ( modules[i] != NULL )
 		{
-			if ( modules[i] != NULL )
+#ifdef GW_DEBUG_GUI_COMPONENT
+			g_print ( "*** GW - %s (%d) :: %s() : current settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->name);
+#endif
+			section_notebook_page = NULL;
+			section_notebook_pane = NULL;
+
+			section_notebook_page = gtk_vbox_new ( FALSE, 0);
+			gtk_container_set_border_width ( GTK_CONTAINER ( section_notebook_page), 5);
+			gtk_notebook_append_page  ( notebook_settings, section_notebook_page, NULL);
+
+			/* Creates the settings module pane and init all fields. */
+			modules[i]->create ( settings, GTK_CONTAINER ( section_notebook_page), &section_notebook_pane);
+			modules[i]->pane = section_notebook_pane;
+			modules[i]->page = GTK_CONTAINER ( section_notebook_page);
+			modules[i]->settings_window = settings;
+
+			/* Stores a settings module reference to the notebook page. */
+			g_object_set_data (G_OBJECT ( section_notebook_page), GW_REF_SETTINGS_MODULE, modules[i]);
+			g_object_set_data (G_OBJECT ( notebook_settings), g_strdup_printf ( "%d", i), modules[i]);
+
+			/* Creates a new entry in the settings module tree explorer. */
+			parent_settings_node = settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), NULL, NULL,
+			                                           &modules[i]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
+
+			frm_section_notebook_page = gtk_frame_new (modules[i]->name);
+			gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
+			gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->pane);
+
+			gtk_ctree_node_set_row_data ( GTK_CTREE ( settings_ctree), settings_node, modules[i]);
+
+			/* Loads all children module. */
+			if ( modules[i]->child != NULL )
 			{
-#ifdef GW_DEBUG_GUI_COMPONENT
-				g_print ( "*** GW - %s (%d) :: %s() : current settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->name);
-#endif
-				section_notebook_page = NULL;
-				section_notebook_pane = NULL;
-
-				section_notebook_page = gtk_vbox_new ( FALSE, 0);
-				gtk_container_set_border_width ( GTK_CONTAINER ( section_notebook_page), 5);
-				gtk_notebook_append_page  ( notebook_settings, section_notebook_page, NULL);
-
-				/* Creates the settings module pane and init all fields. */
-				modules[i]->create ( settings, GTK_CONTAINER ( section_notebook_page), &section_notebook_pane);
-				modules[i]->pane = section_notebook_pane;
-				modules[i]->page = GTK_CONTAINER ( section_notebook_page);
-				modules[i]->settings_window = settings;
-
-				/* Stores a settings module reference to the notebook page. */
-				g_object_set_data (G_OBJECT ( section_notebook_page), GW_REF_SETTINGS_MODULE, modules[i]);
-				g_object_set_data (G_OBJECT ( notebook_settings), g_strdup_printf ( "%d", i), modules[i]);
-
-				/* Creates a new entry in the settings module tree explorer. */
-				parent_settings_node = settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), NULL, NULL,
-				                                           &modules[i]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
-
-				frm_section_notebook_page = gtk_frame_new (modules[i]->name);
-				gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
-				gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->pane);
-
-				gtk_ctree_node_set_row_data ( GTK_CTREE ( settings_ctree), settings_node, modules[i]);
-
-				/* Loads all children module. */
-				if ( modules[i]->child != NULL )
+				for ( j = 0; modules[i]->child[j] != NULL; j++)
 				{
-					for ( j = 0; modules[i]->child[j] != NULL; j++)
+					if ( gw_settings_module_check ( modules[i]->child[j]) == TRUE )
 					{
-						if ( gw_settings_module_check ( modules[i]->child[j]) == TRUE )
-						{
 #ifdef GW_DEBUG_GUI_COMPONENT
-							g_print ( "*** GW - %s (%d) :: %s() : current settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->child[j]->name);
+						g_print ( "*** GW - %s (%d) :: %s() : current settings module -> %s\n", __FILE__, __LINE__, __PRETTY_FUNCTION__, modules[i]->child[j]->name);
 #endif
+						section_notebook_page = gtk_vbox_new ( FALSE, 0);
+						gtk_container_set_border_width ( GTK_CONTAINER ( section_notebook_page), 5);
+						gtk_notebook_append_page  ( notebook_settings, section_notebook_page, NULL);
+						/* Creates the settings module pane and init all fields. */
+						modules[i]->child[j]->create ( settings, GTK_CONTAINER ( section_notebook_page), &section_notebook_pane);
+						modules[i]->child[j]->pane = section_notebook_pane;
+						modules[i]->child[j]->page = GTK_CONTAINER ( section_notebook_page);
+						modules[i]->child[j]->settings_window = settings;
+						/* Stores a settings module reference to the notebook page. */
+						g_object_set_data (G_OBJECT ( section_notebook_page), GW_REF_SETTINGS_MODULE, modules[i]->child[j]);
+						g_object_set_data (G_OBJECT ( notebook_settings), g_strdup_printf ( "%d", j), modules[i]->child[j]);
+						/* Creates a new entry in the settings module tree explorer. */
+						settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), parent_settings_node, NULL,
+						                                       &modules[i]->child[j]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
+						frm_section_notebook_page = gtk_frame_new (modules[i]->child[j]->name);
+						gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
+						gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->child[j]->pane);
 
-							section_notebook_page = gtk_vbox_new ( FALSE, 0);
-							gtk_container_set_border_width ( GTK_CONTAINER ( section_notebook_page), 5);
-							gtk_notebook_append_page  ( notebook_settings, section_notebook_page, NULL);
-			
-							/* Creates the settings module pane and init all fields. */
-							modules[i]->child[j]->create ( settings, GTK_CONTAINER ( section_notebook_page), &section_notebook_pane);
-							modules[i]->child[j]->pane = section_notebook_pane;
-							modules[i]->child[j]->page = GTK_CONTAINER ( section_notebook_page);
-							modules[i]->child[j]->settings_window = settings;
-			
-							/* Stores a settings module reference to the notebook page. */
-							g_object_set_data (G_OBJECT ( section_notebook_page), GW_REF_SETTINGS_MODULE, modules[i]->child[j]);
-							g_object_set_data (G_OBJECT ( notebook_settings), g_strdup_printf ( "%d", j), modules[i]->child[j]);
-			
-							/* Creates a new entry in the settings module tree explorer. */
-							settings_node = gtk_ctree_insert_node ( GTK_CTREE ( settings_ctree), parent_settings_node, NULL,
-							                                       &modules[i]->child[j]->name, 3, pix, pix_mask, pix, pix_mask, FALSE, TRUE);
-			
-							frm_section_notebook_page = gtk_frame_new (modules[i]->child[j]->name);
-							gtk_container_add ( GTK_CONTAINER ( section_notebook_page), frm_section_notebook_page);
-							gtk_container_add ( GTK_CONTAINER ( frm_section_notebook_page), modules[i]->child[j]->pane);
-			
-							gtk_ctree_node_set_row_data ( GTK_CTREE ( settings_ctree), settings_node, modules[i]->child[j]);
-						}
+						gtk_ctree_node_set_row_data ( GTK_CTREE ( settings_ctree), settings_node, modules[i]->child[j]);
 					}
 				}
 			}
 		}
-
-		gtk_clist_thaw ( GTK_CLIST ( settings_ctree));
-
-#ifdef GW_DEBUG_GUI_COMPONENT
-				g_print ( "*** GW - %s (%d) :: %s() : all settings module are loaded\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
-#endif
-
-		result = TRUE;
 	}
 
-	return result;
+	gtk_clist_thaw ( GTK_CLIST ( settings_ctree));
+
+#ifdef GW_DEBUG_GUI_COMPONENT
+	g_print ( "*** GW - %s (%d) :: %s() : all settings module are loaded\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+#endif
+
+	result = TRUE;
 }
 
 

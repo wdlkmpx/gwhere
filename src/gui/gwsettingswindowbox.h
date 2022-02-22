@@ -57,19 +57,6 @@
  */
 GtkWindow * gw_settings_window_box_create ( GtkWindow *window);
 
-
-/*!
- * @function	gw_settings_window_box_load_sections
- * @abstract	Loads all sections of the settings window box.
- * @discussion	This function loads all sections of the settings window box.
- * @param	settings	settings window box
- * @result	an error code.<br>
- *		Returns <i>TRUE</i> when it's done.
- *		Returns <i>FALSE</i> when an error occured.
- */
-gboolean gw_settings_window_box_load_sections ( GtkWindow *settings);
-
-
 /*!
  * @function	gw_settings_window_box_set_modified
  * @abstract	Indicates to the settings that some values are modified.
