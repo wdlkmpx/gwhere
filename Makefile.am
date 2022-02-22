@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = doc po src win32
+SUBDIRS = doc po src
 
 ACLOCAL_AMFLAGS = -I autoconf-m4
 
