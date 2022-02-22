@@ -32,7 +32,7 @@ missing
 libtool
 po/stamp-it
 .DS_Store
-doc/Doxyfile
+data/Doxyfile
 gwhere.spec
 win32/gwhere.nsi
 .libs

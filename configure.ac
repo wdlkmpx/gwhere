@@ -274,8 +274,8 @@ src/plugins/catalog/Makefile
 src/plugins/catalog/gwcatalog/Makefile
 src/plugins/catalog/csv/Makefile
 src/Makefile
-doc/Doxyfile
-doc/Makefile
+data/Doxyfile
+data/Makefile
 po/Makefile
 ])
 AC_OUTPUT
