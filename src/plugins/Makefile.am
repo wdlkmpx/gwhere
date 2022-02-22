@@ -4,7 +4,7 @@ SOURCES = gwdescr.h gwcatalog.h
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src \
-	@GTK_CFLAGS@
+	${GTK_CFLAGS}
 
 noinst_LIBRARIES = libgwplugins.a
 

@@ -9,7 +9,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/src/db \
 	-I$(top_srcdir)/src/data \
 	-I$(top_srcdir)/src/gui \
-	@GTK_CFLAGS@
+	${GTK_CFLAGS}
 
 bin_PROGRAMS = gwhere
 
@@ -26,13 +26,13 @@ gwhere_SOURCES = \
 	gwdevicemanager.c gwdevicemanager.h
 
 gwhere_LDADD = \
-	@top_srcdir@/src/res/libgwres.a \
-	@top_srcdir@/src/tools/libgwtools.a \
-	@top_srcdir@/src/plugins/libgwplugins.a \
-	@top_srcdir@/src/db/libgwdb.a \
-	@top_srcdir@/src/data/libgwdata.a \
-	@top_srcdir@/src/gui/libgwgui.a \
-	@GTK_LIBS@ \
+	${top_srcdir}/src/res/libgwres.a \
+	${top_srcdir}/src/tools/libgwtools.a \
+	${top_srcdir}/src/plugins/libgwplugins.a \
+	${top_srcdir}/src/db/libgwdb.a \
+	${top_srcdir}/src/data/libgwdata.a \
+	${top_srcdir}/src/gui/libgwgui.a \
+	$(GTK_LIBS) \
 	$(INTLLIBS)
 
 gwhere_LDFLAGS = 

@@ -18,13 +18,13 @@ libgwplugindescriptionmp3_la_SOURCES = mp3.c
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir)/src \
-	@GTK_CFLAGS@
+	$(GTK_CFLAGS)
 
 libgwplugindescriptiondescript_ion_la_LIBADD = \
-	@top_srcdir@/src/tools/libgwtools.a
+	${top_srcdir}/src/tools/libgwtools.a
 libgwplugindescriptionfile_id_diz_la_LIBADD = \
-	@top_srcdir@/src/tools/libgwtools.a
+	${top_srcdir}/src/tools/libgwtools.a
 libgwplugindescriptionhtml_la_LIBADD = \
-	@top_srcdir@/src/tools/libgwtools.a
+	${top_srcdir}/src/tools/libgwtools.a
 libgwplugindescriptionmp3_la_LIBADD = \
-	@top_srcdir@/src/tools/libgwtools.a
+	${top_srcdir}/src/tools/libgwtools.a
