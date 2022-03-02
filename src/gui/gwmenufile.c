@@ -88,35 +88,35 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gw_menu_file_new = gtk_menu_item_new_with_mnemonic (_("_New"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_NEW, gw_menu_file_new);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_new);
-	gtk_widget_add_accelerator ( gw_menu_file_new, "activate", ag, GDK_n, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_new, "activate", ag, GDK_KEY(n), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_new), "activate", G_CALLBACK ( gw_menu_file_new_click), w);
 
 	/* Menu file -> open */
 	gw_menu_file_open = gtk_menu_item_new_with_mnemonic (_( "_Open"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_OPEN, gw_menu_file_open);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_open);
-	gtk_widget_add_accelerator ( gw_menu_file_open, "activate", ag, GDK_o, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_open, "activate", ag, GDK_KEY(o), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_open), "activate", G_CALLBACK ( gw_menu_file_open_click), w);
 
 	/* Menu file -> save */
 	gw_menu_file_save = gtk_menu_item_new_with_mnemonic (_( "_Save"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_SAVE, gw_menu_file_save);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_save);
-	gtk_widget_add_accelerator ( gw_menu_file_save, "activate", ag, GDK_s, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_save, "activate", ag, GDK_KEY(s), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_save), "activate", G_CALLBACK ( gw_menu_file_save_click), w);
 
 	/* Menu file -> save as */
 	gw_menu_file_saveas = gtk_menu_item_new_with_mnemonic (_( "Sav_e as"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_SAVEAS, gw_menu_file_saveas);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_saveas);
-	gtk_widget_add_accelerator ( gw_menu_file_saveas, "activate", ag, GDK_e, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_saveas, "activate", ag, GDK_KEY(e), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_saveas), "activate", G_CALLBACK ( gw_menu_file_saveas_click), w);
 
 	/* Menu file -> close */
 	gw_menu_file_close = gtk_menu_item_new_with_mnemonic (_( "C_lose"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_CLOSE, gw_menu_file_close);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_close);
-	gtk_widget_add_accelerator ( gw_menu_file_close, "activate", ag, GDK_f, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_close, "activate", ag, GDK_KEY(f), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_close), "activate",G_CALLBACK ( gw_menu_file_close_click), w);
 
 	/* Menu file -> separator */
@@ -151,7 +151,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gw_menu_file_properties = gtk_menu_item_new_with_mnemonic (_("_Properties"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_PROPERTIES, gw_menu_file_properties);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_properties);
-	gtk_widget_add_accelerator ( gw_menu_file_properties, "activate", ag, GDK_p, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_properties, "activate", ag, GDK_KEY(p), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_properties), "activate", G_CALLBACK ( gw_menu_file_properties_click), w);
 
 	/* Menu file -> separator */
@@ -164,7 +164,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gw_menu_file_recent_files = gtk_menu_item_new_with_mnemonic (_( "_Recents files"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_RECENT_FILES, gw_menu_file_recent_files);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_recent_files);
-	gtk_widget_add_accelerator ( gw_menu_file_recent_files, "activate", ag, GDK_r, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_recent_files, "activate", ag, GDK_KEY(r), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 
 	gw_menu_file_recent_files_items = gtk_menu_new ( );
 	gtk_menu_item_set_submenu ( GTK_MENU_ITEM ( gw_menu_file_recent_files), gw_menu_file_recent_files_items);
@@ -179,7 +179,7 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gw_menu_file_exit = gtk_menu_item_new_with_mnemonic (_( "E_xit"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_EXIT, gw_menu_file_exit);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_exit);
-	gtk_widget_add_accelerator ( gw_menu_file_exit, "activate", ag, GDK_x, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_widget_add_accelerator ( gw_menu_file_exit, "activate", ag, GDK_KEY(x), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 	g_signal_connect (G_OBJECT ( gw_menu_file_exit), "activate", G_CALLBACK ( gw_menu_file_exit_click), w);
 
 	return gw_menu_file_header;
