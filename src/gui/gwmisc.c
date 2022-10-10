@@ -46,6 +46,7 @@ void gw_msg_box_create (GtkWindow *window, gchar *title, gchar *subject)
 
 void file_chooser_response_cb (GtkDialog * dlg, int response, gpointer user_data)
 {
+   //printf ("file_chooser_response_cb %d\n", response);
    gw_box_data * ddata = (gw_box_data *) user_data;
    if (response == GTK_RESPONSE_OK && ddata->ok_func)
    {
@@ -62,6 +63,7 @@ void file_chooser_response_cb (GtkDialog * dlg, int response, gpointer user_data
      ddata->cancel_func (dlg, dlg);
    }
    g_free (ddata);
+   gtk_widget_destroy (GTK_WIDGET(dlg));
 }
 
 void gw_file_chooser_box (gchar *title, gchar *filename,
