@@ -1649,7 +1649,7 @@ msgid "Quick"
 msgstr "Быстро"
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Общие установки"
 
 #: src/gui/gwsettingsgui.c:54

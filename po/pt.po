@@ -2327,7 +2327,7 @@ msgid "Quick"
 msgstr "Rápido "
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Opções Gerais"
 
 #: src/gui/gwsettingsgui.c:54

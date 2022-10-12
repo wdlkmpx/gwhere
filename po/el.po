@@ -1705,7 +1705,7 @@ msgid "Quick"
 msgstr "Γρήγορη"
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Γενικές επιλογές"
 
 #: src/gui/gwsettingsgui.c:54

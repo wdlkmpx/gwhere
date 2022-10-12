@@ -1640,7 +1640,7 @@ msgid "Quick"
 msgstr "Brzo"
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Glavne opcije"
 
 #: src/gui/gwsettingsgui.c:54

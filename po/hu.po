@@ -1661,7 +1661,7 @@ msgid "Quick"
 msgstr "Gyors"
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Általános beállítások"
 
 #: src/gui/gwsettingsgui.c:54

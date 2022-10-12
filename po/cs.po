@@ -1631,7 +1631,7 @@ msgid "Quick"
 msgstr "Rychle"
 
 #: src/gui/gwsettingsgeneral.c:44
-msgid "Generals options"
+msgid "General options"
 msgstr "Všeobecné nastavení"
 
 #: src/gui/gwsettingsgui.c:54
