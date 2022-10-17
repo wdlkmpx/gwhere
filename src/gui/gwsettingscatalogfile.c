@@ -47,7 +47,7 @@
 
 
 /* I don't like global variable, I don't know to do. */
-GtkWidget *pane_settings_catalog_file = NULL;
+static GtkWidget *pane_settings_catalog_file = NULL;
 
 
 gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkContainer *parent, GtkWidget **pane);
@@ -152,8 +152,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		/* Adds the autload catalog option. */
 		chk_autoload = gtk_check_button_new_with_label (_( "Autoload catalog"));
 		g_object_set_data (G_OBJECT(table_pane), GW_PLUGIN_SETTINGS_CATALOG_AUTOLOAD_CHK, chk_autoload);
-		gtk_widget_set_tooltip_text (chk_autoload,
-		                             _( "Autoloads a default catalog when at starting."));
+		gtk_widget_set_tooltip_text (chk_autoload, _( "Autoloads a default catalog when at starting."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), chk_autoload, 0, 1, 3, 4, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		g_signal_connect (G_OBJECT ( chk_autoload), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_autoload_catalog_click, table_pane);
 
@@ -184,7 +183,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_widget_set_sensitive ( GTK_WIDGET ( btn_autoload), FALSE);
 
 		*pane = table_pane;
-		pane_settings_catalog_file = *pane;
+		pane_settings_catalog_file = table_pane;
 
 		gw_plugin_settings_catalog_file_pane_load ( table_pane);
 
@@ -555,7 +554,11 @@ gint gw_plugin_settings_catalog_file_btn_autoload_catalog_click ( GtkButton *btn
 
 void gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, GtkWidget *pane)
 {
-    gw_file_chooser_box (_("Select autoloaded catalog"), NULL, NULL,
+    GtkWindow *mwin = gw_gui_manager_main_interface_get_main_window();
+    GtkWindow *settings_dialog;
+    settings_dialog = (GtkWindow*) g_object_get_data (G_OBJECT(mwin), "settings_dialog");
+    gw_file_chooser_box (_("Select autoloaded catalog"), NULL,
+                         settings_dialog,
                          gw_plugin_settings_catalog_file_btn_select_catalog_click_ok,
                          NULL);
 }

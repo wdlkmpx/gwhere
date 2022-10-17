@@ -109,7 +109,8 @@ void gw_file_chooser_box (gchar *title,
    ddata->cancel_func = cancel_func;
 
    g_signal_connect (w, "response", G_CALLBACK (file_chooser_response_cb), ddata);
-   gtk_widget_show (w);
+   //gtk_widget_show (w);
+   gtk_window_present (GTK_WINDOW(w));
 }
 
 
