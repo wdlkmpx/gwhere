@@ -555,7 +555,7 @@ gint gw_plugin_settings_catalog_file_btn_autoload_catalog_click ( GtkButton *btn
 
 void gw_plugin_settings_catalog_file_btn_select_catalog_click ( GtkButton *btn, GtkWidget *pane)
 {
-    gw_file_chooser_box (_("Select autoloaded catalog"), NULL,
+    gw_file_chooser_box (_("Select autoloaded catalog"), NULL, NULL,
                          gw_plugin_settings_catalog_file_btn_select_catalog_click_ok,
                          NULL);
 }

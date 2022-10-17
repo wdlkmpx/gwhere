@@ -106,7 +106,7 @@ gboolean gw_menu_file_open_click ( GtkMenuItem *mi, GtkWindow *w) {
 			gw_db_catalog_free ( catalog);
 		} else {
 			/* Else opens file selection box */
-			gw_file_chooser_box ( _( "Open catalog"), NULL,
+			gw_file_chooser_box (_( "Open catalog"), NULL, NULL,
 			                            gw_menu_file_open_file_ok,
 			                            NULL);
 		}
@@ -213,7 +213,7 @@ gboolean gw_menu_file_save_click ( GtkMenuItem *mi, GtkWindow *w) {
 
 			case GWECATNOFILENAME:	//TODO should we set the catalog title as catalog file name by default in the file selection box??
 						catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-						gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+						gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 						                            gw_menu_file_saveas_file_selection_ok, NULL);
 						gw_db_catalog_free ( catalog);
 
@@ -245,7 +245,7 @@ gboolean gw_menu_file_saveas_click ( GtkMenuItem *mi, GtkWindow *w) {
 //TODO use helper functions
 	if ( gw_am_get_current_catalog_context ( ) != NULL) {
 		catalog = ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ));
-		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 		                            gw_menu_file_saveas_file_selection_ok, NULL);
 		gw_db_catalog_free ( catalog);
 	} else {
@@ -358,7 +358,7 @@ gboolean gw_menu_file_new_save_file_ok (GtkWidget *w, gpointer data)
 
 	/* Checks if is a new catalog (in this case his full name is "./[catalog_full_name]"). */
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
-		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 		                            gw_menu_file_new_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save it directly and displays a fill box of new catalog */
@@ -412,13 +412,13 @@ gboolean gw_menu_file_open_save_file_ok (GtkWidget *w, gpointer data)
 
 	/* Checks if it's a new catalog (in this case his full name is ".[/catalog_full_name]"). */
 	if ( gw_helper_db_catalog_is_new ( catalog)) {
-		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 		                            gw_menu_file_open_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save it directly and displays a file selection box to select the catalog to open. */
 		gw_menu_file_save_click ( NULL, NULL);
 
-		gw_file_chooser_box (_("Open catalog"), NULL,
+		gw_file_chooser_box (_("Open catalog"), NULL, NULL,
 		                            gw_menu_file_open_file_ok, NULL);
 	}
 
@@ -429,7 +429,7 @@ gboolean gw_menu_file_open_save_file_ok (GtkWidget *w, gpointer data)
 gboolean gw_menu_file_open_save_file_no (GtkWidget *w, gpointer data)
 {
 	//xxx to be verified
-	gw_file_chooser_box ( _("Open catalog"), NULL,
+	gw_file_chooser_box ( _("Open catalog"), NULL, NULL,
 	                            gw_menu_file_open_file_ok, NULL);
 	return TRUE;
 }
@@ -453,7 +453,7 @@ gboolean gw_menu_file_open_recents_files_save_file_ok (GtkWidget *w, gpointer da
 
 		/* Checks if it's a new catalog (in this case his full name is ".[/catalog_full_name]"). */
 		if ( gw_helper_db_catalog_is_new ( catalog)) {
-			gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+			gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 			                            gw_menu_file_open_recents_files_saveas_file_selection_ok,
 			                            file_index);
 		} else {
@@ -506,7 +506,7 @@ gboolean gw_menu_file_open_saveas_file_selection_ok (GtkWidget *w, char * filena
 		default: break;
 	}
 
-	gw_file_chooser_box (_( "Open catalog"), NULL,
+	gw_file_chooser_box (_( "Open catalog"), NULL, NULL,
 	                            gw_menu_file_open_file_ok, NULL);
 	return TRUE;
 }
@@ -546,7 +546,7 @@ gboolean gw_menu_file_saveas_file_selection_ok (GtkWidget *w, char * filename)
 		case 0:	  break;
 		case GWECATNOMODIFIED: break;
 		case GWECATNOFILENAME:
-			gw_file_chooser_box (_( "Save as catalog"), gw_db_catalog_get_name ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ))),
+			gw_file_chooser_box (_( "Save as catalog"), gw_db_catalog_get_name ( ((GWCatalogPlugin*)gw_db_context_get_plugin ( gw_am_get_current_catalog_context ( )))->gw_db_catalog_get_db_catalog ( gw_am_get_current_catalog_context ( ))), NULL,
 			                            gw_menu_file_saveas_file_selection_ok, NULL);
 			break;
 		case GWECATCANNOTSAVE: break;
@@ -574,7 +574,7 @@ gboolean gw_menu_file_close_save_file_ok (GtkWidget *w, gpointer data)
 		/* Checks if it's a new catalog (in this case his full name is "./[catalog_full_name]"). */
 		if ( gw_helper_db_catalog_is_new ( catalog)) {
 			/* If it's a new catalog, asks a file name. */
-			gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+			gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 			                            gw_menu_file_close_saveas_file_selection_ok, NULL);
 		} else {
 			/* Else save it directly and close it. */
@@ -628,7 +628,7 @@ gboolean gw_menu_file_exit_save_file_ok (GtkWidget *w, gpointer data)
 
 	/* Checks if it's a new catalog (in this case his full name is "./[catalog_full_name]"). */
 	if (gw_helper_db_catalog_is_new (catalog)) {
-		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog),
+		gw_file_chooser_box (_( "Save as catalog"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 		                            gw_menu_file_exit_saveas_file_selection_ok, NULL);
 	} else {
 		/* Else save the catalog directly and exit program. */
@@ -702,7 +702,7 @@ gboolean gw_menu_file_import_item_click ( GtkMenuItem *m, gpointer data) {
 	if ( context == NULL) {
 		gw_pm_set_selected_import_catalog_plugin ( gw_pm_get_catalog_plugin ( plugin_name));
 
-		gw_file_chooser_box (_( "Import catalog from"), NULL,
+		gw_file_chooser_box (_( "Import catalog from"), NULL, NULL,
 		                            gw_menu_file_import_file_selection_ok, NULL);
 
 		result = TRUE;
@@ -745,7 +745,7 @@ gboolean gw_menu_file_export_item_click ( GtkMenuItem *m, gpointer data) {
 			/* Sets the catalog plugin to export */
 			gw_pm_set_selected_export_catalog_plugin ( gw_pm_get_catalog_plugin ( plugin_name));
 
-			gw_file_chooser_box (_( "Export catalog to"), gw_helper_db_catalog_get_usefull_name ( catalog),
+			gw_file_chooser_box (_( "Export catalog to"), gw_helper_db_catalog_get_usefull_name ( catalog), NULL,
 			                            gw_menu_file_export_file_selection_ok, NULL);
 
 			gw_db_catalog_free ( catalog);
