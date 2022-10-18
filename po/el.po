@@ -272,7 +272,7 @@ msgid "_Properties"
 msgstr "Ιδιότητες"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "Πρόσφατα ανοιγμένα αρχεία"
 
 #: src/gui/gwmenufile.c:266
@@ -1543,12 +1543,12 @@ msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Πρόσφατα ανοιγμένοι κατάλογοι :"
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr ""
 "Επιλέξτε το πλήθος των καταχωρίσεων στους πρόσφατα ανοιγμένους κατάλογους. Η "
 "προεπιλεγμένη τιμή είναι 5."
@@ -1559,7 +1559,7 @@ msgid "Clear history"
 msgstr "Καθαρισμός ιστορικού"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr ""
 "Κάντε click εδώ για να καθαρίσετε τη λίστα των πρόσφατα ανοιγμένων αρχείων."
 

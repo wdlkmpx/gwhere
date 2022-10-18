@@ -276,7 +276,7 @@ msgid "_Properties"
 msgstr "_Tulajdonságok"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "Legutóbb használt megnyitása"
 
 #: src/gui/gwmenufile.c:266
@@ -1506,12 +1506,12 @@ msgstr "Alapérték 3, ez aránylag gyors és jó hatásfokú tömörítést ad.
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Legutóbb használt katalógusok : "
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr ""
 "A legutoljára megnyitott katalógusok közül max. ennyit jegyez meg. "
 "Alapértéke 5."
@@ -1522,7 +1522,7 @@ msgid "Clear history"
 msgstr "Katalógusok elfelejtése"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr "Kattints ide a legutóbb megnyitott katalógusok listájának ürítéséhez."
 
 #. Adds the autload catalog option.

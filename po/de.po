@@ -272,7 +272,7 @@ msgid "_Properties"
 msgstr "_Eigenschaften"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "_Letzte Dateien"
 
 #: src/gui/gwmenufile.c:266
@@ -1499,12 +1499,12 @@ msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Zuletzt geöffnete Kataloge:"
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr "Wählt die Anzahl zuletzt geöffneter Kataloge. Fehlwert ist 5."
 
 #. Adds the clear history.
@@ -1513,7 +1513,7 @@ msgid "Clear history"
 msgstr "Verlauf löschen"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr "Klicken Sie hier, um die zuletzt geöffneten Dateien zu löschen."
 
 #. Adds the autload catalog option.

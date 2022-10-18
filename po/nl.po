@@ -466,7 +466,7 @@ msgstr "Eigenscha_ppen"
 # src/gui/MenuFileCallBack.c:82
 #: src/gui/gwmenufile.c:243
 #, fuzzy
-#| msgid "_Recents files"
+#| msgid "_Recent files"
 msgid "_Recent files"
 msgstr "_Recente bestanden"
 

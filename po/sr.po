@@ -265,7 +265,7 @@ msgid "_Properties"
 msgstr "Svo_jstva"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "Pre_djasnji fajlovi"
 
 #: src/gui/gwmenufile.c:266
@@ -1486,12 +1486,12 @@ msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Poslednji otvarani katalozi : "
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr ""
 "Izaberite velicinu istorije (prethodno otvoreni katalozi). Predefinisana "
 "vrednost je 5."
@@ -1502,7 +1502,7 @@ msgid "Clear history"
 msgstr "Ocisti istoriju"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr "Kliknite ovde da obrisete istoriju prethodno otvorenih fajlova."
 
 #. Adds the autload catalog option.

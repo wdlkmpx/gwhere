@@ -268,7 +268,7 @@ msgid "_Properties"
 msgstr "Свойства"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "Недавние файлы"
 
 #: src/gui/gwmenufile.c:266
@@ -1496,12 +1496,12 @@ msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Недавно открытых каталогов : "
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr ""
 "Укажите размер истории недавно открытых каталогов. Значение по умолчанию 5."
 
@@ -1511,7 +1511,7 @@ msgid "Clear history"
 msgstr "Очистить историю"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr "Нажмите здесь для очистки истории недавно открытых каталогов."
 
 #. Adds the autload catalog option.

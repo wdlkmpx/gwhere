@@ -265,7 +265,7 @@ msgid "_Properties"
 msgstr "_Vlastnosti"
 
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "N_aposledy otevřené"
 
 #: src/gui/gwmenufile.c:266
@@ -1477,12 +1477,12 @@ msgstr ""
 
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Naposled otevřené soubory :"
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr "Zvolte velikost historie otevřených souborů. Běžně je 5."
 
 #. Adds the clear history.
@@ -1491,7 +1491,7 @@ msgid "Clear history"
 msgstr "Vyčistit historii"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr "Klikněte pro otevření historie naposled otevřených souborů."
 
 #. Adds the autload catalog option.

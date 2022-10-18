@@ -378,7 +378,7 @@ msgstr "_Propriedades"
 # src/gui/MenuFileCallBack.c:73
 # src/gui/MenuFileCallBack.c:82
 #: src/gui/gwmenufile.c:243
-msgid "_Recents files"
+msgid "_Recent files"
 msgstr "_Ficheiros recentes"
 
 # src/gui/MenuFile.c:135
@@ -2143,12 +2143,12 @@ msgstr ""
 # src/gui/MenuPopupCallBack.c:57
 #. Adds the history size.
 #: src/gui/gwsettingscatalogfile.c:142
-msgid "Recents opened catalogs :"
+msgid "Recent opened catalogs :"
 msgstr "Catálogos recentemente abertos :"
 
 #: src/gui/gwsettingscatalogfile.c:157
 msgid ""
-"Select the size of recents opened catalogs history. The default value is 5."
+"Select the size of recent opened catalogs history. The default value is 5."
 msgstr ""
 "Seleccione o tamanho do historial de catálogos recentemente abertos. O valor "
 "por omissão é 5."
@@ -2159,7 +2159,7 @@ msgid "Clear history"
 msgstr "Apagar historial"
 
 #: src/gui/gwsettingscatalogfile.c:168
-msgid "Click here to clear the recents opened files history."
+msgid "Click here to clear the recent opened files history."
 msgstr ""
 "Click aqui para eliminar o historial de catálogos recentemente abertos."
 
