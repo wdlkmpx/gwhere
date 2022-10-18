@@ -66,17 +66,22 @@ void file_chooser_response_cb (GtkDialog * dlg, int response, gpointer user_data
    gtk_widget_destroy (GTK_WIDGET(dlg));
 }
 
-void gw_file_chooser_box (gchar *title, gchar *filename,
-                          gpointer ok_func, gpointer cancel_func)
+
+void gw_file_chooser_box (gchar *title,
+                          gchar *filename,
+                          GtkWindow *parent_window,
+                          gpointer ok_func,
+                          gpointer cancel_func)
 {
    GtkWidget * w;
-   GtkWindow * parent_window;
    GtkFileChooserAction action;
    char current_dir[256];
    getcwd (current_dir, sizeof(current_dir));
    gw_box_data * ddata = g_malloc0 (sizeof (gw_box_data));
 
-   parent_window = gw_gui_manager_main_interface_get_main_window ( );
+   if (!parent_window) {
+       parent_window = gw_gui_manager_main_interface_get_main_window();
+   }
 
    if (filename) {
       action = GTK_FILE_CHOOSER_ACTION_SAVE;
@@ -104,7 +109,8 @@ void gw_file_chooser_box (gchar *title, gchar *filename,
    ddata->cancel_func = cancel_func;
 
    g_signal_connect (w, "response", G_CALLBACK (file_chooser_response_cb), ddata);
-   gtk_widget_show (w);
+   //gtk_widget_show (w);
+   gtk_window_present (GTK_WINDOW(w));
 }
 
 

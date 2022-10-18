@@ -45,6 +45,12 @@
 
 static gboolean gw_settings_window_box_load_sections ( GtkWindow *settings);
 
+/* ignore the "close" signal (bound to the Escape key) */
+static void ignore_close_cb (GtkDialog *dialog, gpointer user_data)
+{
+    g_signal_stop_emission_by_name (G_OBJECT (dialog), "close");
+}
+
 
 GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 {
@@ -67,6 +73,10 @@ GtkWindow * gw_settings_window_box_create ( GtkWindow *window)
 	if ( !settings_window_box )
 	{
 		settings_window_box = gtk_dialog_new ();
+        /* ignore the "close" signal (bound to the Escape key) */
+        g_signal_connect (G_OBJECT (settings_window_box), "close",
+                          G_CALLBACK (ignore_close_cb), NULL);
+        g_object_set_data (G_OBJECT(window), "settings_dialog", settings_window_box);
 		gtk_widget_set_tooltip_text (settings_window_box,
 		                             _( "This Settings box allows to configure some functionnalities and properties of the program."));
 

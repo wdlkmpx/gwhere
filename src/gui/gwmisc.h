@@ -59,9 +59,11 @@ void gw_msg_box_create ( GtkWindow *w, gchar *title, gchar *msg);
  * @param	ok		the function which will be call when user clicks on ok button
  * @param	cancel		the function which will be call when user clicks on cancel button
  */
-void gw_file_chooser_box (gchar *title, gchar *filename,
-                          gpointer ok_func, gpointer cancel_func);
-
+void gw_file_chooser_box (gchar *title,
+                          gchar *filename,
+                          GtkWindow *parent_window,
+                          gpointer ok_func,
+                          gpointer cancel_func);
 
 /*!
  * @function	gw_input_box
