@@ -1,5 +1,5 @@
 /*  GWhere
- *  Copyright (C) 2000  Sébastien LECACHEUR
+ *  Copyright (C) 2000  SÃ©bastien LECACHEUR
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -128,7 +128,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 
 
 		/* Adds the history size. */
-		lbl_catalog_history_size = gtk_label_new (_( "Recents opened catalogs :"));
+		lbl_catalog_history_size = gtk_label_new (_( "Recent opened catalogs :"));
 		gtk_table_attach ( GTK_TABLE ( table_pane), lbl_catalog_history_size, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 		gtk_misc_set_alignment ( GTK_MISC ( lbl_catalog_history_size), 0, 0.5);
 
@@ -138,7 +138,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		gtk_spin_button_set_numeric ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
 		gtk_spin_button_set_wrap ( GTK_SPIN_BUTTON ( spn_catalog_history_size), TRUE);
 		gtk_widget_set_tooltip_text (spn_catalog_history_size,
-		                             _( "Select the size of recents opened catalogs history. The default value is 5."));
+		                             _( "Select the size of recent opened catalogs history. The default value is 5."));
 
 		gtk_table_attach ( GTK_TABLE ( table_pane), spn_catalog_history_size, 1, 2, 1, 2, (GtkAttachOptions) ( GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
@@ -146,7 +146,7 @@ gint gw_plugin_settings_catalog_file_pane_create ( GtkWindow *settings, GtkConta
 		btn_history_clear = gtk_button_new_with_label (_( "Clear history"));
 		g_signal_connect (G_OBJECT ( btn_history_clear), "clicked", (GCallback)gw_plugin_settings_catalog_file_btn_clear_history_click, table_pane);
 		gtk_widget_set_tooltip_text (btn_history_clear,
-		                             _( "Click here to clear the recents opened files history."));
+		                             _( "Click here to clear the recent opened files history."));
 		gtk_table_attach ( GTK_TABLE ( table_pane), btn_history_clear, 1, 2, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 		/* Adds the autload catalog option. */
