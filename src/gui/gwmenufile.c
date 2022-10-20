@@ -1,5 +1,5 @@
 /*  GWhere.
- *  Copyright (C) 2000  Sébastien LECACHEUR
+ *  Copyright (C) 2000  SÃ©bastien LECACHEUR
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -160,8 +160,8 @@ GtkWidget * gw_menu_file_create ( GtkWindow *w, GtkAccelGroup *ag, GtkWidget *pa
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_separator);
 	gtk_widget_set_sensitive ( gw_menu_file_separator, FALSE);
 
-	/* Menu file -> recents files */
-	gw_menu_file_recent_files = gtk_menu_item_new_with_mnemonic (_( "_Recents files"));
+	/* Menu file -> recent files */
+	gw_menu_file_recent_files = gtk_menu_item_new_with_mnemonic (_( "_Recent files"));
 	g_object_set_data (G_OBJECT ( w), GW_REF_MENU_BAR_FILE_MENU_RECENT_FILES, gw_menu_file_recent_files);
 	gtk_container_add ( GTK_CONTAINER ( menu_file), gw_menu_file_recent_files);
 	gtk_widget_add_accelerator ( gw_menu_file_recent_files, "activate", ag, GDK_KEY(r), GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
@@ -328,7 +328,7 @@ gboolean gw_menu_file_set_recent_files ( GtkWindow *w, gchar **files) {
 		}
 
 #ifdef GW_DEBUG_GUI_COMPONENT
-	g_print ( "*** GW - %s (%d) :: %s() : recents opened catalog files are added.\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
+	g_print ( "*** GW - %s (%d) :: %s() : recent opened catalog files are added.\n", __FILE__, __LINE__, __PRETTY_FUNCTION__);
 #endif
 	}
 
