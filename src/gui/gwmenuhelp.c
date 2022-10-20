@@ -1,5 +1,5 @@
 /*  GWhere.
- *  Copyright (C) 2000  S�bastien LECACHEUR
+ *  Copyright (C) 2000  Sébastien LECACHEUR
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ gw_menu_help_about_click (GtkMenuItem *m, gpointer user_data)
 
     const gchar * authors[] =
     {
-        "Sebastien LECACHEUR <zero@gwhere.org>",
+        "Sébastien LECACHEUR <zero@gwhere.org>",
         NULL
     };
     /* TRANSLATORS: Replace this string with your names, one name per line. */
@@ -45,7 +45,7 @@ gw_menu_help_about_click (GtkMenuItem *m, gpointer user_data)
                       "version",      VERSION,
                       "program-name", PROJECT_NAME,
                       "copyright",    "Copyright (C) 2000-2020",
-                      "comments",     _("Removable media catalog management\nGWhere allows to manage a database of yours CDs and other removable media (hard disks, etc...)."),
+                      "comments",     _("Removable media catalog management.\nGWhere allows to manage a database of your CDs and other removable media (hard disks, etc.)."),
                       "license",      "This program is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.",
                       "website",      "http://www.gwhere.org",
                       "authors",      authors,
